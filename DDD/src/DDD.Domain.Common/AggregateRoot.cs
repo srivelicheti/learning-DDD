@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace DDD.Domain.Common
 {
-    public abstract class AggregateRoot
+    public interface IAggregateRoot
     {
     }
 }
