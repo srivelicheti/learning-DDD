@@ -13,5 +13,17 @@ namespace DDD.Common
             if (argument == null)
                 throw new ArgumentNullException($"{paramName} is passed as null to method {memberName}");
         }
+
+        public static void ValidateNotNullAndEmpty(string argument, string paramName, [CallerMemberName]string memberName = "")
+        {
+            if (string.IsNullOrEmpty(argument))
+                throw new ArgumentNullException($"{paramName} is passed as null to method {memberName}");
+        }
+
+        public static void IsNumeric(string argument, string parameterName)
+        {
+
+            throw new NotImplementedException();
+        }
     }
 }

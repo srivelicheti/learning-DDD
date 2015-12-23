@@ -7,7 +7,7 @@ namespace System
 {
     public class GuidHelper
     {
-        public Guid NewSequentialGuid()
+        public static Guid NewSequentialGuid()
         {
             byte[] guidArray = Guid.NewGuid().ToByteArray();
 

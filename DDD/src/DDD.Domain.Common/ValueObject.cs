@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using System.Runtime;
 
 namespace DDD.Domain.Common
 {
@@ -64,7 +65,11 @@ namespace DDD.Domain.Common
             while (t != typeof(object))
             {
                 fields.AddRange(t.GetFields(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public));
+#if net46
                 t = t.BaseType;
+#else 
+                throw new NotImplementedException("Imlemetaion required for dotnet core framework ");
+#endif
             }
             return fields;
         }
