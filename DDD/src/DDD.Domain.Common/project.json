@@ -6,7 +6,11 @@
   "projectUrl": "",
   "licenseUrl": "",
   "frameworks": {
-    "net46": { },
+    "net46": {
+      "dependencies": {
+
+      }
+    },
     "dotnet5.4": {
       "dependencies": {
         "Microsoft.CSharp": "4.0.1-beta-23516",
@@ -18,10 +22,13 @@
         "System.Reflection.Primitives": "4.0.1-beta-23516",
         "System.Reflection.Extensions": "4.0.1-beta-23516",
         "System.Reflection.TypeExtensions": "4.0.1-beta-23409"
+
       }
     }
- },
+
+  },
   "dependencies": {
-    "DDD.Common": "1.0.0-*"
+    "DDD.Common": "1.0.0-*",
+    "StructureMap.Dnx": "0.4.0-alpha4"
   }
 }
