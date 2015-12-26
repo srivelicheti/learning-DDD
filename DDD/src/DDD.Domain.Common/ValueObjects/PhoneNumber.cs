@@ -32,7 +32,8 @@ namespace DDD.Domain.Common.ValueObjects
         public static implicit operator string(PhoneNumber number)
         {
             //Return a formatted phone number
-            throw new NotImplementedException();
+            return string.Format("{0}{1}", number.CountryCode, number.Number);
+            //throw new NotImplementedException();
         }
     }
 }

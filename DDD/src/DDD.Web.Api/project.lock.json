@@ -18,12 +18,22 @@
           "StructureMap.Dnx": "0.4.0-alpha4"
         }
       },
+      "DDD.Provider.DataModel/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.6",
+        "dependencies": {
+          "EntityFramework.Commands": "7.0.0-rc1-final",
+          "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final",
+          "EntityFramework.MicrosoftSqlServer.Design": "7.0.0-rc1-final"
+        }
+      },
       "DDD.Provider.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.6",
         "dependencies": {
           "DDD.Common": "1.0.0",
-          "DDD.Domain.Common": "1.0.0"
+          "DDD.Domain.Common": "1.0.0",
+          "DDD.Provider.DataModel": "1.0.0"
         }
       },
       "EntityFramework.Commands/7.0.0-rc1-final": {
@@ -104,6 +114,25 @@
         },
         "runtime": {
           "lib/net451/EntityFramework.MicrosoftSqlServer.dll": {}
+        }
+      },
+      "EntityFramework.MicrosoftSqlServer.Design/7.0.0-rc1-final": {
+        "type": "package",
+        "dependencies": {
+          "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final",
+          "EntityFramework.Relational.Design": "7.0.0-rc1-final"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/EntityFramework.MicrosoftSqlServer.Design.dll": {}
+        },
+        "runtime": {
+          "lib/net451/EntityFramework.MicrosoftSqlServer.Design.dll": {}
         }
       },
       "EntityFramework.Relational/7.0.0-rc1-final": {
@@ -1767,7 +1796,7 @@
     "DNXCore,Version=v5.0": {
       "DDD.Common/1.0.0": {
         "type": "project",
-        "framework": ".NETPlatform,Version=v5.4",
+        "framework": "DNXCore,Version=v5.0",
         "dependencies": {
           "Microsoft.CSharp": "4.0.1-beta-23516",
           "System.Collections": "4.0.11-beta-23516",
@@ -1780,7 +1809,7 @@
       },
       "DDD.Domain.Common/1.0.0": {
         "type": "project",
-        "framework": ".NETPlatform,Version=v5.4",
+        "framework": "DNXCore,Version=v5.0",
         "dependencies": {
           "DDD.Common": "1.0.0",
           "Microsoft.CSharp": "4.0.1-beta-23516",
@@ -1795,12 +1824,27 @@
           "System.Threading": "4.0.11-beta-23516"
         }
       },
+      "DDD.Provider.DataModel/1.0.0": {
+        "type": "project",
+        "framework": "DNXCore,Version=v5.0",
+        "dependencies": {
+          "EntityFramework.Commands": "7.0.0-rc1-final",
+          "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final",
+          "EntityFramework.MicrosoftSqlServer.Design": "7.0.0-rc1-final",
+          "Microsoft.CSharp": "4.0.1-beta-23516",
+          "System.Collections": "4.0.11-beta-23516",
+          "System.Linq": "4.0.1-beta-23516",
+          "System.Runtime": "4.0.21-beta-23516",
+          "System.Threading": "4.0.11-beta-23516"
+        }
+      },
       "DDD.Provider.Domain/1.0.0": {
         "type": "project",
-        "framework": ".NETPlatform,Version=v5.4",
+        "framework": "DNXCore,Version=v5.0",
         "dependencies": {
           "DDD.Common": "1.0.0",
           "DDD.Domain.Common": "1.0.0",
+          "DDD.Provider.DataModel": "1.0.0",
           "Microsoft.CSharp": "4.0.1-beta-23516",
           "System.Collections": "4.0.11-beta-23516",
           "System.Linq": "4.0.1-beta-23516",
@@ -1875,6 +1919,19 @@
         },
         "runtime": {
           "lib/dotnet5.4/EntityFramework.MicrosoftSqlServer.dll": {}
+        }
+      },
+      "EntityFramework.MicrosoftSqlServer.Design/7.0.0-rc1-final": {
+        "type": "package",
+        "dependencies": {
+          "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final",
+          "EntityFramework.Relational.Design": "7.0.0-rc1-final"
+        },
+        "compile": {
+          "lib/dnxcore50/EntityFramework.MicrosoftSqlServer.Design.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/EntityFramework.MicrosoftSqlServer.Design.dll": {}
         }
       },
       "EntityFramework.Relational/7.0.0-rc1-final": {
@@ -4187,12 +4244,22 @@
           "StructureMap.Dnx": "0.4.0-alpha4"
         }
       },
+      "DDD.Provider.DataModel/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.6",
+        "dependencies": {
+          "EntityFramework.Commands": "7.0.0-rc1-final",
+          "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final",
+          "EntityFramework.MicrosoftSqlServer.Design": "7.0.0-rc1-final"
+        }
+      },
       "DDD.Provider.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.6",
         "dependencies": {
           "DDD.Common": "1.0.0",
-          "DDD.Domain.Common": "1.0.0"
+          "DDD.Domain.Common": "1.0.0",
+          "DDD.Provider.DataModel": "1.0.0"
         }
       },
       "EntityFramework.Commands/7.0.0-rc1-final": {
@@ -4273,6 +4340,25 @@
         },
         "runtime": {
           "lib/net451/EntityFramework.MicrosoftSqlServer.dll": {}
+        }
+      },
+      "EntityFramework.MicrosoftSqlServer.Design/7.0.0-rc1-final": {
+        "type": "package",
+        "dependencies": {
+          "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final",
+          "EntityFramework.Relational.Design": "7.0.0-rc1-final"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/EntityFramework.MicrosoftSqlServer.Design.dll": {}
+        },
+        "runtime": {
+          "lib/net451/EntityFramework.MicrosoftSqlServer.Design.dll": {}
         }
       },
       "EntityFramework.Relational/7.0.0-rc1-final": {
@@ -5952,12 +6038,22 @@
           "StructureMap.Dnx": "0.4.0-alpha4"
         }
       },
+      "DDD.Provider.DataModel/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.6",
+        "dependencies": {
+          "EntityFramework.Commands": "7.0.0-rc1-final",
+          "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final",
+          "EntityFramework.MicrosoftSqlServer.Design": "7.0.0-rc1-final"
+        }
+      },
       "DDD.Provider.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.6",
         "dependencies": {
           "DDD.Common": "1.0.0",
-          "DDD.Domain.Common": "1.0.0"
+          "DDD.Domain.Common": "1.0.0",
+          "DDD.Provider.DataModel": "1.0.0"
         }
       },
       "EntityFramework.Commands/7.0.0-rc1-final": {
@@ -6038,6 +6134,25 @@
         },
         "runtime": {
           "lib/net451/EntityFramework.MicrosoftSqlServer.dll": {}
+        }
+      },
+      "EntityFramework.MicrosoftSqlServer.Design/7.0.0-rc1-final": {
+        "type": "package",
+        "dependencies": {
+          "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final",
+          "EntityFramework.Relational.Design": "7.0.0-rc1-final"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/EntityFramework.MicrosoftSqlServer.Design.dll": {}
+        },
+        "runtime": {
+          "lib/net451/EntityFramework.MicrosoftSqlServer.Design.dll": {}
         }
       },
       "EntityFramework.Relational/7.0.0-rc1-final": {
@@ -7704,7 +7819,7 @@
     "DNXCore,Version=v5.0/win7-x86": {
       "DDD.Common/1.0.0": {
         "type": "project",
-        "framework": ".NETPlatform,Version=v5.4",
+        "framework": "DNXCore,Version=v5.0",
         "dependencies": {
           "Microsoft.CSharp": "4.0.1-beta-23516",
           "System.Collections": "4.0.11-beta-23516",
@@ -7717,7 +7832,7 @@
       },
       "DDD.Domain.Common/1.0.0": {
         "type": "project",
-        "framework": ".NETPlatform,Version=v5.4",
+        "framework": "DNXCore,Version=v5.0",
         "dependencies": {
           "DDD.Common": "1.0.0",
           "Microsoft.CSharp": "4.0.1-beta-23516",
@@ -7732,12 +7847,27 @@
           "System.Threading": "4.0.11-beta-23516"
         }
       },
+      "DDD.Provider.DataModel/1.0.0": {
+        "type": "project",
+        "framework": "DNXCore,Version=v5.0",
+        "dependencies": {
+          "EntityFramework.Commands": "7.0.0-rc1-final",
+          "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final",
+          "EntityFramework.MicrosoftSqlServer.Design": "7.0.0-rc1-final",
+          "Microsoft.CSharp": "4.0.1-beta-23516",
+          "System.Collections": "4.0.11-beta-23516",
+          "System.Linq": "4.0.1-beta-23516",
+          "System.Runtime": "4.0.21-beta-23516",
+          "System.Threading": "4.0.11-beta-23516"
+        }
+      },
       "DDD.Provider.Domain/1.0.0": {
         "type": "project",
-        "framework": ".NETPlatform,Version=v5.4",
+        "framework": "DNXCore,Version=v5.0",
         "dependencies": {
           "DDD.Common": "1.0.0",
           "DDD.Domain.Common": "1.0.0",
+          "DDD.Provider.DataModel": "1.0.0",
           "Microsoft.CSharp": "4.0.1-beta-23516",
           "System.Collections": "4.0.11-beta-23516",
           "System.Linq": "4.0.1-beta-23516",
@@ -7812,6 +7942,19 @@
         },
         "runtime": {
           "lib/dotnet5.4/EntityFramework.MicrosoftSqlServer.dll": {}
+        }
+      },
+      "EntityFramework.MicrosoftSqlServer.Design/7.0.0-rc1-final": {
+        "type": "package",
+        "dependencies": {
+          "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final",
+          "EntityFramework.Relational.Design": "7.0.0-rc1-final"
+        },
+        "compile": {
+          "lib/dnxcore50/EntityFramework.MicrosoftSqlServer.Design.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/EntityFramework.MicrosoftSqlServer.Design.dll": {}
         }
       },
       "EntityFramework.Relational/7.0.0-rc1-final": {
@@ -10611,7 +10754,7 @@
     "DNXCore,Version=v5.0/win7-x64": {
       "DDD.Common/1.0.0": {
         "type": "project",
-        "framework": ".NETPlatform,Version=v5.4",
+        "framework": "DNXCore,Version=v5.0",
         "dependencies": {
           "Microsoft.CSharp": "4.0.1-beta-23516",
           "System.Collections": "4.0.11-beta-23516",
@@ -10624,7 +10767,7 @@
       },
       "DDD.Domain.Common/1.0.0": {
         "type": "project",
-        "framework": ".NETPlatform,Version=v5.4",
+        "framework": "DNXCore,Version=v5.0",
         "dependencies": {
           "DDD.Common": "1.0.0",
           "Microsoft.CSharp": "4.0.1-beta-23516",
@@ -10639,12 +10782,27 @@
           "System.Threading": "4.0.11-beta-23516"
         }
       },
+      "DDD.Provider.DataModel/1.0.0": {
+        "type": "project",
+        "framework": "DNXCore,Version=v5.0",
+        "dependencies": {
+          "EntityFramework.Commands": "7.0.0-rc1-final",
+          "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final",
+          "EntityFramework.MicrosoftSqlServer.Design": "7.0.0-rc1-final",
+          "Microsoft.CSharp": "4.0.1-beta-23516",
+          "System.Collections": "4.0.11-beta-23516",
+          "System.Linq": "4.0.1-beta-23516",
+          "System.Runtime": "4.0.21-beta-23516",
+          "System.Threading": "4.0.11-beta-23516"
+        }
+      },
       "DDD.Provider.Domain/1.0.0": {
         "type": "project",
-        "framework": ".NETPlatform,Version=v5.4",
+        "framework": "DNXCore,Version=v5.0",
         "dependencies": {
           "DDD.Common": "1.0.0",
           "DDD.Domain.Common": "1.0.0",
+          "DDD.Provider.DataModel": "1.0.0",
           "Microsoft.CSharp": "4.0.1-beta-23516",
           "System.Collections": "4.0.11-beta-23516",
           "System.Linq": "4.0.1-beta-23516",
@@ -10719,6 +10877,19 @@
         },
         "runtime": {
           "lib/dotnet5.4/EntityFramework.MicrosoftSqlServer.dll": {}
+        }
+      },
+      "EntityFramework.MicrosoftSqlServer.Design/7.0.0-rc1-final": {
+        "type": "package",
+        "dependencies": {
+          "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final",
+          "EntityFramework.Relational.Design": "7.0.0-rc1-final"
+        },
+        "compile": {
+          "lib/dnxcore50/EntityFramework.MicrosoftSqlServer.Design.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/EntityFramework.MicrosoftSqlServer.Design.dll": {}
         }
       },
       "EntityFramework.Relational/7.0.0-rc1-final": {
@@ -13525,6 +13696,10 @@
       "type": "project",
       "path": "../DDD.Domain.Common/project.json"
     },
+    "DDD.Provider.DataModel/1.0.0": {
+      "type": "project",
+      "path": "../DDD.Provider.DataModel/project.json"
+    },
     "DDD.Provider.Domain/1.0.0": {
       "type": "project",
       "path": "../DDD.Provider.Domain/project.json"
@@ -13588,6 +13763,20 @@
         "lib/net451/EntityFramework.MicrosoftSqlServer.xml",
         "lib/netcore50/EntityFramework.MicrosoftSqlServer.dll",
         "lib/netcore50/EntityFramework.MicrosoftSqlServer.xml"
+      ]
+    },
+    "EntityFramework.MicrosoftSqlServer.Design/7.0.0-rc1-final": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "T0b+OkTnALXHAnVuaUijNKB5RzkkZ04w8HxbRuCb0BjuaXtfgnYdHL+I+v3ZqkgxQz1Cm//U2Ti1DN3EYpA7GA==",
+      "files": [
+        "EntityFramework.MicrosoftSqlServer.Design.7.0.0-rc1-final.nupkg",
+        "EntityFramework.MicrosoftSqlServer.Design.7.0.0-rc1-final.nupkg.sha512",
+        "EntityFramework.MicrosoftSqlServer.Design.nuspec",
+        "lib/dnxcore50/EntityFramework.MicrosoftSqlServer.Design.dll",
+        "lib/dnxcore50/EntityFramework.MicrosoftSqlServer.Design.xml",
+        "lib/net451/EntityFramework.MicrosoftSqlServer.Design.dll",
+        "lib/net451/EntityFramework.MicrosoftSqlServer.Design.xml"
       ]
     },
     "EntityFramework.Relational/7.0.0-rc1-final": {

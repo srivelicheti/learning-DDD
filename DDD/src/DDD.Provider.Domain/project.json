@@ -7,7 +7,7 @@
   "licenseUrl": "",
   "frameworks": {
     "net46": { },
-    "dotnet5.4": {
+    "dnxcore50": {
       "dependencies": {
         "Microsoft.CSharp": "4.0.1-beta-23516",
         "System.Collections": "4.0.11-beta-23516",
@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "DDD.Common": "1.0.0-*",
-    "DDD.Domain.Common": "1.0.0-*"
+    "DDD.Domain.Common": "1.0.0-*",
+    "DDD.Provider.DataModel": "1.0.0-*"
   }
 }
