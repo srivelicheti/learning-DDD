@@ -21,7 +21,7 @@ namespace DDD.Web.Api.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            _commandBus.Submit<AddNewContractorCommand>(new AddNewContractorCommand(null));
+            var commandResult = _commandBus.Submit<AddNewContractorCommand>(new AddNewContractorCommand(null));
             return new string[] { "value1", "value2" };
         }
 

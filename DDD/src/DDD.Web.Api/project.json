@@ -17,7 +17,9 @@
     "Microsoft.Extensions.Logging": "1.0.0-rc1-final",
     "Microsoft.Extensions.Logging.Console": "1.0.0-rc1-final",
     "Microsoft.Extensions.Logging.Debug": "1.0.0-rc1-final",
-    "StructureMap.Dnx": "0.4.0-alpha4"
+    "StructureMap.Dnx": "0.4.0-alpha4",
+    "EntityFramework.Commands": "7.0.0-rc1-final",
+    "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final"
   },
 
   "commands": {
@@ -28,6 +30,7 @@
     "dnx46": { },
     "dnxcore50": { }
   },
+  
 
   "exclude": [
     "wwwroot",
