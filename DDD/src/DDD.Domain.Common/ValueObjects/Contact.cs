@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DDD.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,7 +10,19 @@ namespace DDD.Domain.Common.ValueObjects
     {
         public Contact(Name name, PhoneNumber phone, PhoneNumber alternatePhone ,string email)
         {
-            throw new NotImplementedException();
+            Claim.ValidateNotNull(name, nameof(name));
+            Claim.ValidateNotNull(PhoneNumber, nameof(PhoneNumber));
+            Name = name;
+            PhoneNumber = phone;
+            AlternatePhoneNumber = alternatePhone;
+            Email = email;
         }
+        public Name Name { get; private set; }
+
+        public PhoneNumber PhoneNumber { get; private set; }
+
+        public PhoneNumber AlternatePhoneNumber { get; private set; }
+
+        public string Email { get; private set; }
     }
 }

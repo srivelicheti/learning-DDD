@@ -1,4 +1,5 @@
 using Microsoft.Data.Entity;
+using Microsoft.Data.Entity.Metadata;
 
 namespace DDD.Provider.DataModel
 {
@@ -6,8 +7,6 @@ namespace DDD.Provider.DataModel
     {
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            //TODO: Read config string from configuration file here
-            //var connString = Startup
             options.UseSqlServer(@"Data Source=.\sql2014;Initial Catalog=POC_DDD;Integrated Security=True");
         }
 
@@ -59,6 +58,10 @@ namespace DDD.Provider.DataModel
                     .IsRequired()
                     .HasMaxLength(50);
 
+                entity.Property(e => e.EinNumber)
+                    .IsRequired()
+                    .HasMaxLength(10);
+
                 entity.Property(e => e.Email)
                     .IsRequired()
                     .HasMaxLength(50);
@@ -73,10 +76,7 @@ namespace DDD.Provider.DataModel
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(e => e.LastSavedDateTime)
-                    .IsRequired()
-                    .HasMaxLength(10)
-                    .HasColumnType("nchar");
+                entity.Property(e => e.LastSavedDateTime).HasColumnType("datetime");
 
                 entity.Property(e => e.PhoneNumber)
                     .IsRequired()

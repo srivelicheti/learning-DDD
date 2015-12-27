@@ -30,7 +30,7 @@ namespace DDD.Web.Api
         {
             // Add framework services.
             services.AddMvc();
-
+            services.AddEntityFramework().AddSqlServer();
             var container = new Container();
 
             // Here we populate the container using the service collection.

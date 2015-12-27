@@ -19,11 +19,12 @@ namespace DDD.Provider.DataModel
         public string ContractorName { get; set; }
         public DateTime ContractStartDate { get; set; }
         public string DoingBusinessAs { get; set; }
+        public string EinNumber { get; set; }
         public string Email { get; set; }
         public string FirstInsertedBy { get; set; }
         public DateTime FirstInsertedDateTime { get; set; }
         public string LastSavedBy { get; set; }
-        public string LastSavedDateTime { get; set; }
+        public DateTime LastSavedDateTime { get; set; }
         public string PhoneNumber { get; set; }
         public string StateCode { get; set; }
         public string Status { get; set; }

@@ -14,9 +14,10 @@ namespace DDD.Provider.Domain.Entities
         {
         }
 
-        public Contractor(string contractorName, string doingBusinessAs, ContractorStatus status, DateTimeRange contractDuration, PhoneNumber primaryPhoneNumber, Contact contactDetails) : base(GuidHelper.NewSequentialGuid())
+        public Contractor(string einNumber, string contractorName, string doingBusinessAs, ContractorStatus status, DateTimeRange contractDuration, PhoneNumber primaryPhoneNumber, Contact contactDetails) : base(GuidHelper.NewSequentialGuid())
         {
             //TODO: Implement guard conditions
+            EinNumber = EinNumber;
             ContractorName = contractorName;
             DoingBusinessAsText = doingBusinessAs;
             Status = status;
@@ -24,6 +25,8 @@ namespace DDD.Provider.Domain.Entities
             PhoneNumber = primaryPhoneNumber;
             Contact = contactDetails;
         }
+
+        public string EinNumber { get; private set; }
         public DateTimeRange ContractDuration { get; private set; }
         public ContractorStatus Status { get; private set; }
         public string ContractorName { get; private set; }

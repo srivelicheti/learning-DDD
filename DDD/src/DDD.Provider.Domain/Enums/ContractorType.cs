@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace DDD.Provider.Domain.Enums
 {
-    public class ContractorType : Enumeration<ContractorType>
+    public class ContractorType : Enumeration<ContractorType,string>
     {
-        public static ContractorType Contracted = new ContractorType(0, "Contracted");
+        public static ContractorType Contracted = new ContractorType("C", "Contracted");
 
-        public static ContractorType SelfArranged = new ContractorType(0, "Self-Arranged");
-        private ContractorType(int value, string displayName) : base(value, displayName) { }
+        public static ContractorType SelfArranged = new ContractorType("S", "Self-Arranged");
+        private ContractorType(string value, string displayName) : base(value, displayName) { }
     }
 }

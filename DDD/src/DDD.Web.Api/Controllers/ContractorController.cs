@@ -6,6 +6,7 @@ using Microsoft.AspNet.Mvc;
 using DDD.Common.DTOs.Provider;
 using DDD.Domain.Common.Command;
 using DDD.Provider.Domain.Commands;
+using DDD.Provider.Domain.Repositories;
 
 namespace DDD.Web.Api.Controllers
 {
@@ -21,7 +22,7 @@ namespace DDD.Web.Api.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            var commandResult = _commandBus.Submit<AddNewContractorCommand>(new AddNewContractorCommand(null));
+            
             return new string[] { "value1", "value2" };
         }
 
@@ -36,6 +37,12 @@ namespace DDD.Web.Api.Controllers
         [HttpPost]
         public void Post([FromBody]ContractorDto contractor)
         {
+            var cont = new ContractorDto {
+                ID = Guid.NewGuid(),
+                 ContractorName = "Some Contractor",
+                  DoingBusinessAs = "DBA",
+                  
+            };
         }
 
         // PUT api/values/5

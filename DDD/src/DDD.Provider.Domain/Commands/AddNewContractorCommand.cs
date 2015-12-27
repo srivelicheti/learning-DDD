@@ -9,10 +9,12 @@ namespace DDD.Provider.Domain.Commands
 {
     public class AddNewContractorCommand : Command
     {
-        private ContractorDto _contractor;
+        //private ContractorDto _contractor;
         public AddNewContractorCommand(ContractorDto contractor) : base(Guid.NewGuid())
         {
-            _contractor = contractor;
+            Contractor = contractor;
         }
+
+        public ContractorDto Contractor { get; private set; }
     }
 }
