@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace DDD.Common
 {
@@ -22,8 +23,8 @@ namespace DDD.Common
 
         public static void IsNumeric(string argument, string parameterName)
         {
-
-            throw new NotImplementedException();
+            if (!Regex.IsMatch(argument, "\\d+"))
+                throw new ArgumentException($"{argument} is not a valid phone number passed for argument {parameterName}");
         }
     }
 }

@@ -14,6 +14,7 @@ namespace DDD.Domain.Common.ValueObjects
             End = end;
         }
 
+        
         public DateTimeRange(DateTime start, TimeSpan duration) : this(start, start.Add(duration))
         {
         }

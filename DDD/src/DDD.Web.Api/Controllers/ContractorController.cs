@@ -38,12 +38,15 @@ namespace DDD.Web.Api.Controllers
         [HttpPost]
         public void Post([FromBody]ContractorDto contractor)
         {
+            var rnd = new Random();
+            var ein = rnd.Next(100000000, 999999999).ToString() + "AA";
             var cont = new ContractorDto
             {
-                ID = Guid.NewGuid(),
+                ID = GuidHelper.NewSequentialGuid(),
                 ContractorName = "Some Contractor",
                 DoingBusinessAs = "DBA",
-                EinNumber = "123456789",
+                EinNumber = ein,
+                SuffixCode = "AA",
                 ContactEmail = "Contact@xyz.com",
                 ContactFirstName = "ContactFirst",
                 ContactLastName = "ContactLast",
@@ -52,8 +55,8 @@ namespace DDD.Web.Api.Controllers
                 ContractEndDate = DateTime.Now.AddYears(1),
                 Email = "SomeContractor@xyz.com",
                 PhoneNumber = "7458961325",
-                Status = ContractorStatus.Open.Value,
-                Type = ContractorType.Contracted.Value,
+                Status = ContractorStatus.Open,
+                Type = ContractorType.Contracted,
                 StateCode = "PA",
                 ZipCode = "17050",
                 AddressLine1 = "Address Line 1",

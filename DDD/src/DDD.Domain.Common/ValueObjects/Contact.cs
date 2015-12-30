@@ -11,7 +11,7 @@ namespace DDD.Domain.Common.ValueObjects
         public Contact(Name name, PhoneNumber phone, PhoneNumber alternatePhone ,string email)
         {
             Claim.ValidateNotNull(name, nameof(name));
-            Claim.ValidateNotNull(PhoneNumber, nameof(PhoneNumber));
+            Claim.ValidateNotNull(phone, nameof(PhoneNumber));
             Name = name;
             PhoneNumber = phone;
             AlternatePhoneNumber = alternatePhone;

@@ -75,7 +75,8 @@ namespace DDD.Domain.Common
         }
         public static bool operator ==(ValueObject<T> x, ValueObject<T> y)
         {
-            return x.Equals(y);
+            
+            return ( object.ReferenceEquals(x, null) && object.ReferenceEquals(y,null)) || ( !(object.ReferenceEquals(x, null)) && x.Equals(y));
         }
         public static bool operator !=(ValueObject<T> x, ValueObject<T> y)
         {

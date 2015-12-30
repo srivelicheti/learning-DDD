@@ -14,9 +14,9 @@ namespace DDD.Provider.Domain.Enums
 
         private ContractorStatus(string value, string displayName) : base(value, displayName) { }
 
-        public static implicit operator string(ContractorStatus number)
+        public static implicit operator string(ContractorStatus status)
         {
-            return number.Value;
+            return status.Value;
         }
 
         public static implicit operator ContractorStatus(string code)

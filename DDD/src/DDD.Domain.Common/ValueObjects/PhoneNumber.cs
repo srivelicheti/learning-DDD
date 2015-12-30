@@ -27,13 +27,20 @@ namespace DDD.Domain.Common.ValueObjects
         public PhoneNumber(string phoneNumber) : this(phoneNumber, 1)
         { }
 
-        public static implicit operator PhoneNumber(string number) => new PhoneNumber(number);
+        public static implicit operator PhoneNumber(string number)
+        {
+            if (string.IsNullOrEmpty(number))
+                return null;
+            else
+                return new PhoneNumber(number);
+        }
 
         public static implicit operator string(PhoneNumber number)
         {
-            //Return a formatted phone number
-            return string.Format("{0}{1}", number.CountryCode, number.Number);
-            //throw new NotImplementedException();
+            if (number == null)
+                return null;
+            else
+               return string.Format("{0}{1}", number.CountryCode, number.Number); //Return a formatted phone number
         }
     }
 }

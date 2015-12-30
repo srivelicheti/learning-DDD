@@ -8,7 +8,7 @@
 	[PhoneNumber] [nvarchar](13) NOT NULL,
 	[AlternatePhoneNumber] [nvarchar](13) NULL,
 	[Type] [nchar](2) NOT NULL,
-	[EinNumber] [nvarchar](10) NOT Null,
+	[EinNumber] [nvarchar](11) NOT Null UNIQUE,
 	[SuffixCode] [nchar](2) NULL,
 	[Email] [nvarchar](50) NOT NULL,
 	[ContactFirstName] [nvarchar](50) NOT NULL,

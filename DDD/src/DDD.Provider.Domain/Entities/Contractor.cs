@@ -14,16 +14,19 @@ namespace DDD.Provider.Domain.Entities
         {
         }
 
-        public Contractor(string einNumber, string contractorName, string doingBusinessAs, ContractorStatus status, DateTimeRange contractDuration, PhoneNumber primaryPhoneNumber, Contact contactDetails) : base(GuidHelper.NewSequentialGuid())
+        public Contractor(string einNumber, string contractorName, string doingBusinessAs, ContractorStatus status, ContractorType type ,DateTimeRange contractDuration, PhoneNumber primaryPhoneNumber, Contact contactDetails, Address address, string email) : base(GuidHelper.NewSequentialGuid())
         {
             //TODO: Implement guard conditions
-            EinNumber = EinNumber;
+            EinNumber = einNumber;
             ContractorName = contractorName;
             DoingBusinessAsText = doingBusinessAs;
             Status = status;
+            ContractorType = type;
             ContractDuration = contractDuration;
             PhoneNumber = primaryPhoneNumber;
             Contact = contactDetails;
+            Address = address;
+            Email = email;
         }
 
         public string EinNumber { get; private set; }
@@ -32,7 +35,7 @@ namespace DDD.Provider.Domain.Entities
         public string ContractorName { get; private set; }
         public string DoingBusinessAsText { get; private set; }
         public PhoneNumber PhoneNumber { get; private set; }
-        public ContractorType Type { get; private set; }
+        public ContractorType ContractorType { get; private set; }
         public string ContractorSuffixCode { get; private set; }
         public PhoneNumber ContractorAlternatePhoneNumber { get; private set; }
         public string ContactAlternatePhoneNumber { get; private set; }

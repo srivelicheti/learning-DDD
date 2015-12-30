@@ -20,7 +20,7 @@ namespace DDD.Common.DTOs.Provider
         public string ContactFirstName { get; set; }
         public string ContactLastName { get; set; }
         public string ContactPhoneNumber { get; set; }
-        public DateTime? ContractEndDate { get; set; }
+        public DateTime ContractEndDate { get; set; }
         public string ContractorName { get; set; }
         public DateTime ContractStartDate { get; set; }
         public string DoingBusinessAs { get; set; }
