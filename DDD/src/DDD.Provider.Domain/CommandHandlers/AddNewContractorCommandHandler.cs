@@ -1,5 +1,7 @@
 ﻿using DDD.Domain.Common.Command;
 using DDD.Provider.Domain.Commands;
+using DDD.Provider.Domain.Entities;
+using DDD.Provider.Domain.Enums;
 using DDD.Provider.Domain.Repositories;
 using DDD.Provider.Domain.Services;
 using System;
@@ -21,8 +23,9 @@ namespace DDD.Provider.Domain.CommandHandlers
         }
         public void Execute(AddNewContractorCommand command)
         {
+           
             var contractorDto = command.Contractor;
-            
+            //var contractor = new Contractor(contractorDto.EinNumber, contractorDto.ContractorName,contractorDto.DoingBusinessAs, )
             //_contractorRepository.AddContractor();
         }
     }

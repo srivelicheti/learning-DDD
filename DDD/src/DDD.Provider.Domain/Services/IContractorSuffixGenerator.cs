@@ -9,4 +9,13 @@ namespace DDD.Provider.Domain.Services
     {
         string GetContractorSuffixForNewContractor(string einNumber);
     }
+
+    public class ContractorSuffixGenerator : IContractorSuffixGenerator
+    {
+        public string GetContractorSuffixForNewContractor(string einNumber)
+        {
+            //TODO: Actual implementation
+            return "AA";
+        }
+    }
 }

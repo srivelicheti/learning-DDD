@@ -13,5 +13,20 @@ namespace DDD.Provider.Domain.Enums
         public static readonly ContractorStatus Closed = new ContractorStatus("C", "Closed");
 
         private ContractorStatus(string value, string displayName) : base(value, displayName) { }
+
+        public static implicit operator string(ContractorStatus number)
+        {
+            return number.Value;
+        }
+
+        public static implicit operator ContractorStatus(string code)
+        {
+            if (code == ContractorStatus.Open.Value)
+                return ContractorStatus.Open;
+            else if (code == ContractorStatus.Closed.Value)
+                return ContractorStatus.Closed;
+            else
+                throw new InvalidCastException( $"{code} is not a valid value for ContractroStatus enumeration");
+        }
     }
 }

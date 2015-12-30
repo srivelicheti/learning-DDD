@@ -12,7 +12,7 @@ namespace DDD.Domain.Common.Event
         private IList<IEventHandler> _eventHandlers = new List<IEventHandler>();
         //private IList<ICommandHandler> _commandHanders = new List<ICommandHandler>();
 
-        public void Subscribe<TEvent>(IEventHandler<TEvent> eventHandler) where TEvent : IDomainEvent
+        public void Subscribe<TEvent>(IEventHandler<TEvent> eventHandler) where TEvent : DomainEvent
         {
             _eventHandlers.Add(eventHandler);
         }
@@ -22,7 +22,7 @@ namespace DDD.Domain.Common.Event
         //    _commandHanders.Add(commandHandler);
         //}
 
-        public void Publish<TEvent>(TEvent e) where TEvent : IDomainEvent
+        public void Publish<TEvent>(TEvent e) where TEvent : DomainEvent
         {
             foreach (var handler in _eventHandlers)
             {

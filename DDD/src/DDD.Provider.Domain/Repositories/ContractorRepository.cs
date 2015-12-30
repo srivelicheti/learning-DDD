@@ -1,4 +1,6 @@
-﻿using DDD.Provider.DataModel;
+﻿using DDD.Domain.Common.Event;
+using DDD.Provider.DataModel;
+using DDD.Provider.Domain.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +10,12 @@ namespace DDD.Provider.Domain.Repositories
 {
     public class ContractorRepository
     {
+        private EventBus _eventBus;
+        public ContractorRepository(EventBus eventBus)
+        {
+            _eventBus = eventBus;
+        }
+
         public async Task AddContractor(DDD.Provider.Domain.Entities.Contractor contractor)
         {
             using (var ctx = new POC_DDDContext())
@@ -43,6 +51,7 @@ namespace DDD.Provider.Domain.Repositories
                 });
 
                 await ctx.SaveChangesAsync();
+                _eventBus.Publish<NewContractorAdded>(new NewContractorAdded(Guid.NewGuid(), DateTime.UtcNow, contractor.ID, contractor.EinNumber));
             }
         }
     }

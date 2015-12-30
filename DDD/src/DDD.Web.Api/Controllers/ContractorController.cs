@@ -7,6 +7,7 @@ using DDD.Common.DTOs.Provider;
 using DDD.Domain.Common.Command;
 using DDD.Provider.Domain.Commands;
 using DDD.Provider.Domain.Repositories;
+using DDD.Provider.Domain.Enums;
 
 namespace DDD.Web.Api.Controllers
 {
@@ -22,7 +23,7 @@ namespace DDD.Web.Api.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            
+
             return new string[] { "value1", "value2" };
         }
 
@@ -37,12 +38,28 @@ namespace DDD.Web.Api.Controllers
         [HttpPost]
         public void Post([FromBody]ContractorDto contractor)
         {
-            var cont = new ContractorDto {
+            var cont = new ContractorDto
+            {
                 ID = Guid.NewGuid(),
-                 ContractorName = "Some Contractor",
-                  DoingBusinessAs = "DBA",
-                  
+                ContractorName = "Some Contractor",
+                DoingBusinessAs = "DBA",
+                EinNumber = "123456789",
+                ContactEmail = "Contact@xyz.com",
+                ContactFirstName = "ContactFirst",
+                ContactLastName = "ContactLast",
+                ContactPhoneNumber = "7894561234",
+                ContractStartDate = DateTime.Now,
+                ContractEndDate = DateTime.Now.AddYears(1),
+                Email = "SomeContractor@xyz.com",
+                PhoneNumber = "7458961325",
+                Status = ContractorStatus.Open.Value,
+                Type = ContractorType.Contracted.Value,
+                StateCode = "PA",
+                ZipCode = "17050",
+                AddressLine1 = "Address Line 1",
+                City = "Mechanicsburg",
             };
+            var result = _commandBus.Submit<AddNewContractorCommand>(new AddNewContractorCommand(cont));
         }
 
         // PUT api/values/5
