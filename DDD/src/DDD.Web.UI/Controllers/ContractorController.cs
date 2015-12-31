@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace DDD.Web.UI.Controllers
@@ -22,13 +23,18 @@ namespace DDD.Web.UI.Controllers
             client.BaseAddress = new Uri("http://localhost:5000/");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            HttpRequestMessage reqMessage = new HttpRequestMessage() { Method = HttpMethod.Post };
+            reqMessage.Headers.Accept.Clear();
+            reqMessage.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            reqMessage.RequestUri = new Uri(@"api/contractor", UriKind.RelativeOrAbsolute);
+
             var payload = JsonConvert.SerializeObject(new {
-                contractorName=model.ContractorName,
+                name=model.ContractorName,
                 dba=model.DBA
             });
-            var contnt = new StringContent(payload);
-            await client.PostAsync(@"api/contractor", contnt);
-            return View("ContractorAdded");
+            var content = new StringContent(payload, System.Text.Encoding.UTF32, "application/json");
+            await client.PostAsync(@"api/contractor", content);
+            return View("ContractorAdded",payload);
         }
     }
 }

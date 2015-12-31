@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using StructureMap;
 using DDD.Web.Api.App_Start;
+using DDD.Domain.Common.Event;
 
 namespace DDD.Web.Api
 {
@@ -39,6 +40,7 @@ namespace DDD.Web.Api
             // into the container with the appropriate lifetime.
             container.Populate(services);
             IocBootstrapper.ConfigureIocContainer(container);
+            DomainEventsBootStrapper.RegisterEvents(container);
             // Make sure we return an IServiceProvider, 
             // this makes DNX use the StructureMap container.
             return container.GetInstance<IServiceProvider>();

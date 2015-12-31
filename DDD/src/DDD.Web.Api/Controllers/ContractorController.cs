@@ -11,6 +11,11 @@ using DDD.Provider.Domain.Enums;
 
 namespace DDD.Web.Api.Controllers
 {
+    public class TempCont
+    {
+        public string name { get; set; }
+        public string dba { get; set; }
+    }
     [Route("api/contractor")]
     public class ContractorController : Controller
     {
@@ -36,15 +41,15 @@ namespace DDD.Web.Api.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string name, [FromBody]string dba)
+        public void Post([FromBody]TempCont tcont)
         {
             var rnd = new Random();
             var ein = rnd.Next(100000000, 999999999).ToString() + "AA";
             var cont = new ContractorDto
             {
                 ID = GuidHelper.NewSequentialGuid(),
-                ContractorName = string.IsNullOrEmpty(name)? "Some Contractor" : name,
-                DoingBusinessAs = string.IsNullOrEmpty(dba)? "DBA":dba,
+                ContractorName =  tcont?.name ?? "Some Contractor",
+                DoingBusinessAs = tcont?.dba ?? "DBA",
                 EinNumber = ein,
                 SuffixCode = "AA",
                 ContactEmail = "Contact@xyz.com",
