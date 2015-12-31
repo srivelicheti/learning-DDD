@@ -44,13 +44,16 @@
             <p>&copy; 2015 - DDD.Web.UI</p>
         </footer>
     </div>
+    <div class="messages">
+        <ul id="message"></ul>
+    </div>
 
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
         <script src="~/lib/signalr/jquery.signalR.js"></script>
-        <script src="~/signalr/hubs" type="text/javascript"></script>
+        <script src="http://localhost:5000/signalr/hubs" type="text/javascript"></script>
     </environment>
     <environment names="Staging,Production">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"
@@ -64,7 +67,30 @@
         <script src="~/js/site.min.js" asp-append-version="true"></script>
         <script src="~/lib/signalr/jquery.signalR.min.js"></script>
     </environment>
+    <script>
+        $(function () {
+            jQuery.support.cors = true;
+            // Open a connection to the remote server
+            $.connection.hub.url = "http://localhost:5000";
+            var connection = $.hubConnection('http://localhost:5000');
+            var chat = connection.createHubProxy('notifications');
 
+            chat.on('messageReceived', function (message) {
+                $('#message').append('<li>' + message + '</li>');
+            });
+
+            // Turn logging on so we can see the calls in the browser console
+            connection.logging = true;
+
+            connection.start();
+
+            //    .done(function () {
+            //    $('#send').click(function () {
+            //        chat.invoke('send', $('#msg').val());
+            //    });
+            //});
+        });
+    </script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

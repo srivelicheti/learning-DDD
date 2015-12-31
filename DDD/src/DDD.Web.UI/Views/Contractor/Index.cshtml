@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Add Contractor";
+}
+<h2>@ViewData["Title"].</h2>
+<h3>@ViewData["Message"]</h3>
+
+@*@Model AddContractorViewModel*@
+
+<form asp-controller="Contractor" asp-action="Add">
+    <div class="row">
+        <div class="col-md-3">
+
+            <span>Contractor Name</span> 
+        </div>
+        <div class="col-md-9">
+            <input type="text" name="ContractorName"  id="txtContName" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+
+            <span>Doing Business As</span>
+        </div>
+        <div class="col-md-9">
+            <input type="text" name="DBA" id="txtDBA" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-pull-6">
+            <input type="submit" id="btnAddContractor" name="Add Contractor" />
+        </div>
+    </div>
+</form>

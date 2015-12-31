@@ -51,7 +51,12 @@ namespace DDD.Web.Api
             loggerFactory.AddDebug();
 
             app.UseIISPlatformHandler();
-
+            app.UseCors(pol => {
+                pol.AllowAnyOrigin();
+                pol.AllowAnyMethod();
+                pol.AllowAnyHeader();
+                pol.AllowCredentials();
+            });
             app.UseStaticFiles();
             app.UseSignalR();
             app.UseMvc();

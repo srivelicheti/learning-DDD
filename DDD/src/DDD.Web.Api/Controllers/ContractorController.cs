@@ -36,15 +36,15 @@ namespace DDD.Web.Api.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]ContractorDto contractor)
+        public void Post([FromBody]string name, [FromBody]string dba)
         {
             var rnd = new Random();
             var ein = rnd.Next(100000000, 999999999).ToString() + "AA";
             var cont = new ContractorDto
             {
                 ID = GuidHelper.NewSequentialGuid(),
-                ContractorName = "Some Contractor",
-                DoingBusinessAs = "DBA",
+                ContractorName = string.IsNullOrEmpty(name)? "Some Contractor" : name,
+                DoingBusinessAs = string.IsNullOrEmpty(dba)? "DBA":dba,
                 EinNumber = ein,
                 SuffixCode = "AA",
                 ContactEmail = "Contact@xyz.com",
