@@ -7,41 +7,27 @@ using Microsoft.AspNet.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using StructureMap;
-using DDD.Web.Api.App_Start;
 
-namespace DDD.Web.Api
+namespace DDD.Web.UI
 {
     public class Startup
     {
         public Startup(IHostingEnvironment env)
         {
             // Set up configuration sources.
-            var builder = new ConfigurationBuilder()
+            var configBuilder = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
                 .AddEnvironmentVariables();
-            Configuration = builder.Build();
+            Configuration = configBuilder.Build();
         }
 
         public IConfigurationRoot Configuration { get; set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public IServiceProvider ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
             services.AddMvc();
-            services.AddSignalR();
-            services.AddEntityFramework().AddSqlServer();
-            var container = new Container();
-
-            // Here we populate the container using the service collection.
-            // This will register all services from the collection
-            // into the container with the appropriate lifetime.
-            container.Populate(services);
-            IocBootstrapper.ConfigureIocContainer(container);
-            // Make sure we return an IServiceProvider, 
-            // this makes DNX use the StructureMap container.
-            return container.GetInstance<IServiceProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,11 +36,26 @@ namespace DDD.Web.Api
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
+            if (env.IsDevelopment())
+            {
+                app.UseBrowserLink();
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+            }
+
             app.UseIISPlatformHandler();
 
             app.UseStaticFiles();
-            app.UseSignalR();
-            app.UseMvc();
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
         }
 
         // Entry point for the application.

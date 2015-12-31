@@ -52,7 +52,7 @@ namespace DDD.Provider.Domain.Repositories
                 });
 
                 await ctx.SaveChangesAsync();
-                _eventBus.Publish<NewContractorAdded>(new NewContractorAdded(Guid.NewGuid(), DateTime.UtcNow, contractor.ID, contractor.EinNumber));
+                _eventBus.Publish<NewContractorAdded>(new NewContractorAdded(DateTime.UtcNow, contractor.ID, contractor.EinNumber));
             }
         }
     }
