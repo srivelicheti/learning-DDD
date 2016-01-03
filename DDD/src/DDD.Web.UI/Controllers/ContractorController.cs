@@ -20,7 +20,7 @@ namespace DDD.Web.UI.Controllers
         public async Task<ActionResult> Add(AddContractorViewModel model)
         {
             var client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:5000/");
+            client.BaseAddress = new Uri("http://localhost:8080/");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
             HttpRequestMessage reqMessage = new HttpRequestMessage() { Method = HttpMethod.Post };

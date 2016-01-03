@@ -8,7 +8,7 @@ namespace DDD.Provider.DataModel
        
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseSqlServer(@"Data Source=.\sql2014;Initial Catalog=POC_DDD;Integrated Security=True");
+            options.UseSqlServer(@"Data Source=.\sql2014;Initial Catalog=POC_DDD;Integrated Security=False;User ID=srvelicheti;Password=Secret@123");
             
         }
 
