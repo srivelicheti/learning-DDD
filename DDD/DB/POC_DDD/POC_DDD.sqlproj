@@ -66,5 +66,9 @@
   <ItemGroup>
     <Build Include="Provider\Tables\Contractor.sql" />
     <Build Include="Security\Provider.sql" />
+    <Build Include="Provider\Tables\Site.sql" />
+    <Build Include="Provider\Tables\SiteHoliday.sql" />
+    <Build Include="Provider\Tables\SiteRate.sql" />
+    <Build Include="Provider\Tables\ContractorSite.sql" />
   </ItemGroup>
 </Project>
