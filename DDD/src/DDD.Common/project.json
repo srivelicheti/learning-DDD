@@ -6,7 +6,7 @@
   "projectUrl": "",
   "licenseUrl": "",
   "frameworks": {
-    "net46": {
+    "net451": {
       "frameworkAssemblies": {
         "System.Runtime.Serialization": "4.0.0.0"
       }
