@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Data.Entity;
+using DDD.Domain.Common.ValueObjects;
 
 namespace DDD.Provider.Domain.Repositories
 {
@@ -53,6 +55,21 @@ namespace DDD.Provider.Domain.Repositories
 
                 await ctx.SaveChangesAsync();
                 _eventBus.Publish<NewContractorAdded>(new NewContractorAdded(DateTime.UtcNow, contractor.ID, contractor.EinNumber));
+            }
+        }
+
+        public Domain.Entities.Contractor GetContractor(Guid id)
+        {
+            using (var ctx = new POC_DDDContext())
+            {
+                var cont = ctx.Contractor.FirstOrDefault(x => x.ID == id);
+                if (cont == null)
+                    throw new ArgumentException($"Contractor with ${id} not found in database");
+
+                var contact = new Contact(new Name(cont.ContactFirstName, cont.ContactLastName), cont.ContactPhoneNumber, cont.ContactAlternatePhoneNumber, cont.ContactEmail);
+                var address = new Address(cont.AddressLine1, cont.AddressLine2, cont.City, cont.StateCode, cont.ZipCode);
+                return new DDD.Provider.Domain.Entities.Contractor(cont.EinNumber, cont.ContractorName, cont.DoingBusinessAs, cont.StateCode, cont.Type, new DDD.Domain.Common.ValueObjects.DateTimeRange(cont.ContractStartDate, cont.ContractEndDate.Value)
+                    , cont.PhoneNumber, contact, address, cont.Email);
             }
         }
     }
