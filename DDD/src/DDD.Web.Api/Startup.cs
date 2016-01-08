@@ -22,6 +22,8 @@ namespace DDD.Web.Api
                 .AddJsonFile("appsettings.json")
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
+
+            AutoMapperConfig.RegisterMappings();
         }
 
         public IConfigurationRoot Configuration { get; set; }

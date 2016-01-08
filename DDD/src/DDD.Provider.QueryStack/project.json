@@ -1,15 +1,10 @@
 ﻿{
   "version": "1.0.0-*",
-  "description": "DDD.Provider.DataModel Class Library",
+  "description": "DDD.Provider.QueryStack Class Library",
   "authors": [ "srvelicheti" ],
   "tags": [ "" ],
   "projectUrl": "",
   "licenseUrl": "",
-  "dependencies": {
-    "EntityFramework.Commands": "7.0.0-*",
-    "EntityFramework.MicrosoftSqlServer": "7.0.0-*",
-    "EntityFramework.MicrosoftSqlServer.Design": "7.0.0-*"
-  },
   "frameworks": {
     "dnx451": { },
     "dnxcore50": {
@@ -22,9 +17,10 @@
       }
     }
   },
-  "commands": {
-    "ef": "EntityFramework.Commands"
+  "dependencies": {
+    "AutoMapper": "4.1.1",
+    "DDD.Common": "1.0.0-*",
+    "DDD.Domain.Common": "1.0.0-*",
+    "DDD.Provider.DataModel": "1.0.0-*"
   }
-
-  
 }

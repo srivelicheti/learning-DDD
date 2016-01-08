@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace DDD.Common.DTOs.Provider
 {
+  
     public class ContractorDto
     {
         public Guid ID { get; set; }

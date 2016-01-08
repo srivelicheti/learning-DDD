@@ -8,6 +8,8 @@ using DDD.Domain.Common.Command;
 using DDD.Provider.Domain.Commands;
 using DDD.Provider.Domain.Repositories;
 using DDD.Provider.Domain.Enums;
+using DDD.Domain.Common.Query;
+using DDD.Provider.QueryStack.Contractor.Queries;
 
 namespace DDD.Web.Api.Controllers
 {
@@ -20,9 +22,12 @@ namespace DDD.Web.Api.Controllers
     public class ContractorController : Controller
     {
         private ICommandBus _commandBus;
-        public ContractorController(ICommandBus commandBus)
+        private IQueryProcessor _queryProcessor;
+
+        public ContractorController(ICommandBus commandBus, IQueryProcessor queryProcessor)
         {
             _commandBus = commandBus;
+            _queryProcessor = queryProcessor;
         }
         // GET: api/values
         [HttpGet]
@@ -34,9 +39,16 @@ namespace DDD.Web.Api.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public ContractorDto Get(Guid id)
         {
-            return "value";
+            return _queryProcessor.Process<ContractorDto>(new FindContractorByIDQuery() { ID = id });
+        }
+
+        // GET api/values/5
+        [HttpGet("Ein/{ein}")]
+        public ContractorDto GetByEin(string ein)
+        {
+            return _queryProcessor.Process<ContractorDto>(new FindContractorByEinQuery() {ContractorEin = ein });
         }
 
         // POST api/values

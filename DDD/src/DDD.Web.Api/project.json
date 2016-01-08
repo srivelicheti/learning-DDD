@@ -1,4 +1,4 @@
-﻿{
+{
   "version": "1.0.0-*",
   "compilationOptions": {
     "emitEntryPoint": true
@@ -20,7 +20,10 @@
     "StructureMap.Dnx": "0.4.0-alpha4",
     "EntityFramework.Commands": "7.0.0-rc1-final",
     "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final",
-    "Microsoft.AspNet.SignalR.Server": "3.0.0-rc1-*" 
+    "Microsoft.AspNet.SignalR.Server": "3.0.0-rc1-*",
+    "DDD.Provider.DataModel": "1.0.0-*",
+    "AutoMapper": "4.1.1",
+    "DDD.Provider.QueryStack": "1.0.0-*"
   },
 
   "commands": {
