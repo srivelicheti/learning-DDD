@@ -1,5 +1,7 @@
 using Microsoft.Data.Entity;
 using Microsoft.Data.Entity.Metadata;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DDD.Provider.DataModel
 {
@@ -9,7 +11,8 @@ namespace DDD.Provider.DataModel
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             options.UseSqlServer(@"Data Source=.\sql2014;Initial Catalog=POC_DDD;Integrated Security=False;User ID=srvelicheti;Password=Secret@123");
-            
+            var t = new List<int>();
+            t.FirstOrDefault(x => x == 20);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
