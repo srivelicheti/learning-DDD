@@ -9,7 +9,7 @@ namespace DDD.Provider.Domain.ValueObjects
 {
     public class SiteHoliday : ValueObject<SiteHoliday>
     {
-        public SiteHoliday(DateTime holidayDate) : this(holidayDate, "NA") { }
+        public SiteHoliday(DateTime holidayDate) : this(holidayDate, "Not-Specified") { }
         public SiteHoliday(DateTime holidayDate, string name)
         {
             HolidayDate = holidayDate;

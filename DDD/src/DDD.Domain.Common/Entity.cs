@@ -9,7 +9,7 @@ namespace DDD.Domain.Common
     {
         public Guid ID { get; protected set; }
 
-        public DomainEntityState State { get; set; }
+        public TrackingState State { get; set; }
 
         public Entity(Guid entityId)
         {

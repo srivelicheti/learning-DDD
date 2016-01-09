@@ -5,12 +5,11 @@ using System.Threading.Tasks;
 
 namespace DDD.Domain.Common
 {
-    public enum DomainEntityState
+    public enum TrackingState
     {
         Added,
         Unchanged,
         Modified,
         Deleted
-
     }
 }
