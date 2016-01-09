@@ -11,9 +11,9 @@ namespace DDD.Provider.QueryStack.Contractor.QueryHandlers
 {
     public class FindContractorByEinQueryHandler : IQueryHandler<FindContractorByEinQuery, ContractorDto>
     {
-        private POC_DDDContext _dbContext;
+        private ProviderDbContext _dbContext;
 
-        public FindContractorByEinQueryHandler(POC_DDDContext dbContext)
+        public FindContractorByEinQueryHandler(ProviderDbContext dbContext)
         {
             _dbContext = dbContext;
         }

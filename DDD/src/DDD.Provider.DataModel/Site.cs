@@ -3,11 +3,13 @@ using System.Collections.Generic;
 
 namespace DDD.Provider.DataModel
 {
-    public partial class Contractor
+    public partial class Site
     {
-        public Contractor()
+        public Site()
         {
             ContractorSite = new HashSet<ContractorSite>();
+            SiteHoliday = new HashSet<SiteHoliday>();
+            SiteRate = new HashSet<SiteRate>();
         }
 
         public Guid ID { get; set; }
@@ -21,23 +23,29 @@ namespace DDD.Provider.DataModel
         public string ContactLastName { get; set; }
         public string ContactPhoneNumber { get; set; }
         public DateTime? ContractEndDate { get; set; }
-        public string ContractorName { get; set; }
         public DateTime ContractStartDate { get; set; }
-        public string DoingBusinessAs { get; set; }
-        public string EinNumber { get; set; }
+        public string CountyCode { get; set; }
+        public string CountyServedCode { get; set; }
         public string Email { get; set; }
         public string FirstInsertedBy { get; set; }
         public DateTime FirstInsertedDateTime { get; set; }
+        public bool IsWebEnabled { get; set; }
         public string LastSavedBy { get; set; }
         public DateTime LastSavedDateTime { get; set; }
+        public string LicencingStatusCode { get; set; }
+        public int? LicenseNumber { get; set; }
         public string PhoneNumber { get; set; }
+        public string SiteFacilityTypeCode { get; set; }
+        public string SiteName { get; set; }
+        public int SiteNumber { get; set; }
+        public string SiteTypeCode { get; set; }
         public string StateCode { get; set; }
-        public string Status { get; set; }
-        public string SuffixCode { get; set; }
-        public string Type { get; set; }
+        public string StatusCode { get; set; }
         public string ZipCode { get; set; }
-        public string ZipExntension { get; set; }
+        public string ZipExtension { get; set; }
 
         public virtual ICollection<ContractorSite> ContractorSite { get; set; }
+        public virtual ICollection<SiteHoliday> SiteHoliday { get; set; }
+        public virtual ICollection<SiteRate> SiteRate { get; set; }
     }
 }

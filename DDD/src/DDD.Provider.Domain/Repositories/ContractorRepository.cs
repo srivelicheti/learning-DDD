@@ -20,7 +20,7 @@ namespace DDD.Provider.Domain.Repositories
 
         public async Task AddContractor(DDD.Provider.Domain.Entities.Contractor contractor)
         {
-            using (var ctx = new POC_DDDContext())
+            using (var ctx = new ProviderDbContext())
             {
                 ctx.Add(new Contractor
                 {
@@ -60,7 +60,7 @@ namespace DDD.Provider.Domain.Repositories
 
         public Domain.Entities.Contractor GetContractor(Guid id)
         {
-            using (var ctx = new POC_DDDContext())
+            using (var ctx = new ProviderDbContext())
             {
                 var cont = ctx.Contractor.FirstOrDefault(x => x.ID == id);
                 if (cont == null)

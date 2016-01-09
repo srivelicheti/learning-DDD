@@ -20,6 +20,7 @@
   "dependencies": {
     "DDD.Common": "1.0.0-*",
     "DDD.Domain.Common": "1.0.0-*",
-    "DDD.Provider.DataModel": "1.0.0-*"
+    "DDD.Provider.DataModel": "1.0.0-*",
+    "EntityFramework.MicrosoftSqlServer": "7.0.0-*"
   }
 }
