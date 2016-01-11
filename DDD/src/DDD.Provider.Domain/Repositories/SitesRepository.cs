@@ -7,15 +7,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Data.Entity;
 using DDD.Domain.Common.ValueObjects;
+using DDD.Common;
 
 namespace DDD.Provider.Domain.Repositories
 {
     public class SitesRepository
     {
         private EventBus _eventBus;
-        public SitesRepository(EventBus eventBus)
+        private ProviderDbContext _dbContext;
+
+        public SitesRepository(EventBus eventBus, ProviderDbContext dbContext)
         {
             _eventBus = eventBus;
+            _dbContext = dbContext;
         }
 
         public void Add(Provider.Domain.Entities.Site site) {
@@ -24,12 +28,15 @@ namespace DDD.Provider.Domain.Repositories
 
         public void UpdateSite(Provider.Domain.Entities.Site site)
         {
-            throw new NotImplementedException();
+            Claim.ValidateNotNull(site,nameof(site));
+            Claim.ValidateNotNull(site.ID,$"name of {site} ID");
+
+            
         }
 
         public Provider.Domain.Entities.Site GetSite(Guid siteId) {
-            using (var ctx = new ProviderDbContext()) {
-                var site = ctx.Site.Include(x=> x.SiteHoliday).Include(x => x.SiteRate).FirstOrDefault(x => x.ID == siteId);
+            //using (var ctx = new ProviderDbContext()) {
+                var site = _dbContext.Site.Include(x=> x.SiteHoliday).Include(x => x.SiteRate).FirstOrDefault(x => x.ID == siteId);
                 if (site == null)
                     throw new ArgumentException($"Site not found with {siteId}");
 
@@ -46,7 +53,7 @@ namespace DDD.Provider.Domain.Repositories
 
                 return domainSite;
 
-            }
+            //}
         }
     }
 }

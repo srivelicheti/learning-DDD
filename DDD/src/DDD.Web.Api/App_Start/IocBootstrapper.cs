@@ -2,6 +2,7 @@
 using DDD.Domain.Common.Command;
 using DDD.Domain.Common.Event;
 using DDD.Domain.Common.Query;
+using DDD.Provider.DataModel;
 using DDD.Provider.Domain.CommandHandlers;
 using DDD.Provider.Domain.Repositories;
 using DDD.Provider.Domain.Services;
@@ -25,6 +26,7 @@ namespace DDD.Web.Api.App_Start
             container.Configure(x => x.For<IQueryProcessor>().Use<QueryProcessor>());
             RegisterCommandHandlers(container);
             RegisterQueryHandlers(container);
+            RegisterDbContexts(container);
             return container;
         }
 
@@ -42,6 +44,10 @@ namespace DDD.Web.Api.App_Start
             container.Configure(x => x.For<IQueryHandler<FindContractorByIDQuery, ContractorDto>>().Use<FindContractorByIDHandler>());
             container.Configure(x => x.For<IQueryHandler<FindContractorByEinQuery, ContractorDto>>().Use<FindContractorByEinQueryHandler>());
             container.Configure(x => x.ForConcreteType<FindContractorByEinQueryHandler>());
+        }
+
+        private static void RegisterDbContexts(IContainer container) {
+            container.Configure(x => x.ForConcreteType<ProviderDbContext>());
         }
     }
 }
