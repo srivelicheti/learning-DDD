@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Microsoft.Data.Entity;
 using DDD.Domain.Common.ValueObjects;
 using DDD.Common;
+using Microsoft.Data.Entity.Extensions;
 
 namespace DDD.Provider.Domain.Repositories
 {
@@ -30,8 +31,18 @@ namespace DDD.Provider.Domain.Repositories
         {
             Claim.ValidateNotNull(site,nameof(site));
             Claim.ValidateNotNull(site.ID,$"name of {site} ID");
+            var dbSite =_dbContext.Site.Find(site.ID);
+            if (dbSite == null)
+                throw new Exception($"site with {site.ID} not found in database"); //TODO: Create customexceptiom
 
-            
+        }
+
+        private void UpdateHolidays(Entities.Site site, DataModel.Site dbSite)
+        {
+            //foreach (var hol in dbSite.SiteHoliday)
+            //{
+            //    if()
+            //}
         }
 
         public Provider.Domain.Entities.Site GetSite(Guid siteId) {
