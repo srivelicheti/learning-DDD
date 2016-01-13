@@ -11,13 +11,13 @@ namespace DDD.Provider.Domain.Entities
 {
     public class Site : Entity, IAggregateRoot
     {
-        private long _siteID;
-        private string _siteName;
+        //private long _siteID;
+        //private string _siteName;
 
         public SiteStatus Status { get; private set; }
         public string SiteName { get; private set; }
-        public long SiteID { get; private set; }
-        public SiteFacilityType SiteType { get; private set; }
+        public int SiteID { get; private set; }
+        public SiteFacilityType SiteFacitlityType { get; private set; }
         public DateTimeRange ContractDuration { get; private set; }
         public PhoneNumber PrimaryPhoneNumber { get; private set; }
         public Contact ContactDetails { get; private set; }
@@ -28,13 +28,16 @@ namespace DDD.Provider.Domain.Entities
         public LicenceStatus LicencingStatus { get; private set; }
         public IEnumerable<SiteHoliday> Holidays { get; private set; }
 
-        public Site(Guid id, long siteId, string siteName, SiteStatus status, SiteFacilityType siteType, 
+        public SiteType SiteType { get; private set; }
+
+        public Site(Guid id, int siteId, string siteName, SiteStatus status, SiteFacilityType siteFacitlityType, SiteType siteType,
             DateTimeRange contractDuration, PhoneNumber primaryPhoneNumber, Contact contactDetails, Address address, string email,
             string countyCode, string countyServedCode, LicenceStatus licenceStatus, IEnumerable<SiteHoliday> holidays) : base(id)
         {
             SiteID = siteId;
             SiteName = siteName;
             Status = status;
+            SiteFacitlityType = siteFacitlityType;
             SiteType = siteType;
             ContractDuration = contractDuration;
             PrimaryPhoneNumber = primaryPhoneNumber;
@@ -47,9 +50,9 @@ namespace DDD.Provider.Domain.Entities
             Holidays = holidays;
         }
 
-        public Site(long siteId, string siteName, SiteStatus status, SiteFacilityType siteType,
+        public Site(int siteId, string siteName, SiteStatus status, SiteFacilityType siteFacitlityType, SiteType siteType,
             DateTimeRange contractDuration, PhoneNumber primaryPhoneNumber, Contact contactDetails, Address address, string email,
-            string county, string countyServed, LicenceStatus licenceStatus, IEnumerable<SiteHoliday> holidays) : this(GuidHelper.NewSequentialGuid(),siteId,siteName,status,siteType,contractDuration,primaryPhoneNumber,contactDetails,address,email,county,countyServed,licenceStatus, holidays)
+            string county, string countyServed, LicenceStatus licenceStatus, IEnumerable<SiteHoliday> holidays) : this(GuidHelper.NewSequentialGuid(),siteId,siteName,status,siteFacitlityType, siteType, contractDuration,primaryPhoneNumber,contactDetails,address,email,county,countyServed,licenceStatus, holidays)
         { }
 
     }

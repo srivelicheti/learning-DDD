@@ -14,13 +14,13 @@ namespace DDD.Domain.Common
     public abstract class ValueObject<T> : IEquatable<T>
     where T : ValueObject<T>
     {
-        private TrackingState _state;
-        public TrackingState State { get {
-                return _state;
+        private TrackingState _trackingState;
+        public TrackingState TrackingState { get {
+                return _trackingState;
             } set {
                 if (value == TrackingState.Modified)
                     throw new ArgumentException("Value objects can't be modified, they can only be in one of the other three states");
-                _state = value;
+                _trackingState = value;
             } }
         public override bool Equals(object obj)
         {

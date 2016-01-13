@@ -13,5 +13,13 @@ namespace DDD.Provider.Domain.Enums
         public static readonly SiteType InHomeNonRelative = new SiteType("N", "In Home Non-Relative");
         public static readonly SiteType OutOfHomeNonRelative = new SiteType("I", "Out of home Non-Relative");
         private SiteType(string value, string displayName) : base(value, displayName) { }
+
+        public static implicit operator SiteType(string code)
+        {
+            if (code == "I")
+                return SiteType.InHomeRelative;
+            else
+                throw new Exception("TODO mapping");
+        }
     }
 }
