@@ -15,8 +15,8 @@ namespace DDD.Web.Api.Controllers
 {
     public class TempCont
     {
-        public string name { get; set; }
-        public string dba { get; set; }
+        public string Name { get; set; }
+        public string DBA { get; set; }
     }
     [Route("api/contractor")]
     public class ContractorController : Controller
@@ -60,8 +60,8 @@ namespace DDD.Web.Api.Controllers
             var cont = new ContractorDto
             {
                 ID = GuidHelper.NewSequentialGuid(),
-                ContractorName =  tcont?.name ?? "Some Contractor",
-                DoingBusinessAs = tcont?.dba ?? "DBA",
+                ContractorName =  tcont?.Name ?? "Some Contractor",
+                DoingBusinessAs = tcont?.DBA ?? "DBA",
                 EinNumber = ein,
                 SuffixCode = "AA",
                 ContactEmail = "Contact@xyz.com",

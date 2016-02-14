@@ -5,23 +5,11 @@ using System.Threading.Tasks;
 
 namespace DDD.Domain.Common.Event
 {
-    public class CommandCompletedEvent : IDomainEvent
+    public class CommandCompletedEvent : DomainEvent
     {
-        public CommandCompletedEvent(Guid commandID, DateTime eventDateTime)
+        public CommandCompletedEvent(Guid commandID, DateTime eventDateTime):base(Guid.NewGuid(),eventDateTime)
         {
-            ID = Guid.NewGuid();
-            EventDateTime = eventDateTime;
             CommandID = commandID;
-        }
-
-        public DateTime EventDateTime
-        {
-            get; private set;
-        }
-
-        public Guid ID
-        {
-            get; private set;
         }
 
         public Guid CommandID

@@ -1,4 +1,5 @@
 ﻿using DDD.Domain.Common.Command;
+using DDD.Domain.Common.Event;
 using DDD.Domain.Common.ValueObjects;
 using DDD.Provider.Domain.Commands;
 using DDD.Provider.Domain.Entities;
@@ -17,10 +18,13 @@ namespace DDD.Provider.Domain.CommandHandlers
     {
         private ContractorRepository _contractorRepository;
         private IContractorSuffixGenerator _contractorSuffixGenerator;
-        public AddNewContractorCommandHandler(ContractorRepository contractorRepository, IContractorSuffixGenerator contractorSuffixGenerator)
+        private DomainEventBus _eventBus;
+
+        public AddNewContractorCommandHandler(ContractorRepository contractorRepository, IContractorSuffixGenerator contractorSuffixGenerator, DomainEventBus eventBus)
         {
             _contractorRepository = contractorRepository;
             _contractorSuffixGenerator = contractorSuffixGenerator;
+            _eventBus = eventBus;
         }
         public void Execute(AddNewContractorCommand command)
         {
@@ -34,6 +38,7 @@ namespace DDD.Provider.Domain.CommandHandlers
             //TODO: call out service to validate address
             var contractor = new Contractor(contractorDto.EinNumber, contractorDto.ContractorName, contractorDto.DoingBusinessAs, status,contractorDto.Type, contractDuration, contractorDto.PhoneNumber, contact, contractrorAddress,contractorDto.Email);
             _contractorRepository.AddContractor(contractor).Wait();
+            _eventBus.Publish(new CommandCompletedEvent(command.ID,DateTime.UtcNow));
         }
     }
 }

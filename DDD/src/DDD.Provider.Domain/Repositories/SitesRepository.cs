@@ -14,10 +14,10 @@ namespace DDD.Provider.Domain.Repositories
 {
     public class SitesRepository
     {
-        private EventBus _eventBus;
+        private DomainEventBus _eventBus;
         private ProviderDbContext _dbContext;
 
-        public SitesRepository(EventBus eventBus, ProviderDbContext dbContext)
+        public SitesRepository(DomainEventBus eventBus, ProviderDbContext dbContext)
         {
             _eventBus = eventBus;
             _dbContext = dbContext;

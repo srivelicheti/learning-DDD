@@ -10,19 +10,22 @@ using Microsoft.Extensions.Logging;
 using StructureMap;
 using DDD.Web.Api.App_Start;
 using DDD.Domain.Common.Event;
+using Microsoft.Extensions.PlatformAbstractions;
+using DDD.Web.Api.Infrastructure.Logging;
 
 namespace DDD.Web.Api
 {
     public class Startup
     {
-        public Startup(IHostingEnvironment env)
+        public Startup(IHostingEnvironment env, IApplicationEnvironment appEnv)
         {
             // Set up configuration sources.
             var builder = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
+                .AddJsonFile("config.Json")
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
-
+            appEnv.ConfigureLog4Net("log4net.xml");
             AutoMapperConfig.RegisterMappings();
         }
 
@@ -51,8 +54,19 @@ namespace DDD.Web.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            if (env.IsDevelopment())
+            {
+                app.Use(async (context, next) => {
+                    context.Request.Headers.Remove("content-type");
+                    context.Request.Headers.Add("content-type", new[] { "application/json" });
+                    await next();
+                });
+            }
+            
+            var loggingConfig = Configuration.GetSection("Logging");
+            loggerFactory.AddConsole(loggingConfig);
             loggerFactory.AddDebug();
+            //loggerFactory.
 
             app.UseIISPlatformHandler();
             app.UseCors(pol => {

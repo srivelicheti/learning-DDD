@@ -31,8 +31,12 @@
   },
 
   "frameworks": {
-    "dnx451": { },
-    "dnxcore50": { }
+    "dnx451": {
+      "dependencies": {
+        "log4net": "2.0.5"
+      }
+    }
+    
   },
   
 

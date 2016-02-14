@@ -10,15 +10,20 @@ namespace DDD.Domain.Common.Event
         Guid ID { get; }
 
         DateTime EventDateTime { get; }
+
     }
 
-    public class DomainEvent : IDomainEvent
+    public abstract class DomainEvent : IDomainEvent
     {
-        public DomainEvent(Guid id, DateTime eventDateTime) {
+        public DomainEvent(Guid id, DateTime eventTime) {
             ID = id;
-            EventDateTime = eventDateTime;
+            EventDateTime = eventTime;
         }
-
+        //public DomainEvent(EventBus bus, Guid id, DateTime eventTime)
+        //{
+        //    ID = id;
+        //    EventDateTime = eventTime;
+        //}
         public DateTime EventDateTime
         {
             get;private set;
@@ -28,6 +33,7 @@ namespace DDD.Domain.Common.Event
         {
             get;private set;
         }
+       
     }
     
 

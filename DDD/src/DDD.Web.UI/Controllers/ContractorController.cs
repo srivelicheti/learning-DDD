@@ -29,8 +29,8 @@ namespace DDD.Web.UI.Controllers
             reqMessage.RequestUri = new Uri(@"api/contractor", UriKind.RelativeOrAbsolute);
 
             var payload = JsonConvert.SerializeObject(new {
-                name=model.ContractorName,
-                dba=model.DBA
+                Name=model.ContractorName,
+                DBA=model.DBA
             });
             var content = new StringContent(payload, System.Text.Encoding.UTF32, "application/json");
             await client.PostAsync(@"api/contractor", content);

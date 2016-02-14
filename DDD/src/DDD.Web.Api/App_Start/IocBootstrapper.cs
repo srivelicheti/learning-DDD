@@ -20,7 +20,7 @@ namespace DDD.Web.Api.App_Start
     {
         public static IContainer ConfigureIocContainer(IContainer container)
         {
-            container.Configure(x => x.ForSingletonOf<EventBus>().Use<EventBus>());
+            container.Configure(x => x.For<DomainEventBus>().Use<DomainEventBus>());
             container.Configure(x => x.For<IContainer>().Use(container));
             container.Configure(x => x.For<ICommandBus>().Use<IocContainerCommandBus>());
             container.Configure(x => x.For<IQueryProcessor>().Use<QueryProcessor>());

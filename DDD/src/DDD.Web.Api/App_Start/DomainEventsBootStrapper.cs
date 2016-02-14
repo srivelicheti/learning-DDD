@@ -15,9 +15,8 @@ namespace DDD.Web.Api.App_Start
         public static void RegisterEvents(Container container)
         {
             var connManager = container.GetInstance<IConnectionManager>();
-            var bus = container.GetInstance<EventBus>();
-            bus.Subscribe<NewContractorAdded>(new ContractorAddedEventHandler(connManager));
-            //bus.Subscribe<>
+            //var bus = container.GetInstance<DomainEventBus>();
+            DomainEventBus.Subscribe<NewContractorAdded>(new ContractorAddedEventHandler(connManager));
         }
     }
 }

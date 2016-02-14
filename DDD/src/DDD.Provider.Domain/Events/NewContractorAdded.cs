@@ -8,7 +8,7 @@ namespace DDD.Provider.Domain.Events
 {
     public class NewContractorAdded : DomainEvent
     {
-        public NewContractorAdded( DateTime eventDateTime, Guid contractorID, string contractorEin) : base(Guid.NewGuid(), eventDateTime)
+        public NewContractorAdded( DateTime eventDateTime, Guid contractorID, string contractorEin, DomainEventBus eventBus) : base(Guid.NewGuid(), eventDateTime )
         {
             ContractorID = contractorID;
             ContractorEin = contractorEin;

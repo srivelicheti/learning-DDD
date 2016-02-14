@@ -12,8 +12,8 @@ namespace DDD.Provider.Domain.Repositories
 {
     public class ContractorRepository
     {
-        private EventBus _eventBus;
-        public ContractorRepository(EventBus eventBus)
+        private DomainEventBus _eventBus;
+        public ContractorRepository(DomainEventBus eventBus)
         {
             _eventBus = eventBus;
         }
@@ -53,8 +53,11 @@ namespace DDD.Provider.Domain.Repositories
                     ZipExntension = "TODO"
                 });
 
+                _eventBus.QueueForPostCommit(new NewContractorAdded(DateTime.UtcNow, contractor.ID, contractor.EinNumber, _eventBus));
                 await ctx.SaveChangesAsync();
-                _eventBus.Publish<NewContractorAdded>(new NewContractorAdded(DateTime.UtcNow, contractor.ID, contractor.EinNumber));
+
+                _eventBus.PublishQueuedPostCommitEvents();
+                
             }
         }
 
@@ -70,6 +73,14 @@ namespace DDD.Provider.Domain.Repositories
                 var address = new Address(cont.AddressLine1, cont.AddressLine2, cont.City, cont.StateCode, cont.ZipCode);
                 return new DDD.Provider.Domain.Entities.Contractor(cont.EinNumber, cont.ContractorName, cont.DoingBusinessAs, cont.StateCode, cont.Type, new DDD.Domain.Common.ValueObjects.DateTimeRange(cont.ContractStartDate, cont.ContractEndDate.Value)
                     , cont.PhoneNumber, contact, address, cont.Email);
+            }
+        }
+
+        public bool IsContractorExistingWithEin(string einNumber)
+        {
+            using (var ctx = new ProviderDbContext())
+            {
+                return ctx.Contractor.Any(x => x.EinNumber == einNumber);
             }
         }
     }
