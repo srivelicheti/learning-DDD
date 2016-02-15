@@ -4,6 +4,8 @@ using DDD.Domain.Common.Event;
 using DDD.Domain.Common.Query;
 using DDD.Provider.DataModel;
 using DDD.Provider.Domain.CommandHandlers;
+using DDD.Provider.Domain.Commands;
+using DDD.Provider.Domain.CommandValidators;
 using DDD.Provider.Domain.Repositories;
 using DDD.Provider.Domain.Services;
 using DDD.Provider.QueryStack.Contractor.Queries;
@@ -38,6 +40,11 @@ namespace DDD.Web.Api.App_Start
             container.Configure(x => x.For<IContractorSuffixGenerator>().Use<ContractorSuffixGenerator>());
             //return container;
            // container.ForGenericType(typeof(ICommandHandler<DDD.Provider.Domain.Commands.AddNewContractorCommand>)
+        }
+
+        public static void RegisterCommandValidators(IContainer container)
+        {
+            container.Configure(x => x.For<ICommandValidator<AddNewContractorCommand>>().Use<AddNewContractorCommandValidator>());
         }
 
         private static void RegisterQueryHandlers(IContainer container) {

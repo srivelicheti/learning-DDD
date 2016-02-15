@@ -30,6 +30,7 @@ namespace DDD.Provider.Domain.Repositories
 
         public void UpdateSite(Provider.Domain.Entities.Site site)
         {
+            //TODO: Make the change to include Site Domain Entity to act as decorater to the Site Presistance Entity, this will avoid getting the entity from database twice and lead to better results
             Claim.ValidateNotNull(site, nameof(site));
             Claim.ValidateNotNull(site.ID, $"name of {site} ID");
             var dbSite = _dbContext.Site.Find(site.ID);
