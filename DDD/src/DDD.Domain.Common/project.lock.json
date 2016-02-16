@@ -6,7 +6,13 @@
       "DDD.Common/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "Moq": "4.2.1510.2205"
+        },
         "frameworkAssemblies": [
+          "System.ComponentModel",
+          "System.ComponentModel.Annotations",
+          "System.ComponentModel.DataAnnotations",
           "System.Runtime.Serialization"
         ]
       },
@@ -25,7 +31,16 @@
           "lib/net451/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
         }
       },
-      "structuremap/4.0.1.318": {
+      "Moq/4.2.1510.2205": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Moq.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Moq.dll": {}
+        }
+      },
+      "structuremap/4.0.0.60000-alpha": {
         "type": "package",
         "compile": {
           "lib/net40/StructureMap.dll": {},
@@ -62,8 +77,11 @@
         "framework": "DNXCore,Version=v5.0",
         "dependencies": {
           "Microsoft.CSharp": "4.0.1-beta-23516",
+          "Microsoft.DataAnnotations": "1.0.0-beta1",
           "System.Collections": "4.0.11-beta-23516",
+          "System.ComponentModel.Annotations": "4.0.11-beta-23516",
           "System.Linq": "4.0.1-beta-23516",
+          "System.Reflection.TypeExtensions": "4.1.0-rc2-23706",
           "System.Runtime": "4.0.21-beta-23516",
           "System.Runtime.Extensions": "4.0.11-beta-23516",
           "System.Runtime.Serialization.Primitives": "4.0.11-beta-23409",
@@ -98,6 +116,18 @@
           "lib/dotnet5.4/Microsoft.CSharp.dll": {}
         }
       },
+      "Microsoft.DataAnnotations/1.0.0-beta1": {
+        "type": "package",
+        "dependencies": {
+          "System.ComponentModel.Annotations": "4.0.10-beta-22231"
+        },
+        "compile": {
+          "lib/portable-net45+win+wpa81/Microsoft.DataAnnotations.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+win+wpa81/Microsoft.DataAnnotations.dll": {}
+        }
+      },
       "Microsoft.Extensions.DependencyInjection.Abstractions/1.0.0-rc1-final": {
         "type": "package",
         "dependencies": {
@@ -116,7 +146,7 @@
           "lib/dotnet5.4/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
         }
       },
-      "structuremap/4.0.1.318": {
+      "structuremap/4.0.0.60000-alpha": {
         "type": "package",
         "dependencies": {
           "System.Collections": "4.0.10",
@@ -198,6 +228,28 @@
         },
         "runtime": {
           "lib/dotnet5.4/System.ComponentModel.dll": {}
+        }
+      },
+      "System.ComponentModel.Annotations/4.0.11-beta-23516": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.10",
+          "System.ComponentModel": "4.0.0",
+          "System.Globalization": "4.0.10",
+          "System.Linq": "4.0.0",
+          "System.Reflection": "4.0.10",
+          "System.Reflection.Extensions": "4.0.0",
+          "System.Resources.ResourceManager": "4.0.0",
+          "System.Runtime": "4.0.20",
+          "System.Runtime.Extensions": "4.0.10",
+          "System.Text.RegularExpressions": "4.0.10",
+          "System.Threading": "4.0.10"
+        },
+        "compile": {
+          "ref/dotnet5.4/System.ComponentModel.Annotations.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet5.4/System.ComponentModel.Annotations.dll": {}
         }
       },
       "System.Diagnostics.Debug/4.0.11-beta-23516": {
@@ -487,7 +539,13 @@
       "DDD.Common/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "Moq": "4.2.1510.2205"
+        },
         "frameworkAssemblies": [
+          "System.ComponentModel",
+          "System.ComponentModel.Annotations",
+          "System.ComponentModel.DataAnnotations",
           "System.Runtime.Serialization"
         ]
       },
@@ -506,7 +564,16 @@
           "lib/net451/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
         }
       },
-      "structuremap/4.0.1.318": {
+      "Moq/4.2.1510.2205": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Moq.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Moq.dll": {}
+        }
+      },
+      "structuremap/4.0.0.60000-alpha": {
         "type": "package",
         "compile": {
           "lib/net40/StructureMap.dll": {},
@@ -541,7 +608,13 @@
       "DDD.Common/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "Moq": "4.2.1510.2205"
+        },
         "frameworkAssemblies": [
+          "System.ComponentModel",
+          "System.ComponentModel.Annotations",
+          "System.ComponentModel.DataAnnotations",
           "System.Runtime.Serialization"
         ]
       },
@@ -560,7 +633,16 @@
           "lib/net451/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
         }
       },
-      "structuremap/4.0.1.318": {
+      "Moq/4.2.1510.2205": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Moq.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Moq.dll": {}
+        }
+      },
+      "structuremap/4.0.0.60000-alpha": {
         "type": "package",
         "compile": {
           "lib/net40/StructureMap.dll": {},
@@ -597,8 +679,11 @@
         "framework": "DNXCore,Version=v5.0",
         "dependencies": {
           "Microsoft.CSharp": "4.0.1-beta-23516",
+          "Microsoft.DataAnnotations": "1.0.0-beta1",
           "System.Collections": "4.0.11-beta-23516",
+          "System.ComponentModel.Annotations": "4.0.11-beta-23516",
           "System.Linq": "4.0.1-beta-23516",
+          "System.Reflection.TypeExtensions": "4.1.0-rc2-23706",
           "System.Runtime": "4.0.21-beta-23516",
           "System.Runtime.Extensions": "4.0.11-beta-23516",
           "System.Runtime.Serialization.Primitives": "4.0.11-beta-23409",
@@ -631,6 +716,18 @@
         },
         "runtime": {
           "lib/dotnet5.4/Microsoft.CSharp.dll": {}
+        }
+      },
+      "Microsoft.DataAnnotations/1.0.0-beta1": {
+        "type": "package",
+        "dependencies": {
+          "System.ComponentModel.Annotations": "4.0.10-beta-22231"
+        },
+        "compile": {
+          "lib/portable-net45+win+wpa81/Microsoft.DataAnnotations.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+win+wpa81/Microsoft.DataAnnotations.dll": {}
         }
       },
       "Microsoft.Extensions.DependencyInjection.Abstractions/1.0.0-rc1-final": {
@@ -715,7 +812,7 @@
           "runtimes/win7/lib/DNXCore50/System.Threading.dll": {}
         }
       },
-      "structuremap/4.0.1.318": {
+      "structuremap/4.0.0.60000-alpha": {
         "type": "package",
         "dependencies": {
           "System.Collections": "4.0.10",
@@ -797,6 +894,28 @@
         },
         "runtime": {
           "lib/dotnet5.4/System.ComponentModel.dll": {}
+        }
+      },
+      "System.ComponentModel.Annotations/4.0.11-beta-23516": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.10",
+          "System.ComponentModel": "4.0.0",
+          "System.Globalization": "4.0.10",
+          "System.Linq": "4.0.0",
+          "System.Reflection": "4.0.10",
+          "System.Reflection.Extensions": "4.0.0",
+          "System.Resources.ResourceManager": "4.0.0",
+          "System.Runtime": "4.0.20",
+          "System.Runtime.Extensions": "4.0.10",
+          "System.Text.RegularExpressions": "4.0.10",
+          "System.Threading": "4.0.10"
+        },
+        "compile": {
+          "ref/dotnet5.4/System.ComponentModel.Annotations.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet5.4/System.ComponentModel.Annotations.dll": {}
         }
       },
       "System.Diagnostics.Debug/4.0.11-beta-23516": {
@@ -1133,8 +1252,11 @@
         "framework": "DNXCore,Version=v5.0",
         "dependencies": {
           "Microsoft.CSharp": "4.0.1-beta-23516",
+          "Microsoft.DataAnnotations": "1.0.0-beta1",
           "System.Collections": "4.0.11-beta-23516",
+          "System.ComponentModel.Annotations": "4.0.11-beta-23516",
           "System.Linq": "4.0.1-beta-23516",
+          "System.Reflection.TypeExtensions": "4.1.0-rc2-23706",
           "System.Runtime": "4.0.21-beta-23516",
           "System.Runtime.Extensions": "4.0.11-beta-23516",
           "System.Runtime.Serialization.Primitives": "4.0.11-beta-23409",
@@ -1167,6 +1289,18 @@
         },
         "runtime": {
           "lib/dotnet5.4/Microsoft.CSharp.dll": {}
+        }
+      },
+      "Microsoft.DataAnnotations/1.0.0-beta1": {
+        "type": "package",
+        "dependencies": {
+          "System.ComponentModel.Annotations": "4.0.10-beta-22231"
+        },
+        "compile": {
+          "lib/portable-net45+win+wpa81/Microsoft.DataAnnotations.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+win+wpa81/Microsoft.DataAnnotations.dll": {}
         }
       },
       "Microsoft.Extensions.DependencyInjection.Abstractions/1.0.0-rc1-final": {
@@ -1251,7 +1385,7 @@
           "runtimes/win7/lib/DNXCore50/System.Threading.dll": {}
         }
       },
-      "structuremap/4.0.1.318": {
+      "structuremap/4.0.0.60000-alpha": {
         "type": "package",
         "dependencies": {
           "System.Collections": "4.0.10",
@@ -1333,6 +1467,28 @@
         },
         "runtime": {
           "lib/dotnet5.4/System.ComponentModel.dll": {}
+        }
+      },
+      "System.ComponentModel.Annotations/4.0.11-beta-23516": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.10",
+          "System.ComponentModel": "4.0.0",
+          "System.Globalization": "4.0.10",
+          "System.Linq": "4.0.0",
+          "System.Reflection": "4.0.10",
+          "System.Reflection.Extensions": "4.0.0",
+          "System.Resources.ResourceManager": "4.0.0",
+          "System.Runtime": "4.0.20",
+          "System.Runtime.Extensions": "4.0.10",
+          "System.Text.RegularExpressions": "4.0.10",
+          "System.Threading": "4.0.10"
+        },
+        "compile": {
+          "ref/dotnet5.4/System.ComponentModel.Annotations.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet5.4/System.ComponentModel.Annotations.dll": {}
         }
       },
       "System.Diagnostics.Debug/4.0.11-beta-23516": {
@@ -1719,6 +1875,21 @@
         "ref/xamarinmac20/_._"
       ]
     },
+    "Microsoft.DataAnnotations/1.0.0-beta1": {
+      "type": "package",
+      "sha512": "ZvLzh5xkQSGkwHdrycpVU+o6bQNTsxVvIWCMgSiDE6Cbz9CyaxL2gwWukws4y6Dm8mwE5AFK4HWBSS79F9H1qA==",
+      "files": [
+        "lib/aspnetcore50/Microsoft.DataAnnotations.dll",
+        "lib/aspnetcore50/Microsoft.DataAnnotations.xml",
+        "lib/net45/Microsoft.DataAnnotations.dll",
+        "lib/net45/Microsoft.DataAnnotations.xml",
+        "lib/portable-net45+win+wpa81/Microsoft.DataAnnotations.dll",
+        "lib/portable-net45+win+wpa81/Microsoft.DataAnnotations.xml",
+        "Microsoft.DataAnnotations.1.0.0-beta1.nupkg",
+        "Microsoft.DataAnnotations.1.0.0-beta1.nupkg.sha512",
+        "Microsoft.DataAnnotations.nuspec"
+      ]
+    },
     "Microsoft.Extensions.DependencyInjection.Abstractions/1.0.0-rc1-final": {
       "type": "package",
       "serviceable": true,
@@ -1733,6 +1904,21 @@
         "Microsoft.Extensions.DependencyInjection.Abstractions.1.0.0-rc1-final.nupkg",
         "Microsoft.Extensions.DependencyInjection.Abstractions.1.0.0-rc1-final.nupkg.sha512",
         "Microsoft.Extensions.DependencyInjection.Abstractions.nuspec"
+      ]
+    },
+    "Moq/4.2.1510.2205": {
+      "type": "package",
+      "sha512": "nqMoHSP5f04/kyKbRUjGgzqtIb5LUUs0H6llHOkQJ5Takx4Ezr2H+59pkIgxkmpbHAcGmc/KsyRZUs1ehnPYag==",
+      "files": [
+        "lib/net35/Moq.dll",
+        "lib/net35/Moq.xml",
+        "lib/net40/Moq.dll",
+        "lib/net40/Moq.xml",
+        "lib/sl5/Moq.Silverlight.dll",
+        "lib/sl5/Moq.Silverlight.xml",
+        "Moq.4.2.1510.2205.nupkg",
+        "Moq.4.2.1510.2205.nupkg.sha512",
+        "Moq.nuspec"
       ]
     },
     "runtime.any.System.Linq.Expressions/4.0.11-beta-23516": {
@@ -1813,9 +1999,9 @@
         "runtimes/win8-aot/lib/netcore50/System.Threading.dll"
       ]
     },
-    "structuremap/4.0.1.318": {
+    "structuremap/4.0.0.60000-alpha": {
       "type": "package",
-      "sha512": "x0f6QfOKZ0eqGt04t5wciGk6lg3J/+ytSeKWfZ5VUKpcjURu5PVt8DLtNsE1KWhKHMNW3NBQSF8h3XivtP6qZQ==",
+      "sha512": "5MswGHgFabW0A55uIezYkZap4f9SDjYWdWUZ0xa4/ZUSknNcdvfYCL2Gu/bXQZQRfLy5BgfJG3btKjCSZbNzjA==",
       "files": [
         "lib/dotnet/StructureMap.dll",
         "lib/dotnet/StructureMap.pdb",
@@ -1830,8 +2016,8 @@
         "lib/portable-net45+wp81+win81/StructureMap.dll",
         "lib/portable-net45+wp81+win81/StructureMap.pdb",
         "lib/portable-net45+wp81+win81/StructureMap.xml",
-        "structuremap.4.0.1.318.nupkg",
-        "structuremap.4.0.1.318.nupkg.sha512",
+        "structuremap.4.0.0.60000-alpha.nupkg",
+        "structuremap.4.0.0.60000-alpha.nupkg.sha512",
         "structuremap.nuspec"
       ]
     },
@@ -1984,6 +2170,63 @@
         "System.ComponentModel.4.0.1-beta-23516.nupkg",
         "System.ComponentModel.4.0.1-beta-23516.nupkg.sha512",
         "System.ComponentModel.nuspec"
+      ]
+    },
+    "System.ComponentModel.Annotations/4.0.11-beta-23516": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "RUe6z5n4ewCvAuvHaE9zd+FRF/rQsX/xsAn9AxYpmPOtZeitmDWQPOTjg8DZcbHmK4lFxMM0pggoz5IoIZII0g==",
+      "files": [
+        "lib/dotnet5.4/System.ComponentModel.Annotations.dll",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/netcore50/System.ComponentModel.Annotations.dll",
+        "lib/win8/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "ref/dotnet5.2/de/System.ComponentModel.Annotations.xml",
+        "ref/dotnet5.2/es/System.ComponentModel.Annotations.xml",
+        "ref/dotnet5.2/fr/System.ComponentModel.Annotations.xml",
+        "ref/dotnet5.2/it/System.ComponentModel.Annotations.xml",
+        "ref/dotnet5.2/ja/System.ComponentModel.Annotations.xml",
+        "ref/dotnet5.2/ko/System.ComponentModel.Annotations.xml",
+        "ref/dotnet5.2/ru/System.ComponentModel.Annotations.xml",
+        "ref/dotnet5.2/System.ComponentModel.Annotations.dll",
+        "ref/dotnet5.2/System.ComponentModel.Annotations.xml",
+        "ref/dotnet5.2/zh-hans/System.ComponentModel.Annotations.xml",
+        "ref/dotnet5.2/zh-hant/System.ComponentModel.Annotations.xml",
+        "ref/dotnet5.4/de/System.ComponentModel.Annotations.xml",
+        "ref/dotnet5.4/es/System.ComponentModel.Annotations.xml",
+        "ref/dotnet5.4/fr/System.ComponentModel.Annotations.xml",
+        "ref/dotnet5.4/it/System.ComponentModel.Annotations.xml",
+        "ref/dotnet5.4/ja/System.ComponentModel.Annotations.xml",
+        "ref/dotnet5.4/ko/System.ComponentModel.Annotations.xml",
+        "ref/dotnet5.4/ru/System.ComponentModel.Annotations.xml",
+        "ref/dotnet5.4/System.ComponentModel.Annotations.dll",
+        "ref/dotnet5.4/System.ComponentModel.Annotations.xml",
+        "ref/dotnet5.4/zh-hans/System.ComponentModel.Annotations.xml",
+        "ref/dotnet5.4/zh-hant/System.ComponentModel.Annotations.xml",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/netcore50/de/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/es/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/fr/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/it/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/ja/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/ko/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/ru/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/System.ComponentModel.Annotations.dll",
+        "ref/netcore50/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/zh-hans/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/zh-hant/System.ComponentModel.Annotations.xml",
+        "ref/win8/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "System.ComponentModel.Annotations.4.0.11-beta-23516.nupkg",
+        "System.ComponentModel.Annotations.4.0.11-beta-23516.nupkg.sha512",
+        "System.ComponentModel.Annotations.nuspec"
       ]
     },
     "System.Diagnostics.Debug/4.0.11-beta-23516": {

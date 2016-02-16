@@ -10,8 +10,9 @@ namespace DDD.Provider.Domain.Commands
     public class AddNewContractorCommand : Command
     {
         //private ContractorDto _contractor;
-        public AddNewContractorCommand(ContractorDto contractor) : base(Guid.NewGuid())
+        public AddNewContractorCommand(ContractorDto contractor) : base(Guid.NewGuid(),"Anonymous")
         {
+            //TODO: pass actual user who submitted the command
             Contractor = contractor;
         }
 

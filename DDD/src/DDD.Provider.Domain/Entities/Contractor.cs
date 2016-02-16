@@ -20,7 +20,7 @@ namespace DDD.Provider.Domain.Entities
             //TODO: Implement guard conditions
             EinNumber = einNumber;
             ContractorName = contractorName;
-            DoingBusinessAsText = doingBusinessAs;
+            DoingBusinessAs = doingBusinessAs;
             Status = status;
             ContractorType = type;
             ContractDuration = contractDuration;
@@ -34,7 +34,7 @@ namespace DDD.Provider.Domain.Entities
         public DateTimeRange ContractDuration { get; private set; }
         public ContractorStatus Status { get; private set; }
         public string ContractorName { get; private set; }
-        public string DoingBusinessAsText { get; private set; }
+        public string DoingBusinessAs { get; private set; }
         public PhoneNumber PhoneNumber { get; private set; }
         public ContractorType ContractorType { get; private set; }
         public string ContractorSuffixCode { get; private set; }

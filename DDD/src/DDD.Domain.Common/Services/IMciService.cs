@@ -9,4 +9,12 @@ namespace DDD.Domain.Common.Services
     {
         bool IsRegisterdIndividual(string ssn);
     }
+
+    public class MockMciService : IMciService
+    {
+        public bool IsRegisterdIndividual(string ssn)
+        {
+            return true;
+        }
+    }
 }

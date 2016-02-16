@@ -15,7 +15,13 @@
       "DDD.Common/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "Moq": "4.2.1510.2205"
+        },
         "frameworkAssemblies": [
+          "System.ComponentModel",
+          "System.ComponentModel.Annotations",
+          "System.ComponentModel.DataAnnotations",
           "System.Runtime.Serialization"
         ]
       },
@@ -1688,7 +1694,7 @@
           "lib/net45/Remotion.Linq.dll": {}
         }
       },
-      "structuremap/4.0.1.318": {
+      "structuremap/4.0.0.60000-alpha": {
         "type": "package",
         "compile": {
           "lib/net40/StructureMap.dll": {},
@@ -2052,7 +2058,13 @@
       "DDD.Common/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "Moq": "4.2.1510.2205"
+        },
         "frameworkAssemblies": [
+          "System.ComponentModel",
+          "System.ComponentModel.Annotations",
+          "System.ComponentModel.DataAnnotations",
           "System.Runtime.Serialization"
         ]
       },
@@ -3728,7 +3740,7 @@
           "lib/net45/Remotion.Linq.dll": {}
         }
       },
-      "structuremap/4.0.1.318": {
+      "structuremap/4.0.0.60000-alpha": {
         "type": "package",
         "compile": {
           "lib/net40/StructureMap.dll": {},
@@ -4092,7 +4104,13 @@
       "DDD.Common/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "Moq": "4.2.1510.2205"
+        },
         "frameworkAssemblies": [
+          "System.ComponentModel",
+          "System.ComponentModel.Annotations",
+          "System.ComponentModel.DataAnnotations",
           "System.Runtime.Serialization"
         ]
       },
@@ -5768,7 +5786,7 @@
           "lib/net45/Remotion.Linq.dll": {}
         }
       },
-      "structuremap/4.0.1.318": {
+      "structuremap/4.0.0.60000-alpha": {
         "type": "package",
         "compile": {
           "lib/net40/StructureMap.dll": {},
@@ -7480,9 +7498,9 @@
         "Remotion.Linq.nuspec"
       ]
     },
-    "structuremap/4.0.1.318": {
+    "structuremap/4.0.0.60000-alpha": {
       "type": "package",
-      "sha512": "x0f6QfOKZ0eqGt04t5wciGk6lg3J/+ytSeKWfZ5VUKpcjURu5PVt8DLtNsE1KWhKHMNW3NBQSF8h3XivtP6qZQ==",
+      "sha512": "5MswGHgFabW0A55uIezYkZap4f9SDjYWdWUZ0xa4/ZUSknNcdvfYCL2Gu/bXQZQRfLy5BgfJG3btKjCSZbNzjA==",
       "files": [
         "lib/dotnet/StructureMap.dll",
         "lib/dotnet/StructureMap.pdb",
@@ -7497,8 +7515,8 @@
         "lib/portable-net45+wp81+win81/StructureMap.dll",
         "lib/portable-net45+wp81+win81/StructureMap.pdb",
         "lib/portable-net45+wp81+win81/StructureMap.xml",
-        "structuremap.4.0.1.318.nupkg",
-        "structuremap.4.0.1.318.nupkg.sha512",
+        "structuremap.4.0.0.60000-alpha.nupkg",
+        "structuremap.4.0.0.60000-alpha.nupkg.sha512",
         "structuremap.nuspec"
       ]
     },

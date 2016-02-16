@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DDD.Common.Extensions;
+using DDD.Provider.Domain.Repositories;
 
 namespace DDD.Provider.Domain.CommandValidators
 {
@@ -30,11 +31,13 @@ namespace DDD.Provider.Domain.CommandValidators
     //Also research if these Validations should be done inside Entity, if so do I pass the dependencies into the Entity method
     public class AddNewContractorCommandValidator : ICommandValidator<AddNewContractorCommand>
     {
-        private IMciService _mciService;
+        private readonly ContractorRepository _contractorRepo;
+        private readonly IMciService _mciService;
 
-        public AddNewContractorCommandValidator(IMciService mciService)
+        public AddNewContractorCommandValidator(IMciService mciService, ContractorRepository contractorRepo)
         {
             _mciService = mciService;
+            _contractorRepo = contractorRepo;
         }
         IEnumerable<ValidationError> ICommandValidator<AddNewContractorCommand>.Validate(AddNewContractorCommand command)
         {
@@ -43,6 +46,11 @@ namespace DDD.Provider.Domain.CommandValidators
             {
                 if (!_mciService.IsRegisterdIndividual(contractorDetail.EinNumber))
                     yield return new ValidationError(ValidationErrorCodes.Contractor.SELF_ARRANGED_CONTRACTOR_NOT_FOUND, $"Contractor with SSN { contractorDetail.EinNumber.FormatAndMaskSsn()} not found in the MCI database");
+
+                var existingContractor = _contractorRepo.GetContractorEinsStartingWith(command.Contractor.EinNumber, ContractorType.SelfArranged);
+                if (existingContractor.Count > 0)
+                    yield return new ValidationError(ValidationErrorCodes.Contractor.SELF_ARRANGED_CONTRACTOR_ALREADY_REGISTERED, $"Self-Arranged Contractor with SSN {contractorDetail.EinNumber.FormatAndMaskSsn()} is already registered");
+
             }
 
             throw new NotImplementedException();

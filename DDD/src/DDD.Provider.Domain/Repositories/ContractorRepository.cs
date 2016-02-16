@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Data.Entity;
 using DDD.Domain.Common.ValueObjects;
+using DDD.Provider.Domain.Enums;
 
 namespace DDD.Provider.Domain.Repositories
 {
@@ -26,7 +27,7 @@ namespace DDD.Provider.Domain.Repositories
                 {
                     ID = contractor.ID,
                     ContractorName = contractor.ContractorName,
-                    DoingBusinessAs = contractor.DoingBusinessAsText,
+                    DoingBusinessAs = contractor.DoingBusinessAs,
                     EinNumber = contractor.EinNumber,
                     PhoneNumber = contractor.PhoneNumber,
                     AlternatePhoneNumber = contractor.ContractorAlternatePhoneNumber,
@@ -81,6 +82,15 @@ namespace DDD.Provider.Domain.Repositories
             using (var ctx = new ProviderDbContext())
             {
                 return ctx.Contractor.Any(x => x.EinNumber == einNumber);
+            }
+        }
+
+        public List<string> GetContractorEinsStartingWith(string einSsn, ContractorType type)
+        {
+            using (var context = new ProviderDbContext())
+            {
+                var contractorType = type.Value;
+                return context.Contractor.Where(x => x.EinNumber.StartsWith(einSsn) && x.Type == contractorType).Select(x => x.EinNumber).ToList();
             }
         }
     }

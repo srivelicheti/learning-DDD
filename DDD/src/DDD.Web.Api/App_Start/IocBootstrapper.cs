@@ -2,6 +2,7 @@
 using DDD.Domain.Common.Command;
 using DDD.Domain.Common.Event;
 using DDD.Domain.Common.Query;
+using DDD.Domain.Common.Services;
 using DDD.Provider.DataModel;
 using DDD.Provider.Domain.CommandHandlers;
 using DDD.Provider.Domain.Commands;
@@ -29,6 +30,7 @@ namespace DDD.Web.Api.App_Start
             RegisterCommandHandlers(container);
             RegisterQueryHandlers(container);
             RegisterDbContexts(container);
+            RegisterServices(container);
             return container;
         }
 
@@ -37,7 +39,6 @@ namespace DDD.Web.Api.App_Start
         {
             container.Configure(x => x.For<ICommandHandler<DDD.Provider.Domain.Commands.AddNewContractorCommand>>().Use<AddNewContractorCommandHandler>());
             container.Configure(x => x.ForConcreteType<ContractorRepository>());
-            container.Configure(x => x.For<IContractorSuffixGenerator>().Use<ContractorSuffixGenerator>());
             //return container;
            // container.ForGenericType(typeof(ICommandHandler<DDD.Provider.Domain.Commands.AddNewContractorCommand>)
         }
@@ -55,6 +56,12 @@ namespace DDD.Web.Api.App_Start
 
         private static void RegisterDbContexts(IContainer container) {
             container.Configure(x => x.ForConcreteType<ProviderDbContext>());
+        }
+
+        private static void RegisterServices(IContainer container)
+        {
+            container.Configure(x => x.For<IMciService>().Use<MockMciService>());
+            container.Configure(x => x.For<IContractorSuffixGenerator>().Use<ContractorSuffixGenerator>());
         }
     }
 }

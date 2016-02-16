@@ -15,7 +15,13 @@
       "DDD.Common/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "Moq": "4.2.1510.2205"
+        },
         "frameworkAssemblies": [
+          "System.ComponentModel",
+          "System.ComponentModel.Annotations",
+          "System.ComponentModel.DataAnnotations",
           "System.Runtime.Serialization"
         ]
       },
@@ -1597,6 +1603,15 @@
           "lib/net451/Microsoft.Net.Http.Headers.dll": {}
         }
       },
+      "Moq/4.2.1510.2205": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Moq.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Moq.dll": {}
+        }
+      },
       "Newtonsoft.Json/6.0.6": {
         "type": "package",
         "compile": {
@@ -1615,7 +1630,7 @@
           "lib/net45/Remotion.Linq.dll": {}
         }
       },
-      "structuremap/4.0.1.318": {
+      "structuremap/4.0.0.60000-alpha": {
         "type": "package",
         "compile": {
           "lib/net40/StructureMap.dll": {},
@@ -1870,7 +1885,13 @@
       "DDD.Common/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "Moq": "4.2.1510.2205"
+        },
         "frameworkAssemblies": [
+          "System.ComponentModel",
+          "System.ComponentModel.Annotations",
+          "System.ComponentModel.DataAnnotations",
           "System.Runtime.Serialization"
         ]
       },
@@ -3455,6 +3476,15 @@
           "lib/net451/Microsoft.Net.Http.Headers.dll": {}
         }
       },
+      "Moq/4.2.1510.2205": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Moq.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Moq.dll": {}
+        }
+      },
       "Newtonsoft.Json/6.0.6": {
         "type": "package",
         "compile": {
@@ -3473,7 +3503,7 @@
           "lib/net45/Remotion.Linq.dll": {}
         }
       },
-      "structuremap/4.0.1.318": {
+      "structuremap/4.0.0.60000-alpha": {
         "type": "package",
         "compile": {
           "lib/net40/StructureMap.dll": {},
@@ -3728,7 +3758,13 @@
       "DDD.Common/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "Moq": "4.2.1510.2205"
+        },
         "frameworkAssemblies": [
+          "System.ComponentModel",
+          "System.ComponentModel.Annotations",
+          "System.ComponentModel.DataAnnotations",
           "System.Runtime.Serialization"
         ]
       },
@@ -5313,6 +5349,15 @@
           "lib/net451/Microsoft.Net.Http.Headers.dll": {}
         }
       },
+      "Moq/4.2.1510.2205": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Moq.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Moq.dll": {}
+        }
+      },
       "Newtonsoft.Json/6.0.6": {
         "type": "package",
         "compile": {
@@ -5331,7 +5376,7 @@
           "lib/net45/Remotion.Linq.dll": {}
         }
       },
-      "structuremap/4.0.1.318": {
+      "structuremap/4.0.0.60000-alpha": {
         "type": "package",
         "compile": {
           "lib/net40/StructureMap.dll": {},
@@ -6847,6 +6892,21 @@
         "Microsoft.Net.Http.Headers.nuspec"
       ]
     },
+    "Moq/4.2.1510.2205": {
+      "type": "package",
+      "sha512": "nqMoHSP5f04/kyKbRUjGgzqtIb5LUUs0H6llHOkQJ5Takx4Ezr2H+59pkIgxkmpbHAcGmc/KsyRZUs1ehnPYag==",
+      "files": [
+        "lib/net35/Moq.dll",
+        "lib/net35/Moq.xml",
+        "lib/net40/Moq.dll",
+        "lib/net40/Moq.xml",
+        "lib/sl5/Moq.Silverlight.dll",
+        "lib/sl5/Moq.Silverlight.xml",
+        "Moq.4.2.1510.2205.nupkg",
+        "Moq.4.2.1510.2205.nupkg.sha512",
+        "Moq.nuspec"
+      ]
+    },
     "Newtonsoft.Json/6.0.6": {
       "type": "package",
       "sha512": "w26uZNyCG5VeoKiEOJ4+9/o8koSofLKwHl7WLreIcp0U6r57L7WiRXmjp8MTKFw6dYNZ9AE0lw69WYbIhUsU9Q==",
@@ -6888,9 +6948,9 @@
         "Remotion.Linq.nuspec"
       ]
     },
-    "structuremap/4.0.1.318": {
+    "structuremap/4.0.0.60000-alpha": {
       "type": "package",
-      "sha512": "x0f6QfOKZ0eqGt04t5wciGk6lg3J/+ytSeKWfZ5VUKpcjURu5PVt8DLtNsE1KWhKHMNW3NBQSF8h3XivtP6qZQ==",
+      "sha512": "5MswGHgFabW0A55uIezYkZap4f9SDjYWdWUZ0xa4/ZUSknNcdvfYCL2Gu/bXQZQRfLy5BgfJG3btKjCSZbNzjA==",
       "files": [
         "lib/dotnet/StructureMap.dll",
         "lib/dotnet/StructureMap.pdb",
@@ -6905,8 +6965,8 @@
         "lib/portable-net45+wp81+win81/StructureMap.dll",
         "lib/portable-net45+wp81+win81/StructureMap.pdb",
         "lib/portable-net45+wp81+win81/StructureMap.xml",
-        "structuremap.4.0.1.318.nupkg",
-        "structuremap.4.0.1.318.nupkg.sha512",
+        "structuremap.4.0.0.60000-alpha.nupkg",
+        "structuremap.4.0.0.60000-alpha.nupkg.sha512",
         "structuremap.nuspec"
       ]
     },

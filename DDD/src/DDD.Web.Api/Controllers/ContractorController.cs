@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNet.Mvc;
 using DDD.Common.DTOs.Provider;
 using DDD.Domain.Common.Command;
@@ -10,6 +11,8 @@ using DDD.Provider.Domain.Repositories;
 using DDD.Provider.Domain.Enums;
 using DDD.Domain.Common.Query;
 using DDD.Provider.QueryStack.Contractor.Queries;
+using DDD.Web.Api.Infrastructure.ActionFilters;
+using DDD.Web.Api.Models.Provider;
 
 namespace DDD.Web.Api.Controllers
 {
@@ -17,6 +20,8 @@ namespace DDD.Web.Api.Controllers
     {
         public string Name { get; set; }
         public string DBA { get; set; }
+
+        public string ContractorType { get; set; }
     }
     [Route("api/contractor")]
     public class ContractorController : Controller
@@ -48,37 +53,18 @@ namespace DDD.Web.Api.Controllers
         [HttpGet("Ein/{ein}")]
         public ContractorDto GetByEin(string ein)
         {
+            var type = typeof (ContractorType);
             return _queryProcessor.Process<ContractorDto>(new FindContractorByEinQuery() {ContractorEin = ein });
         }
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]TempCont tcont)
+        [ValidateModel]
+        public void Post([FromBody]AddNewContractorModel contractorModel)
         {
             var rnd = new Random();
-            var ein = rnd.Next(100000000, 999999999).ToString() + "AA";
-            var cont = new ContractorDto
-            {
-                ID = GuidHelper.NewSequentialGuid(),
-                ContractorName =  tcont?.Name ?? "Some Contractor",
-                DoingBusinessAs = tcont?.DBA ?? "DBA",
-                EinNumber = ein,
-                SuffixCode = "AA",
-                ContactEmail = "Contact@xyz.com",
-                ContactFirstName = "ContactFirst",
-                ContactLastName = "ContactLast",
-                ContactPhoneNumber = "7894561234",
-                ContractStartDate = DateTime.Now,
-                ContractEndDate = DateTime.Now.AddYears(1),
-                Email = "SomeContractor@xyz.com",
-                PhoneNumber = "7458961325",
-                Status = ContractorStatus.Open,
-                Type = ContractorType.Contracted,
-                StateCode = "PA",
-                ZipCode = "17050",
-                AddressLine1 = "Address Line 1",
-                City = "Mechanicsburg",
-            };
+            var ein = rnd.Next(100000000, 999999999).ToString();
+            var cont = Mapper.Map<ContractorDto>(contractorModel);
             var result = _commandBus.Submit<AddNewContractorCommand>(new AddNewContractorCommand(cont));
         }
 

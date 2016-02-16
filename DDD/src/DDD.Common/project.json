@@ -8,7 +8,13 @@
   "frameworks": {
     "net451": {
       "frameworkAssemblies": {
-        "System.Runtime.Serialization": "4.0.0.0"
+        "System.Runtime.Serialization": "4.0.0.0",
+        "System.ComponentModel": "4.0.0.0",
+        "System.ComponentModel.Annotations": "4.0.0.0",
+        "System.ComponentModel.DataAnnotations": "4.0.0.0"
+      },
+      "dependencies": {
+        "Moq": "4.2.1510.2205"
       }
     },
     "dnxcore50": {
@@ -20,7 +26,10 @@
         "System.Runtime.Extensions": "4.0.11-beta-23516",
         "System.Threading": "4.0.11-beta-23516",
         "System.Runtime.Serialization.Primitives": "4.0.11-beta-23409",
-        "System.Text.RegularExpressions": "4.0.11-beta-23516"
+        "System.Text.RegularExpressions": "4.0.11-beta-23516",
+        "System.ComponentModel.Annotations": "4.0.11-beta-23516",
+        "Microsoft.DataAnnotations": "1.0.0-beta1",
+        "System.Reflection.TypeExtensions": "4.1.0-rc2-23706"
       }
     }
   },

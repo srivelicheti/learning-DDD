@@ -89,6 +89,11 @@ namespace DDD.Common
             return Enumerations.Value;
         }
 
+        public static TValue[] GetAllValues()
+        {
+            return Enumerations.Value.Select(x => x.Value).ToArray();
+        }
+
         private static TEnumeration[] GetEnumerations()
         {
             Type enumerationType = typeof(TEnumeration);
@@ -147,8 +152,8 @@ namespace DDD.Common
 
             if (!TryParse(predicate, out result))
             {
-                string message = string.Format("'{0}' is not a valid {1} in {2}", value, description, typeof(TEnumeration));
-                throw new ArgumentException(message, "value");
+                string message = $"'{value}' is not a valid {description} in {typeof (TEnumeration)}";
+                throw new ArgumentException(message, nameof(value));
             }
 
             return result;
@@ -157,6 +162,11 @@ namespace DDD.Common
         public static bool TryParse(TValue value, out TEnumeration result)
         {
             return TryParse(e => e.ValueEquals(value), out result);
+        }
+
+        public static bool IsValid(TValue value)
+        {
+            return GetAll().FirstOrDefault(e => e.ValueEquals(value)) != null;
         }
 
         public static bool TryParse(string displayName, out TEnumeration result)
