@@ -10,8 +10,8 @@ namespace DDD.Domain.Common.Event
 {
     public class DomainEventBus
     {
-        private static IList<IEventHandler> _eventHandlers = new List<IEventHandler>();
-        private ConcurrentQueue<DomainEvent> _afterCommitEvents = new ConcurrentQueue<DomainEvent>();
+        private static readonly IList<IEventHandler> _eventHandlers = new List<IEventHandler>();
+        private readonly ConcurrentQueue<DomainEvent> _afterCommitEvents = new ConcurrentQueue<DomainEvent>();
         public static void Subscribe<TEvent>(IEventHandler<TEvent> eventHandler) where TEvent : DomainEvent
         {
             _eventHandlers.Add(eventHandler);
@@ -20,11 +20,12 @@ namespace DDD.Domain.Common.Event
         {
             foreach (var handler in _eventHandlers)
             {
-                if (handler is IEventHandler<TEvent>)
+                var eventHandler = handler as IEventHandler<TEvent>;
+                if (eventHandler != null)
                 {
                     try
                     {
-                        ((IEventHandler<TEvent>)handler).Handle(e);
+                        eventHandler.Handle(e);
                     }
                     catch (Exception ex)
                     {

@@ -23,9 +23,9 @@ namespace DDD.Domain.Common.ValueObjects
         }
 
 
-        public string FirstName { get; private set; }
+        public string FirstName { get; }
 
-        public string LastName { get; private set; }
+        public string LastName { get; }
 
         public string AsFormattedName()
         {

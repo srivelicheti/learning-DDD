@@ -18,7 +18,7 @@ namespace DDD.Provider.DataModel
 
                 entity.HasIndex(e => e.EinNumber).HasName("UQ__Contract__B1569C77342428BE").IsUnique();
 
-                entity.Property(e => e.ID).ValueGeneratedNever();
+                entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.AddressLine1)
                     .IsRequired()
@@ -117,7 +117,7 @@ namespace DDD.Provider.DataModel
             {
                 entity.ToTable("ContractorSite", "Provider");
 
-                entity.Property(e => e.ID).ValueGeneratedNever();
+                entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.ArrangedCareTypeCode)
                     .IsRequired()
@@ -126,14 +126,14 @@ namespace DDD.Provider.DataModel
 
                 entity.Property(e => e.AttendanceEntryIndicator).HasDefaultValue(false);
 
-                entity.Property(e => e.FirstInsertedByID)
+                entity.Property(e => e.FirstInsertedById)
                     .IsRequired()
                     .HasMaxLength(128)
                     .HasColumnType("varchar");
 
                 entity.Property(e => e.FirstInsertedDateTime).HasColumnType("datetime");
 
-                entity.Property(e => e.LastSavedByID)
+                entity.Property(e => e.LastSavedById)
                     .IsRequired()
                     .HasMaxLength(128)
                     .HasColumnType("varchar");
@@ -149,9 +149,9 @@ namespace DDD.Provider.DataModel
                     .HasMaxLength(1)
                     .HasColumnType("char");
 
-                entity.HasOne(d => d.Contractor).WithMany(p => p.ContractorSite).HasForeignKey(d => d.ContractorID).OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne(d => d.Contractor).WithMany(p => p.ContractorSite).HasForeignKey(d => d.ContractorId).OnDelete(DeleteBehavior.Restrict);
 
-                entity.HasOne(d => d.Site).WithMany(p => p.ContractorSite).HasForeignKey(d => d.SiteID).OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne(d => d.Site).WithMany(p => p.ContractorSite).HasForeignKey(d => d.SiteId).OnDelete(DeleteBehavior.Restrict);
             });
 
             modelBuilder.Entity<Site>(entity =>
@@ -160,7 +160,7 @@ namespace DDD.Provider.DataModel
 
                 entity.HasIndex(e => e.SiteNumber).HasName("UQ__Site__9806F1010CBB6C91").IsUnique();
 
-                entity.Property(e => e.ID).ValueGeneratedNever();
+                entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.AddressLine1)
                     .IsRequired()
@@ -269,14 +269,14 @@ namespace DDD.Provider.DataModel
             {
                 entity.ToTable("SiteHoliday", "Provider");
 
-                entity.Property(e => e.ID).ValueGeneratedNever();
+                entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.CalendarYearDate)
                     .IsRequired()
                     .HasMaxLength(4)
                     .HasColumnType("nchar");
 
-                entity.Property(e => e.FirstInsertedByID)
+                entity.Property(e => e.FirstInsertedById)
                     .IsRequired()
                     .HasMaxLength(128)
                     .HasColumnType("varchar");
@@ -290,32 +290,32 @@ namespace DDD.Provider.DataModel
                     .HasMaxLength(100)
                     .HasColumnType("varchar");
 
-                entity.Property(e => e.LastSavedByID)
+                entity.Property(e => e.LastSavedById)
                     .IsRequired()
                     .HasMaxLength(128)
                     .HasColumnType("varchar");
 
                 entity.Property(e => e.LastSavedDateTime).HasColumnType("datetime");
 
-                entity.HasOne(d => d.Site).WithMany(p => p.SiteHoliday).HasForeignKey(d => d.SiteID).OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne(d => d.Site).WithMany(p => p.SiteHoliday).HasForeignKey(d => d.SiteId).OnDelete(DeleteBehavior.Restrict);
             });
 
             modelBuilder.Entity<SiteRate>(entity =>
             {
                 entity.ToTable("SiteRate", "Provider");
 
-                entity.Property(e => e.ID).ValueGeneratedNever();
+                entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.EffectiveDate).HasColumnType("date");
 
-                entity.Property(e => e.FirstInsertedByID)
+                entity.Property(e => e.FirstInsertedById)
                     .IsRequired()
                     .HasMaxLength(128)
                     .HasColumnType("varchar");
 
                 entity.Property(e => e.FirstInsertedDateTime).HasColumnType("datetime");
 
-                entity.Property(e => e.LastSavedByID)
+                entity.Property(e => e.LastSavedById)
                     .IsRequired()
                     .HasMaxLength(128)
                     .HasColumnType("varchar");

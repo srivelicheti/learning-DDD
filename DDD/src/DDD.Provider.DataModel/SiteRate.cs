@@ -5,12 +5,12 @@ namespace DDD.Provider.DataModel
 {
     public partial class SiteRate
     {
-        public Guid ID { get; set; }
+        public Guid Id { get; set; }
         public int AgeCode { get; set; }
         public DateTime EffectiveDate { get; set; }
-        public string FirstInsertedByID { get; set; }
+        public string FirstInsertedById { get; set; }
         public DateTime FirstInsertedDateTime { get; set; }
-        public string LastSavedByID { get; set; }
+        public string LastSavedById { get; set; }
         public DateTime LastSavedDateTime { get; set; }
         public bool LogicalDeleteIndicator { get; set; }
         public decimal? RegularCareDailyRate { get; set; }

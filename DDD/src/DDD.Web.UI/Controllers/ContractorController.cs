@@ -30,7 +30,7 @@ namespace DDD.Web.UI.Controllers
 
             var payload = JsonConvert.SerializeObject(new {
                 Name=model.ContractorName,
-                DBA=model.DBA
+                DBA=model.Dba
             });
             var content = new StringContent(payload, System.Text.Encoding.UTF32, "application/json");
             await client.PostAsync(@"api/contractor", content);

@@ -10,7 +10,7 @@ namespace DDD.Provider.DataModel
             ContractorSite = new HashSet<ContractorSite>();
         }
 
-        public Guid ID { get; set; }
+        public Guid Id { get; set; }
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }
         public string AlternatePhoneNumber { get; set; }

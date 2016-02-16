@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Reflection;
+using System.Runtime.Serialization;
 
 namespace DDD.Common
 {
-    using System;
-    using System.Diagnostics;
-    using System.Linq;
-    using System.Reflection;
-    using System.Runtime.Serialization;
-
-
     //[Serializable]
     [DebuggerDisplay("{DisplayName} - {Value}")]
     public abstract class Enumeration<TEnumeration> : Enumeration<TEnumeration, int>
@@ -79,7 +73,7 @@ namespace DDD.Common
             return Value.CompareTo(other == default(TEnumeration) ? default(TValue) : other.Value);
         }
 
-        public override sealed string ToString()
+        public sealed override string ToString()
         {
             return DisplayName;
         }
@@ -152,7 +146,7 @@ namespace DDD.Common
 
             if (!TryParse(predicate, out result))
             {
-                string message = $"'{value}' is not a valid {description} in {typeof (TEnumeration)}";
+                string message = $"'{value}' is not a valid {description} in {typeof(TEnumeration)}";
                 throw new ArgumentException(message, nameof(value));
             }
 

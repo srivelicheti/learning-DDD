@@ -7,7 +7,7 @@ namespace DDD.Domain.Common.Event
 {
     public interface IDomainEvent
     {
-        Guid ID { get; }
+        Guid Id { get; }
 
         DateTime EventDateTime { get; }
 
@@ -15,23 +15,23 @@ namespace DDD.Domain.Common.Event
 
     public abstract class DomainEvent : IDomainEvent
     {
-        public DomainEvent(Guid id, DateTime eventTime) {
-            ID = id;
+        protected DomainEvent(Guid id, DateTime eventTime) {
+            Id = id;
             EventDateTime = eventTime;
         }
         //public DomainEvent(EventBus bus, Guid id, DateTime eventTime)
         //{
-        //    ID = id;
+        //    Id = id;
         //    EventDateTime = eventTime;
         //}
         public DateTime EventDateTime
         {
-            get;private set;
+            get;
         }
 
-        public Guid ID
+        public Guid Id
         {
-            get;private set;
+            get;
         }
        
     }
@@ -40,7 +40,7 @@ namespace DDD.Domain.Common.Event
     public interface IEventHandler
     { }
 
-    public interface IEventHandler<TEvent> : IEventHandler where TEvent: DomainEvent
+    public interface IEventHandler<in TEvent> : IEventHandler where TEvent: DomainEvent
     {
         void Handle(TEvent e);
     }

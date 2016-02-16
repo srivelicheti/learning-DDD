@@ -12,12 +12,8 @@ using DDD.Provider.Domain.Services;
 using DDD.Provider.QueryStack.Contractor.Queries;
 using DDD.Provider.QueryStack.Contractor.QueryHandlers;
 using StructureMap;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace DDD.Web.Api.App_Start
+namespace DDD.Web.Api
 {
     public static class IocBootstrapper
     {
@@ -49,7 +45,7 @@ namespace DDD.Web.Api.App_Start
         }
 
         private static void RegisterQueryHandlers(IContainer container) {
-            container.Configure(x => x.For<IQueryHandler<FindContractorByIDQuery, ContractorDto>>().Use<FindContractorByIDHandler>());
+            container.Configure(x => x.For<IQueryHandler<FindContractorByIdQuery, ContractorDto>>().Use<FindContractorByIdHandler>());
             container.Configure(x => x.For<IQueryHandler<FindContractorByEinQuery, ContractorDto>>().Use<FindContractorByEinQueryHandler>());
             container.Configure(x => x.ForConcreteType<FindContractorByEinQueryHandler>());
         }

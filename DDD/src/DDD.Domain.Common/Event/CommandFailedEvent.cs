@@ -7,13 +7,13 @@ namespace DDD.Domain.Common.Event
 {
     public class CommandFailedEvent : DomainEvent
     {
-        public CommandFailedEvent(Guid commandID,Exception exception ,DateTime eventDateTime):base(Guid.NewGuid(),eventDateTime)
+        public CommandFailedEvent(Guid commandId,Exception exception ,DateTime eventDateTime):base(Guid.NewGuid(),eventDateTime)
         {
-            CommandID = commandID;
+            CommandId = commandId;
             Error = exception;
         }
 
-        public Guid CommandID
+        public Guid CommandId
         {
             get; private set;
         }

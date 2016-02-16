@@ -7,13 +7,13 @@ namespace DDD.Domain.Common
 {
     public abstract class Entity
     {
-        public Guid ID { get; protected set; }
+        public Guid Id { get; protected set; }
 
         public TrackingState State { get; set; }
 
-        public Entity(Guid entityId)
+        protected Entity(Guid entityId)
         {
-            ID = entityId;
+            Id = entityId;
         }
 
         public override bool Equals(object obj)
@@ -50,7 +50,7 @@ namespace DDD.Domain.Common
 
         public override int GetHashCode()
         {
-            return (this.GetType().FullName + ID).GetHashCode();
+            return (this.GetType().FullName + Id).GetHashCode();
         }
     }
 }

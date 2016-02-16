@@ -15,7 +15,7 @@ namespace DDD.Provider.Domain.Repositories
     public class SitesRepository
     {
         private DomainEventBus _eventBus;
-        private ProviderDbContext _dbContext;
+        private readonly ProviderDbContext _dbContext;
 
         public SitesRepository(DomainEventBus eventBus, ProviderDbContext dbContext)
         {
@@ -32,10 +32,10 @@ namespace DDD.Provider.Domain.Repositories
         {
             //TODO: Make the change to include Site Domain Entity to act as decorater to the Site Presistance Entity, this will avoid getting the entity from database twice and lead to better results
             Claim.ValidateNotNull(site, nameof(site));
-            Claim.ValidateNotNull(site.ID, $"name of {site} ID");
-            var dbSite = _dbContext.Site.Find(site.ID);
+            Claim.ValidateNotNull(site.Id, $"name of {site} ID");
+            var dbSite = _dbContext.Site.Find(site.Id);
             if (dbSite == null)
-                throw new Exception($"site with {site.ID} not found in database"); //TODO: Create customexceptiom
+                throw new Exception($"site with {site.Id} not found in database"); //TODO: Create customexceptiom
 
             dbSite.AddressLine1 = site.Address.AddressLine1;
             dbSite.AddressLine2 = site.Address.AddressLine2;
@@ -58,7 +58,7 @@ namespace DDD.Provider.Domain.Repositories
             dbSite.SiteFacilityTypeCode = site.SiteFacitlityType.Value.ToString();
             this.UpdateHolidays(site, dbSite);
             dbSite.SiteName = site.SiteName;
-            dbSite.SiteNumber = site.SiteID;
+            dbSite.SiteNumber = site.SiteId;
              //dbSite.SiteTypeCode = site.typ
 
         }
@@ -68,7 +68,7 @@ namespace DDD.Provider.Domain.Repositories
             var datesToBeRemoved = new List<SiteHoliday>();
             foreach (var hol in dbSite.SiteHoliday)
             {
-                if (!dbSite.SiteHoliday.Any(x => x.HolidayDate.Date == hol.HolidayDate.Date))
+                if (dbSite.SiteHoliday.All(x => x.HolidayDate.Date != hol.HolidayDate.Date))
                     datesToBeRemoved.Add(hol);
             }
             foreach (var removedHol in datesToBeRemoved)
@@ -79,18 +79,18 @@ namespace DDD.Provider.Domain.Repositories
             
             foreach(var item in site.Holidays)
             {
-                var existingHoliday = dbSite.SiteHoliday.Where(x => x.HolidayDate.Date == item.HolidayDate.Date).FirstOrDefault();
+                var existingHoliday = dbSite.SiteHoliday.FirstOrDefault(x => x.HolidayDate.Date == item.HolidayDate.Date);
                 if (existingHoliday == null)
                 {
                     dbSite.SiteHoliday.Add(new SiteHoliday
                     {
-                        ID = GuidHelper.NewSequentialGuid(),
+                        Id = GuidHelper.NewSequentialGuid(),
                         CalendarYearDate = item.HolidayDate.Year.ToString(),
                         HolidayDate = item.HolidayDate,
                         HolidayName = item.Name,
-                        FirstInsertedByID = "TODO",
+                        FirstInsertedById = "TODO",
                         FirstInsertedDateTime = DateTime.UtcNow,
-                        LastSavedByID = "TODO",
+                        LastSavedById = "TODO",
                         LastSavedDateTime = DateTime.UtcNow
                     });
                 }
@@ -106,7 +106,7 @@ namespace DDD.Provider.Domain.Repositories
         public Provider.Domain.Entities.Site GetSite(Guid siteId)
         {
             //using (var ctx = new ProviderDbContext()) {
-            var site = _dbContext.Site.Include(x => x.SiteHoliday).Include(x => x.SiteRate).FirstOrDefault(x => x.ID == siteId);
+            var site = _dbContext.Site.Include(x => x.SiteHoliday).Include(x => x.SiteRate).FirstOrDefault(x => x.Id == siteId);
             if (site == null)
                 throw new ArgumentException($"Site not found with {siteId}");
 
@@ -119,7 +119,7 @@ namespace DDD.Provider.Domain.Repositories
                 hol.TrackingState = DDD.Domain.Common.TrackingState.Unchanged;
                 return hol;
             });
-            var domainSite = new Provider.Domain.Entities.Site(site.ID, site.SiteNumber, site.SiteName, site.StateCode, site.SiteFacilityTypeCode,site.SiteTypeCode,
+            var domainSite = new Provider.Domain.Entities.Site(site.Id, site.SiteNumber, site.SiteName, site.StateCode, site.SiteFacilityTypeCode,site.SiteTypeCode,
                 contractDuration, site.PhoneNumber, contact, address, site.Email, site.CountyCode, site.CountyServedCode, site.LicencingStatusCode, holidays);
 
             return domainSite;

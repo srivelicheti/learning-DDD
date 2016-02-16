@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace DDD.Provider.QueryStack.Contractor.Queries
 {
-    public class FindContractorByIDQuery : IQuery<ContractorDto>
+    public class FindContractorByIdQuery : IQuery<ContractorDto>
     {
-        public Guid ID { get; set; }
+        public Guid Id { get; set; }
     }
 }

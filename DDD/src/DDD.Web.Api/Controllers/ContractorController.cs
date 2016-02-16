@@ -16,13 +16,7 @@ using DDD.Web.Api.Models.Provider;
 
 namespace DDD.Web.Api.Controllers
 {
-    public class TempCont
-    {
-        public string Name { get; set; }
-        public string DBA { get; set; }
-
-        public string ContractorType { get; set; }
-    }
+    
     [Route("api/contractor")]
     public class ContractorController : Controller
     {
@@ -46,7 +40,7 @@ namespace DDD.Web.Api.Controllers
         [HttpGet("{id}")]
         public ContractorDto Get(Guid id)
         {
-            return _queryProcessor.Process<ContractorDto>(new FindContractorByIDQuery() { ID = id });
+            return _queryProcessor.Process<ContractorDto>(new FindContractorByIdQuery() { Id = id });
         }
 
         // GET api/values/5

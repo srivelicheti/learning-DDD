@@ -1,8 +1,8 @@
-﻿using log4net;
+﻿using System;
+using log4net;
 using Microsoft.Extensions.Logging;
-using System;
 
-namespace DDD.Web.Api.Infrastructure.Logging
+namespace DDD.Web.Api
 {
     public class Log4NetAdapter : ILogger
     {

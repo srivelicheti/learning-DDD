@@ -15,11 +15,11 @@ namespace DDD.Domain.Common.Query
 
     public sealed class QueryProcessor : IQueryProcessor
     {
-        private readonly IContainer container;
+        private readonly IContainer _container;
 
         public QueryProcessor(IContainer container)
         {
-            this.container = container;
+            this._container = container;
         }
         
         public TResult Process<TResult>(IQuery<TResult> query)
@@ -27,7 +27,7 @@ namespace DDD.Domain.Common.Query
             var handlerType =
                 typeof(IQueryHandler<,>).MakeGenericType(query.GetType(), typeof(TResult));
 
-            dynamic handler = container.GetInstance(handlerType);
+            dynamic handler = _container.GetInstance(handlerType);
 
             return handler.Handle((dynamic)query);
         }

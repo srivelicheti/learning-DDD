@@ -8,13 +8,13 @@ namespace DDD.Provider.Domain.Events
 {
     public class NewContractorAdded : DomainEvent
     {
-        public NewContractorAdded( DateTime eventDateTime, Guid contractorID, string contractorEin, DomainEventBus eventBus) : base(Guid.NewGuid(), eventDateTime )
+        public NewContractorAdded( DateTime eventDateTime, Guid contractorId, string contractorEin, DomainEventBus eventBus) : base(Guid.NewGuid(), eventDateTime )
         {
-            ContractorID = contractorID;
+            ContractorId = contractorId;
             ContractorEin = contractorEin;
         }
 
-        public Guid ContractorID { get; set; }
+        public Guid ContractorId { get; set; }
         public string ContractorEin { get; set; }
     }
 }

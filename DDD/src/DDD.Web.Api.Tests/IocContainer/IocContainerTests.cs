@@ -1,5 +1,4 @@
 ﻿using DDD.Provider.Domain.Repositories;
-using DDD.Web.Api.App_Start;
 using StructureMap;
 using System;
 using System.Collections.Generic;

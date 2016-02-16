@@ -45,11 +45,11 @@ namespace DDD.Provider.Domain.CommandValidators
             if (contractorDetail.Type == ContractorType.SelfArranged.Value)
             {
                 if (!_mciService.IsRegisterdIndividual(contractorDetail.EinNumber))
-                    yield return new ValidationError(ValidationErrorCodes.Contractor.SELF_ARRANGED_CONTRACTOR_NOT_FOUND, $"Contractor with SSN { contractorDetail.EinNumber.FormatAndMaskSsn()} not found in the MCI database");
+                    yield return new ValidationError(ValidationErrorCodes.Contractor.SelfArrangedContractorNotFound, $"Contractor with SSN { contractorDetail.EinNumber.FormatAndMaskSsn()} not found in the MCI database");
 
                 var existingContractor = _contractorRepo.GetContractorEinsStartingWith(command.Contractor.EinNumber, ContractorType.SelfArranged);
                 if (existingContractor.Count > 0)
-                    yield return new ValidationError(ValidationErrorCodes.Contractor.SELF_ARRANGED_CONTRACTOR_ALREADY_REGISTERED, $"Self-Arranged Contractor with SSN {contractorDetail.EinNumber.FormatAndMaskSsn()} is already registered");
+                    yield return new ValidationError(ValidationErrorCodes.Contractor.SelfArrangedContractorAlreadyRegistered, $"Self-Arranged Contractor with SSN {contractorDetail.EinNumber.FormatAndMaskSsn()} is already registered");
 
             }
 

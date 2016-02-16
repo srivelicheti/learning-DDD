@@ -14,7 +14,7 @@ namespace DDD.Domain.Common.Command
 
     }
 
-    public interface ICommandResult<T> : ICommand where T :new()
+    public interface ICommandResult<out T> : ICommand where T :new()
     {
         Guid CommandId { get; }
         bool IsCommandReceivedSuccessfully { get; set; }

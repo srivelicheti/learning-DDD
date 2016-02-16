@@ -19,7 +19,7 @@ namespace DDD.Domain.Common.ValueObjects
         }
         public Name Name { get; private set; }
 
-        public PhoneNumber PhoneNumber { get; private set; }
+        public PhoneNumber PhoneNumber { get; }
 
         public PhoneNumber AlternatePhoneNumber { get; private set; }
 

@@ -30,15 +30,15 @@ namespace DDD.Domain.Common.Command
             if (handler != default(ICommandHandler<TCommand>))
             {
                 var errors = ValidateCommand(command).ToList();
-                if (errors.Count() == 0)
+                if (errors.Count == 0)
                 {
                     handler.Execute(command);
-                    return new CommandResult { IsCommandReceivedSuccessfully = true, CommandId = command.ID };
+                    return new CommandResult { IsCommandReceivedSuccessfully = true, CommandId = command.Id };
                 }
                 else
                 {
-                    _eventBus.Publish(new CommandValidationFailedEvent(command.ID, errors, DateTime.UtcNow));
-                    return new CommandResult { IsCommandReceivedSuccessfully = false, CommandId = command.ID };
+                    _eventBus.Publish(new CommandValidationFailedEvent(command.Id, errors, DateTime.UtcNow));
+                    return new CommandResult { IsCommandReceivedSuccessfully = false, CommandId = command.Id };
                 }
             }
             else

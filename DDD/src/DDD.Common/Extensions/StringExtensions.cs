@@ -23,9 +23,9 @@ namespace DDD.Common.Extensions
             if (!IsValidSsn(ssn))
                 throw new Exception("Invalid SSN");
         }
-        private static bool IsValidSsn(string Ssn)
+        private static bool IsValidSsn(string ssn)
         {
-           return Ssn.Length == 9 && Ssn.All(x => { var ascii = (int)x; return ascii >= 49 && ascii <= 57; });
+           return ssn.Length == 9 && ssn.All(x => { var ascii = (int)x; return ascii >= 49 && ascii <= 57; });
         }
     }
 }

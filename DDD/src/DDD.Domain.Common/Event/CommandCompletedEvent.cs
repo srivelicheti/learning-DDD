@@ -7,12 +7,12 @@ namespace DDD.Domain.Common.Event
 {
     public class CommandCompletedEvent : DomainEvent
     {
-        public CommandCompletedEvent(Guid commandID, DateTime eventDateTime):base(Guid.NewGuid(),eventDateTime)
+        public CommandCompletedEvent(Guid commandId, DateTime eventDateTime):base(Guid.NewGuid(),eventDateTime)
         {
-            CommandID = commandID;
+            CommandId = commandId;
         }
 
-        public Guid CommandID
+        public Guid CommandId
         {
             get;private set;
         } 

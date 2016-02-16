@@ -7,7 +7,7 @@ namespace DDD.Domain.Common.Command
 {
     public interface ICommandHandler
     { }
-    public interface ICommandHandler<TCommand> : ICommandHandler
+    public interface ICommandHandler<in TCommand> : ICommandHandler
         where TCommand : ICommand
     {
         void Execute(TCommand command);

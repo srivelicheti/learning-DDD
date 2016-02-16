@@ -12,7 +12,7 @@ namespace DDD.Provider.DataModel
             SiteRate = new HashSet<SiteRate>();
         }
 
-        public Guid ID { get; set; }
+        public Guid Id { get; set; }
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }
         public string AlternatePhoneNumber { get; set; }

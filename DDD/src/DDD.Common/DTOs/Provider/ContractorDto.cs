@@ -8,7 +8,7 @@ namespace DDD.Common.DTOs.Provider
 
     public class ContractorDto
     {
-        public Guid ID { get; set; }
+        public Guid Id { get; set; }
 
         public string EinNumber { get; set; }
 

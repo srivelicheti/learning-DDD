@@ -3,12 +3,8 @@ using DDD.Provider.Domain.Events;
 using DDD.Web.Api.EventHandlers;
 using Microsoft.AspNet.SignalR.Infrastructure;
 using StructureMap;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace DDD.Web.Api.App_Start
+namespace DDD.Web.Api
 {
     public class DomainEventsBootStrapper
     {

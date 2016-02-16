@@ -25,7 +25,7 @@ namespace DDD.Provider.Domain.Repositories
             {
                 ctx.Add(new Contractor
                 {
-                    ID = contractor.ID,
+                    Id = contractor.Id,
                     ContractorName = contractor.ContractorName,
                     DoingBusinessAs = contractor.DoingBusinessAs,
                     EinNumber = contractor.EinNumber,
@@ -54,7 +54,7 @@ namespace DDD.Provider.Domain.Repositories
                     ZipExntension = "TODO"
                 });
 
-                _eventBus.QueueForPostCommit(new NewContractorAdded(DateTime.UtcNow, contractor.ID, contractor.EinNumber, _eventBus));
+                _eventBus.QueueForPostCommit(new NewContractorAdded(DateTime.UtcNow, contractor.Id, contractor.EinNumber, _eventBus));
                 await ctx.SaveChangesAsync();
 
                 _eventBus.PublishQueuedPostCommitEvents();
@@ -66,7 +66,7 @@ namespace DDD.Provider.Domain.Repositories
         {
             using (var ctx = new ProviderDbContext())
             {
-                var cont = ctx.Contractor.FirstOrDefault(x => x.ID == id);
+                var cont = ctx.Contractor.FirstOrDefault(x => x.Id == id);
                 if (cont == null)
                     throw new ArgumentException($"Contractor with ${id} not found in database");
 

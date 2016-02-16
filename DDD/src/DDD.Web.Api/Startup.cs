@@ -8,7 +8,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using StructureMap;
-using DDD.Web.Api.App_Start;
 using DDD.Domain.Common.Event;
 using Microsoft.Extensions.PlatformAbstractions;
 using DDD.Web.Api.Infrastructure.Logging;

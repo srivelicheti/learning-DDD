@@ -16,7 +16,7 @@ namespace DDD.Provider.Domain.Entities
 
         public SiteStatus Status { get; private set; }
         public string SiteName { get; private set; }
-        public int SiteID { get; private set; }
+        public int SiteId { get; private set; }
         public SiteFacilityType SiteFacitlityType { get; private set; }
         public DateTimeRange ContractDuration { get; private set; }
         public PhoneNumber PrimaryPhoneNumber { get; private set; }
@@ -34,7 +34,7 @@ namespace DDD.Provider.Domain.Entities
             DateTimeRange contractDuration, PhoneNumber primaryPhoneNumber, Contact contactDetails, Address address, string email,
             string countyCode, string countyServedCode, LicenceStatus licenceStatus, IEnumerable<SiteHoliday> holidays) : base(id)
         {
-            SiteID = siteId;
+            SiteId = siteId;
             SiteName = siteName;
             Status = status;
             SiteFacitlityType = siteFacitlityType;

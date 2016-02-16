@@ -8,6 +8,6 @@ namespace DDD.Web.UI.ViewModels
     public class AddContractorViewModel
     {
         public string ContractorName { get; set; }
-        public string DBA { get; set; }
+        public string Dba { get; set; }
     }
 }

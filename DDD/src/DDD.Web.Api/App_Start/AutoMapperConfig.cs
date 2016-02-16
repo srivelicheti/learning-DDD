@@ -1,11 +1,7 @@
 ﻿using DDD.Common.DTOs.Provider;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using DDD.Web.Api.Models.Provider;
 
-namespace DDD.Web.Api.App_Start
+namespace DDD.Web.Api
 {
     public class AutoMapperConfig
     {

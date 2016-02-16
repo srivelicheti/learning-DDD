@@ -9,17 +9,17 @@ using System.Threading.Tasks;
 
 namespace DDD.Provider.QueryStack.Contractor.QueryHandlers
 {
-    public class FindContractorByIDHandler : IQueryHandler<FindContractorByIDQuery, ContractorDto>
+    public class FindContractorByIdHandler : IQueryHandler<FindContractorByIdQuery, ContractorDto>
     {
         private ProviderDbContext _dbContext;
 
-        public FindContractorByIDHandler(ProviderDbContext dbContext)
+        public FindContractorByIdHandler(ProviderDbContext dbContext)
         {
             _dbContext = dbContext;
         }
-        public ContractorDto Handle(FindContractorByIDQuery query)
+        public ContractorDto Handle(FindContractorByIdQuery query)
         {
-            var contractor = _dbContext.Contractor.FirstOrDefault(x => x.ID == query.ID);
+            var contractor = _dbContext.Contractor.FirstOrDefault(x => x.Id == query.Id);
             return AutoMapper.Mapper.Map<DataModel.Contractor, ContractorDto>(contractor);
         }
     }

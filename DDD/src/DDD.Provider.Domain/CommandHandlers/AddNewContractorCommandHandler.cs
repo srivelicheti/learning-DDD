@@ -44,11 +44,11 @@ namespace DDD.Provider.Domain.CommandHandlers
                     //TODO: User should be sending the GUIDs, leaving it for testing to do auto generated guid
                     var contractor = new Contractor(contractorDto.EinNumber + contractorSuffix, contractorDto.ContractorName, contractorDto.DoingBusinessAs, status, type, contractDuration, contractorDto.PhoneNumber, contact, contractrorAddress, contractorDto.Email);
                     _contractorRepository.AddContractor(contractor).Wait();
-                    _eventBus.Publish(new CommandCompletedEvent(command.ID, DateTime.UtcNow));
+                    _eventBus.Publish(new CommandCompletedEvent(command.Id, DateTime.UtcNow));
                 }
                 catch (Exception ex)
                 {
-                    _eventBus.Publish(new CommandFailedEvent(command.ID, ex, DateTime.UtcNow));
+                    _eventBus.Publish(new CommandFailedEvent(command.Id, ex, DateTime.UtcNow));
                     //TODO: Log exception
                 }
         }
