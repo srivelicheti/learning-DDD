@@ -33,7 +33,7 @@ namespace DDD.Web.Api
 
         private static void RegisterCommandHandlers(IContainer container)
         {
-            container.Configure(x => x.For<ICommandHandler<DDD.Provider.Domain.Commands.AddNewContractorCommand>>().Use<AddNewContractorCommandHandler>());
+            container.Configure(x => x.For<ICommandHandler<AddNewContractorCommand>>().Use<AddNewContractorCommandHandler>());
             container.Configure(x => x.ForConcreteType<ContractorRepository>());
             //return container;
            // container.ForGenericType(typeof(ICommandHandler<DDD.Provider.Domain.Commands.AddNewContractorCommand>)

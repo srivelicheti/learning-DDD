@@ -10,7 +10,7 @@ namespace Microsoft.Data.Entity.Extensions
     {
         public static TEntity Find<TEntity>(this DbSet<TEntity> set, params object[] keyValues) where TEntity : class
         {
-            var context = ((IInfrastructure<IServiceProvider>)set).GetService<DbContext>();
+            var context = set.GetService<DbContext>();
 
             var entityType = context.Model.FindEntityType(typeof(TEntity));
             var key = entityType.FindPrimaryKey();

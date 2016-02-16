@@ -1,14 +1,14 @@
-﻿using DDD.Domain.Common.Event;
-using DDD.Provider.DataModel;
-using DDD.Provider.Domain.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Data.Entity;
-using DDD.Domain.Common.ValueObjects;
 using DDD.Common;
+using DDD.Domain.Common;
+using DDD.Domain.Common.Event;
+using DDD.Domain.Common.ValueObjects;
+using DDD.Provider.DataModel;
+using Microsoft.Data.Entity;
 using Microsoft.Data.Entity.Extensions;
+using Site = DDD.Provider.Domain.Entities.Site;
 
 namespace DDD.Provider.Domain.Repositories
 {
@@ -23,12 +23,12 @@ namespace DDD.Provider.Domain.Repositories
             _dbContext = dbContext;
         }
 
-        public void Add(Provider.Domain.Entities.Site site)
+        public void Add(Site site)
         {
             throw new NotImplementedException();
         }
 
-        public void UpdateSite(Provider.Domain.Entities.Site site)
+        public void UpdateSite(Site site)
         {
             //TODO: Make the change to include Site Domain Entity to act as decorater to the Site Presistance Entity, this will avoid getting the entity from database twice and lead to better results
             Claim.ValidateNotNull(site, nameof(site));
@@ -56,14 +56,14 @@ namespace DDD.Provider.Domain.Repositories
             dbSite.LicencingStatusCode = site.LicencingStatus.Value;
             dbSite.PhoneNumber = site.PrimaryPhoneNumber;
             dbSite.SiteFacilityTypeCode = site.SiteFacitlityType.Value.ToString();
-            this.UpdateHolidays(site, dbSite);
+            UpdateHolidays(site, dbSite);
             dbSite.SiteName = site.SiteName;
             dbSite.SiteNumber = site.SiteId;
              //dbSite.SiteTypeCode = site.typ
 
         }
 
-        private void UpdateHolidays(Entities.Site site, DataModel.Site dbSite)
+        private void UpdateHolidays(Site site, DataModel.Site dbSite)
         {
             var datesToBeRemoved = new List<SiteHoliday>();
             foreach (var hol in dbSite.SiteHoliday)
@@ -103,7 +103,7 @@ namespace DDD.Provider.Domain.Repositories
             }
         }
 
-        public Provider.Domain.Entities.Site GetSite(Guid siteId)
+        public Site GetSite(Guid siteId)
         {
             //using (var ctx = new ProviderDbContext()) {
             var site = _dbContext.Site.Include(x => x.SiteHoliday).Include(x => x.SiteRate).FirstOrDefault(x => x.Id == siteId);
@@ -115,11 +115,11 @@ namespace DDD.Provider.Domain.Repositories
             var address = new Address(site.AddressLine1, site.AddressLine2, site.City, site.StateCode, site.ZipCode);
             var holidays = site.SiteHoliday.Select(x =>
             {
-                var hol = new DDD.Provider.Domain.ValueObjects.SiteHoliday(x.HolidayDate, x.HolidayName);
-                hol.TrackingState = DDD.Domain.Common.TrackingState.Unchanged;
+                var hol = new ValueObjects.SiteHoliday(x.HolidayDate, x.HolidayName);
+                hol.TrackingState = TrackingState.Unchanged;
                 return hol;
             });
-            var domainSite = new Provider.Domain.Entities.Site(site.Id, site.SiteNumber, site.SiteName, site.StateCode, site.SiteFacilityTypeCode,site.SiteTypeCode,
+            var domainSite = new Site(site.Id, site.SiteNumber, site.SiteName, site.StateCode, site.SiteFacilityTypeCode,site.SiteTypeCode,
                 contractDuration, site.PhoneNumber, contact, address, site.Email, site.CountyCode, site.CountyServedCode, site.LicencingStatusCode, holidays);
 
             return domainSite;

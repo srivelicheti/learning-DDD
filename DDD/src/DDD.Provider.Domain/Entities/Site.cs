@@ -52,7 +52,7 @@ namespace DDD.Provider.Domain.Entities
 
         public Site(int siteId, string siteName, SiteStatus status, SiteFacilityType siteFacitlityType, SiteType siteType,
             DateTimeRange contractDuration, PhoneNumber primaryPhoneNumber, Contact contactDetails, Address address, string email,
-            string county, string countyServed, LicenceStatus licenceStatus, IEnumerable<SiteHoliday> holidays) : this(GuidHelper.NewSequentialGuid(),siteId,siteName,status,siteFacitlityType, siteType, contractDuration,primaryPhoneNumber,contactDetails,address,email,county,countyServed,licenceStatus, holidays)
+            string county, string countyServed, LicenceStatus licenceStatus, IEnumerable<SiteHoliday> holidays) : this(GuidHelper.NewSequentialGuid(), siteId, siteName, status, siteFacitlityType, siteType, contractDuration, primaryPhoneNumber, contactDetails, address, email, county, countyServed, licenceStatus, holidays)
         { }
 
     }

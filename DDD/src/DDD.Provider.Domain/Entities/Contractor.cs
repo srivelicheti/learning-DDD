@@ -10,12 +10,12 @@ namespace DDD.Provider.Domain.Entities
 {
     public class Contractor : Entity, IAggregateRoot
     {
-        public Contractor(string einNumber, string contractorName, string doingBusinessAs, ContractorStatus status, ContractorType type, DateTimeRange contractDuration, PhoneNumber primaryPhoneNumber, Contact contactDetails, Address address, string email) 
-            : this(GuidHelper.NewSequentialGuid(),einNumber,contractorName,doingBusinessAs,status,type,contractDuration,primaryPhoneNumber,contactDetails,address,email)
+        public Contractor(string einNumber, string contractorName, string doingBusinessAs, ContractorStatus status, ContractorType type, DateTimeRange contractDuration, PhoneNumber primaryPhoneNumber, Contact contactDetails, Address address, string email)
+            : this(GuidHelper.NewSequentialGuid(), einNumber, contractorName, doingBusinessAs, status, type, contractDuration, primaryPhoneNumber, contactDetails, address, email)
         {
         }
 
-        public Contractor(Guid id ,string einNumber, string contractorName, string doingBusinessAs, ContractorStatus status, ContractorType type ,DateTimeRange contractDuration, PhoneNumber primaryPhoneNumber, Contact contactDetails, Address address, string email) : base(id)
+        public Contractor(Guid id, string einNumber, string contractorName, string doingBusinessAs, ContractorStatus status, ContractorType type, DateTimeRange contractDuration, PhoneNumber primaryPhoneNumber, Contact contactDetails, Address address, string email) : base(id)
         {
             //TODO: Implement guard conditions
             EinNumber = einNumber;

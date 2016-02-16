@@ -44,7 +44,7 @@ namespace DDD.Web.Api
             {
                 return;
             }
-            string message = null;
+            string message = string.Empty;
             if (null != formatter)
             {
                 message = formatter(state, exception);

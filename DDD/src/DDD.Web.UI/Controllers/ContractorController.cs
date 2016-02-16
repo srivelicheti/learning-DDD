@@ -22,7 +22,7 @@ namespace DDD.Web.UI.Controllers
             var client = new HttpClient();
             client.BaseAddress = new Uri("http://localhost:8080/");
             client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             HttpRequestMessage reqMessage = new HttpRequestMessage() { Method = HttpMethod.Post };
             reqMessage.Headers.Accept.Clear();
             reqMessage.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));

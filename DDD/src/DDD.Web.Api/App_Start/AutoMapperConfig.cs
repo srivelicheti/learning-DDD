@@ -1,4 +1,6 @@
-﻿using DDD.Common.DTOs.Provider;
+﻿using AutoMapper;
+using DDD.Common.DTOs.Provider;
+using DDD.Provider.DataModel;
 using DDD.Web.Api.Models.Provider;
 
 namespace DDD.Web.Api
@@ -7,8 +9,8 @@ namespace DDD.Web.Api
     {
         public static void RegisterMappings()
         {
-            AutoMapper.Mapper.CreateMap<DDD.Provider.DataModel.Contractor, ContractorDto>();
-            AutoMapper.Mapper.CreateMap<AddNewContractorModel,DDD.Common.DTOs.Provider.ContractorDto>();
+            Mapper.CreateMap<Contractor, ContractorDto>();
+            Mapper.CreateMap<AddNewContractorModel,ContractorDto>();
         }
     }
 }

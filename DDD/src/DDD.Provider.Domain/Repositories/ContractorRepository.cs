@@ -19,7 +19,7 @@ namespace DDD.Provider.Domain.Repositories
             _eventBus = eventBus;
         }
 
-        public async Task AddContractor(DDD.Provider.Domain.Entities.Contractor contractor)
+        public async Task AddContractor(Entities.Contractor contractor)
         {
             using (var ctx = new ProviderDbContext())
             {
@@ -62,7 +62,7 @@ namespace DDD.Provider.Domain.Repositories
             }
         }
 
-        public Domain.Entities.Contractor GetContractor(Guid id)
+        public Entities.Contractor GetContractor(Guid id)
         {
             using (var ctx = new ProviderDbContext())
             {
@@ -72,7 +72,7 @@ namespace DDD.Provider.Domain.Repositories
 
                 var contact = new Contact(new Name(cont.ContactFirstName, cont.ContactLastName), cont.ContactPhoneNumber, cont.ContactAlternatePhoneNumber, cont.ContactEmail);
                 var address = new Address(cont.AddressLine1, cont.AddressLine2, cont.City, cont.StateCode, cont.ZipCode);
-                return new DDD.Provider.Domain.Entities.Contractor(cont.EinNumber, cont.ContractorName, cont.DoingBusinessAs, cont.StateCode, cont.Type, new DDD.Domain.Common.ValueObjects.DateTimeRange(cont.ContractStartDate, cont.ContractEndDate.Value)
+                return new Entities.Contractor(cont.EinNumber, cont.ContractorName, cont.DoingBusinessAs, cont.StateCode, cont.Type, new DDD.Domain.Common.ValueObjects.DateTimeRange(cont.ContractStartDate, cont.ContractEndDate.Value)
                     , cont.PhoneNumber, contact, address, cont.Email);
             }
         }
