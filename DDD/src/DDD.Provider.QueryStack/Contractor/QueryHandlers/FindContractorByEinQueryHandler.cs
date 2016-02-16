@@ -21,7 +21,7 @@ namespace DDD.Provider.QueryStack.Contractor.QueryHandlers
         {
             var contractor = _dbContext.Contractor.FirstOrDefault(x => x.EinNumber == query.ContractorEin);
 
-            return AutoMapper.Mapper.Map<DataModel.Contractor, ContractorDto>(contractor);
+            return AutoMapper.Mapper.Map<DataModel.ContractorState, ContractorDto>(contractor);
         }
     }
 }

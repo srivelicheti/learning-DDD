@@ -20,7 +20,7 @@ namespace DDD.Provider.QueryStack.Contractor.QueryHandlers
         public ContractorDto Handle(FindContractorByIdQuery query)
         {
             var contractor = _dbContext.Contractor.FirstOrDefault(x => x.Id == query.Id);
-            return AutoMapper.Mapper.Map<DataModel.Contractor, ContractorDto>(contractor);
+            return AutoMapper.Mapper.Map<DataModel.ContractorState, ContractorDto>(contractor);
         }
     }
 }

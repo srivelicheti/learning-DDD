@@ -12,7 +12,7 @@ namespace DDD.Provider.DataModel
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Contractor>(entity =>
+            modelBuilder.Entity<ContractorState>(entity =>
             {
                 entity.ToTable("Contractor", "Provider");
 
@@ -149,7 +149,7 @@ namespace DDD.Provider.DataModel
                     .HasMaxLength(1)
                     .HasColumnType("char");
 
-                entity.HasOne(d => d.Contractor).WithMany(p => p.ContractorSite).HasForeignKey(d => d.ContractorId).OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne(d => d.ContractorState).WithMany(p => p.ContractorSite).HasForeignKey(d => d.ContractorId).OnDelete(DeleteBehavior.Restrict);
 
                 entity.HasOne(d => d.Site).WithMany(p => p.ContractorSite).HasForeignKey(d => d.SiteId).OnDelete(DeleteBehavior.Restrict);
             });
@@ -334,7 +334,7 @@ namespace DDD.Provider.DataModel
             });
         }
 
-        public virtual DbSet<Contractor> Contractor { get; set; }
+        public virtual DbSet<ContractorState> Contractor { get; set; }
         public virtual DbSet<ContractorSite> ContractorSite { get; set; }
         public virtual DbSet<Site> Site { get; set; }
         public virtual DbSet<SiteHoliday> SiteHoliday { get; set; }

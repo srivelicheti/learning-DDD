@@ -7,11 +7,11 @@ namespace DDD.Domain.Common.ValueObjects
 {
     public class DateTimeRange : ValueObject<DateTimeRange>
     {
-        public DateTimeRange(DateTime start, DateTime end)
+        public DateTimeRange(DateTime start, DateTime? end)
         {
             //Guard.ForPrecedesDate(start, end, "start");
             Start = start;
-            End = end;
+            End = end ?? DateTime.MaxValue;
         }
 
         

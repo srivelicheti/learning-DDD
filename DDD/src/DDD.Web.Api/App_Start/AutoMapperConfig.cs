@@ -9,7 +9,7 @@ namespace DDD.Web.Api
     {
         public static void RegisterMappings()
         {
-            Mapper.CreateMap<Contractor, ContractorDto>();
+            Mapper.CreateMap<ContractorState, ContractorDto>();
             Mapper.CreateMap<AddNewContractorModel,ContractorDto>();
         }
     }

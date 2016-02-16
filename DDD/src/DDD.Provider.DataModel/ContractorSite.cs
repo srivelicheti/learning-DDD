@@ -18,7 +18,7 @@ namespace DDD.Provider.DataModel
         public string RelationshipStatusCode { get; set; }
         public Guid SiteId { get; set; }
 
-        public virtual Contractor Contractor { get; set; }
+        public virtual ContractorState ContractorState { get; set; }
         public virtual Site Site { get; set; }
     }
 }

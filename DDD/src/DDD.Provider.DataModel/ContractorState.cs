@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace DDD.Provider.DataModel
 {
-    public partial class Contractor
+    public partial class ContractorState
     {
-        public Contractor()
+        public ContractorState()
         {
             ContractorSite = new HashSet<ContractorSite>();
         }
