@@ -13,6 +13,7 @@ namespace DDD.Web.Api
             var connManager = container.GetInstance<IConnectionManager>();
             //var bus = container.GetInstance<DomainEventBus>();
             DomainEventBus.Subscribe<NewContractorAdded>(new ContractorAddedEventHandler(connManager));
+            //DomainEventBus.Subscribe(new );
         }
     }
 }

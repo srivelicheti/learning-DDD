@@ -2,18 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DDD.Domain.Common.Event;
 
 namespace DDD.Domain.Common
 {
     public abstract class Entity
     {
+        protected readonly DomainEventBus _eventBus;
+        
         public Guid Id { get; protected set; }
 
         public TrackingState State { get; set; }
 
-        protected Entity(Guid entityId)
+        protected Entity(Guid entityId, DomainEventBus eventBus)
         {
             Id = entityId;
+            _eventBus = eventBus;
         }
 
         public override bool Equals(object obj)

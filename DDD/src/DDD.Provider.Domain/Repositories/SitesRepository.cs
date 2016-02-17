@@ -120,7 +120,7 @@ namespace DDD.Provider.Domain.Repositories
                 return hol;
             });
             var domainSite = new Site(site.Id, site.SiteNumber, site.SiteName, site.StateCode, site.SiteFacilityTypeCode,site.SiteTypeCode,
-                contractDuration, site.PhoneNumber, contact, address, site.Email, site.CountyCode, site.CountyServedCode, site.LicencingStatusCode, holidays);
+                contractDuration, site.PhoneNumber, contact, address, site.Email, site.CountyCode, site.CountyServedCode, site.LicencingStatusCode, holidays,_eventBus);
 
             return domainSite;
 

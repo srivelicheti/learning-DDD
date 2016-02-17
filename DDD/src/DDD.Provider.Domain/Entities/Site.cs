@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DDD.Domain.Common.Event;
 
 namespace DDD.Provider.Domain.Entities
 {
@@ -29,10 +30,10 @@ namespace DDD.Provider.Domain.Entities
         public IEnumerable<SiteHoliday> Holidays { get; private set; }
 
         public SiteType SiteType { get; private set; }
-
+        //TODO: See how we can avoid injecting EventBus into the Domain entities
         public Site(Guid id, int siteId, string siteName, SiteStatus status, SiteFacilityType siteFacitlityType, SiteType siteType,
             DateTimeRange contractDuration, PhoneNumber primaryPhoneNumber, Contact contactDetails, Address address, string email,
-            string countyCode, string countyServedCode, LicenceStatus licenceStatus, IEnumerable<SiteHoliday> holidays) : base(id)
+            string countyCode, string countyServedCode, LicenceStatus licenceStatus, IEnumerable<SiteHoliday> holidays, DomainEventBus eventBus) : base(id, eventBus)
         {
             SiteId = siteId;
             SiteName = siteName;
@@ -52,7 +53,7 @@ namespace DDD.Provider.Domain.Entities
 
         public Site(int siteId, string siteName, SiteStatus status, SiteFacilityType siteFacitlityType, SiteType siteType,
             DateTimeRange contractDuration, PhoneNumber primaryPhoneNumber, Contact contactDetails, Address address, string email,
-            string county, string countyServed, LicenceStatus licenceStatus, IEnumerable<SiteHoliday> holidays) : this(GuidHelper.NewSequentialGuid(), siteId, siteName, status, siteFacitlityType, siteType, contractDuration, primaryPhoneNumber, contactDetails, address, email, county, countyServed, licenceStatus, holidays)
+            string county, string countyServed, LicenceStatus licenceStatus, IEnumerable<SiteHoliday> holidays , DomainEventBus eventBus) : this(GuidHelper.NewSequentialGuid(), siteId, siteName, status, siteFacitlityType, siteType, contractDuration, primaryPhoneNumber, contactDetails, address, email, county, countyServed, licenceStatus, holidays, eventBus)
         { }
 
     }

@@ -44,7 +44,7 @@ namespace DDD.Domain.Common.ValueObjects
 
         public override string ToString()
         {
-            return "Name [firstName=" + FirstName + ", lastName=" + LastName + "]";
+            return "ContractorName [firstName=" + FirstName + ", lastName=" + LastName + "]";
         }
     }
 }

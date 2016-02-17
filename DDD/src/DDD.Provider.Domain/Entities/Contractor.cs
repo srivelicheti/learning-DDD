@@ -5,18 +5,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DDD.Domain.Common.Event;
 using DDD.Provider.DataModel;
+using DDD.Provider.Domain.Events;
 
 namespace DDD.Provider.Domain.Entities
 {
     public class Contractor : Entity, IAggregateRoot
     {
-        public Contractor(string einNumber, string contractorName, string doingBusinessAs, ContractorStatus status, ContractorType type, DateTimeRange contractDuration, PhoneNumber primaryPhoneNumber, Contact contactDetails, Address address, string email)
-            : this(GuidHelper.NewSequentialGuid(), einNumber, contractorName, doingBusinessAs, status, type, contractDuration, primaryPhoneNumber, contactDetails, address, email)
+        public Contractor(string einNumber, string contractorName, string doingBusinessAs, ContractorStatus status, ContractorType type, DateTimeRange contractDuration, 
+                          PhoneNumber primaryPhoneNumber, Contact contactDetails, Address address, string email, DomainEventBus eventBus)
+            : this(GuidHelper.NewSequentialGuid(), einNumber, contractorName, doingBusinessAs, status, type, contractDuration, primaryPhoneNumber, contactDetails, address, email,eventBus)
         {
         }
 
-        public Contractor(Guid id, string einNumber, string contractorName, string doingBusinessAs, ContractorStatus status, ContractorType type, DateTimeRange contractDuration, PhoneNumber primaryPhoneNumber, Contact contactDetails, Address address, string email) : base(id)
+        public Contractor(Guid id, string einNumber, string contractorName, string doingBusinessAs, ContractorStatus status, ContractorType type, DateTimeRange contractDuration,
+                          PhoneNumber primaryPhoneNumber, Contact contactDetails, Address address, string email, DomainEventBus eventBus) : base(id,eventBus)
         {
             //TODO: Implement guard conditions
             Id = id;
@@ -33,7 +37,7 @@ namespace DDD.Provider.Domain.Entities
             InitializeState();
         }
 
-        internal Contractor(ContractorState contDbState) : base(contDbState.Id)
+        internal Contractor(ContractorState contDbState, DomainEventBus eventBus) : base(contDbState.Id, eventBus)
         {
             DbState = contDbState;
 
@@ -96,5 +100,70 @@ namespace DDD.Provider.Domain.Entities
         public Address Address { get; private set; }
         public Contact Contact { get; private set; }
 
+        public void UpdateName(string name)
+        {
+            if(string.Compare(ContractorName,name,StringComparison.OrdinalIgnoreCase) == 0)
+                return;
+
+            _eventBus.QueueForPostCommit(new ContractorNameChanged(EinNumber,ContractorName,name));
+            ContractorName = name;
+            this.DbState.ContractorName = name;
+        }
+
+        public void UpdateDointBusinessAsName(string dba)
+        {
+            if (string.Compare(DoingBusinessAs, dba, StringComparison.OrdinalIgnoreCase) == 0)
+                return;
+
+            _eventBus.QueueForPostCommit(new ContractorBusinessNameChanged(EinNumber, DoingBusinessAs, dba));
+            DoingBusinessAs = dba;
+            this.DbState.DoingBusinessAs = dba;
+        }
+
+        public void UpdateAddress(string addressLine1, string addressLine2, string city,string stateCode,string zipCode)
+        {
+            var newAddress = new Address(addressLine1,addressLine2,city,stateCode,zipCode);
+            if (this.Address != newAddress)
+            {
+                _eventBus.QueueForPostCommit(new ContractorAddressChanged(EinNumber,Address,newAddress));
+                Address = newAddress;
+                this.DbState.AddressLine1 = addressLine1;
+                this.DbState.AddressLine2 = addressLine2;
+                this.DbState.City = city;
+                this.DbState.StateCode = stateCode;
+                this.DbState.ZipCode = zipCode;
+            }
+        }
+
+        public void UpdateContactDetails(string firstName, string lastName, string email, string phoneNumber,
+            string alternatePhone)
+        {
+             var newContact = new Contact(new Name(firstName,lastName),phoneNumber,alternatePhone,email);
+            if (newContact != Contact)
+            {
+                //TODO: Publish contact updated event if required
+                this.Contact = newContact;
+                this.DbState.ContactFirstName = firstName;
+                this.DbState.ContactLastName = lastName;
+                this.DbState.ContactPhoneNumber = phoneNumber;
+                this.DbState.ContactAlternatePhoneNumber = alternatePhone;
+                this.DbState.Email = email;
+            }
+        }
+
+        public void UpdatePhoneDetails(string phone, string alternatePhone)
+        {
+            this.PhoneNumber = phone;
+            this.ContractorAlternatePhoneNumber = alternatePhone;
+
+            this.DbState.PhoneNumber = phone;
+            this.DbState.AlternatePhoneNumber = alternatePhone;
+        }
+
+        public void UpdateEmail(string email)
+        {
+            this.Email = email;
+            this.DbState.Email = email;
+        }
     }
 }

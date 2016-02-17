@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNet.Mvc;
 using DDD.Common.DTOs.Provider;
+using DDD.Common.Models.Provider;
 using DDD.Domain.Common.Command;
 using DDD.Provider.Domain.Commands;
 using DDD.Provider.Domain.Repositories;
@@ -56,10 +57,15 @@ namespace DDD.Web.Api.Controllers
         [ValidateModel]
         public void Post([FromBody]AddNewContractorModel contractorModel)
         {
-            var rnd = new Random();
-            var ein = rnd.Next(100000000, 999999999).ToString();
             var cont = Mapper.Map<ContractorDto>(contractorModel);
             var result = _commandBus.Submit<AddNewContractorCommand>(new AddNewContractorCommand(cont));
+        }
+
+        [HttpPut("{ein}")]
+        [ValidateModel]
+        public void Put([FromBody]UpdateContractorModel updateContractorModel)
+        {
+            _commandBus.Submit(new UpdateContractorCommand(updateContractorModel));
         }
 
         // PUT api/values/5

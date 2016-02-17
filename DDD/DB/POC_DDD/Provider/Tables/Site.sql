@@ -4,7 +4,7 @@
 	[SiteName] [nvarchar](50) NOT NULL,
 	[ContractStartDate] [date] NOT NULL,
 	[ContractEndDate] [date] NULL,
-	[StatusCode] [nchar](2) NOT NULL,
+	[StatusCode] [nchar](1) NOT NULL,
 	[LicencingStatusCode] [nchar](1) NOT NULL,
 	[LicenseNumber] [int] NULL,
 	[IsWebEnabled] bit Not NULL default 1,

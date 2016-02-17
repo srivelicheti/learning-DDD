@@ -11,6 +11,7 @@ using DDD.Provider.Domain.Repositories;
 using DDD.Provider.Domain.Services;
 using DDD.Provider.QueryStack.Contractor.Queries;
 using DDD.Provider.QueryStack.Contractor.QueryHandlers;
+using Microsoft.AspNet.Http;
 using StructureMap;
 
 namespace DDD.Web.Api
@@ -19,11 +20,13 @@ namespace DDD.Web.Api
     {
         public static IContainer ConfigureIocContainer(IContainer container)
         {
-            container.Configure(x => x.For<DomainEventBus>().Use<DomainEventBus>());
+            container.Configure(x => x.For<DomainEventBus>().Use<DomainEventBus>().ContainerScoped());
+            //container.Configure(x => x.ForSingletonOf<DomainEventBus>());
             container.Configure(x => x.For<IContainer>().Use(container));
             container.Configure(x => x.For<ICommandBus>().Use<IocContainerCommandBus>());
             container.Configure(x => x.For<IQueryProcessor>().Use<QueryProcessor>());
             RegisterCommandHandlers(container);
+            RegisterRepositories(container);
             RegisterQueryHandlers(container);
             RegisterDbContexts(container);
             RegisterServices(container);
@@ -34,9 +37,14 @@ namespace DDD.Web.Api
         private static void RegisterCommandHandlers(IContainer container)
         {
             container.Configure(x => x.For<ICommandHandler<AddNewContractorCommand>>().Use<AddNewContractorCommandHandler>());
-            container.Configure(x => x.ForConcreteType<ContractorRepository>());
+            container.Configure(x => x.For<ICommandHandler<UpdateContractorCommand>>().Use<UpdateContractorCommandHandler>());
             //return container;
-           // container.ForGenericType(typeof(ICommandHandler<DDD.Provider.Domain.Commands.AddNewContractorCommand>)
+            // container.ForGenericType(typeof(ICommandHandler<DDD.Provider.Domain.Commands.AddNewContractorCommand>)
+        }
+
+        private static void RegisterRepositories(IContainer container)
+        {
+            container.Configure(x => x.ForConcreteType<ContractorRepository>());
         }
 
         public static void RegisterCommandValidators(IContainer container)
