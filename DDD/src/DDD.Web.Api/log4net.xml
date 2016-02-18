@@ -10,7 +10,7 @@
   <appender name="EventsRollingFile" type="log4net.Appender.FileAppender">
     <file type="log4net.Util.PatternString" value="%property{appRoot}\logs\Events.log" />
     <layout type="log4net.Layout.PatternLayout">
-      <conversionPattern value="%-5p %d{hh:mm:ss} %message%newline" />
+      <conversionPattern value="%message%newline" />
     </layout>
   </appender>
   <logger name="DDD.Web.Api.EventHandlers.FileLoggerEventHandler">

@@ -13,17 +13,12 @@ namespace DDD.Domain.Common.Event
 
     }
 
-    public class DomainEvent : IDomainEvent
+    public abstract class DomainEvent : IDomainEvent
     {
         protected DomainEvent(Guid id, DateTime eventTime) {
             Id = id;
             EventDateTime = eventTime;
         }
-        //public DomainEvent(EventBus bus, Guid id, DateTime eventTime)
-        //{
-        //    Id = id;
-        //    EventDateTime = eventTime;
-        //}
         public DateTime EventDateTime
         {
             get;
@@ -39,8 +34,6 @@ namespace DDD.Domain.Common.Event
 
     public interface IEventHandler
     {
-
-        //void Handle<TEvent>(TEvent e) where TEvent : DomainEvent;
     }
 
     public interface IEventHandler<in TEvent> : IEventHandler where TEvent: DomainEvent
