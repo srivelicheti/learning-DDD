@@ -33,6 +33,11 @@ namespace DDD.Domain.Common.Event
                         throw;
                     }
                 }
+                else if (handler is IEventHandler)
+                {
+                    var genericHandler = handler as IEventHandler;
+                    
+                }
             }
         }
 

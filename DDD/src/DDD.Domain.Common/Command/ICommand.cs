@@ -32,6 +32,8 @@ namespace DDD.Domain.Common.Command
         public string SubmittedBy { get; private set; }
 
         public DateTime SubmittedDateTime { get; private set; }
+
+        public string CommandName => this.GetType().Name;
     }
 }
 

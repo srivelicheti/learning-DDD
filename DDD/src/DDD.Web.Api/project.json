@@ -23,7 +23,8 @@
     "Microsoft.AspNet.SignalR.Server": "3.0.0-rc1-*",
     "DDD.Provider.DataModel": "1.0.0-*",
     "AutoMapper": "4.1.1",
-    "DDD.Provider.QueryStack": "1.0.0-*"
+    "DDD.Provider.QueryStack": "1.0.0-*",
+    "Newtonsoft.Json": "8.0.2"
   },
 
   "commands": {
