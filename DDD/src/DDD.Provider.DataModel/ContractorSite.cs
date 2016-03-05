@@ -19,6 +19,6 @@ namespace DDD.Provider.DataModel
         public Guid SiteId { get; set; }
 
         public virtual ContractorState ContractorState { get; set; }
-        public virtual Site Site { get; set; }
+        public virtual SiteState SiteState { get; set; }
     }
 }

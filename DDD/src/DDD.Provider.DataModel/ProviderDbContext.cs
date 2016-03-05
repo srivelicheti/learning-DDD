@@ -151,10 +151,10 @@ namespace DDD.Provider.DataModel
 
                 entity.HasOne(d => d.ContractorState).WithMany(p => p.ContractorSite).HasForeignKey(d => d.ContractorId).OnDelete(DeleteBehavior.Restrict);
 
-                entity.HasOne(d => d.Site).WithMany(p => p.ContractorSite).HasForeignKey(d => d.SiteId).OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne(d => d.SiteState).WithMany(p => p.ContractorSite).HasForeignKey(d => d.SiteId).OnDelete(DeleteBehavior.Restrict);
             });
 
-            modelBuilder.Entity<Site>(entity =>
+            modelBuilder.Entity<SiteState>(entity =>
             {
                 entity.ToTable("Site", "Provider");
 
@@ -265,7 +265,7 @@ namespace DDD.Provider.DataModel
                     .HasColumnType("nchar");
             });
 
-            modelBuilder.Entity<SiteHoliday>(entity =>
+            modelBuilder.Entity<SiteHolidayState>(entity =>
             {
                 entity.ToTable("SiteHoliday", "Provider");
 
@@ -297,10 +297,10 @@ namespace DDD.Provider.DataModel
 
                 entity.Property(e => e.LastSavedDateTime).HasColumnType("datetime");
 
-                entity.HasOne(d => d.Site).WithMany(p => p.SiteHoliday).HasForeignKey(d => d.SiteId).OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne(d => d.SiteState).WithMany(p => p.SiteHoliday).HasForeignKey(d => d.SiteId).OnDelete(DeleteBehavior.Restrict);
             });
 
-            modelBuilder.Entity<SiteRate>(entity =>
+            modelBuilder.Entity<SiteRateState>(entity =>
             {
                 entity.ToTable("SiteRate", "Provider");
 
@@ -330,14 +330,14 @@ namespace DDD.Provider.DataModel
 
                 entity.Property(e => e.SpecialCareWeeklyRate).HasColumnType("decimal");
 
-                entity.HasOne(d => d.Site).WithMany(p => p.SiteRate).HasForeignKey(d => d.SiteID).OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne(d => d.SiteState).WithMany(p => p.SiteRate).HasForeignKey(d => d.SiteID).OnDelete(DeleteBehavior.Restrict);
             });
         }
 
         public virtual DbSet<ContractorState> Contractor { get; set; }
         public virtual DbSet<ContractorSite> ContractorSite { get; set; }
-        public virtual DbSet<Site> Site { get; set; }
-        public virtual DbSet<SiteHoliday> SiteHoliday { get; set; }
-        public virtual DbSet<SiteRate> SiteRate { get; set; }
+        public virtual DbSet<SiteState> Site { get; set; }
+        public virtual DbSet<SiteHolidayState> SiteHoliday { get; set; }
+        public virtual DbSet<SiteRateState> SiteRate { get; set; }
     }
 }

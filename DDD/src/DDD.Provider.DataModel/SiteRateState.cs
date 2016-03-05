@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DDD.Provider.DataModel
 {
-    public partial class SiteRate
+    public partial class SiteRateState
     {
         public Guid Id { get; set; }
         public int AgeCode { get; set; }
@@ -19,6 +19,6 @@ namespace DDD.Provider.DataModel
         public decimal? SpecialCareDailyRate { get; set; }
         public decimal? SpecialCareWeeklyRate { get; set; }
 
-        public virtual Site Site { get; set; }
+        public virtual SiteState SiteState { get; set; }
     }
 }

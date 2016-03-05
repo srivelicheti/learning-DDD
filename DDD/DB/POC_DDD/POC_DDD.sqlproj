@@ -70,5 +70,6 @@
     <Build Include="Provider\Tables\SiteHoliday.sql" />
     <Build Include="Provider\Tables\SiteRate.sql" />
     <Build Include="Provider\Tables\ContractorSite.sql" />
+    <Build Include="Provider\Tables\SiteTemp.sql" />
   </ItemGroup>
 </Project>

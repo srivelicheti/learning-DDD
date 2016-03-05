@@ -47,6 +47,7 @@ namespace DDD.Provider.Domain.CommandHandlers
             contractor.UpdateAddress(updatedModel.AddressLine1,updatedModel.AddressLine2,updatedModel.City,updatedModel.StateCode,updatedModel.ZipCode);
             contractor.UpdatePhoneDetails(updatedModel.PhoneNumber,updatedModel.AlternatePhoneNumber);
             contractor.UpdateEmail(updatedModel.Email);
+            contractor.RenewContract(updatedModel.ContractStartDate,updatedModel.ContractEndDate);
         }
     }
 }

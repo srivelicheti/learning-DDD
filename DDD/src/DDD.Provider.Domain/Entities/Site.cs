@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DDD.Domain.Common.Event;
+using DDD.Provider.DataModel;
 
 namespace DDD.Provider.Domain.Entities
 {
@@ -30,6 +31,9 @@ namespace DDD.Provider.Domain.Entities
         public IEnumerable<SiteHoliday> Holidays { get; private set; }
 
         public SiteType SiteType { get; private set; }
+
+        internal SiteState DbState { get; private set; }
+
         //TODO: See how we can avoid injecting EventBus into the Domain entities
         public Site(Guid id, int siteId, string siteName, SiteStatus status, SiteFacilityType siteFacitlityType, SiteType siteType,
             DateTimeRange contractDuration, PhoneNumber primaryPhoneNumber, Contact contactDetails, Address address, string email,
@@ -49,6 +53,37 @@ namespace DDD.Provider.Domain.Entities
             CountyServedCode = countyServedCode;
             LicencingStatus = licenceStatus;
             Holidays = holidays;
+            InitializeDbState();
+        }
+
+        private void InitializeDbState()
+        {
+            DbState = new SiteState
+            {
+                 Id =  this.Id,
+                 AddressLine1 =  Address.AddressLine1,
+                 AddressLine2 = Address.AddressLine2,
+                 AlternatePhoneNumber =  null,
+                 City=Address.City,
+                 ContactAlternatePhoneNumber = ContactDetails.AlternatePhoneNumber,
+                 ContactEmail =  ContactDetails.Email,
+                 ContactFirstName = ContactDetails.Name.FirstName,
+                 ContactLastName = ContactDetails.Name.LastName,
+                 ContactPhoneNumber = ContactDetails.PhoneNumber,
+                 SiteFacilityTypeCode = SiteFacitlityType.Value.ToString(),
+                 LicencingStatusCode =  LicencingStatus.Value,
+                 SiteName = SiteName,
+                 SiteNumber = SiteId,
+                 SiteTypeCode = SiteType.Value,
+                 StateCode = Address.State,
+                 ZipCode = Address.ZipCode,
+                 CountyCode = CountyCode,
+                 CountyServedCode = CountyServedCode,
+                 Email = Email,
+                 ContractStartDate = ContractDuration.Start,
+                 ContractEndDate = ContractDuration.End
+
+            };
         }
 
         public Site(int siteId, string siteName, SiteStatus status, SiteFacilityType siteFacitlityType, SiteType siteType,

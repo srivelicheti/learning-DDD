@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DDD.Provider.DataModel
 {
-    public partial class SiteHoliday
+    public partial class SiteHolidayState
     {
         public Guid Id { get; set; }
         public string CalendarYearDate { get; set; }
@@ -15,6 +15,6 @@ namespace DDD.Provider.DataModel
         public DateTime LastSavedDateTime { get; set; }
         public Guid SiteId { get; set; }
 
-        public virtual Site Site { get; set; }
+        public virtual SiteState SiteState { get; set; }
     }
 }

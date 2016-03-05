@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace DDD.Provider.DataModel
 {
-    public partial class Site
+    public partial class SiteState
     {
-        public Site()
+        public SiteState()
         {
             ContractorSite = new HashSet<ContractorSite>();
-            SiteHoliday = new HashSet<SiteHoliday>();
-            SiteRate = new HashSet<SiteRate>();
+            SiteHoliday = new HashSet<SiteHolidayState>();
+            SiteRate = new HashSet<SiteRateState>();
         }
 
         public Guid Id { get; set; }
@@ -45,7 +45,7 @@ namespace DDD.Provider.DataModel
         public string ZipExtension { get; set; }
 
         public virtual ICollection<ContractorSite> ContractorSite { get; set; }
-        public virtual ICollection<SiteHoliday> SiteHoliday { get; set; }
-        public virtual ICollection<SiteRate> SiteRate { get; set; }
+        public virtual ICollection<SiteHolidayState> SiteHoliday { get; set; }
+        public virtual ICollection<SiteRateState> SiteRate { get; set; }
     }
 }

@@ -45,4 +45,6 @@ namespace DDD.Provider.Domain.Events
 
         public string EinNumber { get; set; }
     }
+
+
 }

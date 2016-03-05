@@ -165,5 +165,17 @@ namespace DDD.Provider.Domain.Entities
             this.Email = email;
             this.DbState.Email = email;
         }
+
+        public void RenewContract(DateTime startDate, DateTime? endDate)
+        {
+            var newContractDuration = new DateTimeRange(startDate,endDate);
+            if (this.ContractDuration != newContractDuration)
+            {
+                _eventBus.QueueForPostCommit(new ContractorContractRenewed(EinNumber, ContractDuration, newContractDuration));
+                this.ContractDuration = newContractDuration;
+                this.DbState.ContractStartDate = startDate;
+                this.DbState.ContractEndDate = endDate;
+            }
+        }
     }
 }

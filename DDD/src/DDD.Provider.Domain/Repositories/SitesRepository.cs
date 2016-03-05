@@ -30,7 +30,7 @@ namespace DDD.Provider.Domain.Repositories
 
         public void UpdateSite(Site site)
         {
-            //TODO: Make the change to include Site Domain Entity to act as decorater to the Site Presistance Entity, this will avoid getting the entity from database twice and lead to better results
+            //TODO: Make the change to include SiteState Domain Entity to act as decorater to the SiteState Presistance Entity, this will avoid getting the entity from database twice and lead to better results
             Claim.ValidateNotNull(site, nameof(site));
             Claim.ValidateNotNull(site.Id, $"name of {site} ID");
             var dbSite = _dbContext.Site.Find(site.Id);
@@ -59,30 +59,30 @@ namespace DDD.Provider.Domain.Repositories
             UpdateHolidays(site, dbSite);
             dbSite.SiteName = site.SiteName;
             dbSite.SiteNumber = site.SiteId;
-             //dbSite.SiteTypeCode = site.typ
+             //dbSiteState.SiteTypeCode = site.typ
 
         }
 
-        private void UpdateHolidays(Site site, DataModel.Site dbSite)
+        private void UpdateHolidays(Site site, DataModel.SiteState dbSiteState)
         {
-            var datesToBeRemoved = new List<SiteHoliday>();
-            foreach (var hol in dbSite.SiteHoliday)
+            var datesToBeRemoved = new List<SiteHolidayState>();
+            foreach (var hol in dbSiteState.SiteHoliday)
             {
-                if (dbSite.SiteHoliday.All(x => x.HolidayDate.Date != hol.HolidayDate.Date))
+                if (dbSiteState.SiteHoliday.All(x => x.HolidayDate.Date != hol.HolidayDate.Date))
                     datesToBeRemoved.Add(hol);
             }
             foreach (var removedHol in datesToBeRemoved)
             {
-                dbSite.SiteHoliday.Remove(removedHol);
-                //TODO: Raise an Domain event about the change of holidays or should these be raised by Site Aggregate root?
+                dbSiteState.SiteHoliday.Remove(removedHol);
+                //TODO: Raise an Domain event about the change of holidays or should these be raised by SiteState Aggregate root?
             }
             
             foreach(var item in site.Holidays)
             {
-                var existingHoliday = dbSite.SiteHoliday.FirstOrDefault(x => x.HolidayDate.Date == item.HolidayDate.Date);
+                var existingHoliday = dbSiteState.SiteHoliday.FirstOrDefault(x => x.HolidayDate.Date == item.HolidayDate.Date);
                 if (existingHoliday == null)
                 {
-                    dbSite.SiteHoliday.Add(new SiteHoliday
+                    dbSiteState.SiteHoliday.Add(new SiteHolidayState
                     {
                         Id = GuidHelper.NewSequentialGuid(),
                         CalendarYearDate = item.HolidayDate.Year.ToString(),
