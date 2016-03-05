@@ -30,6 +30,8 @@ namespace DDD.Provider.Domain.Entities
         public LicenceStatus LicencingStatus { get; private set; }
         public IEnumerable<SiteHoliday> Holidays { get; private set; }
 
+        public IEnumerable<SiteRate> SiteRates { get; private set; }
+
         public SiteType SiteType { get; private set; }
 
         internal SiteState DbState { get; private set; }
@@ -90,6 +92,14 @@ namespace DDD.Provider.Domain.Entities
             DateTimeRange contractDuration, PhoneNumber primaryPhoneNumber, Contact contactDetails, Address address, string email,
             string county, string countyServed, LicenceStatus licenceStatus, IEnumerable<SiteHoliday> holidays , DomainEventBus eventBus) : this(GuidHelper.NewSequentialGuid(), siteId, siteName, status, siteFacitlityType, siteType, contractDuration, primaryPhoneNumber, contactDetails, address, email, county, countyServed, licenceStatus, holidays, eventBus)
         { }
+
+        internal Site(SiteState siteState, DomainEventBus evenBus):base(siteState.Id,evenBus)
+        {
+            SiteName = siteState.SiteName;
+            SiteId = siteState.SiteNumber;
+            Id = siteState.Id;
+
+        }
 
     }
 }

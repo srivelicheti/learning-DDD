@@ -110,13 +110,15 @@ namespace DDD.Provider.Domain.Repositories
             if (site == null)
                 throw new ArgumentException($"Site not found with {siteId}");
 
-            var contractDuration = new DateTimeRange(site.ContractStartDate, site.ContractEndDate.Value);
+            var contractDuration = new DateTimeRange(site.ContractStartDate, site.ContractEndDate);
             var contact = new Contact(new Name(site.ContactFirstName, site.ContactLastName), site.ContactPhoneNumber, site.ContactAlternatePhoneNumber, site.ContactEmail);
             var address = new Address(site.AddressLine1, site.AddressLine2, site.City, site.StateCode, site.ZipCode);
             var holidays = site.SiteHoliday.Select(x =>
             {
-                var hol = new ValueObjects.SiteHoliday(x.HolidayDate, x.HolidayName);
-                hol.TrackingState = TrackingState.Unchanged;
+                var hol = new ValueObjects.SiteHoliday(x.HolidayDate, x.HolidayName)
+                {
+                    TrackingState = TrackingState.Unchanged
+                };
                 return hol;
             });
             var domainSite = new Site(site.Id, site.SiteNumber, site.SiteName, site.StateCode, site.SiteFacilityTypeCode,site.SiteTypeCode,
