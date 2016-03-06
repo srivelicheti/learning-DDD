@@ -1,12 +1,9 @@
-﻿using DDD.Domain.Common;
-using DDD.Domain.Common.ValueObjects;
-using DDD.Provider.Domain.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System;
+using DDD.Domain.Common;
 using DDD.Domain.Common.Event;
+using DDD.Domain.Common.ValueObjects;
 using DDD.Provider.DataModel;
+using DDD.Provider.Domain.Enums;
 using DDD.Provider.Domain.Events;
 
 namespace DDD.Provider.Domain.Entities
@@ -58,8 +55,8 @@ namespace DDD.Provider.Domain.Entities
         {
             DbState = new ContractorState
             {
-                Id = this.Id,
-                EinNumber = this.EinNumber,
+                Id = Id,
+                EinNumber = EinNumber,
                 ContractorName = ContractorName,
                 DoingBusinessAs =  DoingBusinessAs,
                 Status =  Status.Value,
@@ -107,7 +104,7 @@ namespace DDD.Provider.Domain.Entities
 
             _eventBus.QueueForPostCommit(new ContractorNameChanged(EinNumber,ContractorName,name));
             ContractorName = name;
-            this.DbState.ContractorName = name;
+            DbState.ContractorName = name;
         }
 
         public void UpdateDointBusinessAsName(string dba)
@@ -117,21 +114,21 @@ namespace DDD.Provider.Domain.Entities
 
             _eventBus.QueueForPostCommit(new ContractorBusinessNameChanged(EinNumber, DoingBusinessAs, dba));
             DoingBusinessAs = dba;
-            this.DbState.DoingBusinessAs = dba;
+            DbState.DoingBusinessAs = dba;
         }
 
         public void UpdateAddress(string addressLine1, string addressLine2, string city,string stateCode,string zipCode)
         {
             var newAddress = new Address(addressLine1,addressLine2,city,stateCode,zipCode);
-            if (this.Address != newAddress)
+            if (Address != newAddress)
             {
                 _eventBus.QueueForPostCommit(new ContractorAddressChanged(EinNumber,Address,newAddress));
                 Address = newAddress;
-                this.DbState.AddressLine1 = addressLine1;
-                this.DbState.AddressLine2 = addressLine2;
-                this.DbState.City = city;
-                this.DbState.StateCode = stateCode;
-                this.DbState.ZipCode = zipCode;
+                DbState.AddressLine1 = addressLine1;
+                DbState.AddressLine2 = addressLine2;
+                DbState.City = city;
+                DbState.StateCode = stateCode;
+                DbState.ZipCode = zipCode;
             }
         }
 
@@ -142,39 +139,39 @@ namespace DDD.Provider.Domain.Entities
             if (newContact != Contact)
             {
                 //TODO: Publish contact updated event if required
-                this.Contact = newContact;
-                this.DbState.ContactFirstName = firstName;
-                this.DbState.ContactLastName = lastName;
-                this.DbState.ContactPhoneNumber = phoneNumber;
-                this.DbState.ContactAlternatePhoneNumber = alternatePhone;
-                this.DbState.Email = email;
+                Contact = newContact;
+                DbState.ContactFirstName = firstName;
+                DbState.ContactLastName = lastName;
+                DbState.ContactPhoneNumber = phoneNumber;
+                DbState.ContactAlternatePhoneNumber = alternatePhone;
+                DbState.Email = email;
             }
         }
 
         public void UpdatePhoneDetails(string phone, string alternatePhone)
         {
-            this.PhoneNumber = phone;
-            this.ContractorAlternatePhoneNumber = alternatePhone;
+            PhoneNumber = phone;
+            ContractorAlternatePhoneNumber = alternatePhone;
 
-            this.DbState.PhoneNumber = phone;
-            this.DbState.AlternatePhoneNumber = alternatePhone;
+            DbState.PhoneNumber = phone;
+            DbState.AlternatePhoneNumber = alternatePhone;
         }
 
         public void UpdateEmail(string email)
         {
-            this.Email = email;
-            this.DbState.Email = email;
+            Email = email;
+            DbState.Email = email;
         }
 
         public void RenewContract(DateTime startDate, DateTime? endDate)
         {
             var newContractDuration = new DateTimeRange(startDate,endDate);
-            if (this.ContractDuration != newContractDuration)
+            if (ContractDuration != newContractDuration)
             {
                 _eventBus.QueueForPostCommit(new ContractorContractRenewed(EinNumber, ContractDuration, newContractDuration));
-                this.ContractDuration = newContractDuration;
-                this.DbState.ContractStartDate = startDate;
-                this.DbState.ContractEndDate = endDate;
+                ContractDuration = newContractDuration;
+                DbState.ContractStartDate = startDate;
+                DbState.ContractEndDate = endDate;
             }
         }
     }

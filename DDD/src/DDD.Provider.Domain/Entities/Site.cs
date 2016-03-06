@@ -1,20 +1,19 @@
-﻿using DDD.Domain.Common;
-using DDD.Domain.Common.ValueObjects;
-using DDD.Provider.Domain.Enums;
-using DDD.Provider.Domain.ValueObjects;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using DDD.Domain.Common;
 using DDD.Domain.Common.Event;
+using DDD.Domain.Common.ValueObjects;
 using DDD.Provider.DataModel;
+using DDD.Provider.Domain.Enums;
+using DDD.Provider.Domain.ValueObjects;
 
 namespace DDD.Provider.Domain.Entities
 {
     public class Site : Entity, IAggregateRoot
     {
-        //private long _siteID;
-        //private string _siteName;
+        private List<SiteHoliday> _holidays = new List<SiteHoliday>();
+        private List<SiteRate> _rates = new List<SiteRate>();  
 
         public SiteStatus Status { get; private set; }
         public string SiteName { get; private set; }
@@ -62,7 +61,7 @@ namespace DDD.Provider.Domain.Entities
         {
             DbState = new SiteState
             {
-                 Id =  this.Id,
+                 Id =  Id,
                  AddressLine1 =  Address.AddressLine1,
                  AddressLine2 = Address.AddressLine2,
                  AlternatePhoneNumber =  null,
@@ -93,12 +92,55 @@ namespace DDD.Provider.Domain.Entities
             string county, string countyServed, LicenceStatus licenceStatus, IEnumerable<SiteHoliday> holidays , DomainEventBus eventBus) : this(GuidHelper.NewSequentialGuid(), siteId, siteName, status, siteFacitlityType, siteType, contractDuration, primaryPhoneNumber, contactDetails, address, email, county, countyServed, licenceStatus, holidays, eventBus)
         { }
 
-        internal Site(SiteState siteState, DomainEventBus evenBus):base(siteState.Id,evenBus)
+        internal Site(SiteState siteState, DomainEventBus eventBus):base(siteState.Id,eventBus)
         {
             SiteName = siteState.SiteName;
             SiteId = siteState.SiteNumber;
             Id = siteState.Id;
+            Address = new Address(siteState.AddressLine1,siteState.AddressLine2,siteState.City,siteState.StateCode,siteState.ZipCode);
+            ContactDetails = new Contact(new Name(siteState.ContactFirstName,siteState.ContactLastName),siteState.ContactPhoneNumber,siteState.ContactAlternatePhoneNumber,siteState.ContactEmail );
+            ContractDuration = new DateTimeRange(siteState.ContractStartDate,siteState.ContractEndDate);
+            CountyCode = siteState.CountyCode;
+            CountyServedCode = siteState.CountyServedCode;
+            Email = siteState.Email;
+            LicencingStatus = siteState.LicencingStatusCode;
+            PrimaryPhoneNumber = siteState.PhoneNumber;
+            SiteFacitlityType = siteState.SiteFacilityTypeCode;
+            SiteType = siteState.SiteTypeCode;
+            Status = siteState.StatusCode;
+            Holidays = siteState.SiteHoliday.Select(x => new SiteHoliday(x.HolidayDate, x.HolidayName)).ToList();
+            SiteRates =
+                siteState.SiteRate.Select(
+                    x =>
+                        new SiteRate(x.AgeCode, x.RegularCareDailyRate.GetValueOrDefault(),
+                            x.RegularCareWeeklyRate.GetValueOrDefault(),x.EffectiveDate,eventBus));
 
+        }
+
+        void AddNewHoliday(SiteHoliday holiday)
+        {
+            if (this.Holidays.Count() >= 10)
+            {
+                //TODO: Implement Business rule violation that site can't have more than 10 holidays
+            }
+            if (_holidays.Any(x => x.HolidayDate.Date == holiday.HolidayDate.Date))
+            {
+                //TODO: Business rule violation duplicate holiday
+            }
+            _holidays.Add(holiday);
+            DbState.SiteHoliday.Add(holiday.DbState);
+        }
+
+        void RemoveSiteHoliday(DateTime holidayDate)
+        {
+            var holiday = _holidays.FindIndex(x => x.HolidayDate.Date == holidayDate.Date);
+            if (holiday == -1)
+            {
+                //TODO: Check if holiday exists for this site, else throw exception
+            }
+            _holidays.RemoveAt(holiday);
+            var dbHol = DbState.SiteHoliday.First(x => x.HolidayDate.Date == holidayDate.Date);
+            DbState.SiteHoliday.Remove(dbHol);
         }
 
     }

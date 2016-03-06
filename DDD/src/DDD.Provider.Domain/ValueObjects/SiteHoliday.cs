@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DDD.Provider.DataModel;
 
 namespace DDD.Provider.Domain.ValueObjects
 {
@@ -14,7 +15,28 @@ namespace DDD.Provider.Domain.ValueObjects
         {
             HolidayDate = holidayDate;
             Name = name;
+            InitializeDbState();
         }
+
+        internal SiteHoliday (SiteHolidayState holidayState)
+        {
+            HolidayDate = holidayState.HolidayDate;
+            Name = holidayState.HolidayName;
+            DbState = holidayState;
+        }
+
+        private void InitializeDbState()
+        {
+            DbState = new SiteHolidayState
+            {
+                Id = GuidHelper.NewSequentialGuid(),
+                HolidayDate = HolidayDate,
+                CalendarYearDate = HolidayDate.Year.ToString(),
+                HolidayName = Name
+            };
+        }
+
+        internal SiteHolidayState DbState { get; private set; }
 
         public DateTime HolidayDate { get; private set; }
 
