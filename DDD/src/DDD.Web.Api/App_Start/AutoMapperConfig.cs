@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DDD.Common.DTOs.Provider;
+using DDD.Common.Models.Provider;
 using DDD.Provider.DataModel;
 using DDD.Web.Api.Models.Provider;
 

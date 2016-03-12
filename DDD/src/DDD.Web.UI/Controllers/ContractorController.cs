@@ -14,13 +14,30 @@ namespace DDD.Web.UI.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var model = new AddNewContractorViewModel
+            {
+                ContactFirstName = "ContFirst",
+                ContactLastName = "ContLast",
+                AddressLine1 = "3600 Vartan Way",
+                City = "Harrisburg",
+                ZipCode = "17050",
+                ContractStartDate = DateTime.Now.Date,
+                PhoneNumber = "7172157096",
+                Email="Test@test.com",
+                ContactPhoneNumber = "7171245712",
+                ContactEmail = "test@tes.com",
+                 ContractorName = "Boys N Girls",
+                 DoingBusinessAs = "BNG",
+                 EinNumber = "123456",
+                 
+            };
+            return View(model);
         }
 
-        public async Task<ActionResult> Add(AddContractorViewModel model)
+        public async Task<ActionResult> Add(AddNewContractorViewModel model)
         {
             var client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:8080/");
+            client.BaseAddress = new Uri("http://localhost:54441/");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             HttpRequestMessage reqMessage = new HttpRequestMessage() { Method = HttpMethod.Post };
@@ -28,10 +45,7 @@ namespace DDD.Web.UI.Controllers
             reqMessage.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             reqMessage.RequestUri = new Uri(@"api/contractor", UriKind.RelativeOrAbsolute);
 
-            var payload = JsonConvert.SerializeObject(new {
-                Name=model.ContractorName,
-                DBA=model.Dba
-            });
+            var payload = JsonConvert.SerializeObject(model);
             var content = new StringContent(payload, System.Text.Encoding.UTF32, "application/json");
             await client.PostAsync(@"api/contractor", content);
             return View("ContractorAdded",payload);

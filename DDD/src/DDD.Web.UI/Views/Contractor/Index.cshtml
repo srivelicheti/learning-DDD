@@ -3,32 +3,212 @@
 }
 <h2>@ViewData["Title"].</h2>
 <h3>@ViewData["Message"]</h3>
+<hr/>
 
-@*@Model AddContractorViewModel*@
+@model AddNewContractorViewModel
 
-<form asp-controller="Contractor" asp-action="Add">
+<form asp-controller="Contractor" class="form-horizontal" asp-action="Add">
+    
     <div class="row">
-        <div class="col-md-3">
-
-            <span>Contractor Name</span> 
+        <div class="col-md-6 col-xs-12">
+            <div class="form-group">
+                <label class="col-xs-3 control-label" for="txtContName">Contractor Name</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" asp-for="ContractorName" id="txtContName" placeholder="Contractor Name">
+                </div>
+            </div>
         </div>
-        <div class="col-md-9">
-            <input type="text" name="ContractorName"  id="txtContName" />
+        <div class="col-md-6 col-xs-12">
+            <div class="form-group">
+                <label class="col-xs-3 control-label" for="txtDBA">DBA</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" asp-for="DoingBusinessAs" id="txtDBA" placeholder="DBA">
+                </div>
+            </div>
+
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-3">
-
-            <span>Doing Business As</span>
+        <div class="col-md-6 col-xs-12">
+            <div class="form-group">
+                <label class="col-xs-3 control-label" for="txtEinNumber">EIN\SSN Number</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" id="txtEinNumber" asp-for="EinNumber" placeholder="EIN\SSN Number">
+                </div>
+            </div>
         </div>
-        <div class="col-md-9">
-            <input type="text" name="DBA" id="txtDBA" />
+        <div class="col-md-6 col-xs-12">
+            <div class="form-group">
+                <label class="col-xs-3 control-label" for="ddlContractorType">Contractor Type</label>
+                <div class="col-md-9">
+                    <select id="ddlContractorType" asp-for="Type" class="form-control">
+                        <option value="C">Contracted</option>
+                        <option value="S">Self-Arranged</option>
+                    </select>
+                </div>
+            </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-pull-6">
-            <input type="submit" id="btnAddContractor" name="Add Contractor" />
+        <div class="col-md-6 col-xs-12">
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="txtContractStartDate">My label</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" asp-for="ContractStartDate" id="txtContractStartDate" placeholder="My label">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xs-12">
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="txtContractEndDate">Contract End Date</label>
+                <div class="col-sm-9">
+                    <input type="text" asp-for="ContractEndDate" class="form-control" id="txtContractEndDate" placeholder="Contract End Date">
+                </div>
+            </div>
         </div>
     </div>
+
+    <h3>Address</h3>
+    <hr/>
+    <div class="row">
+        <div class="col-md-6 col-xs-12">
+            <div class="form-group">
+                <label class="col-xs-3 control-label" for="AddressLine1">Address Line1</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" asp-for="AddressLine1" id="AddressLine1" placeholder="Address Line1">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xs-12">
+            <div class="form-group">
+                <label class="col-xs-3 control-label" for="AddressLine2">Address Line2</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" asp-for="AddressLine2" id="AddressLine2" placeholder="Address Line2">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-xs-12">
+            <div class="form-group">
+                <label class="col-xs-3 control-label" for="City">City</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" asp-for="City" id="City" placeholder="City">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xs-12">
+            <div class="form-group">
+                <label class="col-xs-3 control-label" for="State">State</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" asp-for="StateCode" id="State" placeholder="State" value="DE" disabled="disabled" aria-disabled="True">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-xs-12">
+            <div class="form-group">
+                <label class="col-xs-3 control-label" for="PhoneNumber">Phone Number</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" asp-for="PhoneNumber" id="PhoneNumber" placeholder="Phone Number">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xs-12">
+            <div class="form-group">
+                <label class="col-xs-3 control-label" for="Email">Email</label>
+                <div class="col-md-9">
+                    <input type="text" asp-for="Email" class="form-control" id="Email" placeholder="Email">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-xs-12">
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="txtAltPhone">Alternate Phone</label>
+                <div class="col-sm-9">
+                    <input type="text" asp-for="AlternatePhoneNumber" class="form-control" id="txtAltPhone" placeholder="Alternate Phone">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xs-12">
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="txtZipCode">My label</label>
+                <div class="col-sm-9">
+                    <input type="text" asp-for="ZipCode" class="form-control" id="txtZipCode" placeholder="My label">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3>Contact Details</h3>
+    <hr/>
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="txtContactFirstName">My label</label>
+                <div class="col-sm-9">
+                    <input type="text" asp-for="ContactFirstName" class="form-control" id="txtContactFirstName" placeholder="My label">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="txtContactLastName">My label</label>
+                <div class="col-sm-9">
+                    <input type="text" asp-for="ContactLastName" class="form-control" id="txtContactLastName" placeholder="My label">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-xs-12">
+            <div class="form-group">
+                <label class="col-xs-3 control-label" for="txtContactPhoneNumber">Phone Number</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" asp-for="ContactPhoneNumber" id="txtContactPhoneNumber" placeholder="Phone Number">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xs-12">
+            <div class="form-group">
+                <label class="col-xs-3 control-label" for="txtContactEmail">Email</label>
+                <div class="col-md-9">
+                    <input type="text" asp-for="ContactEmail" class="form-control" id="txtContactEmail" placeholder="Email">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-xs-12">
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="txtContAltPhone">Alternate Phone</label>
+                <div class="col-sm-9">
+                    <input type="text" asp-for="ContactAlternatePhoneNumber" class="form-control" id="txtContAltPhone" placeholder="Alternate Phone">
+                </div>
+            </div>
+        </div>
+       
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">&nbsp;</div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">&nbsp;</div>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <div class="col-md-12">
+                <input type="submit" class="btn btn-primary pull-right" id="btnSubmit" value="Add Contractor"/>
+            </div>
+        </div>
+    </div>
+
+
+
 </form>
