@@ -53,7 +53,7 @@
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
         <script src="~/lib/signalr/jquery.signalR.js"></script>
-        <script src="http://localhost:5000/signalr/hubs" type="text/javascript"></script>
+        <script src="http://localhost:54441/signalr/hubs" type="text/javascript"></script>
     </environment>
     <environment names="Staging,Production">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"
@@ -71,8 +71,8 @@
         $(function () {
             jQuery.support.cors = true;
             // Open a connection to the remote server
-            $.connection.hub.url = "http://localhost:5000";
-            var connection = $.hubConnection('http://localhost:5000');
+            $.connection.hub.url = "http://localhost:54441";
+            var connection = $.hubConnection('http://localhost:54441');
             var chat = connection.createHubProxy('notifications');
 
             chat.on('messageReceived', function (message) {

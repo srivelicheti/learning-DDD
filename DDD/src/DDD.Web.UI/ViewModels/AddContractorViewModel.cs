@@ -25,7 +25,7 @@ namespace DDD.Web.UI.ViewModels
         public string AddressLine2 { get; set; }
         [Required]
         public string City { get; set; }
-        [Required]
+        //[Required]
         public string StateCode { get; set; }
         [Required]
         public string ZipCode { get; set; }
@@ -41,8 +41,9 @@ namespace DDD.Web.UI.ViewModels
         public string ContactFirstName { get; set; }
         [Required]
         public string ContactLastName { get; set; }
-        public string ContactPhoneNumber { get; set; }
         [Required]
+        public string ContactPhoneNumber { get; set; }
+        
         public string ContactAlternatePhoneNumber { get; set; }
         [Required]
         [EmailAddress]

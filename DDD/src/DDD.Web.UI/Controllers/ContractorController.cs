@@ -36,19 +36,40 @@ namespace DDD.Web.UI.Controllers
 
         public async Task<ActionResult> Add(AddNewContractorViewModel model)
         {
-            var client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:54441/");
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpRequestMessage reqMessage = new HttpRequestMessage() { Method = HttpMethod.Post };
-            reqMessage.Headers.Accept.Clear();
-            reqMessage.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            reqMessage.RequestUri = new Uri(@"api/contractor", UriKind.RelativeOrAbsolute);
+            var modelState = this.ActionContext.ModelState;
+            if (modelState.IsValid)
+            {
+                var client = new HttpClient();
+                model.Id = Guid.NewGuid();
+                model.StateCode = "DE";
+                client.BaseAddress = new Uri("http://uscmpsrveliche2:54441/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                HttpRequestMessage reqMessage = new HttpRequestMessage() {Method = HttpMethod.Post};
+                reqMessage.Headers.Accept.Clear();
+                reqMessage.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                reqMessage.RequestUri = new Uri(@"api/contractor", UriKind.RelativeOrAbsolute);
 
-            var payload = JsonConvert.SerializeObject(model);
-            var content = new StringContent(payload, System.Text.Encoding.UTF32, "application/json");
-            await client.PostAsync(@"api/contractor", content);
-            return View("ContractorAdded",payload);
+                var payload = JsonConvert.SerializeObject(model);
+                var content = new StringContent(payload, System.Text.Encoding.UTF32, "application/json");
+                var resp = await client.PostAsync(@"api/contractor", content);
+                if (resp.IsSuccessStatusCode)
+                    return View("ContractorAdded", payload);
+                else
+                {
+                    var error = resp.Content.ReadAsStringAsync();
+                    ViewData["Error"] = error;
+                    return View("Index", model);
+                }
+            }
+            else
+            {
+                var errors = string.Join(Environment.NewLine,
+                    modelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage));
+
+                ViewData["Error"] = errors;
+                return View("Index", model);
+            }
         }
     }
 }
