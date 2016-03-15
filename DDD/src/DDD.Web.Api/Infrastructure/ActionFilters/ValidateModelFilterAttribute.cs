@@ -13,6 +13,7 @@ namespace DDD.Web.Api.Infrastructure.ActionFilters
     {
         public override void OnActionExecuting(ActionExecutingContext actionContext)
         {
+            //actionContext.HttpContext.Request.Body
             if (actionContext.ModelState.IsValid == false)
             {
                 actionContext.Result = new BadRequestObjectResult(actionContext.ModelState);

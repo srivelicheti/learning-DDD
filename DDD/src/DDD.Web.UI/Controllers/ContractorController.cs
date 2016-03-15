@@ -42,7 +42,7 @@ namespace DDD.Web.UI.Controllers
                 var client = new HttpClient();
                 model.Id = Guid.NewGuid();
                 model.StateCode = "DE";
-                client.BaseAddress = new Uri("http://uscmpsrveliche2:54441/");
+                client.BaseAddress = new Uri("http://localhost:54441/");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 HttpRequestMessage reqMessage = new HttpRequestMessage() {Method = HttpMethod.Post};
@@ -51,7 +51,7 @@ namespace DDD.Web.UI.Controllers
                 reqMessage.RequestUri = new Uri(@"api/contractor", UriKind.RelativeOrAbsolute);
 
                 var payload = JsonConvert.SerializeObject(model);
-                var content = new StringContent(payload, System.Text.Encoding.UTF32, "application/json");
+                var content = new StringContent(payload);// System.Text.Encoding.UTF32, "application/json");
                 var resp = await client.PostAsync(@"api/contractor", content);
                 if (resp.IsSuccessStatusCode)
                     return View("ContractorAdded", payload);
