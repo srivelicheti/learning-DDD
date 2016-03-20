@@ -30,6 +30,7 @@
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
           "DDD.Common": "1.0.0",
+          "NServiceBus": "5.2.14",
           "StructureMap.Dnx": "0.4.0-alpha4"
         }
       },
@@ -49,7 +50,18 @@
           "DDD.Common": "1.0.0",
           "DDD.Domain.Common": "1.0.0",
           "DDD.Provider.DataModel": "1.0.0",
-          "EntityFramework.MicrosoftSqlServer": "7.0.0"
+          "DDD.Provider.Messages": "1.0.0",
+          "EntityFramework.MicrosoftSqlServer": "7.0.0",
+          "NServiceBus": "5.2.14"
+        }
+      },
+      "DDD.Provider.Messages/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "DDD.Common": "1.0.0",
+          "DDD.Domain.Common": "1.0.0",
+          "NServiceBus": "5.2.14"
         }
       },
       "DDD.Provider.QueryStack/1.0.0": {
@@ -59,7 +71,8 @@
           "AutoMapper": "4.1.1",
           "DDD.Common": "1.0.0",
           "DDD.Domain.Common": "1.0.0",
-          "DDD.Provider.DataModel": "1.0.0"
+          "DDD.Provider.DataModel": "1.0.0",
+          "DDD.Provider.Messages": "1.0.0"
         }
       },
       "EntityFramework.Commands/7.0.0-rc1-final": {
@@ -1621,6 +1634,19 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
+      "NServiceBus/5.2.14": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net45/NServiceBus.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/NServiceBus.Core.dll": {}
+        }
+      },
       "Remotion.Linq/2.0.1": {
         "type": "package",
         "compile": {
@@ -1900,6 +1926,7 @@
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
           "DDD.Common": "1.0.0",
+          "NServiceBus": "5.2.14",
           "StructureMap.Dnx": "0.4.0-alpha4"
         }
       },
@@ -1919,7 +1946,18 @@
           "DDD.Common": "1.0.0",
           "DDD.Domain.Common": "1.0.0",
           "DDD.Provider.DataModel": "1.0.0",
-          "EntityFramework.MicrosoftSqlServer": "7.0.0"
+          "DDD.Provider.Messages": "1.0.0",
+          "EntityFramework.MicrosoftSqlServer": "7.0.0",
+          "NServiceBus": "5.2.14"
+        }
+      },
+      "DDD.Provider.Messages/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "DDD.Common": "1.0.0",
+          "DDD.Domain.Common": "1.0.0",
+          "NServiceBus": "5.2.14"
         }
       },
       "DDD.Provider.QueryStack/1.0.0": {
@@ -1929,7 +1967,8 @@
           "AutoMapper": "4.1.1",
           "DDD.Common": "1.0.0",
           "DDD.Domain.Common": "1.0.0",
-          "DDD.Provider.DataModel": "1.0.0"
+          "DDD.Provider.DataModel": "1.0.0",
+          "DDD.Provider.Messages": "1.0.0"
         }
       },
       "EntityFramework.Commands/7.0.0-rc1-final": {
@@ -3494,6 +3533,19 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
+      "NServiceBus/5.2.14": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net45/NServiceBus.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/NServiceBus.Core.dll": {}
+        }
+      },
       "Remotion.Linq/2.0.1": {
         "type": "package",
         "compile": {
@@ -3773,6 +3825,7 @@
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
           "DDD.Common": "1.0.0",
+          "NServiceBus": "5.2.14",
           "StructureMap.Dnx": "0.4.0-alpha4"
         }
       },
@@ -3792,7 +3845,18 @@
           "DDD.Common": "1.0.0",
           "DDD.Domain.Common": "1.0.0",
           "DDD.Provider.DataModel": "1.0.0",
-          "EntityFramework.MicrosoftSqlServer": "7.0.0"
+          "DDD.Provider.Messages": "1.0.0",
+          "EntityFramework.MicrosoftSqlServer": "7.0.0",
+          "NServiceBus": "5.2.14"
+        }
+      },
+      "DDD.Provider.Messages/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "DDD.Common": "1.0.0",
+          "DDD.Domain.Common": "1.0.0",
+          "NServiceBus": "5.2.14"
         }
       },
       "DDD.Provider.QueryStack/1.0.0": {
@@ -3802,7 +3866,8 @@
           "AutoMapper": "4.1.1",
           "DDD.Common": "1.0.0",
           "DDD.Domain.Common": "1.0.0",
-          "DDD.Provider.DataModel": "1.0.0"
+          "DDD.Provider.DataModel": "1.0.0",
+          "DDD.Provider.Messages": "1.0.0"
         }
       },
       "EntityFramework.Commands/7.0.0-rc1-final": {
@@ -5367,6 +5432,19 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
+      "NServiceBus/5.2.14": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net45/NServiceBus.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/NServiceBus.Core.dll": {}
+        }
+      },
       "Remotion.Linq/2.0.1": {
         "type": "package",
         "compile": {
@@ -5635,6 +5713,10 @@
     "DDD.Provider.Domain/1.0.0": {
       "type": "project",
       "path": "../DDD.Provider.Domain/project.json"
+    },
+    "DDD.Provider.Messages/1.0.0": {
+      "type": "project",
+      "path": "../../DDD.Provider.Messages/project.json"
     },
     "DDD.Provider.QueryStack/1.0.0": {
       "type": "project",
@@ -6929,6 +7011,21 @@
         "tools/install.ps1"
       ]
     },
+    "NServiceBus/5.2.14": {
+      "type": "package",
+      "sha512": "M+LNC1CkdfQr+DOZrAu3VTR8sDNX7i09at3mxOvmpcDwEWuiueubeml6KJoIVLllYgIatBKXx2G4Z8TnzLD3uw==",
+      "files": [
+        "lib/net45/NServiceBus.Core.dll",
+        "lib/net45/NServiceBus.Core.pdb",
+        "lib/net45/NServiceBus.Core.xml",
+        "NServiceBus.5.2.14.nupkg",
+        "NServiceBus.5.2.14.nupkg.sha512",
+        "NServiceBus.nuspec",
+        "tools/about_NServiceBus.help.txt",
+        "tools/init.ps1",
+        "tools/NServiceBus.PowerShell.Development.dll"
+      ]
+    },
     "Remotion.Linq/2.0.1": {
       "type": "package",
       "sha512": "SIO6HDH6CU9GC2IZGBrc6q5X5vRhfatXrg9cVavCEG9W6v5e88b+vXjmLGQEorch4sYEIImRr+ODyUMyrmrqAg==",
@@ -7779,7 +7876,9 @@
       "DDD.Provider.DataModel >= 1.0.0-*",
       "AutoMapper >= 4.1.1",
       "DDD.Provider.QueryStack >= 1.0.0-*",
-      "Newtonsoft.Json >= 8.0.2"
+      "Newtonsoft.Json >= 8.0.2",
+      "NServiceBus >= 5.2.14",
+      "DDD.Provider.Messages >= 1.0.0-*"
     ],
     "DNX,Version=v4.5.1": [
       "log4net >= 2.0.5"

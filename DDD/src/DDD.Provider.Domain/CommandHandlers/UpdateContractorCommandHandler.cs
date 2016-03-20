@@ -5,31 +5,32 @@ using System.Threading.Tasks;
 using DDD.Common.Models.Provider;
 using DDD.Domain.Common.Command;
 using DDD.Domain.Common.Event;
-using DDD.Provider.Domain.Commands;
 using DDD.Provider.Domain.Entities;
 using DDD.Provider.Domain.Repositories;
+using NServiceBus;
+using DDD.Provider.Messages.Commands;
 
 namespace DDD.Provider.Domain.CommandHandlers
 {
-    public class UpdateContractorCommandHandler : ICommandHandler<UpdateContractorCommand>
+    public class UpdateContractorCommandHandler : IHandleMessages<UpdateContractorCommand>
     {
-        private DomainEventBus _eventBus;
+        private IBus _eventBus;
         private ContractorRepository _contractorRepo;
 
-        public UpdateContractorCommandHandler(DomainEventBus eventBus, ContractorRepository contractorRepository)
+        public UpdateContractorCommandHandler(IBus eventBus, ContractorRepository contractorRepository)
         {
             _eventBus = eventBus;
             _contractorRepo = contractorRepository;
         }
 
-        public void Execute(UpdateContractorCommand command)
+        public void Handle(UpdateContractorCommand command)
         {
             try
             {
                 var contractor = _contractorRepo.GetContractorByEin(command.Contractor.EinNumber);
                 UpdateContractor(contractor,command.Contractor);
                 _contractorRepo.Save();
-                _eventBus.PublishQueuedPostCommitEvents();
+                //_eventBus.PublishQueuedPostCommitEvents();
                 _eventBus.Publish(new CommandCompletedEvent(command.Id, DateTime.UtcNow));
             }
             catch (Exception ex)

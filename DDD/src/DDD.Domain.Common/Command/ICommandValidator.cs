@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace DDD.Domain.Common.Command
 {
-    public interface ICommandValidator<in TCommand> where TCommand : Command
+    public interface ICommandValidator<in TCommand> where TCommand : BaseCommand
     {
         IEnumerable<ValidationError> Validate(TCommand command);
     }

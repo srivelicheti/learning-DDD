@@ -7,6 +7,8 @@ using DDD.Domain.Common.ValueObjects;
 using DDD.Provider.DataModel;
 using DDD.Provider.Domain.Enums;
 using DDD.Provider.Domain.ValueObjects;
+using NServiceBus;
+using VO = DDD.Domain.Common.ValueObjects;
 
 namespace DDD.Provider.Domain.Entities
 {
@@ -22,7 +24,7 @@ namespace DDD.Provider.Domain.Entities
         public DateTimeRange ContractDuration { get; private set; }
         public PhoneNumber PrimaryPhoneNumber { get; private set; }
         public Contact ContactDetails { get; private set; }
-        public Address Address { get; private set; }
+        public VO.Address Address { get; private set; }
         public string Email { get; private set; }
         public string CountyCode { get; private set; }
         public string CountyServedCode { get; private set; }
@@ -37,8 +39,8 @@ namespace DDD.Provider.Domain.Entities
 
         //TODO: See how we can avoid injecting EventBus into the Domain entities
         public Site(Guid id, int siteId, string siteName, SiteStatus status, SiteFacilityType siteFacitlityType, SiteType siteType,
-            DateTimeRange contractDuration, PhoneNumber primaryPhoneNumber, Contact contactDetails, Address address, string email,
-            string countyCode, string countyServedCode, LicenceStatus licenceStatus, IEnumerable<SiteHoliday> holidays, DomainEventBus eventBus) : base(id, eventBus)
+            DateTimeRange contractDuration, PhoneNumber primaryPhoneNumber, Contact contactDetails, VO.Address address, string email,
+            string countyCode, string countyServedCode, LicenceStatus licenceStatus, IEnumerable<SiteHoliday> holidays, IBus eventBus) : base(id, eventBus)
         {
             SiteId = siteId;
             SiteName = siteName;
@@ -88,16 +90,16 @@ namespace DDD.Provider.Domain.Entities
         }
 
         public Site(int siteId, string siteName, SiteStatus status, SiteFacilityType siteFacitlityType, SiteType siteType,
-            DateTimeRange contractDuration, PhoneNumber primaryPhoneNumber, Contact contactDetails, Address address, string email,
-            string county, string countyServed, LicenceStatus licenceStatus, IEnumerable<SiteHoliday> holidays , DomainEventBus eventBus) : this(GuidHelper.NewSequentialGuid(), siteId, siteName, status, siteFacitlityType, siteType, contractDuration, primaryPhoneNumber, contactDetails, address, email, county, countyServed, licenceStatus, holidays, eventBus)
+            DateTimeRange contractDuration, PhoneNumber primaryPhoneNumber, Contact contactDetails, VO.Address address, string email,
+            string county, string countyServed, LicenceStatus licenceStatus, IEnumerable<SiteHoliday> holidays , IBus eventBus) : this(GuidHelper.NewSequentialGuid(), siteId, siteName, status, siteFacitlityType, siteType, contractDuration, primaryPhoneNumber, contactDetails, address, email, county, countyServed, licenceStatus, holidays, eventBus)
         { }
 
-        internal Site(SiteState siteState, DomainEventBus eventBus):base(siteState.Id,eventBus)
+        internal Site(SiteState siteState, IBus eventBus):base(siteState.Id,eventBus)
         {
             SiteName = siteState.SiteName;
             SiteId = siteState.SiteNumber;
             Id = siteState.Id;
-            Address = new Address(siteState.AddressLine1,siteState.AddressLine2,siteState.City,siteState.StateCode,siteState.ZipCode);
+            Address = new VO.Address(siteState.AddressLine1,siteState.AddressLine2,siteState.City,siteState.StateCode,siteState.ZipCode);
             ContactDetails = new Contact(new Name(siteState.ContactFirstName,siteState.ContactLastName),siteState.ContactPhoneNumber,siteState.ContactAlternatePhoneNumber,siteState.ContactEmail );
             ContractDuration = new DateTimeRange(siteState.ContractStartDate,siteState.ContractEndDate);
             CountyCode = siteState.CountyCode;

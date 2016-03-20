@@ -5,19 +5,21 @@ using DDD.Domain.Common.ValueObjects;
 using DDD.Provider.DataModel;
 using DDD.Provider.Domain.Enums;
 using DDD.Provider.Domain.Events;
+using NServiceBus;
+using VO = DDD.Domain.Common.ValueObjects;
 
 namespace DDD.Provider.Domain.Entities
 {
     public class Contractor : Entity, IAggregateRoot
     {
         public Contractor(string einNumber, string contractorName, string doingBusinessAs, ContractorStatus status, ContractorType type, DateTimeRange contractDuration, 
-                          PhoneNumber primaryPhoneNumber, Contact contactDetails, Address address, string email, DomainEventBus eventBus)
+                          PhoneNumber primaryPhoneNumber, Contact contactDetails, VO.Address address, string email, IBus eventBus)
             : this(GuidHelper.NewSequentialGuid(), einNumber, contractorName, doingBusinessAs, status, type, contractDuration, primaryPhoneNumber, contactDetails, address, email,eventBus)
         {
         }
 
         public Contractor(Guid id, string einNumber, string contractorName, string doingBusinessAs, ContractorStatus status, ContractorType type, DateTimeRange contractDuration,
-                          PhoneNumber primaryPhoneNumber, Contact contactDetails, Address address, string email, DomainEventBus eventBus) : base(id,eventBus)
+                          PhoneNumber primaryPhoneNumber, Contact contactDetails,VO.Address address, string email, IBus eventBus) : base(id,eventBus)
         {
             //TODO: Implement guard conditions
             Id = id;
@@ -34,12 +36,12 @@ namespace DDD.Provider.Domain.Entities
             InitializeState();
         }
 
-        internal Contractor(ContractorState contDbState, DomainEventBus eventBus) : base(contDbState.Id, eventBus)
+        internal Contractor(ContractorState contDbState, IBus eventBus) : base(contDbState.Id, eventBus)
         {
             DbState = contDbState;
 
             Contact = new Contact(new Name(contDbState.ContactFirstName, contDbState.ContactLastName), contDbState.ContactPhoneNumber, contDbState.ContactAlternatePhoneNumber, contDbState.ContactEmail);
-            Address = new Address(contDbState.AddressLine1, contDbState.AddressLine2, contDbState.City, contDbState.StateCode, contDbState.ZipCode);
+            Address = new VO.Address(contDbState.AddressLine1, contDbState.AddressLine2, contDbState.City, contDbState.StateCode, contDbState.ZipCode);
             EinNumber = contDbState.EinNumber;
             ContractorName = contDbState.ContractorName;
             DoingBusinessAs =  contDbState.DoingBusinessAs; ContractorType =  contDbState.Type;
@@ -94,7 +96,7 @@ namespace DDD.Provider.Domain.Entities
         //public string ContactAlternatePhoneNumber { get; private set; }
         public string Email { get; private set; }
         //public int AddressId { get; private set; }
-        public Address Address { get; private set; }
+        public VO.Address Address { get; private set; }
         public Contact Contact { get; private set; }
 
         public void UpdateName(string name)
@@ -102,7 +104,7 @@ namespace DDD.Provider.Domain.Entities
             if(string.Compare(ContractorName,name,StringComparison.OrdinalIgnoreCase) == 0)
                 return;
 
-            _eventBus.QueueForPostCommit(new ContractorNameChanged(EinNumber,ContractorName,name));
+            _eventBus.Publish(new ContractorNameChanged(EinNumber,ContractorName,name));
             ContractorName = name;
             DbState.ContractorName = name;
         }
@@ -112,17 +114,17 @@ namespace DDD.Provider.Domain.Entities
             if (string.Compare(DoingBusinessAs, dba, StringComparison.OrdinalIgnoreCase) == 0)
                 return;
 
-            _eventBus.QueueForPostCommit(new ContractorBusinessNameChanged(EinNumber, DoingBusinessAs, dba));
+            _eventBus.Publish(new ContractorBusinessNameChanged(EinNumber, DoingBusinessAs, dba));
             DoingBusinessAs = dba;
             DbState.DoingBusinessAs = dba;
         }
 
         public void UpdateAddress(string addressLine1, string addressLine2, string city,string stateCode,string zipCode)
         {
-            var newAddress = new Address(addressLine1,addressLine2,city,stateCode,zipCode);
+            var newAddress = new VO.Address(addressLine1,addressLine2,city,stateCode,zipCode);
             if (Address != newAddress)
             {
-                _eventBus.QueueForPostCommit(new ContractorAddressChanged(EinNumber,Address,newAddress));
+                _eventBus.Publish(new ContractorAddressChanged(EinNumber,Address,newAddress));
                 Address = newAddress;
                 DbState.AddressLine1 = addressLine1;
                 DbState.AddressLine2 = addressLine2;
@@ -168,7 +170,7 @@ namespace DDD.Provider.Domain.Entities
             var newContractDuration = new DateTimeRange(startDate,endDate);
             if (ContractDuration != newContractDuration)
             {
-                _eventBus.QueueForPostCommit(new ContractorContractRenewed(EinNumber, ContractDuration, newContractDuration));
+                _eventBus.Publish(new ContractorContractRenewed(EinNumber, ContractDuration, newContractDuration));
                 ContractDuration = newContractDuration;
                 DbState.ContractStartDate = startDate;
                 DbState.ContractEndDate = endDate;

@@ -6,15 +6,15 @@ using StructureMap;
 
 namespace DDD.Web.Api
 {
-    public class DomainEventsBootStrapper
-    {
-        public static void RegisterEvents(Container container)
-        {
-            var connManager = container.GetInstance<IConnectionManager>();
-            //var bus = container.GetInstance<DomainEventBus>();
-            DomainEventBus.Subscribe<NewContractorAdded>(new ContractorAddedEventHandler(connManager));
-            DomainEventBus.Subscribe<DomainEvent>(new FileLoggerEventHandler());
-            //DomainEventBus.Subscribe(new );
-        }
-    }
+    //public class DomainEventsBootStrapper
+    //{
+    //    public static void RegisterEvents(Container container)
+    //    {
+    //        var connManager = container.GetInstance<IConnectionManager>();
+    //        //var bus = container.GetInstance<DomainEventBus>();
+    //        DomainEventBus.Subscribe<NewContractorAdded>(new ContractorAddedEventHandler(connManager));
+    //        DomainEventBus.Subscribe<BaseEvent>(new FileLoggerEventHandler());
+    //        //DomainEventBus.Subscribe(new );
+    //    }
+    //}
 }

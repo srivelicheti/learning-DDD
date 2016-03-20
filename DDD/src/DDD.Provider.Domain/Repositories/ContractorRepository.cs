@@ -9,15 +9,16 @@ using Microsoft.Data.Entity;
 using DDD.Domain.Common.ValueObjects;
 using DDD.Provider.Domain.Entities;
 using DDD.Provider.Domain.Enums;
+using NServiceBus;
 
 namespace DDD.Provider.Domain.Repositories
 {
     public class ContractorRepository
     {
-        private readonly DomainEventBus _eventBus;
+        private readonly IBus _eventBus;
         private readonly ProviderDbContext _dbContext;
 
-        public ContractorRepository(DomainEventBus eventBus, ProviderDbContext dbContext)
+        public ContractorRepository(IBus eventBus, ProviderDbContext dbContext)
         {
             _eventBus = eventBus;
             _dbContext = dbContext;
@@ -30,7 +31,7 @@ namespace DDD.Provider.Domain.Repositories
             contractor.DbState.LastSavedBy = "TODO";
             contractor.DbState.LastSavedDateTime = DateTime.UtcNow;
             _dbContext.Add(contractor.DbState);
-            _eventBus.QueueForPostCommit(new NewContractorAdded(DateTime.UtcNow, contractor.Id, contractor.EinNumber, _eventBus));
+            _eventBus.Publish(new NewContractorAdded(DateTime.UtcNow, contractor.Id, contractor.EinNumber, _eventBus));
         }
 
         public Contractor GetContractor(Guid id)

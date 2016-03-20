@@ -3,12 +3,13 @@ using System.Diagnostics;
 using DDD.Domain.Common;
 using DDD.Domain.Common.Event;
 using DDD.Provider.DataModel;
+using NServiceBus;
 
 namespace DDD.Provider.Domain.Entities
 {
     public class SiteRate : Entity
     {
-        public SiteRate(int ageCode, decimal normalDailyRate, decimal specialNeedsDailyRate, DateTime effDate, DomainEventBus eventBus) : base(GuidHelper.NewSequentialGuid(), eventBus)
+        public SiteRate(int ageCode, decimal normalDailyRate, decimal specialNeedsDailyRate, DateTime effDate, IBus eventBus) : base(GuidHelper.NewSequentialGuid(), eventBus)
         {
             AgeCode = ageCode;
             NormalDailyRate = normalDailyRate;

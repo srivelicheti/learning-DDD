@@ -14,11 +14,11 @@ namespace DDD.Domain.Common.Command
 
     }
 
-    public interface ICommandResult<out T> : ICommand where T :new()
+    public interface ICommandResult<out T> : ICommandResult where T :new()
     {
-        Guid CommandId { get; }
-        bool IsCommandReceivedSuccessfully { get; set; }
-        Exception FailureException { get; set; }
+        //Guid CommandId { get; }
+        //bool IsCommandReceivedSuccessfully { get; set; }
+        //Exception FailureException { get; set; }
         T ResultDetail { get; }
     }
 

@@ -7,13 +7,15 @@ using Microsoft.AspNet.Mvc;
 using DDD.Common.DTOs.Provider;
 using DDD.Common.Models.Provider;
 using DDD.Domain.Common.Command;
-using DDD.Provider.Domain.Commands;
+//using DDD.Provider.Domain.Commands;
 using DDD.Provider.Domain.Repositories;
 using DDD.Provider.Domain.Enums;
 using DDD.Domain.Common.Query;
 using DDD.Provider.QueryStack.Contractor.Queries;
 using DDD.Web.Api.Infrastructure.ActionFilters;
 using DDD.Web.Api.Models.Provider;
+using NServiceBus;
+using DDD.Provider.Messages.Commands;
 
 namespace DDD.Web.Api.Controllers
 {
@@ -21,12 +23,12 @@ namespace DDD.Web.Api.Controllers
     [Route("api/contractor")]
     public class ContractorController : Controller
     {
-        private ICommandBus _commandBus;
+        private IBus _bus;
         private IQueryProcessor _queryProcessor;
 
-        public ContractorController(ICommandBus commandBus, IQueryProcessor queryProcessor)
+        public ContractorController(IBus commandBus, IQueryProcessor queryProcessor)
         {
-            _commandBus = commandBus;
+            _bus = commandBus;
             _queryProcessor = queryProcessor;
         }
         // GET: api/values
@@ -58,14 +60,14 @@ namespace DDD.Web.Api.Controllers
         public void Post([FromBody]AddNewContractorModel contractorModel)
         {
             var cont = Mapper.Map<ContractorDto>(contractorModel);
-            var result = _commandBus.Submit<AddNewContractorCommand>(new AddNewContractorCommand(cont));
+            var result = _bus.Send(new AddNewContractorCommand(cont));
         }
 
         [HttpPut("{ein}")]
         [ValidateModel]
         public void Put([FromBody]UpdateContractorModel updateContractorModel)
         {
-            _commandBus.Submit(new UpdateContractorCommand(updateContractorModel));
+            _bus.Send(new UpdateContractorCommand(updateContractorModel));
         }
 
         // PUT api/values/5

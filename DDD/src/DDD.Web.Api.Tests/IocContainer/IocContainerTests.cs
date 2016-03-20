@@ -1,4 +1,5 @@
 ﻿using DDD.Provider.Domain.Repositories;
+using DDD.Web.Api.App_Start;
 using StructureMap;
 using System;
 using System.Collections.Generic;
@@ -13,8 +14,9 @@ namespace DDD.Web.Api.Tests.IocContainer
         [Fact]
         public void Repositories_Must_Be_Once_Per_Resolution_to_the_Container()
         {
+            var bus = NServiceBusBootStrapper.Init();
             var container = new Container();
-            IocBootstrapper.ConfigureIocContainer(container);
+            IocBootstrapper.ConfigureIocContainer(container,bus);
 
             var repo1 = container.GetInstance<ContractorRepository>();
             var repo2 = container.GetInstance<ContractorRepository>();

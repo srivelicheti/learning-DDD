@@ -7,7 +7,7 @@ using DDD.Domain.Common.ValueObjects;
 
 namespace DDD.Provider.Domain.Events
 {
-    public class ContractorContractRenewed : DomainEvent
+    public class ContractorContractRenewed : BaseEvent
     {
         public ContractorContractRenewed(Guid id, DateTime eventTime, string einNumber, DateTimeRange oldDuration, DateTimeRange newDuration ) : base(id, eventTime)
         {

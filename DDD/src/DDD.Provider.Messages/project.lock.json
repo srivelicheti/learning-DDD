@@ -16,6 +16,15 @@
           "System.Runtime.Serialization"
         ]
       },
+      "DDD.Domain.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "DDD.Common": "1.0.0",
+          "NServiceBus": "5.2.14",
+          "StructureMap.Dnx": "0.4.0-alpha4"
+        }
+      },
       "Microsoft.Extensions.DependencyInjection.Abstractions/1.0.0-rc1-final": {
         "type": "package",
         "frameworkAssemblies": [
@@ -97,6 +106,15 @@
           "System.ComponentModel.DataAnnotations",
           "System.Runtime.Serialization"
         ]
+      },
+      "DDD.Domain.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "DDD.Common": "1.0.0",
+          "NServiceBus": "5.2.14",
+          "StructureMap.Dnx": "0.4.0-alpha4"
+        }
       },
       "Microsoft.Extensions.DependencyInjection.Abstractions/1.0.0-rc1-final": {
         "type": "package",
@@ -180,6 +198,15 @@
           "System.Runtime.Serialization"
         ]
       },
+      "DDD.Domain.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "DDD.Common": "1.0.0",
+          "NServiceBus": "5.2.14",
+          "StructureMap.Dnx": "0.4.0-alpha4"
+        }
+      },
       "Microsoft.Extensions.DependencyInjection.Abstractions/1.0.0-rc1-final": {
         "type": "package",
         "frameworkAssemblies": [
@@ -252,7 +279,11 @@
   "libraries": {
     "DDD.Common/1.0.0": {
       "type": "project",
-      "path": "../DDD.Common/project.json"
+      "path": "../src/DDD.Common/project.json"
+    },
+    "DDD.Domain.Common/1.0.0": {
+      "type": "project",
+      "path": "../src/DDD.Domain.Common/project.json"
     },
     "Microsoft.Extensions.DependencyInjection.Abstractions/1.0.0-rc1-final": {
       "type": "package",
@@ -341,7 +372,7 @@
   "projectFileDependencyGroups": {
     "": [
       "DDD.Common >= 1.0.0-*",
-      "StructureMap.Dnx >= 0.4.0-alpha4",
+      "DDD.Domain.Common >= 1.0.0-*",
       "NServiceBus >= 5.2.14"
     ],
     ".NETFramework,Version=v4.5.1": []

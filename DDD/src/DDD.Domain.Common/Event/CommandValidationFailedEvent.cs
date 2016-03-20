@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DDD.Domain.Common.Event
 {
-    public class CommandValidationFailedEvent : DomainEvent
+    public class CommandValidationFailedEvent : BaseEvent
     {
         public CommandValidationFailedEvent(Guid commandId, IEnumerable<ValidationError> errors, DateTime eventTime) : base(Guid.NewGuid(), eventTime)
         {

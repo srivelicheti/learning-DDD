@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DDD.Domain.Common.Event;
+using NServiceBus;
 
 namespace DDD.Domain.Common
 {
     public abstract class Entity
     {
-        protected readonly DomainEventBus _eventBus;
+        protected readonly IBus _eventBus;
         
         public Guid Id { get; protected set; }
 
         public TrackingState State { get; set; }
 
-        protected Entity(Guid entityId, DomainEventBus eventBus)
+        protected Entity(Guid entityId, IBus eventBus)
         {
             Id = entityId;
             _eventBus = eventBus;

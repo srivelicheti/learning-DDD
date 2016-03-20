@@ -2,6 +2,7 @@
 using DDD.Provider.Domain.Events;
 using DDD.Web.Api.Hubs;
 using Microsoft.AspNet.SignalR.Infrastructure;
+using NServiceBus;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DDD.Web.Api.EventHandlers
 {
-    public class ContractorAddedEventHandler : IEventHandler<NewContractorAdded>
+    public class ContractorAddedEventHandler : IHandleMessages<NewContractorAdded>
     {
         private IConnectionManager _connectionManager;
 

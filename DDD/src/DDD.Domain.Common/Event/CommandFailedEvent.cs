@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace DDD.Domain.Common.Event
 {
-    public class CommandFailedEvent : DomainEvent
+    public class CommandFailedEvent : BaseEvent
     {
         public CommandFailedEvent(Guid commandId,Exception exception ,DateTime eventDateTime):base(Guid.NewGuid(),eventDateTime)
         {

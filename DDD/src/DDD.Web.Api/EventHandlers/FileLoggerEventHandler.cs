@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 using DDD.Domain.Common.Event;
 using log4net;
 using Newtonsoft.Json;
+using NServiceBus;
 
 namespace DDD.Web.Api.EventHandlers
 {
-    public class FileLoggerEventHandler : IEventHandler<DomainEvent>
+    public class FileLoggerEventHandler : IHandleMessages<BaseEvent>
     {
         private static ILog Logger = LogManager.GetLogger(typeof (FileLoggerEventHandler));
-        public void Handle(DomainEvent e)
+        public void Handle(BaseEvent e)
         {
             var jsonString = JsonConvert.SerializeObject(e);
             Debug.Write(jsonString);

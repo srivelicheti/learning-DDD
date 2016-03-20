@@ -1,13 +1,14 @@
-﻿using System;
+﻿using NServiceBus;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace DDD.Domain.Common.Event
 {
-    public class CommandCompletedEvent : DomainEvent
+    public class CommandCompletedEvent : BaseEvent,IEvent
     {
-        public CommandCompletedEvent(Command.Command command, DateTime eventDateTime) : this(command.Id, eventDateTime)
+        public CommandCompletedEvent(Command.BaseCommand command, DateTime eventDateTime) : this(command.Id, eventDateTime)
         {
             Command = command;
         }
@@ -22,6 +23,6 @@ namespace DDD.Domain.Common.Event
             get; private set;
         }
 
-        public Command.Command Command { get; private set; }
+        public Command.BaseCommand Command { get; private set; }
     }
 }

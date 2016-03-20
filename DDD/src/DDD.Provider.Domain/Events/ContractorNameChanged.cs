@@ -6,7 +6,7 @@ using DDD.Domain.Common.Event;
 
 namespace DDD.Provider.Domain.Events
 {
-    public class ContractorNameChanged : DomainEvent
+    public class ContractorNameChanged : BaseEvent
     {
         public ContractorNameChanged(Guid id, DateTime eventTime, string einNumber, string oldName, string changedName) : base(id, eventTime)
         {
@@ -26,7 +26,7 @@ namespace DDD.Provider.Domain.Events
         public string EinNumber { get; set; }
     }
 
-    public class ContractorBusinessNameChanged : DomainEvent
+    public class ContractorBusinessNameChanged : BaseEvent
     {
         public ContractorBusinessNameChanged(Guid id, DateTime eventTime, string einNumber, string oldName, string changedName) : base(id, eventTime)
         {

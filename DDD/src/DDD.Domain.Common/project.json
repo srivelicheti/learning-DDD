@@ -10,25 +10,11 @@
       "dependencies": {
 
       }
-    },
-    "dnxcore50": {
-      "dependencies": {
-        "Microsoft.CSharp": "4.0.1-beta-23516",
-        "System.Collections": "4.0.11-beta-23516",
-        "System.Linq": "4.0.1-beta-23516",
-        "System.Runtime": "4.0.21-beta-23516",
-        "System.Threading": "4.0.11-beta-23516",
-        "System.Reflection": "4.1.0-beta-23516",
-        "System.Reflection.Primitives": "4.0.1-beta-23516",
-        "System.Reflection.Extensions": "4.0.1-beta-23516",
-        "System.Reflection.TypeExtensions": "4.0.1-beta-23409"
-
-      }
     }
-
   },
   "dependencies": {
     "DDD.Common": "1.0.0-*",
-    "StructureMap.Dnx": "0.4.0-alpha4"
+    "StructureMap.Dnx": "0.4.0-alpha4",
+    "NServiceBus": "5.2.14"
   }
 }

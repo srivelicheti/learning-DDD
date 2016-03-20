@@ -1,18 +1,16 @@
-﻿{
+{
   "version": "1.0.0-*",
-  "description": "DDD.Provider.QueryStack Class Library",
+  "description": "DDD.Provider.Messages Class Library",
   "authors": [ "srvelicheti" ],
   "tags": [ "" ],
   "projectUrl": "",
   "licenseUrl": "",
   "frameworks": {
-    "dnx451": { }
+    "net451": { }
   },
   "dependencies": {
-    "AutoMapper": "4.1.1",
     "DDD.Common": "1.0.0-*",
     "DDD.Domain.Common": "1.0.0-*",
-    "DDD.Provider.DataModel": "1.0.0-*",
-    "DDD.Provider.Messages": "1.0.0-*"
+    "NServiceBus": "5.2.14"
   }
 }

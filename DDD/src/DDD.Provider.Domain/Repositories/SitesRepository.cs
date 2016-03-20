@@ -9,15 +9,17 @@ using DDD.Provider.DataModel;
 using Microsoft.Data.Entity;
 using Microsoft.Data.Entity.Extensions;
 using Site = DDD.Provider.Domain.Entities.Site;
+using NServiceBus;
+using VO = DDD.Domain.Common.ValueObjects;
 
 namespace DDD.Provider.Domain.Repositories
 {
     public class SitesRepository
     {
-        private DomainEventBus _eventBus;
+        private IBus _eventBus;
         private readonly ProviderDbContext _dbContext;
 
-        public SitesRepository(DomainEventBus eventBus, ProviderDbContext dbContext)
+        public SitesRepository(IBus eventBus, ProviderDbContext dbContext)
         {
             _eventBus = eventBus;
             _dbContext = dbContext;
@@ -112,7 +114,7 @@ namespace DDD.Provider.Domain.Repositories
 
             var contractDuration = new DateTimeRange(site.ContractStartDate, site.ContractEndDate);
             var contact = new Contact(new Name(site.ContactFirstName, site.ContactLastName), site.ContactPhoneNumber, site.ContactAlternatePhoneNumber, site.ContactEmail);
-            var address = new Address(site.AddressLine1, site.AddressLine2, site.City, site.StateCode, site.ZipCode);
+            var address = new VO.Address(site.AddressLine1, site.AddressLine2, site.City, site.StateCode, site.ZipCode);
             var holidays = site.SiteHoliday.Select(x =>
             {
                 var hol = new ValueObjects.SiteHoliday(x.HolidayDate, x.HolidayName)
