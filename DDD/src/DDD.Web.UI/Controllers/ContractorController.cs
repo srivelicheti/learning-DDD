@@ -1,5 +1,7 @@
-﻿using DDD.Web.UI.ViewModels;
+﻿using DDD.Web.UI.Infrastructure;
+using DDD.Web.UI.ViewModels;
 using Microsoft.AspNet.Mvc;
+using Microsoft.Extensions.OptionsModel;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -12,6 +14,11 @@ namespace DDD.Web.UI.Controllers
 {
     public class ContractorController : Controller
     {
+        private URLProvider _urlProvider;
+        public ContractorController(IOptions<URLProvider> optionsAccessor)
+        {
+            _urlProvider = optionsAccessor.Value;
+        }
         public ActionResult Index()
         {
             var model = new AddNewContractorViewModel
@@ -42,7 +49,7 @@ namespace DDD.Web.UI.Controllers
                 var client = new HttpClient();
                 model.Id = Guid.NewGuid();
                 model.StateCode = "DE";
-                client.BaseAddress = new Uri("http://localhost:54441/");
+                client.BaseAddress = new Uri(_urlProvider.ApiBaseUrl);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 HttpRequestMessage reqMessage = new HttpRequestMessage() {Method = HttpMethod.Post};

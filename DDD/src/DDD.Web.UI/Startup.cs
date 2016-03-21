@@ -7,6 +7,7 @@ using Microsoft.AspNet.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using DDD.Web.UI.Infrastructure;
 
 namespace DDD.Web.UI
 {
@@ -17,6 +18,7 @@ namespace DDD.Web.UI
             // Set up configuration sources.
             var configBuilder = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
+                .AddJsonFile("appsettings.iis.json",true)
                 .AddEnvironmentVariables();
             Configuration = configBuilder.Build();
         }
@@ -26,6 +28,8 @@ namespace DDD.Web.UI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddOptions();
+            services.Configure<URLProvider>(Configuration.GetSection("URLProvider"));
             // Add framework services.
             services.AddMvc();
         }

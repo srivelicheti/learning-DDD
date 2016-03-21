@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@inject IOptions<DDD.Web.UI.Infrastructure.URLProvider> UrlProvider
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -49,11 +50,15 @@
     </div>
 
     <environment names="Development">
+        <script type="text/javascript">
+            window.ApiBaseUrl = '@UrlProvider.Value.ApiBaseUrl';
+            window.signalRUrl = window.ApiBaseUrl + "signalr/hubs";
+        </script>
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
         <script src="~/lib/signalr/jquery.signalR.js"></script>
-        <script src="http://localhost:54441/signalr/hubs" type="text/javascript"></script>
+        <script src= '@string.Format("{0}/signalr/hubs",UrlProvider.Value.ApiBaseUrl)' type ="text/javascript"></script>
     </environment>
     <environment names="Staging,Production">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"
@@ -71,8 +76,8 @@
         $(function () {
             jQuery.support.cors = true;
             // Open a connection to the remote server
-            $.connection.hub.url = "http://localhost:54441";
-            var connection = $.hubConnection('http://localhost:54441');
+            $.connection.hub.url =  '@UrlProvider.Value.ApiBaseUrl';
+            var connection = $.hubConnection($.connection.hub.url);
             var chat = connection.createHubProxy('notifications');
 
             chat.on('messageReceived', function (message) {
