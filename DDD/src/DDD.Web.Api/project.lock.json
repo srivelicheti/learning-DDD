@@ -36,16 +36,20 @@
       },
       "DDD.Provider.DataModel/1.0.0": {
         "type": "project",
-        "framework": "DNX,Version=v4.5.1",
+        "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
-          "EntityFramework.Commands": "7.0.0",
-          "EntityFramework.MicrosoftSqlServer": "7.0.0",
-          "EntityFramework.MicrosoftSqlServer.Design": "7.0.0"
-        }
+          "EntityFramework.Commands": "7.0.0-rc1-final",
+          "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final",
+          "EntityFramework.MicrosoftSqlServer.Design": "7.0.0-rc1-final"
+        },
+        "frameworkAssemblies": [
+          "System.Collections",
+          "System.Runtime"
+        ]
       },
       "DDD.Provider.Domain/1.0.0": {
         "type": "project",
-        "framework": "DNX,Version=v4.5.1",
+        "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
           "DDD.Common": "1.0.0",
           "DDD.Domain.Common": "1.0.0",
@@ -66,13 +70,12 @@
       },
       "DDD.Provider.QueryStack/1.0.0": {
         "type": "project",
-        "framework": "DNX,Version=v4.5.1",
+        "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
-          "AutoMapper": "4.1.1",
+          "AutoMapper": "4.2.1",
           "DDD.Common": "1.0.0",
           "DDD.Domain.Common": "1.0.0",
-          "DDD.Provider.DataModel": "1.0.0",
-          "DDD.Provider.Messages": "1.0.0"
+          "DDD.Provider.DataModel": "1.0.0"
         }
       },
       "EntityFramework.Commands/7.0.0-rc1-final": {
@@ -1932,16 +1935,20 @@
       },
       "DDD.Provider.DataModel/1.0.0": {
         "type": "project",
-        "framework": "DNX,Version=v4.5.1",
+        "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
-          "EntityFramework.Commands": "7.0.0",
-          "EntityFramework.MicrosoftSqlServer": "7.0.0",
-          "EntityFramework.MicrosoftSqlServer.Design": "7.0.0"
-        }
+          "EntityFramework.Commands": "7.0.0-rc1-final",
+          "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final",
+          "EntityFramework.MicrosoftSqlServer.Design": "7.0.0-rc1-final"
+        },
+        "frameworkAssemblies": [
+          "System.Collections",
+          "System.Runtime"
+        ]
       },
       "DDD.Provider.Domain/1.0.0": {
         "type": "project",
-        "framework": "DNX,Version=v4.5.1",
+        "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
           "DDD.Common": "1.0.0",
           "DDD.Domain.Common": "1.0.0",
@@ -1962,13 +1969,12 @@
       },
       "DDD.Provider.QueryStack/1.0.0": {
         "type": "project",
-        "framework": "DNX,Version=v4.5.1",
+        "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
-          "AutoMapper": "4.1.1",
+          "AutoMapper": "4.2.1",
           "DDD.Common": "1.0.0",
           "DDD.Domain.Common": "1.0.0",
-          "DDD.Provider.DataModel": "1.0.0",
-          "DDD.Provider.Messages": "1.0.0"
+          "DDD.Provider.DataModel": "1.0.0"
         }
       },
       "EntityFramework.Commands/7.0.0-rc1-final": {
@@ -3831,16 +3837,20 @@
       },
       "DDD.Provider.DataModel/1.0.0": {
         "type": "project",
-        "framework": "DNX,Version=v4.5.1",
+        "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
-          "EntityFramework.Commands": "7.0.0",
-          "EntityFramework.MicrosoftSqlServer": "7.0.0",
-          "EntityFramework.MicrosoftSqlServer.Design": "7.0.0"
-        }
+          "EntityFramework.Commands": "7.0.0-rc1-final",
+          "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final",
+          "EntityFramework.MicrosoftSqlServer.Design": "7.0.0-rc1-final"
+        },
+        "frameworkAssemblies": [
+          "System.Collections",
+          "System.Runtime"
+        ]
       },
       "DDD.Provider.Domain/1.0.0": {
         "type": "project",
-        "framework": "DNX,Version=v4.5.1",
+        "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
           "DDD.Common": "1.0.0",
           "DDD.Domain.Common": "1.0.0",
@@ -3861,13 +3871,12 @@
       },
       "DDD.Provider.QueryStack/1.0.0": {
         "type": "project",
-        "framework": "DNX,Version=v4.5.1",
+        "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
-          "AutoMapper": "4.1.1",
+          "AutoMapper": "4.2.1",
           "DDD.Common": "1.0.0",
           "DDD.Domain.Common": "1.0.0",
-          "DDD.Provider.DataModel": "1.0.0",
-          "DDD.Provider.Messages": "1.0.0"
+          "DDD.Provider.DataModel": "1.0.0"
         }
       },
       "EntityFramework.Commands/7.0.0-rc1-final": {
@@ -5716,7 +5725,7 @@
     },
     "DDD.Provider.Messages/1.0.0": {
       "type": "project",
-      "path": "../../DDD.Provider.Messages/project.json"
+      "path": "../DDD.Provider.Messages/project.json"
     },
     "DDD.Provider.QueryStack/1.0.0": {
       "type": "project",

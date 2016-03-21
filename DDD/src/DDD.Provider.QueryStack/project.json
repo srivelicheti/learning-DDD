@@ -6,13 +6,12 @@
   "projectUrl": "",
   "licenseUrl": "",
   "frameworks": {
-    "dnx451": { }
+    "net451": { }
   },
   "dependencies": {
-    "AutoMapper": "4.1.1",
+    "AutoMapper": "4.2.1",
     "DDD.Common": "1.0.0-*",
     "DDD.Domain.Common": "1.0.0-*",
-    "DDD.Provider.DataModel": "1.0.0-*",
-    "DDD.Provider.Messages": "1.0.0-*"
+    "DDD.Provider.DataModel": "1.0.0-*"
   }
 }

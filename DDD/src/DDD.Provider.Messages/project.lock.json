@@ -279,11 +279,11 @@
   "libraries": {
     "DDD.Common/1.0.0": {
       "type": "project",
-      "path": "../src/DDD.Common/project.json"
+      "path": "../DDD.Common/project.json"
     },
     "DDD.Domain.Common/1.0.0": {
       "type": "project",
-      "path": "../src/DDD.Domain.Common/project.json"
+      "path": "../DDD.Domain.Common/project.json"
     },
     "Microsoft.Extensions.DependencyInjection.Abstractions/1.0.0-rc1-final": {
       "type": "package",

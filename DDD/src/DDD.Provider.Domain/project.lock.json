@@ -2,7 +2,7 @@
   "locked": false,
   "version": 2,
   "targets": {
-    "DNX,Version=v4.5.1": {
+    ".NETFramework,Version=v4.5.1": {
       "DDD.Common/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
@@ -27,12 +27,16 @@
       },
       "DDD.Provider.DataModel/1.0.0": {
         "type": "project",
-        "framework": "DNX,Version=v4.5.1",
+        "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
-          "EntityFramework.Commands": "7.0.0",
-          "EntityFramework.MicrosoftSqlServer": "7.0.0",
-          "EntityFramework.MicrosoftSqlServer.Design": "7.0.0"
-        }
+          "EntityFramework.Commands": "7.0.0-rc1-final",
+          "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final",
+          "EntityFramework.MicrosoftSqlServer.Design": "7.0.0-rc1-final"
+        },
+        "frameworkAssemblies": [
+          "System.Collections",
+          "System.Runtime"
+        ]
       },
       "DDD.Provider.Messages/1.0.0": {
         "type": "project",
@@ -46,9 +50,7 @@
       "EntityFramework.Commands/7.0.0-rc1-final": {
         "type": "package",
         "dependencies": {
-          "EntityFramework.Relational.Design": "7.0.0-rc1-final",
-          "Microsoft.AspNet.Hosting.Abstractions": "1.0.0-rc1-final",
-          "Microsoft.Extensions.PlatformAbstractions": "1.0.0-rc1-final"
+          "EntityFramework.Relational.Design": "7.0.0-rc1-final"
         },
         "frameworkAssemblies": [
           "Microsoft.CSharp",
@@ -57,10 +59,10 @@
           "System.Core"
         ],
         "compile": {
-          "lib/dnx451/EntityFramework.Commands.dll": {}
+          "lib/net451/EntityFramework.Commands.dll": {}
         },
         "runtime": {
-          "lib/dnx451/EntityFramework.Commands.dll": {}
+          "lib/net451/EntityFramework.Commands.dll": {}
         }
       },
       "EntityFramework.Core/7.0.0-rc1-final": {
@@ -81,28 +83,14 @@
           "Microsoft.CSharp",
           "mscorlib",
           "System",
-          "System.Collections",
           "System.ComponentModel.DataAnnotations",
-          "System.Core",
-          "System.Diagnostics.Debug",
-          "System.Diagnostics.Tools",
-          "System.Globalization",
-          "System.Linq",
-          "System.Linq.Expressions",
-          "System.Linq.Queryable",
-          "System.ObjectModel",
-          "System.Reflection",
-          "System.Reflection.Extensions",
-          "System.Resources.ResourceManager",
-          "System.Runtime",
-          "System.Runtime.Extensions",
-          "System.Threading"
+          "System.Core"
         ],
         "compile": {
-          "lib/dnx451/EntityFramework.Core.dll": {}
+          "lib/net451/EntityFramework.Core.dll": {}
         },
         "runtime": {
-          "lib/dnx451/EntityFramework.Core.dll": {}
+          "lib/net451/EntityFramework.Core.dll": {}
         }
       },
       "EntityFramework.MicrosoftSqlServer/7.0.0-rc1-final": {
@@ -173,16 +161,13 @@
           "mscorlib",
           "System",
           "System.ComponentModel.DataAnnotations",
-          "System.Core",
-          "System.IO",
-          "System.Text.Encoding",
-          "System.Threading.Tasks"
+          "System.Core"
         ],
         "compile": {
-          "lib/dnx451/EntityFramework.Relational.Design.dll": {}
+          "lib/net451/EntityFramework.Relational.Design.dll": {}
         },
         "runtime": {
-          "lib/dnx451/EntityFramework.Relational.Design.dll": {}
+          "lib/net451/EntityFramework.Relational.Design.dll": {}
         }
       },
       "Ix-Async/1.2.5": {
@@ -196,80 +181,6 @@
         },
         "runtime": {
           "lib/net45/System.Interactive.Async.dll": {}
-        }
-      },
-      "Microsoft.AspNet.FileProviders.Abstractions/1.0.0-rc1-final": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Primitives": "1.0.0-rc1-final"
-        },
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.AspNet.FileProviders.Abstractions.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.AspNet.FileProviders.Abstractions.dll": {}
-        }
-      },
-      "Microsoft.AspNet.Hosting.Abstractions/1.0.0-rc1-final": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.FileProviders.Abstractions": "1.0.0-rc1-final",
-          "Microsoft.AspNet.Http.Abstractions": "1.0.0-rc1-final"
-        },
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.AspNet.Hosting.Abstractions.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.AspNet.Hosting.Abstractions.dll": {}
-        }
-      },
-      "Microsoft.AspNet.Http.Abstractions/1.0.0-rc1-final": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.Http.Features": "1.0.0-rc1-final",
-          "Microsoft.Extensions.WebEncoders.Core": "1.0.0-rc1-final"
-        },
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.AspNet.Http.Abstractions.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.AspNet.Http.Abstractions.dll": {}
-        }
-      },
-      "Microsoft.AspNet.Http.Features/1.0.0-rc1-final": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Primitives": "1.0.0-rc1-final"
-        },
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.AspNet.Http.Features.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.AspNet.Http.Features.dll": {}
         }
       },
       "Microsoft.Extensions.Caching.Abstractions/1.0.0-rc1-final": {
@@ -452,21 +363,6 @@
           "lib/net451/Microsoft.Extensions.OptionsModel.dll": {}
         }
       },
-      "Microsoft.Extensions.PlatformAbstractions/1.0.0-rc1-final": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.Extensions.PlatformAbstractions.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.Extensions.PlatformAbstractions.dll": {}
-        }
-      },
       "Microsoft.Extensions.Primitives/1.0.0-rc1-final": {
         "type": "package",
         "frameworkAssemblies": [
@@ -480,21 +376,6 @@
         },
         "runtime": {
           "lib/net451/Microsoft.Extensions.Primitives.dll": {}
-        }
-      },
-      "Microsoft.Extensions.WebEncoders.Core/1.0.0-rc1-final": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.Extensions.WebEncoders.Core.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.Extensions.WebEncoders.Core.dll": {}
         }
       },
       "Moq/4.2.1510.2205": {
@@ -609,7 +490,7 @@
         }
       }
     },
-    "DNX,Version=v4.5.1/win7-x86": {
+    ".NETFramework,Version=v4.5.1/win7-x86": {
       "DDD.Common/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
@@ -634,12 +515,16 @@
       },
       "DDD.Provider.DataModel/1.0.0": {
         "type": "project",
-        "framework": "DNX,Version=v4.5.1",
+        "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
-          "EntityFramework.Commands": "7.0.0",
-          "EntityFramework.MicrosoftSqlServer": "7.0.0",
-          "EntityFramework.MicrosoftSqlServer.Design": "7.0.0"
-        }
+          "EntityFramework.Commands": "7.0.0-rc1-final",
+          "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final",
+          "EntityFramework.MicrosoftSqlServer.Design": "7.0.0-rc1-final"
+        },
+        "frameworkAssemblies": [
+          "System.Collections",
+          "System.Runtime"
+        ]
       },
       "DDD.Provider.Messages/1.0.0": {
         "type": "project",
@@ -653,9 +538,7 @@
       "EntityFramework.Commands/7.0.0-rc1-final": {
         "type": "package",
         "dependencies": {
-          "EntityFramework.Relational.Design": "7.0.0-rc1-final",
-          "Microsoft.AspNet.Hosting.Abstractions": "1.0.0-rc1-final",
-          "Microsoft.Extensions.PlatformAbstractions": "1.0.0-rc1-final"
+          "EntityFramework.Relational.Design": "7.0.0-rc1-final"
         },
         "frameworkAssemblies": [
           "Microsoft.CSharp",
@@ -664,10 +547,10 @@
           "System.Core"
         ],
         "compile": {
-          "lib/dnx451/EntityFramework.Commands.dll": {}
+          "lib/net451/EntityFramework.Commands.dll": {}
         },
         "runtime": {
-          "lib/dnx451/EntityFramework.Commands.dll": {}
+          "lib/net451/EntityFramework.Commands.dll": {}
         }
       },
       "EntityFramework.Core/7.0.0-rc1-final": {
@@ -688,28 +571,14 @@
           "Microsoft.CSharp",
           "mscorlib",
           "System",
-          "System.Collections",
           "System.ComponentModel.DataAnnotations",
-          "System.Core",
-          "System.Diagnostics.Debug",
-          "System.Diagnostics.Tools",
-          "System.Globalization",
-          "System.Linq",
-          "System.Linq.Expressions",
-          "System.Linq.Queryable",
-          "System.ObjectModel",
-          "System.Reflection",
-          "System.Reflection.Extensions",
-          "System.Resources.ResourceManager",
-          "System.Runtime",
-          "System.Runtime.Extensions",
-          "System.Threading"
+          "System.Core"
         ],
         "compile": {
-          "lib/dnx451/EntityFramework.Core.dll": {}
+          "lib/net451/EntityFramework.Core.dll": {}
         },
         "runtime": {
-          "lib/dnx451/EntityFramework.Core.dll": {}
+          "lib/net451/EntityFramework.Core.dll": {}
         }
       },
       "EntityFramework.MicrosoftSqlServer/7.0.0-rc1-final": {
@@ -780,16 +649,13 @@
           "mscorlib",
           "System",
           "System.ComponentModel.DataAnnotations",
-          "System.Core",
-          "System.IO",
-          "System.Text.Encoding",
-          "System.Threading.Tasks"
+          "System.Core"
         ],
         "compile": {
-          "lib/dnx451/EntityFramework.Relational.Design.dll": {}
+          "lib/net451/EntityFramework.Relational.Design.dll": {}
         },
         "runtime": {
-          "lib/dnx451/EntityFramework.Relational.Design.dll": {}
+          "lib/net451/EntityFramework.Relational.Design.dll": {}
         }
       },
       "Ix-Async/1.2.5": {
@@ -803,80 +669,6 @@
         },
         "runtime": {
           "lib/net45/System.Interactive.Async.dll": {}
-        }
-      },
-      "Microsoft.AspNet.FileProviders.Abstractions/1.0.0-rc1-final": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Primitives": "1.0.0-rc1-final"
-        },
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.AspNet.FileProviders.Abstractions.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.AspNet.FileProviders.Abstractions.dll": {}
-        }
-      },
-      "Microsoft.AspNet.Hosting.Abstractions/1.0.0-rc1-final": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.FileProviders.Abstractions": "1.0.0-rc1-final",
-          "Microsoft.AspNet.Http.Abstractions": "1.0.0-rc1-final"
-        },
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.AspNet.Hosting.Abstractions.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.AspNet.Hosting.Abstractions.dll": {}
-        }
-      },
-      "Microsoft.AspNet.Http.Abstractions/1.0.0-rc1-final": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.Http.Features": "1.0.0-rc1-final",
-          "Microsoft.Extensions.WebEncoders.Core": "1.0.0-rc1-final"
-        },
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.AspNet.Http.Abstractions.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.AspNet.Http.Abstractions.dll": {}
-        }
-      },
-      "Microsoft.AspNet.Http.Features/1.0.0-rc1-final": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Primitives": "1.0.0-rc1-final"
-        },
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.AspNet.Http.Features.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.AspNet.Http.Features.dll": {}
         }
       },
       "Microsoft.Extensions.Caching.Abstractions/1.0.0-rc1-final": {
@@ -1059,21 +851,6 @@
           "lib/net451/Microsoft.Extensions.OptionsModel.dll": {}
         }
       },
-      "Microsoft.Extensions.PlatformAbstractions/1.0.0-rc1-final": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.Extensions.PlatformAbstractions.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.Extensions.PlatformAbstractions.dll": {}
-        }
-      },
       "Microsoft.Extensions.Primitives/1.0.0-rc1-final": {
         "type": "package",
         "frameworkAssemblies": [
@@ -1087,21 +864,6 @@
         },
         "runtime": {
           "lib/net451/Microsoft.Extensions.Primitives.dll": {}
-        }
-      },
-      "Microsoft.Extensions.WebEncoders.Core/1.0.0-rc1-final": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.Extensions.WebEncoders.Core.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.Extensions.WebEncoders.Core.dll": {}
         }
       },
       "Moq/4.2.1510.2205": {
@@ -1216,7 +978,7 @@
         }
       }
     },
-    "DNX,Version=v4.5.1/win7-x64": {
+    ".NETFramework,Version=v4.5.1/win7-x64": {
       "DDD.Common/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
@@ -1241,12 +1003,16 @@
       },
       "DDD.Provider.DataModel/1.0.0": {
         "type": "project",
-        "framework": "DNX,Version=v4.5.1",
+        "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
-          "EntityFramework.Commands": "7.0.0",
-          "EntityFramework.MicrosoftSqlServer": "7.0.0",
-          "EntityFramework.MicrosoftSqlServer.Design": "7.0.0"
-        }
+          "EntityFramework.Commands": "7.0.0-rc1-final",
+          "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final",
+          "EntityFramework.MicrosoftSqlServer.Design": "7.0.0-rc1-final"
+        },
+        "frameworkAssemblies": [
+          "System.Collections",
+          "System.Runtime"
+        ]
       },
       "DDD.Provider.Messages/1.0.0": {
         "type": "project",
@@ -1260,9 +1026,7 @@
       "EntityFramework.Commands/7.0.0-rc1-final": {
         "type": "package",
         "dependencies": {
-          "EntityFramework.Relational.Design": "7.0.0-rc1-final",
-          "Microsoft.AspNet.Hosting.Abstractions": "1.0.0-rc1-final",
-          "Microsoft.Extensions.PlatformAbstractions": "1.0.0-rc1-final"
+          "EntityFramework.Relational.Design": "7.0.0-rc1-final"
         },
         "frameworkAssemblies": [
           "Microsoft.CSharp",
@@ -1271,10 +1035,10 @@
           "System.Core"
         ],
         "compile": {
-          "lib/dnx451/EntityFramework.Commands.dll": {}
+          "lib/net451/EntityFramework.Commands.dll": {}
         },
         "runtime": {
-          "lib/dnx451/EntityFramework.Commands.dll": {}
+          "lib/net451/EntityFramework.Commands.dll": {}
         }
       },
       "EntityFramework.Core/7.0.0-rc1-final": {
@@ -1295,28 +1059,14 @@
           "Microsoft.CSharp",
           "mscorlib",
           "System",
-          "System.Collections",
           "System.ComponentModel.DataAnnotations",
-          "System.Core",
-          "System.Diagnostics.Debug",
-          "System.Diagnostics.Tools",
-          "System.Globalization",
-          "System.Linq",
-          "System.Linq.Expressions",
-          "System.Linq.Queryable",
-          "System.ObjectModel",
-          "System.Reflection",
-          "System.Reflection.Extensions",
-          "System.Resources.ResourceManager",
-          "System.Runtime",
-          "System.Runtime.Extensions",
-          "System.Threading"
+          "System.Core"
         ],
         "compile": {
-          "lib/dnx451/EntityFramework.Core.dll": {}
+          "lib/net451/EntityFramework.Core.dll": {}
         },
         "runtime": {
-          "lib/dnx451/EntityFramework.Core.dll": {}
+          "lib/net451/EntityFramework.Core.dll": {}
         }
       },
       "EntityFramework.MicrosoftSqlServer/7.0.0-rc1-final": {
@@ -1387,16 +1137,13 @@
           "mscorlib",
           "System",
           "System.ComponentModel.DataAnnotations",
-          "System.Core",
-          "System.IO",
-          "System.Text.Encoding",
-          "System.Threading.Tasks"
+          "System.Core"
         ],
         "compile": {
-          "lib/dnx451/EntityFramework.Relational.Design.dll": {}
+          "lib/net451/EntityFramework.Relational.Design.dll": {}
         },
         "runtime": {
-          "lib/dnx451/EntityFramework.Relational.Design.dll": {}
+          "lib/net451/EntityFramework.Relational.Design.dll": {}
         }
       },
       "Ix-Async/1.2.5": {
@@ -1410,80 +1157,6 @@
         },
         "runtime": {
           "lib/net45/System.Interactive.Async.dll": {}
-        }
-      },
-      "Microsoft.AspNet.FileProviders.Abstractions/1.0.0-rc1-final": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Primitives": "1.0.0-rc1-final"
-        },
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.AspNet.FileProviders.Abstractions.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.AspNet.FileProviders.Abstractions.dll": {}
-        }
-      },
-      "Microsoft.AspNet.Hosting.Abstractions/1.0.0-rc1-final": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.FileProviders.Abstractions": "1.0.0-rc1-final",
-          "Microsoft.AspNet.Http.Abstractions": "1.0.0-rc1-final"
-        },
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.AspNet.Hosting.Abstractions.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.AspNet.Hosting.Abstractions.dll": {}
-        }
-      },
-      "Microsoft.AspNet.Http.Abstractions/1.0.0-rc1-final": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.Http.Features": "1.0.0-rc1-final",
-          "Microsoft.Extensions.WebEncoders.Core": "1.0.0-rc1-final"
-        },
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.AspNet.Http.Abstractions.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.AspNet.Http.Abstractions.dll": {}
-        }
-      },
-      "Microsoft.AspNet.Http.Features/1.0.0-rc1-final": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Primitives": "1.0.0-rc1-final"
-        },
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.AspNet.Http.Features.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.AspNet.Http.Features.dll": {}
         }
       },
       "Microsoft.Extensions.Caching.Abstractions/1.0.0-rc1-final": {
@@ -1666,21 +1339,6 @@
           "lib/net451/Microsoft.Extensions.OptionsModel.dll": {}
         }
       },
-      "Microsoft.Extensions.PlatformAbstractions/1.0.0-rc1-final": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.Extensions.PlatformAbstractions.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.Extensions.PlatformAbstractions.dll": {}
-        }
-      },
       "Microsoft.Extensions.Primitives/1.0.0-rc1-final": {
         "type": "package",
         "frameworkAssemblies": [
@@ -1694,21 +1352,6 @@
         },
         "runtime": {
           "lib/net451/Microsoft.Extensions.Primitives.dll": {}
-        }
-      },
-      "Microsoft.Extensions.WebEncoders.Core/1.0.0-rc1-final": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.Extensions.WebEncoders.Core.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.Extensions.WebEncoders.Core.dll": {}
         }
       },
       "Moq/4.2.1510.2205": {
@@ -1839,7 +1482,7 @@
     },
     "DDD.Provider.Messages/1.0.0": {
       "type": "project",
-      "path": "../../DDD.Provider.Messages/project.json"
+      "path": "../DDD.Provider.Messages/project.json"
     },
     "EntityFramework.Commands/7.0.0-rc1-final": {
       "type": "package",
@@ -1963,62 +1606,6 @@
         "lib/net45/System.Interactive.Async.XML",
         "lib/portable-windows8+net45+wp8/System.Interactive.Async.dll",
         "lib/portable-windows8+net45+wp8/System.Interactive.Async.XML"
-      ]
-    },
-    "Microsoft.AspNet.FileProviders.Abstractions/1.0.0-rc1-final": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "Tv6YJk78cH+gFipRNjeMpzzUg3t4BQiS0xYVlv/8gVNl4sI6ytAMYYfIbx8pCacIRH5Nx/Tw9GVn28eyw+JZfA==",
-      "files": [
-        "lib/dotnet5.4/Microsoft.AspNet.FileProviders.Abstractions.dll",
-        "lib/dotnet5.4/Microsoft.AspNet.FileProviders.Abstractions.xml",
-        "lib/net451/Microsoft.AspNet.FileProviders.Abstractions.dll",
-        "lib/net451/Microsoft.AspNet.FileProviders.Abstractions.xml",
-        "Microsoft.AspNet.FileProviders.Abstractions.1.0.0-rc1-final.nupkg",
-        "Microsoft.AspNet.FileProviders.Abstractions.1.0.0-rc1-final.nupkg.sha512",
-        "Microsoft.AspNet.FileProviders.Abstractions.nuspec"
-      ]
-    },
-    "Microsoft.AspNet.Hosting.Abstractions/1.0.0-rc1-final": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "07N5rzYcsjkLgwoI923FcAvvf7167qhLgCExXwYYkdZUIJQzneRG0DqZJTm6qpnaD5igf4FM9F+eh2m7y5NFbg==",
-      "files": [
-        "lib/dotnet5.4/Microsoft.AspNet.Hosting.Abstractions.dll",
-        "lib/dotnet5.4/Microsoft.AspNet.Hosting.Abstractions.xml",
-        "lib/net451/Microsoft.AspNet.Hosting.Abstractions.dll",
-        "lib/net451/Microsoft.AspNet.Hosting.Abstractions.xml",
-        "Microsoft.AspNet.Hosting.Abstractions.1.0.0-rc1-final.nupkg",
-        "Microsoft.AspNet.Hosting.Abstractions.1.0.0-rc1-final.nupkg.sha512",
-        "Microsoft.AspNet.Hosting.Abstractions.nuspec"
-      ]
-    },
-    "Microsoft.AspNet.Http.Abstractions/1.0.0-rc1-final": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sfzc1WJMl8wGCF+rChVfJ7otT6tTv24RNXUej2r8tlQ2RDNnAozYyGb0SCW2mxpHrC31On99Wt0rksgF0c2WUw==",
-      "files": [
-        "lib/dotnet5.4/Microsoft.AspNet.Http.Abstractions.dll",
-        "lib/dotnet5.4/Microsoft.AspNet.Http.Abstractions.xml",
-        "lib/net451/Microsoft.AspNet.Http.Abstractions.dll",
-        "lib/net451/Microsoft.AspNet.Http.Abstractions.xml",
-        "Microsoft.AspNet.Http.Abstractions.1.0.0-rc1-final.nupkg",
-        "Microsoft.AspNet.Http.Abstractions.1.0.0-rc1-final.nupkg.sha512",
-        "Microsoft.AspNet.Http.Abstractions.nuspec"
-      ]
-    },
-    "Microsoft.AspNet.Http.Features/1.0.0-rc1-final": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "WlscfdAvN8XaaK1iv1Iewp5emei7+0SlXNkUh7kMJpeaS6K0GhwNmwqZR6VrT1oN+Maw98nEONHS34/suqQwOA==",
-      "files": [
-        "lib/dotnet5.4/Microsoft.AspNet.Http.Features.dll",
-        "lib/dotnet5.4/Microsoft.AspNet.Http.Features.xml",
-        "lib/net451/Microsoft.AspNet.Http.Features.dll",
-        "lib/net451/Microsoft.AspNet.Http.Features.xml",
-        "Microsoft.AspNet.Http.Features.1.0.0-rc1-final.nupkg",
-        "Microsoft.AspNet.Http.Features.1.0.0-rc1-final.nupkg.sha512",
-        "Microsoft.AspNet.Http.Features.nuspec"
       ]
     },
     "Microsoft.Extensions.Caching.Abstractions/1.0.0-rc1-final": {
@@ -2181,20 +1768,6 @@
         "Microsoft.Extensions.OptionsModel.nuspec"
       ]
     },
-    "Microsoft.Extensions.PlatformAbstractions/1.0.0-rc1-final": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "26HS4c6MBisN+D7XUr8HObOI/JJvSJQYQR//Bfw/hi9UqhqK3lFpNKjOuYHI+gTxYdXT46HqZiz4D+k7d+ob3A==",
-      "files": [
-        "lib/dotnet5.4/Microsoft.Extensions.PlatformAbstractions.dll",
-        "lib/dotnet5.4/Microsoft.Extensions.PlatformAbstractions.xml",
-        "lib/net451/Microsoft.Extensions.PlatformAbstractions.dll",
-        "lib/net451/Microsoft.Extensions.PlatformAbstractions.xml",
-        "Microsoft.Extensions.PlatformAbstractions.1.0.0-rc1-final.nupkg",
-        "Microsoft.Extensions.PlatformAbstractions.1.0.0-rc1-final.nupkg.sha512",
-        "Microsoft.Extensions.PlatformAbstractions.nuspec"
-      ]
-    },
     "Microsoft.Extensions.Primitives/1.0.0-rc1-final": {
       "type": "package",
       "serviceable": true,
@@ -2209,20 +1782,6 @@
         "Microsoft.Extensions.Primitives.1.0.0-rc1-final.nupkg",
         "Microsoft.Extensions.Primitives.1.0.0-rc1-final.nupkg.sha512",
         "Microsoft.Extensions.Primitives.nuspec"
-      ]
-    },
-    "Microsoft.Extensions.WebEncoders.Core/1.0.0-rc1-final": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "wt47w3Zu7JvuD7CfRSCaz0IZL5EzpuzicRm6Qcidteb2TVeB98Psg7YGiwIBeYB1b52YFTBgqC+ySKk/GRhy2A==",
-      "files": [
-        "lib/dotnet5.4/Microsoft.Extensions.WebEncoders.Core.dll",
-        "lib/dotnet5.4/Microsoft.Extensions.WebEncoders.Core.xml",
-        "lib/net451/Microsoft.Extensions.WebEncoders.Core.dll",
-        "lib/net451/Microsoft.Extensions.WebEncoders.Core.xml",
-        "Microsoft.Extensions.WebEncoders.Core.1.0.0-rc1-final.nupkg",
-        "Microsoft.Extensions.WebEncoders.Core.1.0.0-rc1-final.nupkg.sha512",
-        "Microsoft.Extensions.WebEncoders.Core.nuspec"
       ]
     },
     "Moq/4.2.1510.2205": {
@@ -2487,7 +2046,7 @@
       "EntityFramework.MicrosoftSqlServer >= 7.0.0-*",
       "NServiceBus >= 5.2.14"
     ],
-    "DNX,Version=v4.5.1": [
+    ".NETFramework,Version=v4.5.1": [
       "DDD.Provider.Messages >= 1.0.0-*"
     ]
   }
