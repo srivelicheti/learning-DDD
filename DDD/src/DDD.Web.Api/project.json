@@ -22,7 +22,7 @@
     "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final",
     "Microsoft.AspNet.SignalR.Server": "3.0.0-rc1-*",
     "DDD.Provider.DataModel": "1.0.0-*",
-    "AutoMapper": "4.1.1",
+    "AutoMapper": "4.2.1",
     "DDD.Provider.QueryStack": "1.0.0-*",
     "Newtonsoft.Json": "8.0.2",
     "NServiceBus": "5.2.14",
@@ -37,6 +37,10 @@
     "dnx451": {
       "dependencies": {
         "log4net": "2.0.5"
+      },
+      "frameworkAssemblies": {
+        "System.Collections": "4.0.0.0",
+        "System.Configuration": "4.0.0.0"
       }
     }
     

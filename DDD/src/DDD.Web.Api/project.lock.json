@@ -3,8 +3,14 @@
   "version": 2,
   "targets": {
     "DNX,Version=v4.5.1": {
-      "AutoMapper/4.1.1": {
+      "AutoMapper/4.2.1": {
         "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
         "compile": {
           "lib/net45/AutoMapper.dll": {}
         },
@@ -1902,8 +1908,14 @@
       }
     },
     "DNX,Version=v4.5.1/win7-x86": {
-      "AutoMapper/4.1.1": {
+      "AutoMapper/4.2.1": {
         "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
         "compile": {
           "lib/net45/AutoMapper.dll": {}
         },
@@ -3804,8 +3816,14 @@
       }
     },
     "DNX,Version=v4.5.1/win7-x64": {
-      "AutoMapper/4.1.1": {
+      "AutoMapper/4.2.1": {
         "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
         "compile": {
           "lib/net45/AutoMapper.dll": {}
         },
@@ -5731,35 +5749,19 @@
       "type": "project",
       "path": "../DDD.Provider.QueryStack/project.json"
     },
-    "AutoMapper/4.1.1": {
+    "AutoMapper/4.2.1": {
       "type": "package",
-      "sha512": "wTNIFaF21i0heEEOMOLn4Ki991I+b6Ls+tiwTvmzVhkLo5PmSJcNLuf2eGJEtUnQ3UDBTAAdZEaXAgbTqOe2pg==",
+      "sha512": "BxAMt0Sl9dQIPPualuMv6IhJ5QrWmWSgyYZ/QxcQcR2IBu57/CXG5IP+73sFIr4FMNtcrUugWnuOWkYnlrLVWQ==",
       "files": [
-        "AutoMapper.4.1.1.nupkg",
-        "AutoMapper.4.1.1.nupkg.sha512",
+        "AutoMapper.4.2.1.nupkg",
+        "AutoMapper.4.2.1.nupkg.sha512",
         "AutoMapper.nuspec",
-        "lib/dotnet/AutoMapper.dll",
-        "lib/dotnet/AutoMapper.xml",
-        "lib/MonoAndroid/AutoMapper.dll",
-        "lib/MonoAndroid/AutoMapper.XML",
-        "lib/MonoTouch/AutoMapper.dll",
-        "lib/MonoTouch/AutoMapper.XML",
-        "lib/net40/AutoMapper.dll",
-        "lib/net40/AutoMapper.xml",
+        "lib/dotnet5.1/AutoMapper.dll",
+        "lib/dotnet5.1/AutoMapper.xml",
         "lib/net45/AutoMapper.dll",
         "lib/net45/AutoMapper.xml",
-        "lib/portable-net45+win+wpa81+wp80+MonoAndroid10+Xamarin.iOS10+MonoTouch10/AutoMapper.dll",
-        "lib/portable-net45+win+wpa81+wp80+MonoAndroid10+Xamarin.iOS10+MonoTouch10/AutoMapper.xml",
-        "lib/sl50/AutoMapper.dll",
-        "lib/sl50/AutoMapper.XML",
-        "lib/win/AutoMapper.dll",
-        "lib/win/AutoMapper.xml",
-        "lib/wp80/AutoMapper.dll",
-        "lib/wp80/AutoMapper.xml",
-        "lib/wpa81/AutoMapper.dll",
-        "lib/wpa81/AutoMapper.xml",
-        "lib/Xamarin.iOS10/AutoMapper.dll",
-        "lib/Xamarin.iOS10/AutoMapper.XML"
+        "lib/portable-net45+win+wpa81+MonoAndroid10+Xamarin.iOS10+MonoTouch10/AutoMapper.dll",
+        "lib/portable-net45+win+wpa81+MonoAndroid10+Xamarin.iOS10+MonoTouch10/AutoMapper.xml"
       ]
     },
     "EntityFramework.Commands/7.0.0-rc1-final": {
@@ -7883,14 +7885,16 @@
       "EntityFramework.MicrosoftSqlServer >= 7.0.0-rc1-final",
       "Microsoft.AspNet.SignalR.Server >= 3.0.0-rc1-*",
       "DDD.Provider.DataModel >= 1.0.0-*",
-      "AutoMapper >= 4.1.1",
+      "AutoMapper >= 4.2.1",
       "DDD.Provider.QueryStack >= 1.0.0-*",
       "Newtonsoft.Json >= 8.0.2",
       "NServiceBus >= 5.2.14",
       "DDD.Provider.Messages >= 1.0.0-*"
     ],
     "DNX,Version=v4.5.1": [
-      "log4net >= 2.0.5"
+      "log4net >= 2.0.5",
+      "fx/System.Collections >= 4.0.0",
+      "fx/System.Configuration >= 4.0.0"
     ]
   }
 }
