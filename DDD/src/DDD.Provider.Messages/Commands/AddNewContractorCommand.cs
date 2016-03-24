@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace DDD.Provider.Messages.Commands
 {
-    public class AddNewContractorCommand : BaseCommand, ICommand
+    //public class AddNewContractorCommand : , ICommand
+    public class AddNewContractorCommand : BaseCommand, ICommand //
     {
         public AddNewContractorCommand(ContractorDto contractor) : base(Guid.NewGuid(), "Anonymous")
         {

@@ -47,6 +47,8 @@ namespace DDD.Provider.Domain.CommandHandlers
                 _contractorRepository.Save();
                // _eventBus.PublishQueuedPostCommitEvents();
                 _eventBus.Publish(new CommandCompletedEvent(command.Id, DateTime.UtcNow));
+                //var ambientTransaction = System.Transactions.Transaction.Current;
+                //var ts = new /*Tr*/
             }
             catch (Exception ex)
             {

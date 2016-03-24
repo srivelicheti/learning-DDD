@@ -57,16 +57,27 @@ namespace DDD.Web.Api.App_Start
         public T GetConfiguration<T>() where T : class, new()
         {
             // the part you are overriding
-            if (typeof(T) == typeof(MessageEndpointMappingCollection))
+            if (typeof(T) == typeof(UnicastBusConfig))
             {
-                var coll = new MessageEndpointMappingCollection();
+                var config = new UnicastBusConfig();
+                var coll = config.MessageEndpointMappings;
                 coll.Add(new MessageEndpointMapping
                 {
-                    AssemblyName = "DDD.Provider.Messages",
+                    //AssemblyName = "DDD.Provider.Messages",
                     Endpoint = "ProviderDomain",
+                    //Namespace = "DDD.Provider.Messages.Commands",
+                    Messages= "DDD.Provider.Messages",
+                  //  TypeFullName= "DDD.Provider.Messages.Commands.AddNewContractorCommand, DDD.Provider.Messages"
                 });
+                //coll.Add(new MessageEndpointMapping
+                //{
+                //    AssemblyName = "DDD.Provider.Messages",
+                //    Endpoint = "ProviderDomain",
+                //    Messages = "DDD.Provider.Messages",
+                //    //Namespace = "DDD.Provider.Messages.Events"
+                //});
 
-                return coll as T;
+                return config as T;
             }
             else if (typeof(T) == typeof(MessageForwardingInCaseOfFaultConfig))
             {
