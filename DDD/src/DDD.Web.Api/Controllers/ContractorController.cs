@@ -35,7 +35,7 @@ namespace DDD.Web.Api.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-
+            //_bus.Send(new TestCommand("Some contra"));
             return new[] { "value1", "value2" };
         }
 

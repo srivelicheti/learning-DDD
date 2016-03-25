@@ -19,4 +19,23 @@ namespace DDD.Provider.Messages.Commands
 
         public ContractorDto Contractor { get; private set; }
     }
+
+    public class TestCommand :  ICommand //
+    {
+        public TestCommand(string contractor) 
+        {
+            //TODO: pass actual user who submitted the command
+            Contractor = contractor;
+        }
+
+        public string Contractor { get; private set; }
+    }
+
+    public class TestCommandHandler : IHandleMessages<TestCommand>
+    {
+        public void Handle(TestCommand message)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

@@ -1,6 +1,9 @@
-﻿using NServiceBus;
+﻿using DDD.Provider.Messages.Commands;
+using NServiceBus;
 using NServiceBus.Config;
 using NServiceBus.Config.ConfigurationSource;
+using NServiceBus.Faults;
+using NServiceBus.Features;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -30,12 +33,15 @@ namespace DDD.Web.Api.App_Start
                 //var endPointConfig = new EndpointConfiguration
 
                 var cfg = new BusConfiguration();
+                cfg.CustomConfigurationSource(new MyCustomConfigurationSource());
+
+                cfg.AssembliesToScan(typeof(TestCommand).Assembly);
                 cfg.UseTransport<MsmqTransport>();
                 cfg.UsePersistence<InMemoryPersistence>();
                 cfg.EndpointName("ProviderDomain");
                 cfg.PurgeOnStartup(true);
                 cfg.EnableInstallers();
-                cfg.CustomConfigurationSource(new MyCustomConfigurationSource());
+                
                 //cfg.
                 Bus = NServiceBus.Bus.Create(cfg).Start();
                 return Bus;
@@ -43,15 +49,7 @@ namespace DDD.Web.Api.App_Start
         }
     }
 
-    //public class NServiceBusConfigSource : IConfigurationSource
-    //{
-    //    public T GetConfiguration<T>() where T : class, new()
-    //    {
-    //        if(typeof(T) == )
-    //        throw new NotImplementedException();
-    //    }
-    //}
-
+    
     public class MyCustomConfigurationSource : IConfigurationSource
     {
         public T GetConfiguration<T>() where T : class, new()
@@ -67,7 +65,18 @@ namespace DDD.Web.Api.App_Start
                     Endpoint = "ProviderDomain",
                     //Namespace = "DDD.Provider.Messages.Commands",
                     Messages= "DDD.Provider.Messages",
+                    
                   //  TypeFullName= "DDD.Provider.Messages.Commands.AddNewContractorCommand, DDD.Provider.Messages"
+                });
+
+                coll.Add(new MessageEndpointMapping
+                {
+                    //AssemblyName = "DDD.Provider.Messages",
+                    Endpoint = "ProviderDomain",
+                    //Namespace = "DDD.Provider.Messages.Commands",
+                    Messages = "DDD.Provider.Domain",
+
+                    //  TypeFullName= "DDD.Provider.Messages.Commands.AddNewContractorCommand, DDD.Provider.Messages"
                 });
                 //coll.Add(new MessageEndpointMapping
                 //{
@@ -92,27 +101,66 @@ namespace DDD.Web.Api.App_Start
         }
     }
 
-    public class EndPointConfig : IProvideConfiguration<MessageEndpointMappingCollection>
-    {
-        public MessageEndpointMappingCollection GetConfiguration()
-        {
-            var coll = new MessageEndpointMappingCollection();
-            coll.Add(new MessageEndpointMapping {
-                 AssemblyName= "DDD.Provider.Messages",
-                  Endpoint= "ProviderDomain",
-            } );
+    //public class SubscribeToNotifications :
+    // IWantToRunWhenBusStartsAndStops,
+    // IDisposable
+    //{
+    //    static ILog log = LogManager.GetLogger<SubscribeToNotifications>();
+    //    BusNotifications busNotifications;
+    //    List<IDisposable> unsubscribeStreams = new List<IDisposable>();
 
-            return coll;
-        }
-    }
+    //    public SubscribeToNotifications(BusNotifications busNotifications)
+    //    {
+    //        this.busNotifications = busNotifications;
+    //    }
 
-    public class ErrorQueueConfig : IProvideConfiguration<MessageForwardingInCaseOfFaultConfig>
-    {
-        public MessageForwardingInCaseOfFaultConfig GetConfiguration()
-        {
-            return new MessageForwardingInCaseOfFaultConfig {
-                 ErrorQueue="ProviderErrorQueue"
-            };
-        }
-    }
+    //    public void Start()
+    //    {
+    //        ErrorsNotifications errors = busNotifications.Errors;
+    //        DefaultScheduler scheduler = Scheduler.Default;
+    //        unsubscribeStreams.Add(
+    //            errors.MessageSentToErrorQueue
+    //                .ObserveOn(scheduler)
+    //                .Subscribe(LogToConsole)
+    //            );
+    //        unsubscribeStreams.Add(
+    //            errors.MessageHasBeenSentToSecondLevelRetries
+    //                .ObserveOn(scheduler)
+    //                .Subscribe(LogToConsole)
+    //            );
+    //        unsubscribeStreams.Add(
+    //            errors.MessageHasFailedAFirstLevelRetryAttempt
+    //                .ObserveOn(scheduler)
+    //                .Subscribe(LogToConsole)
+    //            );
+    //    }
+
+    //    void LogToConsole(FailedMessage failedMessage)
+    //    {
+    //        log.Info("Mesage sent to error queue");
+    //    }
+
+    //    void LogToConsole(SecondLevelRetry secondLevelRetry)
+    //    {
+    //        log.Info("Mesage sent to SLR. RetryAttempt:" + secondLevelRetry.RetryAttempt);
+    //    }
+
+    //    void LogToConsole(FirstLevelRetry firstLevelRetry)
+    //    {
+    //        log.Info("Mesage sent to FLR. RetryAttempt:" + firstLevelRetry.RetryAttempt);
+    //    }
+
+    //    public void Stop()
+    //    {
+    //        foreach (IDisposable unsubscribeStream in unsubscribeStreams)
+    //        {
+    //            unsubscribeStream.Dispose();
+    //        }
+    //    }
+
+    //    public void Dispose()
+    //    {
+    //        Stop();
+    //    }
+    //}
 }
