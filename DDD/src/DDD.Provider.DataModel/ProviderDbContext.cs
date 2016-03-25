@@ -7,8 +7,12 @@ namespace DDD.Provider.DataModel
     {
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseSqlServer(@"Data Source=.\SQL2014;Initial Catalog=POC_DDD;Integrated Security=False;User ID=srvelicheti;Password=Secret@123;MultipleActiveResultSets=true;Trusted_Connection=true;");
+            options.UseSqlServer(@"Data Source=.\SQL2014;Initial Catalog=POC_DDD;Integrated Security=False;User ID=srvelicheti;Password=Secret@123;MultipleActiveResultSets=true;Trusted_Connection=true;")
+                .SuppressAmbientTransactionWarning();
+            
         }
+
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

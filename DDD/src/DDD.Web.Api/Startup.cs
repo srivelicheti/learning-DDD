@@ -44,7 +44,7 @@ namespace DDD.Web.Api
             // This will register all services from the collection
             // into the container with the appropriate lifetime.
             container.Populate(services);
-            var bus = NServiceBusBootStrapper.Init();
+            var bus = NServiceBusBootStrapper.Init(container);
             IocBootstrapper.ConfigureIocContainer(container,bus);
             //DomainEventsBootStrapper.RegisterEvents(container);
             // Make sure we return an IServiceProvider, 
