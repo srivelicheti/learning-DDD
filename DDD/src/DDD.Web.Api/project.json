@@ -26,7 +26,8 @@
     "DDD.Provider.QueryStack": "1.0.0-*",
     "Newtonsoft.Json": "8.0.2",
     "NServiceBus": "5.2.14",
-    "DDD.Provider.Messages": "1.0.0-*"
+    "DDD.Provider.Messages": "1.0.0-*",
+    "NServiceBus.NHibernate": "6.2.7"
   },
 
   "commands": {

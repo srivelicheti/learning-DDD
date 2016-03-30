@@ -1,0 +1,617 @@
+{
+  "locked": false,
+  "version": 2,
+  "targets": {
+    "DNX,Version=v4.5.1": {
+      "DDD.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "Moq": "4.2.1510.2205"
+        },
+        "frameworkAssemblies": [
+          "System.ComponentModel",
+          "System.ComponentModel.Annotations",
+          "System.ComponentModel.DataAnnotations",
+          "System.Runtime.Serialization"
+        ]
+      },
+      "DDD.Domain.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "DDD.Common": "1.0.0",
+          "NServiceBus": "5.2.14",
+          "StructureMap.Dnx": "0.4.0-alpha4"
+        }
+      },
+      "DDD.Provider.Messages/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "DDD.Common": "1.0.0",
+          "DDD.Domain.Common": "1.0.0",
+          "NServiceBus": "5.2.14"
+        }
+      },
+      "Iesi.Collections/4.0.1.4000": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Iesi.Collections.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Iesi.Collections.dll": {}
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection.Abstractions/1.0.0-rc1-final": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
+        }
+      },
+      "Moq/4.2.1510.2205": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Moq.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Moq.dll": {}
+        }
+      },
+      "Newtonsoft.Json/8.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        }
+      },
+      "NHibernate/4.0.1.4000": {
+        "type": "package",
+        "dependencies": {
+          "Iesi.Collections": "[4.0.0, 5.0.0)"
+        },
+        "compile": {
+          "lib/net40/NHibernate.dll": {}
+        },
+        "runtime": {
+          "lib/net40/NHibernate.dll": {}
+        }
+      },
+      "NServiceBus/5.2.14": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net45/NServiceBus.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/NServiceBus.Core.dll": {}
+        }
+      },
+      "NServiceBus.NHibernate/6.2.7": {
+        "type": "package",
+        "dependencies": {
+          "Iesi.Collections": "[4.0.1.4000, 5.0.0)",
+          "NHibernate": "[4.0.1.4000, 5.0.0)",
+          "NServiceBus": "[5.2.8, 6.0.0)"
+        },
+        "compile": {
+          "lib/net45/NServiceBus.NHibernate.dll": {}
+        },
+        "runtime": {
+          "lib/net45/NServiceBus.NHibernate.dll": {}
+        }
+      },
+      "structuremap/4.0.0.60000-alpha": {
+        "type": "package",
+        "compile": {
+          "lib/net40/StructureMap.dll": {},
+          "lib/net40/StructureMap.Net4.dll": {}
+        },
+        "runtime": {
+          "lib/net40/StructureMap.dll": {},
+          "lib/net40/StructureMap.Net4.dll": {}
+        }
+      },
+      "StructureMap.Dnx/0.4.0-alpha4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0-rc1-final",
+          "structuremap": "4.0.0.60000-alpha"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/StructureMap.Dnx.dll": {}
+        },
+        "runtime": {
+          "lib/net451/StructureMap.Dnx.dll": {}
+        }
+      }
+    },
+    "DNX,Version=v4.5.1/win7-x86": {
+      "DDD.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "Moq": "4.2.1510.2205"
+        },
+        "frameworkAssemblies": [
+          "System.ComponentModel",
+          "System.ComponentModel.Annotations",
+          "System.ComponentModel.DataAnnotations",
+          "System.Runtime.Serialization"
+        ]
+      },
+      "DDD.Domain.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "DDD.Common": "1.0.0",
+          "NServiceBus": "5.2.14",
+          "StructureMap.Dnx": "0.4.0-alpha4"
+        }
+      },
+      "DDD.Provider.Messages/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "DDD.Common": "1.0.0",
+          "DDD.Domain.Common": "1.0.0",
+          "NServiceBus": "5.2.14"
+        }
+      },
+      "Iesi.Collections/4.0.1.4000": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Iesi.Collections.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Iesi.Collections.dll": {}
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection.Abstractions/1.0.0-rc1-final": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
+        }
+      },
+      "Moq/4.2.1510.2205": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Moq.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Moq.dll": {}
+        }
+      },
+      "Newtonsoft.Json/8.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        }
+      },
+      "NHibernate/4.0.1.4000": {
+        "type": "package",
+        "dependencies": {
+          "Iesi.Collections": "[4.0.0, 5.0.0)"
+        },
+        "compile": {
+          "lib/net40/NHibernate.dll": {}
+        },
+        "runtime": {
+          "lib/net40/NHibernate.dll": {}
+        }
+      },
+      "NServiceBus/5.2.14": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net45/NServiceBus.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/NServiceBus.Core.dll": {}
+        }
+      },
+      "NServiceBus.NHibernate/6.2.7": {
+        "type": "package",
+        "dependencies": {
+          "Iesi.Collections": "[4.0.1.4000, 5.0.0)",
+          "NHibernate": "[4.0.1.4000, 5.0.0)",
+          "NServiceBus": "[5.2.8, 6.0.0)"
+        },
+        "compile": {
+          "lib/net45/NServiceBus.NHibernate.dll": {}
+        },
+        "runtime": {
+          "lib/net45/NServiceBus.NHibernate.dll": {}
+        }
+      },
+      "structuremap/4.0.0.60000-alpha": {
+        "type": "package",
+        "compile": {
+          "lib/net40/StructureMap.dll": {},
+          "lib/net40/StructureMap.Net4.dll": {}
+        },
+        "runtime": {
+          "lib/net40/StructureMap.dll": {},
+          "lib/net40/StructureMap.Net4.dll": {}
+        }
+      },
+      "StructureMap.Dnx/0.4.0-alpha4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0-rc1-final",
+          "structuremap": "4.0.0.60000-alpha"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/StructureMap.Dnx.dll": {}
+        },
+        "runtime": {
+          "lib/net451/StructureMap.Dnx.dll": {}
+        }
+      }
+    },
+    "DNX,Version=v4.5.1/win7-x64": {
+      "DDD.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "Moq": "4.2.1510.2205"
+        },
+        "frameworkAssemblies": [
+          "System.ComponentModel",
+          "System.ComponentModel.Annotations",
+          "System.ComponentModel.DataAnnotations",
+          "System.Runtime.Serialization"
+        ]
+      },
+      "DDD.Domain.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "DDD.Common": "1.0.0",
+          "NServiceBus": "5.2.14",
+          "StructureMap.Dnx": "0.4.0-alpha4"
+        }
+      },
+      "DDD.Provider.Messages/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "DDD.Common": "1.0.0",
+          "DDD.Domain.Common": "1.0.0",
+          "NServiceBus": "5.2.14"
+        }
+      },
+      "Iesi.Collections/4.0.1.4000": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Iesi.Collections.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Iesi.Collections.dll": {}
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection.Abstractions/1.0.0-rc1-final": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
+        }
+      },
+      "Moq/4.2.1510.2205": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Moq.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Moq.dll": {}
+        }
+      },
+      "Newtonsoft.Json/8.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        }
+      },
+      "NHibernate/4.0.1.4000": {
+        "type": "package",
+        "dependencies": {
+          "Iesi.Collections": "[4.0.0, 5.0.0)"
+        },
+        "compile": {
+          "lib/net40/NHibernate.dll": {}
+        },
+        "runtime": {
+          "lib/net40/NHibernate.dll": {}
+        }
+      },
+      "NServiceBus/5.2.14": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net45/NServiceBus.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/NServiceBus.Core.dll": {}
+        }
+      },
+      "NServiceBus.NHibernate/6.2.7": {
+        "type": "package",
+        "dependencies": {
+          "Iesi.Collections": "[4.0.1.4000, 5.0.0)",
+          "NHibernate": "[4.0.1.4000, 5.0.0)",
+          "NServiceBus": "[5.2.8, 6.0.0)"
+        },
+        "compile": {
+          "lib/net45/NServiceBus.NHibernate.dll": {}
+        },
+        "runtime": {
+          "lib/net45/NServiceBus.NHibernate.dll": {}
+        }
+      },
+      "structuremap/4.0.0.60000-alpha": {
+        "type": "package",
+        "compile": {
+          "lib/net40/StructureMap.dll": {},
+          "lib/net40/StructureMap.Net4.dll": {}
+        },
+        "runtime": {
+          "lib/net40/StructureMap.dll": {},
+          "lib/net40/StructureMap.Net4.dll": {}
+        }
+      },
+      "StructureMap.Dnx/0.4.0-alpha4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0-rc1-final",
+          "structuremap": "4.0.0.60000-alpha"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/StructureMap.Dnx.dll": {}
+        },
+        "runtime": {
+          "lib/net451/StructureMap.Dnx.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "DDD.Common/1.0.0": {
+      "type": "project",
+      "path": "../DDD.Common/project.json"
+    },
+    "DDD.Domain.Common/1.0.0": {
+      "type": "project",
+      "path": "../DDD.Domain.Common/project.json"
+    },
+    "DDD.Provider.Messages/1.0.0": {
+      "type": "project",
+      "path": "../DDD.Provider.Messages/project.json"
+    },
+    "Iesi.Collections/4.0.1.4000": {
+      "type": "package",
+      "sha512": "77x4RfYcgQyQIfvmz3WUDGmzJf7CHl1++ArQz+7ZyrxuGSULkczQlbX140FKJY42YpTpbwLqr5fsQxAZ5AB5qg==",
+      "files": [
+        "Iesi.Collections.4.0.1.4000.nupkg",
+        "Iesi.Collections.4.0.1.4000.nupkg.sha512",
+        "Iesi.Collections.nuspec",
+        "lib/net40/Iesi.Collections.dll",
+        "lib/net40/Iesi.Collections.xml"
+      ]
+    },
+    "Microsoft.Extensions.DependencyInjection.Abstractions/1.0.0-rc1-final": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "MUKexXAsRZ55C7YZ26ShePZgBeW+6FbasxeIVmZ/BZIgiG4uw6yPOdfl9WvTaUL9SFK2sEPcYLatWmLfTpsOAA==",
+      "files": [
+        "lib/dotnet5.4/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/dotnet5.4/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "lib/net451/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/net451/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "lib/netcore50/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/netcore50/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "Microsoft.Extensions.DependencyInjection.Abstractions.1.0.0-rc1-final.nupkg",
+        "Microsoft.Extensions.DependencyInjection.Abstractions.1.0.0-rc1-final.nupkg.sha512",
+        "Microsoft.Extensions.DependencyInjection.Abstractions.nuspec"
+      ]
+    },
+    "Moq/4.2.1510.2205": {
+      "type": "package",
+      "sha512": "nqMoHSP5f04/kyKbRUjGgzqtIb5LUUs0H6llHOkQJ5Takx4Ezr2H+59pkIgxkmpbHAcGmc/KsyRZUs1ehnPYag==",
+      "files": [
+        "lib/net35/Moq.dll",
+        "lib/net35/Moq.xml",
+        "lib/net40/Moq.dll",
+        "lib/net40/Moq.xml",
+        "lib/sl5/Moq.Silverlight.dll",
+        "lib/sl5/Moq.Silverlight.xml",
+        "Moq.4.2.1510.2205.nupkg",
+        "Moq.4.2.1510.2205.nupkg.sha512",
+        "Moq.nuspec"
+      ]
+    },
+    "Newtonsoft.Json/8.0.3": {
+      "type": "package",
+      "sha512": "KGsYQdS2zLH+H8x2cZaSI7e+YZ4SFIbyy1YJQYl6GYBWjf5o4H1A68nxyq+WTyVSOJQ4GqS/DiPE+UseUizgMg==",
+      "files": [
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll",
+        "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.xml",
+        "Newtonsoft.Json.8.0.3.nupkg",
+        "Newtonsoft.Json.8.0.3.nupkg.sha512",
+        "Newtonsoft.Json.nuspec",
+        "tools/install.ps1"
+      ]
+    },
+    "NHibernate/4.0.1.4000": {
+      "type": "package",
+      "sha512": "acTmz+YrhGu9Ev0z/GZtzudibKLkCyxJuBVGV8abxfNlyPOHkeJrnDpwEu7vB86rwAURYZ5XBtF/x0qhI35VQg==",
+      "files": [
+        "ConfigurationTemplates/FireBird.cfg.xml",
+        "ConfigurationTemplates/MSSQL.cfg.xml",
+        "ConfigurationTemplates/MySql.cfg.xml",
+        "ConfigurationTemplates/Oracle.cfg.xml",
+        "ConfigurationTemplates/PostgreSQL.cfg.xml",
+        "ConfigurationTemplates/SQLite.cfg.xml",
+        "ConfigurationTemplates/SybaseASE.cfg.xml",
+        "ConfigurationTemplates/SybaseSQLAnywhere.cfg.xml",
+        "lib/net40/NHibernate.dll",
+        "lib/net40/NHibernate.xml",
+        "NHibernate.4.0.1.4000.nupkg",
+        "NHibernate.4.0.1.4000.nupkg.sha512",
+        "NHibernate.license.txt",
+        "NHibernate.nuspec",
+        "NHibernate.readme.html",
+        "NHibernate.releasenotes.txt",
+        "nhibernate-configuration.xsd",
+        "nhibernate-mapping.xsd"
+      ]
+    },
+    "NServiceBus/5.2.14": {
+      "type": "package",
+      "sha512": "M+LNC1CkdfQr+DOZrAu3VTR8sDNX7i09at3mxOvmpcDwEWuiueubeml6KJoIVLllYgIatBKXx2G4Z8TnzLD3uw==",
+      "files": [
+        "lib/net45/NServiceBus.Core.dll",
+        "lib/net45/NServiceBus.Core.pdb",
+        "lib/net45/NServiceBus.Core.xml",
+        "NServiceBus.5.2.14.nupkg",
+        "NServiceBus.5.2.14.nupkg.sha512",
+        "NServiceBus.nuspec",
+        "tools/about_NServiceBus.help.txt",
+        "tools/init.ps1",
+        "tools/NServiceBus.PowerShell.Development.dll"
+      ]
+    },
+    "NServiceBus.NHibernate/6.2.7": {
+      "type": "package",
+      "sha512": "8tMnX2Y4AuZ4Xp5h3H/eY/xUhJqKqO15WgUSLSjR9859+GGm/efJVabnNFhlpGaUqMmBhuZu2ESh49wc5cexLw==",
+      "files": [
+        "lib/net45/NServiceBus.NHibernate.dll",
+        "lib/net45/NServiceBus.NHibernate.pdb",
+        "lib/net45/NServiceBus.NHibernate.xml",
+        "NServiceBus.NHibernate.6.2.7.nupkg",
+        "NServiceBus.NHibernate.6.2.7.nupkg.sha512",
+        "NServiceBus.NHibernate.nuspec"
+      ]
+    },
+    "structuremap/4.0.0.60000-alpha": {
+      "type": "package",
+      "sha512": "5MswGHgFabW0A55uIezYkZap4f9SDjYWdWUZ0xa4/ZUSknNcdvfYCL2Gu/bXQZQRfLy5BgfJG3btKjCSZbNzjA==",
+      "files": [
+        "lib/dotnet/StructureMap.dll",
+        "lib/dotnet/StructureMap.pdb",
+        "lib/net40/StructureMap.dll",
+        "lib/net40/StructureMap.Net4.dll",
+        "lib/net40/StructureMap.Net4.pdb",
+        "lib/net40/StructureMap.pdb",
+        "lib/net40/StructureMap.xml",
+        "lib/portable-net40+wp8+win8/StructureMap.dll",
+        "lib/portable-net40+wp8+win8/StructureMap.pdb",
+        "lib/portable-net40+wp8+win8/StructureMap.xml",
+        "lib/portable-net45+wp81+win81/StructureMap.dll",
+        "lib/portable-net45+wp81+win81/StructureMap.pdb",
+        "lib/portable-net45+wp81+win81/StructureMap.xml",
+        "structuremap.4.0.0.60000-alpha.nupkg",
+        "structuremap.4.0.0.60000-alpha.nupkg.sha512",
+        "structuremap.nuspec"
+      ]
+    },
+    "StructureMap.Dnx/0.4.0-alpha4": {
+      "type": "package",
+      "sha512": "xz2xMspYP+24TNAwkPqnTYEWj9WfW+0Vmnk0PRtvIc53jFum+ZdlCIK4WchIe2N5r+U70ySt+Y/KSMMecKFvYw==",
+      "files": [
+        "lib/dotnet5.4/StructureMap.Dnx.dll",
+        "lib/dotnet5.4/StructureMap.Dnx.xml",
+        "lib/net451/StructureMap.Dnx.dll",
+        "lib/net451/StructureMap.Dnx.xml",
+        "lib/netcore50/StructureMap.Dnx.dll",
+        "lib/netcore50/StructureMap.Dnx.xml",
+        "StructureMap.Dnx.0.4.0-alpha4.nupkg",
+        "StructureMap.Dnx.0.4.0-alpha4.nupkg.sha512",
+        "StructureMap.Dnx.nuspec"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "": [
+      "DDD.Common >= 1.0.0-*",
+      "DDD.Domain.Common >= 1.0.0-*",
+      "DDD.Provider.Messages >= 1.0.0-*",
+      "NServiceBus >= 5.2.14",
+      "NServiceBus.NHibernate >= 6.2.7",
+      "Newtonsoft.Json >= 8.0.3"
+    ],
+    "DNX,Version=v4.5.1": [
+      "fx/System.Configuration >= 4.0.0"
+    ]
+  }
+}

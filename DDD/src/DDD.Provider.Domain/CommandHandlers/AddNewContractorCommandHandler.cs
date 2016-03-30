@@ -6,6 +6,7 @@ using DDD.Provider.Domain.Enums;
 using DDD.Provider.Domain.Repositories;
 using DDD.Provider.Domain.Services;
 using DDD.Provider.Messages.Commands;
+using DDD.Provider.Messages.Events;
 using NServiceBus;
 using System;
 using System.Collections.Generic;
@@ -47,6 +48,7 @@ namespace DDD.Provider.Domain.CommandHandlers
                 _contractorRepository.Save();
                // _eventBus.PublishQueuedPostCommitEvents();
                 _eventBus.Publish(new CommandCompletedEvent(command.Id, DateTime.UtcNow));
+                _eventBus.Publish(new ContractorAddedEvent { ContractorEin = contractor.EinNumber });
                 //var ambientTransaction = System.Transactions.Transaction.Current;
                 //var ts = new /*Tr*/
             }

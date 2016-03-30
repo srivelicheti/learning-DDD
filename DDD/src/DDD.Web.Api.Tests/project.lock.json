@@ -110,6 +110,7 @@
           "Microsoft.Extensions.Logging.Debug": "1.0.0-rc1-final",
           "Newtonsoft.Json": "8.0.2",
           "NServiceBus": "5.2.14",
+          "NServiceBus.NHibernate": "6.2.7",
           "StructureMap.Dnx": "0.4.0-alpha4"
         },
         "frameworkAssemblies": [
@@ -257,6 +258,15 @@
         },
         "runtime": {
           "lib/dnx451/EntityFramework.Relational.Design.dll": {}
+        }
+      },
+      "Iesi.Collections/4.0.1.4000": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Iesi.Collections.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Iesi.Collections.dll": {}
         }
       },
       "Ix-Async/1.2.5": {
@@ -1714,6 +1724,18 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
+      "NHibernate/4.0.1.4000": {
+        "type": "package",
+        "dependencies": {
+          "Iesi.Collections": "[4.0.0, 5.0.0)"
+        },
+        "compile": {
+          "lib/net40/NHibernate.dll": {}
+        },
+        "runtime": {
+          "lib/net40/NHibernate.dll": {}
+        }
+      },
       "NServiceBus/5.2.14": {
         "type": "package",
         "frameworkAssemblies": [
@@ -1725,6 +1747,20 @@
         },
         "runtime": {
           "lib/net45/NServiceBus.Core.dll": {}
+        }
+      },
+      "NServiceBus.NHibernate/6.2.7": {
+        "type": "package",
+        "dependencies": {
+          "Iesi.Collections": "[4.0.1.4000, 5.0.0)",
+          "NHibernate": "[4.0.1.4000, 5.0.0)",
+          "NServiceBus": "[5.2.8, 6.0.0)"
+        },
+        "compile": {
+          "lib/net45/NServiceBus.NHibernate.dll": {}
+        },
+        "runtime": {
+          "lib/net45/NServiceBus.NHibernate.dll": {}
         }
       },
       "Remotion.Linq/2.0.1": {
@@ -2195,6 +2231,7 @@
           "Microsoft.Extensions.Logging.Debug": "1.0.0-rc1-final",
           "Newtonsoft.Json": "8.0.2",
           "NServiceBus": "5.2.14",
+          "NServiceBus.NHibernate": "6.2.7",
           "StructureMap.Dnx": "0.4.0-alpha4"
         },
         "frameworkAssemblies": [
@@ -2342,6 +2379,15 @@
         },
         "runtime": {
           "lib/dnx451/EntityFramework.Relational.Design.dll": {}
+        }
+      },
+      "Iesi.Collections/4.0.1.4000": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Iesi.Collections.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Iesi.Collections.dll": {}
         }
       },
       "Ix-Async/1.2.5": {
@@ -3802,6 +3848,18 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
+      "NHibernate/4.0.1.4000": {
+        "type": "package",
+        "dependencies": {
+          "Iesi.Collections": "[4.0.0, 5.0.0)"
+        },
+        "compile": {
+          "lib/net40/NHibernate.dll": {}
+        },
+        "runtime": {
+          "lib/net40/NHibernate.dll": {}
+        }
+      },
       "NServiceBus/5.2.14": {
         "type": "package",
         "frameworkAssemblies": [
@@ -3813,6 +3871,20 @@
         },
         "runtime": {
           "lib/net45/NServiceBus.Core.dll": {}
+        }
+      },
+      "NServiceBus.NHibernate/6.2.7": {
+        "type": "package",
+        "dependencies": {
+          "Iesi.Collections": "[4.0.1.4000, 5.0.0)",
+          "NHibernate": "[4.0.1.4000, 5.0.0)",
+          "NServiceBus": "[5.2.8, 6.0.0)"
+        },
+        "compile": {
+          "lib/net45/NServiceBus.NHibernate.dll": {}
+        },
+        "runtime": {
+          "lib/net45/NServiceBus.NHibernate.dll": {}
         }
       },
       "Remotion.Linq/2.0.1": {
@@ -4283,6 +4355,7 @@
           "Microsoft.Extensions.Logging.Debug": "1.0.0-rc1-final",
           "Newtonsoft.Json": "8.0.2",
           "NServiceBus": "5.2.14",
+          "NServiceBus.NHibernate": "6.2.7",
           "StructureMap.Dnx": "0.4.0-alpha4"
         },
         "frameworkAssemblies": [
@@ -4430,6 +4503,15 @@
         },
         "runtime": {
           "lib/dnx451/EntityFramework.Relational.Design.dll": {}
+        }
+      },
+      "Iesi.Collections/4.0.1.4000": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Iesi.Collections.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Iesi.Collections.dll": {}
         }
       },
       "Ix-Async/1.2.5": {
@@ -5890,6 +5972,18 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
+      "NHibernate/4.0.1.4000": {
+        "type": "package",
+        "dependencies": {
+          "Iesi.Collections": "[4.0.0, 5.0.0)"
+        },
+        "compile": {
+          "lib/net40/NHibernate.dll": {}
+        },
+        "runtime": {
+          "lib/net40/NHibernate.dll": {}
+        }
+      },
       "NServiceBus/5.2.14": {
         "type": "package",
         "frameworkAssemblies": [
@@ -5901,6 +5995,20 @@
         },
         "runtime": {
           "lib/net45/NServiceBus.Core.dll": {}
+        }
+      },
+      "NServiceBus.NHibernate/6.2.7": {
+        "type": "package",
+        "dependencies": {
+          "Iesi.Collections": "[4.0.1.4000, 5.0.0)",
+          "NHibernate": "[4.0.1.4000, 5.0.0)",
+          "NServiceBus": "[5.2.8, 6.0.0)"
+        },
+        "compile": {
+          "lib/net45/NServiceBus.NHibernate.dll": {}
+        },
+        "runtime": {
+          "lib/net45/NServiceBus.NHibernate.dll": {}
         }
       },
       "Remotion.Linq/2.0.1": {
@@ -6415,6 +6523,17 @@
         "lib/net451/EntityFramework.Relational.Design.dll",
         "lib/net451/EntityFramework.Relational.Design.xml",
         "lib/netcore50/_._"
+      ]
+    },
+    "Iesi.Collections/4.0.1.4000": {
+      "type": "package",
+      "sha512": "77x4RfYcgQyQIfvmz3WUDGmzJf7CHl1++ArQz+7ZyrxuGSULkczQlbX140FKJY42YpTpbwLqr5fsQxAZ5AB5qg==",
+      "files": [
+        "Iesi.Collections.4.0.1.4000.nupkg",
+        "Iesi.Collections.4.0.1.4000.nupkg.sha512",
+        "Iesi.Collections.nuspec",
+        "lib/net40/Iesi.Collections.dll",
+        "lib/net40/Iesi.Collections.xml"
       ]
     },
     "Ix-Async/1.2.5": {
@@ -7595,6 +7714,30 @@
         "tools/install.ps1"
       ]
     },
+    "NHibernate/4.0.1.4000": {
+      "type": "package",
+      "sha512": "acTmz+YrhGu9Ev0z/GZtzudibKLkCyxJuBVGV8abxfNlyPOHkeJrnDpwEu7vB86rwAURYZ5XBtF/x0qhI35VQg==",
+      "files": [
+        "ConfigurationTemplates/FireBird.cfg.xml",
+        "ConfigurationTemplates/MSSQL.cfg.xml",
+        "ConfigurationTemplates/MySql.cfg.xml",
+        "ConfigurationTemplates/Oracle.cfg.xml",
+        "ConfigurationTemplates/PostgreSQL.cfg.xml",
+        "ConfigurationTemplates/SQLite.cfg.xml",
+        "ConfigurationTemplates/SybaseASE.cfg.xml",
+        "ConfigurationTemplates/SybaseSQLAnywhere.cfg.xml",
+        "lib/net40/NHibernate.dll",
+        "lib/net40/NHibernate.xml",
+        "NHibernate.4.0.1.4000.nupkg",
+        "NHibernate.4.0.1.4000.nupkg.sha512",
+        "NHibernate.license.txt",
+        "NHibernate.nuspec",
+        "NHibernate.readme.html",
+        "NHibernate.releasenotes.txt",
+        "nhibernate-configuration.xsd",
+        "nhibernate-mapping.xsd"
+      ]
+    },
     "NServiceBus/5.2.14": {
       "type": "package",
       "sha512": "M+LNC1CkdfQr+DOZrAu3VTR8sDNX7i09at3mxOvmpcDwEWuiueubeml6KJoIVLllYgIatBKXx2G4Z8TnzLD3uw==",
@@ -7608,6 +7751,18 @@
         "tools/about_NServiceBus.help.txt",
         "tools/init.ps1",
         "tools/NServiceBus.PowerShell.Development.dll"
+      ]
+    },
+    "NServiceBus.NHibernate/6.2.7": {
+      "type": "package",
+      "sha512": "8tMnX2Y4AuZ4Xp5h3H/eY/xUhJqKqO15WgUSLSjR9859+GGm/efJVabnNFhlpGaUqMmBhuZu2ESh49wc5cexLw==",
+      "files": [
+        "lib/net45/NServiceBus.NHibernate.dll",
+        "lib/net45/NServiceBus.NHibernate.pdb",
+        "lib/net45/NServiceBus.NHibernate.xml",
+        "NServiceBus.NHibernate.6.2.7.nupkg",
+        "NServiceBus.NHibernate.6.2.7.nupkg.sha512",
+        "NServiceBus.NHibernate.nuspec"
       ]
     },
     "Remotion.Linq/2.0.1": {

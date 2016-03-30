@@ -1,5 +1,6 @@
 ﻿using DDD.Domain.Common.Event;
 using DDD.Provider.Domain.Events;
+using DDD.Provider.Messages.Events;
 using DDD.Web.Api.Hubs;
 using Microsoft.AspNet.SignalR.Infrastructure;
 using NServiceBus;
@@ -27,6 +28,14 @@ namespace DDD.Web.Api.EventHandlers
                 hub.Clients.All.messageReceived($"New Contractor Added with {e.ContractorEin} at {e.EventDateTime}");
             }));
            
+        }
+    }
+
+    public class TestHandler : IHandleMessages<ContractorAddedEvent>
+    {
+        public void Handle(ContractorAddedEvent message)
+        {
+            var s = "testsete";
         }
     }
 }

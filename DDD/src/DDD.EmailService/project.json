@@ -1,0 +1,33 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "DDD.EmailService Console Application",
+  "authors": [ "srvelicheti" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+
+  "compilationOptions": {
+    "emitEntryPoint": true
+  },
+
+  "dependencies": {
+    "DDD.Common": "1.0.0-*",
+    "DDD.Domain.Common": "1.0.0-*",
+    "DDD.Provider.Messages": "1.0.0-*",
+    "NServiceBus": "5.2.14",
+    "NServiceBus.NHibernate": "6.2.7",
+    "Newtonsoft.Json": "8.0.3"
+  },
+
+  "commands": {
+    "DDD.EmailService": "DDD.EmailService"
+  },
+
+  "frameworks": {
+    "dnx451": {
+      "frameworkAssemblies": {
+        "System.Configuration": "4.0.0.0"
+      }
+    }
+  }
+}

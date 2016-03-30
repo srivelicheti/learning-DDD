@@ -14,8 +14,9 @@ namespace DDD.Web.Api.Tests.IocContainer
         [Fact]
         public void Repositories_Must_Be_Once_Per_Resolution_to_the_Container()
         {
-            var bus = NServiceBusBootStrapper.Init();
             var container = new Container();
+            var bus = NServiceBusBootStrapper.Init(container);
+           
             IocBootstrapper.ConfigureIocContainer(container,bus);
 
             var repo1 = container.GetInstance<ContractorRepository>();
