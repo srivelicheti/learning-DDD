@@ -1,4 +1,5 @@
-﻿@inject IOptions<DDD.Web.UI.Infrastructure.URLProvider> UrlProvider
+@* ReSharper disable once UnassignedField.Global *@
+@inject IOptions<DDD.Web.UI.Infrastructure.URLProvider> UrlProvider
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,8 +8,15 @@
     <title>@ViewData["Title"] - DDD.Web.UI</title>
 
     <environment names="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
+        <!--bower:css-->
+        <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+        <!--endbower-->
+        @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css"/>*@
+        <!--inject:css-->
+        <link rel="stylesheet" href="/css/site.css">
+        <link rel="stylesheet" href="/css/site.min.css">
+        <!--endinject-->
+        @*<link rel="stylesheet" href="~/css/site.css"/>*@
     </environment>
     <environment names="Staging,Production">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css"
@@ -54,11 +62,24 @@
             window.ApiBaseUrl = '@UrlProvider.Value.ApiBaseUrl';
             window.signalRUrl = window.ApiBaseUrl + "signalr/hubs";
         </script>
-        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <!--bower:js-->
+        <script src="/lib/jquery/dist/jquery.js"></script>
+        <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="/lib/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+        <script src="/lib/signalr/jquery.signalR.js"></script>
+        <script src="/lib/lodash/lodash.js"></script>
+        <script src="/lib/knockoutjs/dist/knockout.js"></script>
+        <!--endbower-->
+        <!--inject:js-->
+        <script src="/js/site.js"></script>
+        <script src="/js/site.min.js"></script>
+        <!--endinject-->
+        @*<script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
-        <script src="~/lib/signalr/jquery.signalR.js"></script>
-        <script src= '@string.Format("{0}/signalr/hubs",UrlProvider.Value.ApiBaseUrl)' type ="text/javascript"></script>
+        <script src="~/lib/signalr/jquery.signalR.js"></script>*@
+        <script src= '@($"{UrlProvider.Value.ApiBaseUrl}/signalr/hubs")' type ="text/javascript"></script>
     </environment>
     <environment names="Staging,Production">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"

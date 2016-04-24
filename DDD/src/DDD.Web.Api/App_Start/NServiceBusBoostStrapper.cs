@@ -108,7 +108,7 @@ namespace DDD.Web.Api.App_Start
 
                 return config as T;
             }
-            else if (typeof(T) == typeof(MessageForwardingInCaseOfFaultConfig))
+            if (typeof(T) == typeof(MessageForwardingInCaseOfFaultConfig))
             {
                 var errorQUeue = new MessageForwardingInCaseOfFaultConfig
                 {
