@@ -9,11 +9,19 @@ namespace DDD.EmailService
     {
         public static void Main(string[] args)
         {
-            NServiceBusBootStrapper.Init();
+           var bus = NServiceBusBootStrapper.Init();
             Console.WriteLine("Bus Started");
             var key = Console.ReadLine();
+
             while (key != "A")
+            {
+                if(key == "Stop")
+                    bus.Dispose();
+                if (key == "Start")
+                    bus = NServiceBusBootStrapper.Init();
                 key = Console.ReadLine();
+            }
+            
         }
     }
 }
