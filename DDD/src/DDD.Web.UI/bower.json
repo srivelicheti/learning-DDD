@@ -16,6 +16,9 @@
         "dist/css/bootstrap.css",
         "dist/js/bootstrap.js"
       ]
-    } 
-  } 
+    }
+  },
+  "devDependencies": {
+    "requirejs": "~2.2.0"
+  }
 }
