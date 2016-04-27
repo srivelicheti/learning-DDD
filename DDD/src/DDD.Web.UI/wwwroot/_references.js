@@ -2,6 +2,7 @@
 /// <reference path="../gulpfile.js" />
 /// <reference path="js/app.config.js" />
 /// <reference path="js/require.config.js" />
+/// <reference path="js/services/contractorservice.js" />
 /// <reference path="js/site.js" />
 /// <reference path="lib/bootstrap/dist/js/bootstrap.js" />
 /// <reference path="lib/jquery/dist/jquery.js" />

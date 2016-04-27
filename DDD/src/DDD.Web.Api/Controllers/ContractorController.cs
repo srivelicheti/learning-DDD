@@ -19,7 +19,7 @@ using DDD.Provider.Messages.Commands;
 
 namespace DDD.Web.Api.Controllers
 {
-    
+
     [Route("api/contractor")]
     public class ContractorController : Controller
     {
@@ -50,8 +50,8 @@ namespace DDD.Web.Api.Controllers
         [HttpGet("Ein/{ein}")]
         public ContractorDto GetByEin(string ein)
         {
-            var type = typeof (ContractorType);
-            return _queryProcessor.Process<ContractorDto>(new FindContractorByEinQuery() {ContractorEin = ein });
+            var type = typeof(ContractorType);
+            return _queryProcessor.Process<ContractorDto>(new FindContractorByEinQuery() { ContractorEin = ein });
         }
 
         // POST api/values
@@ -81,5 +81,18 @@ namespace DDD.Web.Api.Controllers
         public void Delete(int id)
         {
         }
+        
+        [HttpGet("{ein}/Exists")]
+        public IActionResult Exists(string ein)
+        {
+            var exists =
+                _queryProcessor.Process<bool>(new CheckIfContractorExistsQuery {EinNumber = ein});
+
+            if (exists)
+                return Ok();
+            else
+                return HttpNotFound();
+        }
+
     }
 }

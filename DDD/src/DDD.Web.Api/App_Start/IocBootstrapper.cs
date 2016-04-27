@@ -58,6 +58,7 @@ namespace DDD.Web.Api
             container.Configure(x => x.For<IQueryHandler<FindContractorByIdQuery, ContractorDto>>().Use<FindContractorByIdHandler>());
             container.Configure(x => x.For<IQueryHandler<FindContractorByEinQuery, ContractorDto>>().Use<FindContractorByEinQueryHandler>());
             container.Configure(x => x.ForConcreteType<FindContractorByEinQueryHandler>());
+            container.Configure(x => x.For<IQueryHandler<CheckIfContractorExistsQuery,bool>>().Use<CheckIfContractorExistsQueryHandler>());
         }
 
         private static void RegisterDbContexts(IContainer container) {
