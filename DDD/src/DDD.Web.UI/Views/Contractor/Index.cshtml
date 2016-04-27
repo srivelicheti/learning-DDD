@@ -5,6 +5,7 @@
 <h3>@ViewData["Error"]</h3>
 <hr/>
 
+@using System.Collections.Specialized
 @model AddNewContractorViewModel
 
 <form asp-controller="Contractor" class="form-horizontal" asp-action="Add">
@@ -209,6 +210,21 @@
         </div>
     </div>
 
+@section Scripts{
+    <script type="text/javascript">
+        require(['/js/services/contractorService.js',
+            "jquery",
+            "knockout"],
+            function(contService, $, ko) {
+                var existsPromise = contService.isExistingContractor("123441125AA");
+                existsPromise.then(function() {
+                    alert("Sucess");
+                }, function() {
+                    alert("Failure");
+                });
 
+            });
+    </script>
+}
 
 </form>

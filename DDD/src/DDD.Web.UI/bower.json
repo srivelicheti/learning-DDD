@@ -8,7 +8,8 @@
     "jquery-validation-unobtrusive": "3.2.4",
     "signalr": "~2.2.0",
     "lodash": "3.10.1",
-    "knockoutjs": "3.4.0"
+    "knockoutjs": "3.4.0",
+    "q": "2.0.2"
   },
   "overrides": {
     "bootstrap": {
