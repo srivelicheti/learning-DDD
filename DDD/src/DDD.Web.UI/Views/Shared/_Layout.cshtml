@@ -1,4 +1,4 @@
-@* ReSharper disable once UnassignedField.Global *@
+﻿@* ReSharper disable once UnassignedField.Global *@
 @inject IOptions<DDD.Web.UI.Infrastructure.URLProvider> UrlProvider
 <!DOCTYPE html>
 <html>
@@ -63,15 +63,41 @@
             window.signalRUrl = window.ApiBaseUrl + "signalr/hubs";
         </script>
         <!--bower:js-->
-        <script src="/lib/jquery/dist/jquery.js"></script>
+        @*<script src="/lib/jquery/dist/jquery.js"></script>
         <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="/lib/jquery-validation/dist/jquery.validate.js"></script>
         <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
         <script src="/lib/signalr/jquery.signalR.js"></script>
         <script src="/lib/lodash/lodash.js"></script>
-        <script src="/lib/knockoutjs/dist/knockout.js"></script>
+        <script src="/lib/knockoutjs/dist/knockout.js"></script>*@
         <!--endbower-->
         <!--inject:js-->
+        <script type="text/javascript" src="/lib/requirejs/require.js"></script>
+        <script type="text/javascript" src="/js/require.config.js"></script>
+        <script type="text/javascript">
+            //, 
+            require(["appConfig", "jquery", "bootstrap", "knockout", "jqueryValidate", "jqueryValUnob", "signalr"], function (appConfig, $) {
+                $(function () {
+                    $.getScript(appConfig.apiBaseUrl + "/signalr/hubs");
+                   // alert("test scuces");
+
+                    $.support.cors = true;
+                    // Open a connection to the remote server
+                    $.connection.hub.url = appConfig.apiBaseUrl;
+                    var connection = $.hubConnection($.connection.hub.url);
+                    var chat = connection.createHubProxy('notifications');
+
+                    chat.on('messageReceived', function (message) {
+                        $('#message').append('<li>' + message + '</li>');
+                    });
+
+                    // Turn logging on so we can see the calls in the browser console
+                    connection.logging = true;
+
+                    connection.start();
+                });
+            });
+        </script>
         <script src="/js/site.js"></script>
         <script src="/js/site.min.js"></script>
         <!--endinject-->
@@ -79,7 +105,7 @@
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
         <script src="~/lib/signalr/jquery.signalR.js"></script>*@
-        <script src= '@($"{UrlProvider.Value.ApiBaseUrl}/signalr/hubs")' type ="text/javascript"></script>
+        @*<script src= '@($"{UrlProvider.Value.ApiBaseUrl}/signalr/hubs")' type ="text/javascript"></script>*@
     </environment>
     <environment names="Staging,Production">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"
@@ -94,28 +120,9 @@
         <script src="~/lib/signalr/jquery.signalR.min.js"></script>
     </environment>
     <script>
-        $(function () {
-            jQuery.support.cors = true;
-            // Open a connection to the remote server
-            $.connection.hub.url =  '@UrlProvider.Value.ApiBaseUrl';
-            var connection = $.hubConnection($.connection.hub.url);
-            var chat = connection.createHubProxy('notifications');
-
-            chat.on('messageReceived', function (message) {
-                $('#message').append('<li>' + message + '</li>');
-            });
-
-            // Turn logging on so we can see the calls in the browser console
-            connection.logging = true;
-
-            connection.start();
-
-            //    .done(function () {
-            //    $('#send').click(function () {
-            //        chat.invoke('send', $('#msg').val());
-            //    });
-            //});
-        });
+        //$(function () {
+            
+        //});
     </script>
     @RenderSection("scripts", required: false)
 </body>
