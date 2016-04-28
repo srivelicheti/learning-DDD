@@ -15,7 +15,8 @@ require.config({
         jqueryValidate: "../lib/jquery-validation/dist/jquery.validate",
         jqueryValUnob: "../lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive",
         signalr: "../lib/signalr/jquery.signalR",
-        q: "../lib/q/q"
+        q: "../lib/q/q",
+        appMain:"../js/commonScripts"
     },
 
     shim: {
@@ -33,8 +34,12 @@ require.config({
         },
         signalr: {
             deps: ["jquery"]
+        },
+        q: {
+            exports:"q"
         }
     }
 });
 
+//require(["appMain"]);
 

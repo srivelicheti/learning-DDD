@@ -18,9 +18,7 @@
     <ProduceOutputsOnBuild>True</ProduceOutputsOnBuild>
   </PropertyGroup>
   <ItemGroup>
-    <DnxInvisibleContent Include="bower.json" />
     <DnxInvisibleContent Include=".bowerrc" />
-    <DnxInvisibleContent Include="package.json" />
     <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_10480_201642118349.log" />
     <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_10716_2016420214043.log" />
     <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_11372_2016420221644.log" />

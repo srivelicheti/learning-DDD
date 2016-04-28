@@ -75,28 +75,29 @@
         <script type="text/javascript" src="/lib/requirejs/require.js"></script>
         <script type="text/javascript" src="/js/require.config.js"></script>
         <script type="text/javascript">
+            require(["appMain"]);
             //, 
-            require(["appConfig", "jquery", "bootstrap", "knockout", "jqueryValidate", "jqueryValUnob", "signalr"], function (appConfig, $) {
-                $(function () {
-                    $.getScript(appConfig.apiBaseUrl + "/signalr/hubs");
-                   // alert("test scuces");
+            //require(["appConfig", "jquery", "bootstrap", "knockout", "jqueryValidate", "jqueryValUnob", "signalr"], function (appConfig, $) {
+            //    $(function () {
+            //        $.getScript(appConfig.apiBaseUrl + "/signalr/hubs");
+            //        // alert("test scuces");
 
-                    $.support.cors = true;
-                    // Open a connection to the remote server
-                    $.connection.hub.url = appConfig.apiBaseUrl;
-                    var connection = $.hubConnection($.connection.hub.url);
-                    var chat = connection.createHubProxy('notifications');
+            //        $.support.cors = true;
+            //        // Open a connection to the remote server
+            //        $.connection.hub.url = appConfig.apiBaseUrl;
+            //        var connection = $.hubConnection($.connection.hub.url);
+            //        var chat = connection.createHubProxy('notifications');
 
-                    chat.on('messageReceived', function (message) {
-                        $('#message').append('<li>' + message + '</li>');
-                    });
+            //        chat.on('messageReceived', function (message) {
+            //            $('#message').append('<li>' + message + '</li>');
+            //        });
 
-                    // Turn logging on so we can see the calls in the browser console
-                    connection.logging = true;
+            //        // Turn logging on so we can see the calls in the browser console
+            //        connection.logging = true;
 
-                    connection.start();
-                });
-            });
+            //        connection.start();
+            //    });
+            //});
         </script>
         <script src="/js/site.js"></script>
         <script src="/js/site.min.js"></script>
