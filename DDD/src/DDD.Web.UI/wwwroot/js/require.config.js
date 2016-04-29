@@ -17,7 +17,8 @@ require.config({
         signalr: "../lib/signalr/jquery.signalR",
         q: "../lib/q/q",
         appMain: "../js/commonScripts",
-        lodash:"../lib/lodash/lodash"
+        lodash: "../lib/lodash/lodash",
+        komapping: "../lib/bower-knockout-mapping/dist/knockout.mapping"
     },
 
     shim: {
@@ -42,6 +43,10 @@ require.config({
         lodash: {
             exports:"_"
         }
+        //,
+        //komapping: {
+        //    deps: ["/lib/knockoutjs/dist/knockout"]
+        //}
     }
 });
 
