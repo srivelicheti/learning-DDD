@@ -13,9 +13,9 @@
     <div class="row">
         <div class="col-md-6 col-xs-12">
             <div class="form-group">
-                <label class="col-xs-3 control-label" for="txtContName">Contractor Name</label>
+                <label class="col-xs-3 control-label" for="txtContName" >Contractor Name</label>
                 <div class="col-md-9">
-                    <input type="text" class="form-control" asp-for="ContractorName" id="txtContName" placeholder="Contractor Name">
+                    <input type="text" class="form-control" asp-for="ContractorName" data-bind="value: Name" id="txtContName" placeholder="Contractor Name">
                 </div>
             </div>
         </div>
@@ -212,18 +212,19 @@
 
 @section Scripts{
     <script type="text/javascript">
-        require(['/js/services/contractorService.js',
-            "jquery",
-            "knockout"],
-            function(contService, $, ko) {
-                var existsPromise = contService.isExistingContractor("123441125AA");
-                existsPromise.then(function() {
-                    alert("Sucess");
-                }, function() {
-                    alert("Failure");
-                });
+        //require(["jquery",
+        //    "knockout", '/js/services/contractorService',"/js/models/ContractorViewModel"],
+        //    function(contService, $, ko) {
+        //        var existsPromise = contService.isExistingContractor("123441125AA");
+        //        existsPromise.then(function() {
+        //            alert("Sucess");
+        //        }, function() {
+        //            alert("Failure");
+        //        });
 
-            });
+        //    });
+
+        require(["/js/pages/AddContractor.js"]);
     </script>
 }
 

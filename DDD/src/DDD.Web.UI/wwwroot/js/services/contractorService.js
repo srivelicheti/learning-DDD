@@ -1,4 +1,4 @@
-﻿define(["jquery", "knockout", "q", "appConfig","appMain"],
+﻿define(["jquery", "ko", "q", "appConfig","appMain"],
     function ($, ko, q ,appConfig) {
         "use strict";
         var contService = {};

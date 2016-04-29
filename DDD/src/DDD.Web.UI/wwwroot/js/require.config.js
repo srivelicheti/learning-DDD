@@ -10,13 +10,14 @@ require.config({
     paths: {
         appConfig: "/js/app.config",
         jquery: "../lib/jquery/dist/jquery",
-        knockout: "../lib/knockoutjs/dist/knockout",
+        ko: "../lib/knockoutjs/dist/knockout",
         bootstrap: "../lib/bootstrap/dist/js/bootstrap",
         jqueryValidate: "../lib/jquery-validation/dist/jquery.validate",
         jqueryValUnob: "../lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive",
         signalr: "../lib/signalr/jquery.signalR",
         q: "../lib/q/q",
-        appMain:"../js/commonScripts"
+        appMain: "../js/commonScripts",
+        lodash:"../lib/lodash/lodash"
     },
 
     shim: {
@@ -37,6 +38,9 @@ require.config({
         },
         q: {
             exports:"q"
+        },
+        lodash: {
+            exports:"_"
         }
     }
 });
