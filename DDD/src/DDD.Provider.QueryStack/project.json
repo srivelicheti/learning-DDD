@@ -2,9 +2,11 @@
   "version": "1.0.0-*",
   "description": "DDD.Provider.QueryStack Class Library",
   "authors": [ "srvelicheti" ],
-  "tags": [ "" ],
-  "projectUrl": "",
-  "licenseUrl": "",
+  "packOptions": {
+    "tags": [ "" ],
+    "projectUrl": "",
+    "licenseUrl": ""
+  },
   "frameworks": {
     "net451": { }
   },

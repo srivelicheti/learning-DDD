@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using Microsoft.AspNet.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using DDD.Common.DTOs.Provider;
 using DDD.Common.Models.Provider;
 using DDD.Domain.Common.Command;
@@ -91,7 +91,7 @@ namespace DDD.Web.Api.Controllers
             if (exists)
                 return Ok();
             else
-                return HttpNotFound();
+                return NotFound();
         }
 
     }

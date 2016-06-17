@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Hosting;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -12,20 +12,25 @@ using DDD.Domain.Common.Event;
 using Microsoft.Extensions.PlatformAbstractions;
 using DDD.Web.Api.Infrastructure.Logging;
 using DDD.Web.Api.App_Start;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNet.SignalR;
+//using Microsoft.AspNet.SignalR.
+
 
 namespace DDD.Web.Api
 {
     public class Startup
     {
-        public Startup(IHostingEnvironment env, IApplicationEnvironment appEnv)
+        public Startup(IHostingEnvironment env)
         {
             // Set up configuration sources.
             var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json")
                 .AddJsonFile("config.Json")
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
-            appEnv.ConfigureLog4Net("log4net.xml");
+            env.ConfigureLog4Net("log4net.xml");
             AutoMapperConfig.RegisterMappings();
         }
 
@@ -37,7 +42,7 @@ namespace DDD.Web.Api
             // Add framework services.
             services.AddMvc();
             services.AddSignalR();
-            services.AddEntityFramework().AddSqlServer();
+            services.AddEntityFrameworkSqlServer(); // .AddEntityFramework().AddSqlServer();
             var container = new Container();
 
             // Here we populate the container using the service collection.
@@ -69,7 +74,7 @@ namespace DDD.Web.Api
             loggerFactory.AddDebug();
             //loggerFactory.
 
-            app.UseIISPlatformHandler();
+           // app.UseIISPlatformHandler();
             app.UseCors(pol => {
                 pol.AllowAnyOrigin();
                 pol.AllowAnyMethod();
@@ -77,11 +82,11 @@ namespace DDD.Web.Api
                 pol.AllowCredentials();
             });
             app.UseStaticFiles();
-            app.UseSignalR();
+           // app.UseSignalR();
             app.UseMvc();
         }
 
         // Entry point for the application.
-        public static void Main(string[] args) => WebApplication.Run<Startup>(args);
+        //public static void Main(string[] args) => WebApplication.Run<Startup>(args);
     }
 }

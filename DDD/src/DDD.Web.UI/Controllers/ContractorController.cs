@@ -1,7 +1,7 @@
 ﻿using DDD.Web.UI.Infrastructure;
 using DDD.Web.UI.ViewModels;
-using Microsoft.AspNet.Mvc;
-using Microsoft.Extensions.OptionsModel;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -43,7 +43,7 @@ namespace DDD.Web.UI.Controllers
 
         public async Task<ActionResult> Add(AddNewContractorViewModel model)
         {
-            var modelState = this.ActionContext.ModelState;
+            var modelState = this.ModelState;//.ActionContext.ModelState;
             if (modelState.IsValid)
             {
                 var client = new HttpClient();

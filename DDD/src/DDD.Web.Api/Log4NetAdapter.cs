@@ -13,6 +13,11 @@ namespace DDD.Web.Api
             _logger = LogManager.GetLogger(loggerName);
         }
 
+        public IDisposable BeginScope<TState>(TState state)
+        {
+            throw new NotImplementedException();
+        }
+
         public IDisposable BeginScopeImpl(object state)
         {
             return null;
@@ -22,7 +27,7 @@ namespace DDD.Web.Api
         {
             switch (logLevel)
             {
-                case LogLevel.Verbose:
+               // case LogLevel.Verbose:
                 case LogLevel.Debug:
                     return _logger.IsDebugEnabled;
                 case LogLevel.Information:
@@ -49,13 +54,13 @@ namespace DDD.Web.Api
             {
                 message = formatter(state, exception);
             }
-            else
-            {
-                message = LogFormatter.Formatter(state, exception);
-            }
+            //else
+            //{
+            //    message = LogFormatter.Formatter(state, exception);
+            //}
             switch (logLevel)
             {
-                case LogLevel.Verbose:
+                //case LogLevel.Verbose:
                 case LogLevel.Debug:
                     _logger.Debug(message, exception);
                     break;
@@ -76,6 +81,11 @@ namespace DDD.Web.Api
                     _logger.Info(message, exception);
                     break;
             }
+        }
+
+        public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
+        {
+            throw new NotImplementedException();
         }
     }
 }

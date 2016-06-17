@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Hosting;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -29,7 +29,8 @@ namespace DDD.Web.UI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddOptions();
-            services.Configure<URLProvider>(Configuration.GetSection("URLProvider"));
+
+            services.Configure<URLProvider>(Configuration.GetSection("URLProvider"));// );
             // Add framework services.
             services.AddMvc();
         }
@@ -50,7 +51,7 @@ namespace DDD.Web.UI
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseIISPlatformHandler();
+           // app.UseIISPlatformHandler();
 
             app.UseStaticFiles();
 
@@ -63,6 +64,6 @@ namespace DDD.Web.UI
         }
 
         // Entry point for the application.
-        public static void Main(string[] args) => WebApplication.Run<Startup>(args);
+        //public static void Main(string[] args) => WebApplication.Run<Startup>(args);
     }
 }

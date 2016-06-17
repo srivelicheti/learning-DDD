@@ -1,46 +1,63 @@
 {
   "version": "1.0.0-*",
-  "compilationOptions": {
-    "emitEntryPoint": true
+  "buildOptions": {
+    "emitEntryPoint": true,
+    "preserveCompilationContext": true
   },
 
-  "dependencies": {
-    "DDD.Common": "1.0.0-*",
-    "DDD.Domain.Common": "1.0.0-*",
-    "DDD.Provider.Domain": "1.0.0-*",
-    "Microsoft.AspNet.IISPlatformHandler": "1.0.0-rc1-final",
-    "Microsoft.AspNet.Mvc": "6.0.0-rc1-final",
-    "Microsoft.AspNet.Server.Kestrel": "1.0.0-rc1-final",
-    "Microsoft.AspNet.StaticFiles": "1.0.0-rc1-final",
-    "Microsoft.Extensions.Configuration.FileProviderExtensions": "1.0.0-rc1-final",
-    "Microsoft.Extensions.Configuration.Json": "1.0.0-rc1-final",
-    "Microsoft.Extensions.Logging": "1.0.0-rc1-final",
-    "Microsoft.Extensions.Logging.Console": "1.0.0-rc1-final",
-    "Microsoft.Extensions.Logging.Debug": "1.0.0-rc1-final",
-    "StructureMap.Dnx": "0.4.0-alpha4",
-    "EntityFramework.Commands": "7.0.0-rc1-final",
-    "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final",
-    "Microsoft.AspNet.SignalR.Server": "3.0.0-rc1-*",
-    "DDD.Provider.DataModel": "1.0.0-*",
-    "AutoMapper": "4.2.1",
-    "DDD.Provider.QueryStack": "1.0.0-*",
-    "Newtonsoft.Json": "8.0.2",
-    "NServiceBus": "5.2.14",
-    "DDD.Provider.Messages": "1.0.0-*",
-    "NServiceBus.NHibernate": "6.2.7"
-  },
+  
 
-  "commands": {
-    "web": "Microsoft.AspNet.Server.Kestrel --server.urls http://localhost:5000"
-  },
+  //"commands": {
+  //  "web": "Microsoft.AspNet.Server.Kestrel --server.urls http://localhost:5000"
+  //},
 
   "frameworks": {
-    "dnx451": {
+    "net451": {
+      "imports": [
+        "dnx451"
+      ],
       "dependencies": {
-        "log4net": "2.0.5"
+        "DDD.Common": "1.0.0-*",
+        "DDD.Domain.Common": "1.0.0-*",
+        "DDD.Provider.Domain": "1.0.0-*",
+        "log4net": "2.0.5",
+        "Microsoft.AspNetCore.Diagnostics": "1.0.0-rc2-final",
+        "Microsoft.AspNetCore.Mvc": "1.0.0-rc2-final",
+        "Microsoft.AspNetCore.Mvc.TagHelpers": "1.0.0-rc2-final",
+        "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0-rc2-final",
+        "Microsoft.AspNetCore.Server.Kestrel": "1.0.0-rc2-final",
+        "Microsoft.AspNetCore.StaticFiles": "1.0.0-rc2-final",
+        "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0-rc2-final",
+        "Microsoft.Extensions.Configuration.Json": "1.0.0-rc2-final",
+        "Microsoft.Extensions.Logging": "1.0.0-rc2-final",
+        "Microsoft.Extensions.Logging.Console": "1.0.0-rc2-final",
+        "Microsoft.Extensions.Logging.Debug": "1.0.0-rc2-final",
+        "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-rc2-final",
+        "Microsoft.AspNet.SignalR.Server": "3.0.0-rc1-*",
+        //"Microsoft.AspNetCore."
+        //"Microsoft.AspNet.IISPlatformHandler": "1.0.0-rc1-final",
+        //"Microsoft.AspNet.Mvc": "6.0.0-rc1-final",
+        //"Microsoft.AspNet.Server.Kestrel": "1.0.0-rc1-final",
+        //"Microsoft.AspNet.StaticFiles": "1.0.0-rc1-final",
+        //"Microsoft.Extensions.Configuration.FileProviderExtensions": "1.0.0-rc1-final",
+        //"Microsoft.Extensions.Configuration.Json": "1.0.0-rc1-final",
+        //"Microsoft.Extensions.Logging": "1.0.0-rc1-final",
+        //"Microsoft.Extensions.Logging.Console": "1.0.0-rc1-final",
+        //"Microsoft.Extensions.Logging.Debug": "1.0.0-rc1-final",
+        //"StructureMap.Dnx": "0.4.0-alpha4",
+        //"EntityFramework.Commands": "7.0.0-rc1-final",
+        //"EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final",
+        //"Microsoft.AspNet.SignalR.Server": "3.0.0-rc1-*",
+        "DDD.Provider.DataModel": "1.0.0-*",
+        "AutoMapper": "4.2.1",
+        "DDD.Provider.QueryStack": "1.0.0-*",
+        "NServiceBus": "5.2.14",
+        "DDD.Provider.Messages": "1.0.0-*",
+        "NServiceBus.NHibernate": "6.2.7",
+        "Newtonsoft.Json": "9.0.1-beta1"
       },
       "frameworkAssemblies": {
-        "System.Collections": "4.0.0.0",
+        //"System.Collections": "4.0.10.0",
         "System.Configuration": "4.0.0.0"
       }
     }
@@ -48,15 +65,29 @@
   },
 
 
-  "exclude": [
-    "wwwroot",
-    "node_modules"
-  ],
-  "contentExclude": [
-    "wwwroot/*.log"
-  ],
-  "publishExclude": [
-    "**.user",
-    "**.vspscc"
-  ]
+  "publishOptions": {
+    "include": [
+      "wwwroot",
+      "Views",
+      "appsettings.json",
+      "web.config"
+    ]
+  },
+  "runtimeOptions": {
+    "gcServer": true
+  },
+  "scripts": {
+    "prepublish": [ "npm install", "bower install", "gulp clean", "gulp min" ],
+    "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
+  },
+  "tools": {
+    "Microsoft.AspNetCore.Razor.Tools": {
+      "version": "1.0.0-preview1-final",
+      "imports": "portable-net45+win8+dnxcore50"
+    },
+    "Microsoft.AspNetCore.Server.IISIntegration.Tools": {
+      "version": "1.0.0-preview1-final",
+      "imports": "portable-net45+win8+dnxcore50"
+    }
+  }
 }

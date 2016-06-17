@@ -11,6 +11,12 @@ using Microsoft.Data.Entity.Extensions;
 using Site = DDD.Provider.Domain.Entities.Site;
 using NServiceBus;
 using VO = DDD.Domain.Common.ValueObjects;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions;
+using Microsoft.EntityFrameworkCore.Query;
+using Microsoft.Data;
+
 
 namespace DDD.Provider.Domain.Repositories
 {
@@ -107,26 +113,27 @@ namespace DDD.Provider.Domain.Repositories
 
         public Site GetSite(Guid siteId)
         {
+            throw new NotImplementedException();
             //using (var ctx = new ProviderDbContext()) {
-            var site = _dbContext.Site.Include(x => x.SiteHoliday).Include(x => x.SiteRate).FirstOrDefault(x => x.Id == siteId);
-            if (site == null)
-                throw new ArgumentException($"Site not found with {siteId}");
+            //var site = _dbContext.Site.Include(x => SiteHoliday).Include(x => x.SiteRate).FirstOrDefault(x => x.Id == siteId);
+            //if (site == null)
+            //    throw new ArgumentException($"Site not found with {siteId}");
 
-            var contractDuration = new DateTimeRange(site.ContractStartDate, site.ContractEndDate);
-            var contact = new Contact(new Name(site.ContactFirstName, site.ContactLastName), site.ContactPhoneNumber, site.ContactAlternatePhoneNumber, site.ContactEmail);
-            var address = new VO.Address(site.AddressLine1, site.AddressLine2, site.City, site.StateCode, site.ZipCode);
-            var holidays = site.SiteHoliday.Select(x =>
-            {
-                var hol = new ValueObjects.SiteHoliday(x.HolidayDate, x.HolidayName)
-                {
-                    TrackingState = TrackingState.Unchanged
-                };
-                return hol;
-            });
-            var domainSite = new Site(site.Id, site.SiteNumber, site.SiteName, site.StateCode, site.SiteFacilityTypeCode,site.SiteTypeCode,
-                contractDuration, site.PhoneNumber, contact, address, site.Email, site.CountyCode, site.CountyServedCode, site.LicencingStatusCode, holidays,_eventBus);
+            //var contractDuration = new DateTimeRange(site.ContractStartDate, site.ContractEndDate);
+            //var contact = new Contact(new Name(site.ContactFirstName, site.ContactLastName), site.ContactPhoneNumber, site.ContactAlternatePhoneNumber, site.ContactEmail);
+            //var address = new VO.Address(site.AddressLine1, site.AddressLine2, site.City, site.StateCode, site.ZipCode);
+            //var holidays = site.SiteHoliday.Select(x =>
+            //{
+            //    var hol = new ValueObjects.SiteHoliday(x.HolidayDate, x.HolidayName)
+            //    {
+            //        TrackingState = TrackingState.Unchanged
+            //    };
+            //    return hol;
+            //});
+            //var domainSite = new Site(site.Id, site.SiteNumber, site.SiteName, site.StateCode, site.SiteFacilityTypeCode,site.SiteTypeCode,
+            //    contractDuration, site.PhoneNumber, contact, address, site.Email, site.CountyCode, site.CountyServedCode, site.LicencingStatusCode, holidays,_eventBus);
 
-            return domainSite;
+            //return domainSite;
 
             //}
         }

@@ -7,15 +7,16 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Hosting;
 
 namespace DDD.Web.Api.Infrastructure.Logging
 {
     public static class Log4NetExtensions
     {
-        public static void ConfigureLog4Net(this IApplicationEnvironment appEnv, string configFileRelativePath)
+        public static void ConfigureLog4Net(this IHostingEnvironment appEnv, string configFileRelativePath)
         {
-            GlobalContext.Properties["appRoot"] = appEnv.ApplicationBasePath;
-            XmlConfigurator.Configure(new FileInfo(Path.Combine(appEnv.ApplicationBasePath, configFileRelativePath)));
+            GlobalContext.Properties["appRoot"] = appEnv.WebRootPath; // ApplicationBasePath;
+            XmlConfigurator.Configure(new FileInfo(Path.Combine(appEnv.WebRootPath, configFileRelativePath)));
         }
 
         public static void AddLog4Net(this ILoggerFactory loggerFactory)

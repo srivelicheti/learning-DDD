@@ -1,8 +1,10 @@
-﻿using Microsoft.Data.Entity;
-using Microsoft.Data.Entity.Infrastructure;
+﻿//using Microsoft.Data.Entity;
+//using Microsoft.Data.Entity.Infrastructure;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace Microsoft.Data.Entity.Extensions
 {
