@@ -15,7 +15,8 @@ namespace DDD.Web.Api.Infrastructure.Logging
     {
         public static void ConfigureLog4Net(this IHostingEnvironment appEnv, string configFileRelativePath)
         {
-            GlobalContext.Properties["appRoot"] = appEnv.WebRootPath; // ApplicationBasePath;
+            GlobalContext.Properties["appRoot"] = appEnv.ContentRootPath; // ApplicationBasePath;
+            var test = appEnv.WebRootPath;
             XmlConfigurator.Configure(new FileInfo(Path.Combine(appEnv.WebRootPath, configFileRelativePath)));
         }
 

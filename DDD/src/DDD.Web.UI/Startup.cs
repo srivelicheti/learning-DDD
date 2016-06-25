@@ -17,7 +17,8 @@ namespace DDD.Web.UI
         {
             // Set up configuration sources.
             var configBuilder = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json", optional:true)
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional:false)
                 .AddJsonFile("appsettings.iis.json",true)
                 .AddEnvironmentVariables();
             Configuration = configBuilder.Build();

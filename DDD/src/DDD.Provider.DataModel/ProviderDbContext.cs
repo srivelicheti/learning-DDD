@@ -1,20 +1,40 @@
 //using Microsoft.Data.Entity;
 //using Microsoft.Data.Entity.Metadata;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
 using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace DDD.Provider.DataModel
 {
     public partial class ProviderDbContext : DbContext
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
+
+        public ProviderDbContext(DbContextOptions<ProviderDbContext> options)
+    : base(options)
         {
-            options.UseSqlServer(@"Data Source=.\SQL2014;Initial Catalog=POC_DDD;Integrated Security=False;User ID=srvelicheti;Password=Secret@123;MultipleActiveResultSets=true;Trusted_Connection=true;");
-                //.SuppressAmbientTransactionWarning();
+        }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            // options.UseSqlServer(@"Data Source=.\SQL2014;Initial Catalog=POC_DDD;Integrated Security=False;User ID=srvelicheti;Password=Secret@123;MultipleActiveResultSets=true;Trusted_Connection=true;");
+            //.SuppressAmbientTransactionWarning();
+            //var extension = new SqlServerOptionsExtension(options.Options.GetExtension<SqlServerOptionsExtension>())
+            //{
+            //    ThrowOnAmbientTransaction = false
+            //                };
+
+            //var optionsBuilder = new Microsoft.EntityFrameworkCore.DbContextOptionsBuilder();
             
+            var extension = new SqlServerOptionsExtension(optionsBuilder.Options.GetExtension<SqlServerOptionsExtension>())
+            {
+                ThrowOnAmbientTransaction = false
+            };
+
+            ((IDbContextOptionsBuilderInfrastructure)optionsBuilder).AddOrUpdateExtension(extension);
+
         }
 
-        
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -92,31 +112,23 @@ namespace DDD.Provider.DataModel
 
                 entity.Property(e => e.StateCode)
                     .IsRequired()
-                    .HasMaxLength(2)
-                    .HasColumnType("nchar");
+                    .HasColumnType("nchar(2)");
 
                 entity.Property(e => e.Status)
                     .IsRequired()
-                    .HasMaxLength(2)
-                    .HasColumnType("nchar");
+                    .HasColumnType("nchar(1)");
 
-                entity.Property(e => e.SuffixCode)
-                    .HasMaxLength(2)
-                    .HasColumnType("nchar");
+                entity.Property(e => e.SuffixCode).HasColumnType("nchar(2)");
 
                 entity.Property(e => e.Type)
                     .IsRequired()
-                    .HasMaxLength(2)
-                    .HasColumnType("nchar");
+                    .HasColumnType("nchar(1)");
 
                 entity.Property(e => e.ZipCode)
                     .IsRequired()
-                    .HasMaxLength(5)
-                    .HasColumnType("nchar");
+                    .HasColumnType("nchar(5)");
 
-                entity.Property(e => e.ZipExntension)
-                    .HasMaxLength(4)
-                    .HasColumnType("nchar");
+                entity.Property(e => e.ZipExntension).HasColumnType("nchar(4)");
             });
 
             modelBuilder.Entity<ContractorSite>(entity =>
@@ -127,22 +139,19 @@ namespace DDD.Provider.DataModel
 
                 entity.Property(e => e.ArrangedCareTypeCode)
                     .IsRequired()
-                    .HasMaxLength(1)
-                    .HasColumnType("char");
+                    .HasColumnType("char(1)");
 
-                entity.Property(e => e.AttendanceEntryIndicator).HasDefaultValue(false);
+                entity.Property(e => e.AttendanceEntryIndicator).HasDefaultValueSql("0");
 
                 entity.Property(e => e.FirstInsertedById)
                     .IsRequired()
-                    .HasMaxLength(128)
-                    .HasColumnType("varchar");
+                    .HasColumnType("varchar(128)");
 
                 entity.Property(e => e.FirstInsertedDateTime).HasColumnType("datetime");
 
                 entity.Property(e => e.LastSavedById)
                     .IsRequired()
-                    .HasMaxLength(128)
-                    .HasColumnType("varchar");
+                    .HasColumnType("varchar(128)");
 
                 entity.Property(e => e.LastSavedDateTime).HasColumnType("datetime");
 
@@ -152,8 +161,7 @@ namespace DDD.Provider.DataModel
 
                 entity.Property(e => e.RelationshipStatusCode)
                     .IsRequired()
-                    .HasMaxLength(1)
-                    .HasColumnType("char");
+                    .HasColumnType("char(1)");
 
                 entity.HasOne(d => d.ContractorState).WithMany(p => p.ContractorSite).HasForeignKey(d => d.ContractorId).OnDelete(DeleteBehavior.Restrict);
 
@@ -202,13 +210,11 @@ namespace DDD.Provider.DataModel
 
                 entity.Property(e => e.CountyCode)
                     .IsRequired()
-                    .HasMaxLength(2)
-                    .HasColumnType("nchar");
+                    .HasColumnType("nchar(2)");
 
                 entity.Property(e => e.CountyServedCode)
                     .IsRequired()
-                    .HasMaxLength(2)
-                    .HasColumnType("nchar");
+                    .HasColumnType("nchar(2)");
 
                 entity.Property(e => e.Email)
                     .IsRequired()
@@ -220,7 +226,7 @@ namespace DDD.Provider.DataModel
 
                 entity.Property(e => e.FirstInsertedDateTime).HasColumnType("datetime");
 
-                entity.Property(e => e.IsWebEnabled).HasDefaultValue(true);
+                entity.Property(e => e.IsWebEnabled).HasDefaultValueSql("1");
 
                 entity.Property(e => e.LastSavedBy)
                     .IsRequired()
@@ -230,8 +236,7 @@ namespace DDD.Provider.DataModel
 
                 entity.Property(e => e.LicencingStatusCode)
                     .IsRequired()
-                    .HasMaxLength(1)
-                    .HasColumnType("nchar");
+                    .HasColumnType("nchar(1)");
 
                 entity.Property(e => e.PhoneNumber)
                     .IsRequired()
@@ -239,8 +244,7 @@ namespace DDD.Provider.DataModel
 
                 entity.Property(e => e.SiteFacilityTypeCode)
                     .IsRequired()
-                    .HasMaxLength(2)
-                    .HasColumnType("nchar");
+                    .HasColumnType("nchar(2)");
 
                 entity.Property(e => e.SiteName)
                     .IsRequired()
@@ -248,27 +252,21 @@ namespace DDD.Provider.DataModel
 
                 entity.Property(e => e.SiteTypeCode)
                     .IsRequired()
-                    .HasMaxLength(1)
-                    .HasColumnType("nchar");
+                    .HasColumnType("nchar(1)");
 
                 entity.Property(e => e.StateCode)
                     .IsRequired()
-                    .HasMaxLength(2)
-                    .HasColumnType("nchar");
+                    .HasColumnType("nchar(2)");
 
                 entity.Property(e => e.StatusCode)
                     .IsRequired()
-                    .HasMaxLength(2)
-                    .HasColumnType("nchar");
+                    .HasColumnType("nchar(1)");
 
                 entity.Property(e => e.ZipCode)
                     .IsRequired()
-                    .HasMaxLength(5)
-                    .HasColumnType("nchar");
+                    .HasColumnType("nchar(5)");
 
-                entity.Property(e => e.ZipExtension)
-                    .HasMaxLength(4)
-                    .HasColumnType("nchar");
+                entity.Property(e => e.ZipExtension).HasColumnType("nchar(4)");
             });
 
             modelBuilder.Entity<SiteHolidayState>(entity =>
@@ -279,13 +277,11 @@ namespace DDD.Provider.DataModel
 
                 entity.Property(e => e.CalendarYearDate)
                     .IsRequired()
-                    .HasMaxLength(4)
-                    .HasColumnType("nchar");
+                    .HasColumnType("nchar(4)");
 
                 entity.Property(e => e.FirstInsertedById)
                     .IsRequired()
-                    .HasMaxLength(128)
-                    .HasColumnType("varchar");
+                    .HasColumnType("varchar(128)");
 
                 entity.Property(e => e.FirstInsertedDateTime).HasColumnType("datetime");
 
@@ -293,13 +289,11 @@ namespace DDD.Provider.DataModel
 
                 entity.Property(e => e.HolidayName)
                     .IsRequired()
-                    .HasMaxLength(100)
-                    .HasColumnType("varchar");
+                    .HasColumnType("varchar(100)");
 
                 entity.Property(e => e.LastSavedById)
                     .IsRequired()
-                    .HasMaxLength(128)
-                    .HasColumnType("varchar");
+                    .HasColumnType("varchar(128)");
 
                 entity.Property(e => e.LastSavedDateTime).HasColumnType("datetime");
 
@@ -316,15 +310,13 @@ namespace DDD.Provider.DataModel
 
                 entity.Property(e => e.FirstInsertedById)
                     .IsRequired()
-                    .HasMaxLength(128)
-                    .HasColumnType("varchar");
+                    .HasColumnType("varchar(128)");
 
                 entity.Property(e => e.FirstInsertedDateTime).HasColumnType("datetime");
 
                 entity.Property(e => e.LastSavedById)
                     .IsRequired()
-                    .HasMaxLength(128)
-                    .HasColumnType("varchar");
+                    .HasColumnType("varchar(128)");
 
                 entity.Property(e => e.LastSavedDateTime).HasColumnType("datetime");
 
@@ -339,6 +331,7 @@ namespace DDD.Provider.DataModel
                 entity.HasOne(d => d.SiteState).WithMany(p => p.SiteRate).HasForeignKey(d => d.SiteID).OnDelete(DeleteBehavior.Restrict);
             });
         }
+
 
         public virtual DbSet<ContractorState> Contractor { get; set; }
         public virtual DbSet<ContractorSite> ContractorSite { get; set; }

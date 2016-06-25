@@ -14,6 +14,7 @@ using DDD.Web.Api.Infrastructure.Logging;
 using DDD.Web.Api.App_Start;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNet.SignalR;
+using DDD.Provider.DataModel;
 //using Microsoft.AspNet.SignalR.
 
 
@@ -43,6 +44,11 @@ namespace DDD.Web.Api
             services.AddMvc();
             services.AddSignalR();
             services.AddEntityFrameworkSqlServer(); // .AddEntityFramework().AddSqlServer();
+            //services.AddDbContext<ProviderDbContext>(op => op.UseSqlServer(Configuration["Data:POC_DDDContextConnection"]));
+            services.AddDbContext<ProviderDbContext>(op => 
+                op.UseSqlServer(@"Data Source=.\SQL2014;Initial Catalog=POC_DDD;Integrated Security=False;User ID=srvelicheti;Password=Secret@123;MultipleActiveResultSets=true;Trusted_Connection=true;")
+                );
+            
             var container = new Container();
 
             // Here we populate the container using the service collection.
