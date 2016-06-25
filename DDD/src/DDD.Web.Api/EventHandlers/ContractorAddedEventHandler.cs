@@ -2,7 +2,7 @@
 using DDD.Provider.Domain.Events;
 using DDD.Provider.Messages.Events;
 using DDD.Web.Api.Hubs;
-using Microsoft.AspNet.SignalR.Infrastructure;
+using Microsoft.AspNetCore.SignalR.Infrastructure;
 using NServiceBus;
 using System;
 using System.Collections.Generic;

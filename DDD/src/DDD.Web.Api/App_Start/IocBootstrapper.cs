@@ -12,7 +12,7 @@ using DDD.Provider.Domain.Services;
 using DDD.Provider.Messages.Commands;
 using DDD.Provider.QueryStack.Contractor.Queries;
 using DDD.Provider.QueryStack.Contractor.QueryHandlers;
-using Microsoft.AspNet.Http;
+using Microsoft.AspNetCore.Http;
 using NServiceBus;
 using StructureMap;
 
@@ -32,6 +32,7 @@ namespace DDD.Web.Api
             RegisterQueryHandlers(container);
             RegisterDbContexts(container);
             RegisterServices(container);
+            container.Configure(x => x.ForConcreteType<TestLoggerFactoryInjection>());
             return container;
         }
 

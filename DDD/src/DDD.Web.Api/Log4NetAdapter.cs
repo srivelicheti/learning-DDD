@@ -15,12 +15,8 @@ namespace DDD.Web.Api
 
         public IDisposable BeginScope<TState>(TState state)
         {
-            throw new NotImplementedException();
-        }
-
-        public IDisposable BeginScopeImpl(object state)
-        {
             return null;
+            //throw new NotImplementedException();
         }
 
         public bool IsEnabled(LogLevel logLevel)
@@ -42,8 +38,8 @@ namespace DDD.Web.Api
                     throw new ArgumentException($"Unknown log level {logLevel}.", nameof(logLevel));
             }
         }
-
-        public void Log(LogLevel logLevel, int eventId, object state, Exception exception, Func<object, Exception, string> formatter)
+        
+        public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
         {
             if (!IsEnabled(logLevel))
             {
@@ -54,10 +50,11 @@ namespace DDD.Web.Api
             {
                 message = formatter(state, exception);
             }
-            //else
-            //{
-            //    message = LogFormatter.Formatter(state, exception);
-            //}
+            else
+            {
+                message = formatter(state, exception);
+                //message = LogFormatter.Formatter(state, exception);
+            }
             switch (logLevel)
             {
                 //case LogLevel.Verbose:
@@ -81,11 +78,6 @@ namespace DDD.Web.Api
                     _logger.Info(message, exception);
                     break;
             }
-        }
-
-        public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
-        {
-            throw new NotImplementedException();
         }
     }
 }

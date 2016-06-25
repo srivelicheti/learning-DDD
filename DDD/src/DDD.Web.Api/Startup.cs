@@ -13,13 +13,53 @@ using Microsoft.Extensions.PlatformAbstractions;
 using DDD.Web.Api.Infrastructure.Logging;
 using DDD.Web.Api.App_Start;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNet.SignalR;
+using Microsoft.AspNetCore.SignalR;
 using DDD.Provider.DataModel;
-//using Microsoft.AspNet.SignalR.
+using Microsoft.AspNetCore.SignalR.Infrastructure;
+//using Autofac;
+//using Autofac.Extensions.DependencyInjection;
 
+//namespace Microsoft.Extensions.Logging
+//{
+//    /// <summary>
+//    /// ILoggerFactory extension methods for common scenarios.
+//    /// </summary>
+//    public static class LoggerFactoryExtensions
+//    {
+//        /// <summary>
+//        /// Creates a new ILogger instance using the full name of the given type.
+//        /// </summary>
+//        /// <typeparam name="T">The type.</typeparam>
+//        /// <param name="factory">The factory.</param>
+//        public static ILogger CreateLogger<T>(this ILoggerFactory factory)
+//        {
+//            if (factory == null)
+//            {
+//                throw new ArgumentNullException("factory");
+//            }
+//            return new Logger<T>(factory);
+//        }
+//    }
+//}
 
 namespace DDD.Web.Api
 {
+
+
+    public class TestLoggerFactoryInjection
+    {
+        private static List<int> t;
+        private readonly ILogger _logger;
+        static TestLoggerFactoryInjection()
+        {
+            t = new List<int> { 10 };
+        }
+        public TestLoggerFactoryInjection(ILoggerFactory factory)
+        {
+            _logger = LoggerFactoryExtensions.CreateLogger<TestLoggerFactoryInjection>(factory);
+        }  
+    }
+
     public class Startup
     {
         public Startup(IHostingEnvironment env)
@@ -41,6 +81,7 @@ namespace DDD.Web.Api
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
+            
             services.AddMvc();
             services.AddSignalR();
             services.AddEntityFrameworkSqlServer(); // .AddEntityFramework().AddSqlServer();
@@ -55,8 +96,10 @@ namespace DDD.Web.Api
             // This will register all services from the collection
             // into the container with the appropriate lifetime.
             container.Populate(services);
+           
             var bus = NServiceBusBootStrapper.Init(container);
             IocBootstrapper.ConfigureIocContainer(container,bus);
+            var tc = container.GetInstance<PerformanceCounterManager>();
             //DomainEventsBootStrapper.RegisterEvents(container);
             // Make sure we return an IServiceProvider, 
             // this makes DNX use the StructureMap container.
@@ -78,6 +121,9 @@ namespace DDD.Web.Api
             var loggingConfig = Configuration.GetSection("Logging");
             loggerFactory.AddConsole(loggingConfig);
             loggerFactory.AddDebug();
+            loggerFactory.AddLog4Net();
+            var startupLogger = loggerFactory.CreateLogger<Startup>();
+            startupLogger.LogDebug("testing logging");
             //loggerFactory.
 
            // app.UseIISPlatformHandler();
