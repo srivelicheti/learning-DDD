@@ -5,11 +5,6 @@
     "preserveCompilationContext": true
   },
 
-  
-
-  //"commands": {
-  //  "web": "Microsoft.AspNet.Server.Kestrel --server.urls http://localhost:5000"
-  //},
 
   "frameworks": {
     "net451": {
@@ -64,12 +59,12 @@
 
   },
 
-
   "publishOptions": {
     "include": [
       "wwwroot",
       "Views",
       "appsettings.json",
+      "config.json",
       "web.config"
     ]
   },
@@ -81,10 +76,6 @@
     "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
   },
   "tools": {
-    "Microsoft.AspNetCore.Razor.Tools": {
-      "version": "1.0.0-preview1-final",
-      "imports": "portable-net45+win8+dnxcore50"
-    },
     "Microsoft.AspNetCore.Server.IISIntegration.Tools": {
       "version": "1.0.0-preview1-final",
       "imports": "portable-net45+win8+dnxcore50"

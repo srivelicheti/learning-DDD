@@ -4170,7 +4170,8 @@
       "Microsoft.Extensions.Logging.Debug >= 1.0.0-rc2-final",
       "Microsoft.Extensions.Options >= 1.0.0-rc2-final",
       "Microsoft.Extensions.Options.ConfigurationExtensions >= 1.0.0-rc2-final",
-      "Microsoft.VisualStudio.Web.BrowserLink.Loader >= 14.0.0-rc2-final"
+      "Microsoft.VisualStudio.Web.BrowserLink.Loader >= 14.0.0-rc2-final",
+      "System.Net.Http >= 4.0.0"
     ]
   },
   "tools": {

@@ -4,6 +4,12 @@
     "emitEntryPoint": true,
     "preserveCompilationContext": true
   },
+  //"dependencies": {
+  //  "Microsoft.NETCore.App": {
+  //    "version": "1.0.0-rc2-3002702",
+  //    "type": "platform"
+  //  }
+  //},
   "frameworks": {
     "net451": {
       "imports": [
@@ -40,6 +46,9 @@
         //"System.Net.Http": "4.0.1-beta-23516",
         //"System.Runtime.Serialization.Json": "4.0.1-beta-23516",
         //"Newtonsoft.Json": "8.0.1"
+      },
+      "frameworkAssemblies": {
+        "System.Net.Http": "4.0.0.0"
       }
     }
     //"dnxcore50": { }
