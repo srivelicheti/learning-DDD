@@ -44,22 +44,6 @@ using Microsoft.AspNetCore.SignalR.Infrastructure;
 
 namespace DDD.Web.Api
 {
-
-
-    public class TestLoggerFactoryInjection
-    {
-        private static List<int> t;
-        private readonly ILogger _logger;
-        static TestLoggerFactoryInjection()
-        {
-            t = new List<int> { 10 };
-        }
-        public TestLoggerFactoryInjection(ILoggerFactory factory)
-        {
-            _logger = LoggerFactoryExtensions.CreateLogger<TestLoggerFactoryInjection>(factory);
-        }  
-    }
-
     public class Startup
     {
         public Startup(IHostingEnvironment env)
@@ -99,10 +83,8 @@ namespace DDD.Web.Api
            
             var bus = NServiceBusBootStrapper.Init(container);
             IocBootstrapper.ConfigureIocContainer(container,bus);
-            var tc = container.GetInstance<PerformanceCounterManager>();
-            //DomainEventsBootStrapper.RegisterEvents(container);
             // Make sure we return an IServiceProvider, 
-            // this makes DNX use the StructureMap container.
+            // this makes Asp.Net Core use the StructureMap container.
             return container.GetInstance<IServiceProvider>();
         }
 
@@ -124,9 +106,7 @@ namespace DDD.Web.Api
             loggerFactory.AddLog4Net();
             var startupLogger = loggerFactory.CreateLogger<Startup>();
             startupLogger.LogDebug("testing logging");
-            //loggerFactory.
 
-           // app.UseIISPlatformHandler();
             app.UseCors(pol => {
                 pol.AllowAnyOrigin();
                 pol.AllowAnyMethod();
@@ -134,11 +114,8 @@ namespace DDD.Web.Api
                 pol.AllowCredentials();
             });
             app.UseStaticFiles();
-           // app.UseSignalR();
+            app.UseSignalR();
             app.UseMvc();
         }
-
-        // Entry point for the application.
-        //public static void Main(string[] args) => WebApplication.Run<Startup>(args);
     }
 }

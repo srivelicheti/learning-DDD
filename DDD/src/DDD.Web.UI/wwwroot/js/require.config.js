@@ -10,7 +10,7 @@ require.config({
     paths: {
         appConfig: "/js/app.config",
         jquery: "../lib/jquery/dist/jquery",
-        ko: "../lib/knockoutjs/dist/knockout",
+        knockout: "../lib/knockoutjs/dist/knockout",
         bootstrap: "../lib/bootstrap/dist/js/bootstrap",
         jqueryValidate: "../lib/jquery-validation/dist/jquery.validate",
         jqueryValUnob: "../lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive",
@@ -42,11 +42,15 @@ require.config({
         },
         lodash: {
             exports:"_"
+        },
+        knockout: {
+            exports:'ko'
+        },
+        komapping: {
+            deps: ["knockout"],
+            exports:'mapping'
         }
-        //,
-        //komapping: {
-        //    deps: ["/lib/knockoutjs/dist/knockout"]
-        //}
+        
     }
 });
 

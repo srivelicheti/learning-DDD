@@ -1,4 +1,4 @@
-﻿require(["jquery", "ko", "lodash", "models/ContractorViewModel", "services/contractorService", "appMain"],
+﻿require(["jquery", "knockout", "lodash", "models/ContractorViewModel", "services/contractorService", "appMain"],
     function ($, ko, _, ContractorViewModel, ContractorService) {
         $(function() {
             var vm = new ContractorViewModel();

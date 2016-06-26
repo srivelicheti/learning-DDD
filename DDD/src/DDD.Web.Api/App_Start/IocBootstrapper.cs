@@ -32,7 +32,6 @@ namespace DDD.Web.Api
             RegisterQueryHandlers(container);
             RegisterDbContexts(container);
             RegisterServices(container);
-            container.Configure(x => x.ForConcreteType<TestLoggerFactoryInjection>());
             return container;
         }
 

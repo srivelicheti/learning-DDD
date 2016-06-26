@@ -1,5 +1,5 @@
-﻿define(["ko", "lodash", "models/BaseViewModel", "models/AddressViewModel"], function (ko, _, BaseViewModel, AddressViewModel) {
-    var ContractorViewModel = function() {
+﻿define(["knockout", "lodash", "models/BaseViewModel", "models/AddressViewModel"], function (ko, _, BaseViewModel, AddressViewModel) {
+    var contractorViewModel = function() {
         this.EinNumber = null;
         this.Name = null;
         this.StartDate = null;
@@ -9,11 +9,11 @@
         this.ContactLastName = null;
         this.ContactPhoneNumber = null;
         BaseViewModel.call(this, arguments);
-    }
+    };
 
-    _.extend(ContractorViewModel.prototype, BaseViewModel.prototype,
+    _.extend(contractorViewModel.prototype, BaseViewModel.prototype,
    {
        initialize: function () { }
    });
-    return ContractorViewModel;
+    return contractorViewModel;
 });

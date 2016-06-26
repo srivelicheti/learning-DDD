@@ -11,6 +11,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
+      "launchUrl": "contractor",
       "environmentVariables": {
         "Hosting:Environment": "Development"
       }

@@ -1,4 +1,4 @@
-﻿define(["appConfig", "jquery", "bootstrap", "ko", "jqueryValidate", "jqueryValUnob", "signalr","komapping"], function (appConfig, $) {
+﻿define(["appConfig", "jquery", "bootstrap", "knockout", "jqueryValidate", "jqueryValUnob", "signalr", "komapping"], function (appConfig, $) {
     $(function () {
         $.getScript(appConfig.apiBaseUrl + "/signalr/hubs");
         // alert("test scuces");

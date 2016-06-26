@@ -1,4 +1,4 @@
-﻿define(["ko", "lodash", "models/BaseViewModel"], function(ko, _, BaseViewModel) {
+﻿define(["knockout", "lodash", "models/BaseViewModel"], function (ko, _, BaseViewModel) {
 
     var vm = function() {
         this.AddressLine1 = null;
