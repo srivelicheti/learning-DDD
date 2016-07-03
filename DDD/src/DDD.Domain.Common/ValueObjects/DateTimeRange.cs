@@ -11,7 +11,7 @@ namespace DDD.Domain.Common.ValueObjects
         {
             //Guard.ForPrecedesDate(start, end, "start");
             Start = start;
-            End = end ?? DateTime.MaxValue;
+            End = end == null || end.Value == DateTime.MinValue ? DateTime.MaxValue : end.Value;
         }
 
         

@@ -16,7 +16,7 @@
     }
   },
   "dependencies": {
-    "NETStandard.Library": "1.5.0-rc2-24027",
+    //"NETStandard.Library": "1.6.0",
     "StructureMap.Dnx": "0.5.1-rc2-final",
     "NServiceBus": "5.2.14",
     "DDD.Common": "1.0.0-*"

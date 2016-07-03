@@ -19,7 +19,7 @@
     "DDD.Provider.Messages": "1.0.0-*",
     "NServiceBus": "5.2.14",
     "NServiceBus.NHibernate": "6.2.7",
-    "Newtonsoft.Json": "9.0.1-beta1"
+    "Newtonsoft.Json": "9.0.1"
   },
 
   "commands": {

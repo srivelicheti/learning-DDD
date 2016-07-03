@@ -24,14 +24,16 @@ namespace DDD.Provider.DataModel
             //                };
 
             //var optionsBuilder = new Microsoft.EntityFrameworkCore.DbContextOptionsBuilder();
-            
-            var extension = new SqlServerOptionsExtension(optionsBuilder.Options.GetExtension<SqlServerOptionsExtension>())
-            {
-                ThrowOnAmbientTransaction = false
-            };
 
-            ((IDbContextOptionsBuilderInfrastructure)optionsBuilder).AddOrUpdateExtension(extension);
+            //var extension =
+            //    new SqlServerOptionsExtension(optionsBuilder.Options.GetExtension<SqlServerOptionsExtension>());
+            //extension
+            optionsBuilder.ConfigureWarnings(x => x.Ignore(RelationalEventId.AmbientTransactionWarning));
+            //((IDbContextOptionsBuilderInfrastructure)optionsBuilder).AddOrUpdateExtension(extension);
+            //var ex = new RelationalEventId
+            //{
 
+            //};
         }
 
 
