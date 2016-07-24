@@ -7,13 +7,14 @@
 
 
   "frameworks": {
-    "net451": {
+    "net461": {
       //"imports": [
       //  "dnx451"
       //],
       "dependencies": {
         "DDD.Common": "1.0.0-*",
         "DDD.Domain.Common": "1.0.0-*",
+        "DDD.Provider.Common": "1.0.0-*",
         "DDD.Provider.Domain": "1.0.0-*",
         "log4net": "2.0.5",
         "Microsoft.AspNetCore.Diagnostics": "1.0.0",

@@ -8,12 +8,13 @@
     "licenseUrl": ""
   },
   "frameworks": {
-    "net451": { }
+    "net461": { }
   },
   "dependencies": {
     "AutoMapper": "4.2.1",
     "DDD.Common": "1.0.0-*",
     "DDD.Domain.Common": "1.0.0-*",
+    "DDD.Provider.Common": "1.0.0-*",
     "DDD.Provider.DataModel": "1.0.0-*"
   }
 }

@@ -27,7 +27,7 @@
   },
 
   "frameworks": {
-    "net451": {
+    "net461": {
       "frameworkAssemblies": {
         "System.Configuration": "4.0.0.0"
       }

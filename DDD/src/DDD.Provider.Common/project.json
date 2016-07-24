@@ -1,0 +1,14 @@
+﻿{
+  "version": "1.0.0-*",
+
+  "dependencies": {
+    "DDD.Common": "1.0.0-*",
+    "DDD.Domain.Common": "1.0.0-*"
+  },
+
+  "frameworks": {
+    "net461": {
+      
+    }
+  }
+}

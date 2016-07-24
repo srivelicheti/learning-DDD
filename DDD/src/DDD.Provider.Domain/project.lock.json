@@ -2,7 +2,7 @@
   "locked": false,
   "version": 2,
   "targets": {
-    ".NETFramework,Version=v4.5.1": {
+    ".NETFramework,Version=v4.6.1": {
       "Microsoft.AspNetCore.Hosting.Abstractions/1.0.0": {
         "type": "package",
         "dependencies": {
@@ -478,10 +478,10 @@
       "System.Diagnostics.DiagnosticSource/4.0.0": {
         "type": "package",
         "compile": {
-          "lib/portable-net45+win8+wpa81/System.Diagnostics.DiagnosticSource.dll": {}
+          "lib/net46/System.Diagnostics.DiagnosticSource.dll": {}
         },
         "runtime": {
-          "lib/portable-net45+win8+wpa81/System.Diagnostics.DiagnosticSource.dll": {}
+          "lib/net46/System.Diagnostics.DiagnosticSource.dll": {}
         }
       },
       "System.Globalization/4.0.11": {
@@ -668,7 +668,7 @@
       },
       "DDD.Common/1.0.0": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1",
+        "framework": ".NETFramework,Version=v4.6.1",
         "dependencies": {
           "Moq": "4.2.1510.2205"
         },
@@ -679,30 +679,44 @@
           "System.Runtime.Serialization"
         ],
         "compile": {
-          "net451/DDD.Common.dll": {}
+          "net461/DDD.Common.dll": {}
         },
         "runtime": {
-          "net451/DDD.Common.dll": {}
+          "net461/DDD.Common.dll": {}
         }
       },
       "DDD.Domain.Common/1.0.0": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1",
+        "framework": ".NETFramework,Version=v4.6.1",
         "dependencies": {
           "DDD.Common": "1.0.0",
           "NServiceBus": "5.2.14",
           "StructureMap.Dnx": "0.5.1-rc2-final"
         },
         "compile": {
-          "net451/DDD.Domain.Common.dll": {}
+          "net461/DDD.Domain.Common.dll": {}
         },
         "runtime": {
-          "net451/DDD.Domain.Common.dll": {}
+          "net461/DDD.Domain.Common.dll": {}
+        }
+      },
+      "DDD.Provider.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.6.1",
+        "dependencies": {
+          "DDD.Common": "1.0.0",
+          "DDD.Domain.Common": "1.0.0"
+        },
+        "compile": {
+          "net461/DDD.Provider.Common.dll": {}
+        },
+        "runtime": {
+          "net461/DDD.Provider.Common.dll": {}
         }
       },
       "DDD.Provider.DataModel/1.0.0": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1",
+        "framework": ".NETFramework,Version=v4.6.1",
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "1.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "1.0.0",
@@ -710,25 +724,26 @@
           "Microsoft.EntityFrameworkCore.Tools": "1.0.0-preview2-final"
         },
         "compile": {
-          "net451/DDD.Provider.DataModel.dll": {}
+          "net461/DDD.Provider.DataModel.dll": {}
         },
         "runtime": {
-          "net451/DDD.Provider.DataModel.dll": {}
+          "net461/DDD.Provider.DataModel.dll": {}
         }
       },
       "DDD.Provider.Messages/1.0.0": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1",
+        "framework": ".NETFramework,Version=v4.6.1",
         "dependencies": {
           "DDD.Common": "1.0.0",
           "DDD.Domain.Common": "1.0.0",
+          "DDD.Provider.Common": "1.0.0",
           "NServiceBus": "5.2.14"
         },
         "compile": {
-          "net451/DDD.Provider.Messages.dll": {}
+          "net461/DDD.Provider.Messages.dll": {}
         },
         "runtime": {
-          "net451/DDD.Provider.Messages.dll": {}
+          "net461/DDD.Provider.Messages.dll": {}
         }
       }
     }
@@ -2442,6 +2457,11 @@
       "path": "../DDD.Domain.Common/project.json",
       "msbuildProject": "../DDD.Domain.Common/DDD.Domain.Common.xproj"
     },
+    "DDD.Provider.Common/1.0.0": {
+      "type": "project",
+      "path": "../DDD.Provider.Common/project.json",
+      "msbuildProject": "../DDD.Provider.Common/DDD.Provider.Common.xproj"
+    },
     "DDD.Provider.DataModel/1.0.0": {
       "type": "project",
       "path": "../DDD.Provider.DataModel/project.json",
@@ -2457,12 +2477,13 @@
     "": [
       "DDD.Common >= 1.0.0-*",
       "DDD.Domain.Common >= 1.0.0-*",
+      "DDD.Provider.Common >= 1.0.0-*",
       "DDD.Provider.DataModel >= 1.0.0-*",
       "Microsoft.EntityFrameworkCore >= 1.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 1.0.0",
       "NServiceBus >= 5.2.14"
     ],
-    ".NETFramework,Version=v4.5.1": [
+    ".NETFramework,Version=v4.6.1": [
       "DDD.Provider.Messages >= 1.0.0-*"
     ]
   },

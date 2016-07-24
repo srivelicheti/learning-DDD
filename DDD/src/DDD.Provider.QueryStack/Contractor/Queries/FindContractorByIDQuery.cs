@@ -1,9 +1,9 @@
-﻿using DDD.Common.DTOs.Provider;
-using DDD.Domain.Common.Query;
+﻿using DDD.Domain.Common.Query;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DDD.Provider.Common.DTOs;
 
 namespace DDD.Provider.QueryStack.Contractor.Queries
 {

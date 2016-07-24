@@ -5,7 +5,7 @@
     "preserveCompilationContext": true
   },
   "frameworks": {
-    "net451": {
+    "net461": {
       //"imports": [
       //  "dotnet5.6"
       //],

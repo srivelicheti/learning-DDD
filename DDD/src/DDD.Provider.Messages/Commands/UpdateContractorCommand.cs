@@ -1,10 +1,10 @@
-﻿using DDD.Common.Models.Provider;
-using DDD.Domain.Common.Command;
+﻿using DDD.Domain.Common.Command;
 using NServiceBus;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DDD.Provider.Common.Models;
 
 namespace DDD.Provider.Messages.Commands
 {

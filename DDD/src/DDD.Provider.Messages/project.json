@@ -8,10 +8,11 @@
     "licenseUrl": ""
   },
   "frameworks": {
-    "net451": { }
+    "net461": { }
   },
   "dependencies": {
     "DDD.Common": "1.0.0-*",
+    "DDD.Provider.Common": "1.0.0-*",
     "DDD.Domain.Common": "1.0.0-*",
     "NServiceBus": "5.2.14"
   }

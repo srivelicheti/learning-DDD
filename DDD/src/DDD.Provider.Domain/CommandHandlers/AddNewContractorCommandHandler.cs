@@ -46,16 +46,15 @@ namespace DDD.Provider.Domain.CommandHandlers
                     contractorDto.PhoneNumber, contact, contractrorAddress, contractorDto.Email,_eventBus);
                 _contractorRepository.AddContractor(contractor);
                 _contractorRepository.Save();
-               // _eventBus.PublishQueuedPostCommitEvents();
                 _eventBus.Publish(new CommandCompletedEvent(command.Id, DateTime.UtcNow));
                 _eventBus.Publish(new ContractorAddedEvent { ContractorEin = contractor.EinNumber });
-                //var ambientTransaction = System.Transactions.Transaction.Current;
-                //var ts = new /*Tr*/
             }
             catch (Exception ex)
             {
+                //TODO: Global Exception logging
                 _eventBus.Publish(new CommandFailedEvent(command.Id, ex, DateTime.UtcNow));
-                //TODO: Log exception
+                throw;
+                
             }
         }
 

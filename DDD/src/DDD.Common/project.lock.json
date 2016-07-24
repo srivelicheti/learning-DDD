@@ -2,7 +2,7 @@
   "locked": false,
   "version": 2,
   "targets": {
-    ".NETFramework,Version=v4.5.1": {
+    ".NETFramework,Version=v4.6.1": {
       "Moq/4.2.1510.2205": {
         "type": "package",
         "compile": {
@@ -33,10 +33,10 @@
   },
   "projectFileDependencyGroups": {
     "": [],
-    ".NETFramework,Version=v4.5.1": [
+    ".NETFramework,Version=v4.6.1": [
       "Moq >= 4.2.1510.2205",
       "System.ComponentModel >= 4.0.0",
-      "System.ComponentModel.Annotations >= 4.0.0",
+      "System.ComponentModel.Annotations >= 4.0.10",
       "System.ComponentModel.DataAnnotations >= 4.0.0",
       "System.Runtime.Serialization >= 4.0.0"
     ]

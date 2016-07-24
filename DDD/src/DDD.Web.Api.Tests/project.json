@@ -15,7 +15,7 @@
     "test": "xunit.runner.dnx"
   },
   "frameworks": {
-    "net451": {
+    "net461": {
       "dependencies": {
         //"Moq": "4.2.1510.2205",
         //"DDD.Web.Api": "",
