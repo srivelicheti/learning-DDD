@@ -7,9 +7,7 @@
     "projectUrl": "",
     "licenseUrl": ""
   },
-  //"dependencies": {
-  //  "NETStandard.Library": "1.6.0"
-  //},
+ 
   "frameworks": {
     "net461": {
       "frameworkAssemblies": {
@@ -19,10 +17,13 @@
         "System.ComponentModel.DataAnnotations": "4.0.0.0"
       },
       "dependencies": {
-        "Moq": "4.2.1510.2205"
       }
     }
   },
   "buildOptions": {
+  },
+  "dependencies": {
+    "Moq": "4.6.36-alpha"
   }
+
 }

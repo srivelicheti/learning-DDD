@@ -3,38 +3,71 @@
   "version": 2,
   "targets": {
     ".NETFramework,Version=v4.6.1": {
-      "Moq/4.2.1510.2205": {
+      "Castle.Core/4.0.0-beta001": {
         "type": "package",
         "compile": {
-          "lib/net40/Moq.dll": {}
+          "lib/net45/Castle.Core.dll": {}
         },
         "runtime": {
-          "lib/net40/Moq.dll": {}
+          "lib/net45/Castle.Core.dll": {}
+        }
+      },
+      "Moq/4.6.36-alpha": {
+        "type": "package",
+        "dependencies": {
+          "Castle.Core": "4.0.0-beta001"
+        },
+        "compile": {
+          "lib/net45/Moq.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Moq.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "Moq/4.2.1510.2205": {
-      "sha512": "nqMoHSP5f04/kyKbRUjGgzqtIb5LUUs0H6llHOkQJ5Takx4Ezr2H+59pkIgxkmpbHAcGmc/KsyRZUs1ehnPYag==",
+    "Castle.Core/4.0.0-beta001": {
+      "sha512": "AhlzkJEGZddWgUj2Vub2h2p171eETkQzymd4ZSgcxQBZaxgsFSJjQ7I6fLs86nS39+xxsZR3eXaH86DWVrfurA==",
       "type": "package",
+      "path": "Castle.Core/4.0.0-beta001",
       "files": [
-        "Moq.4.2.1510.2205.nupkg",
-        "Moq.4.2.1510.2205.nupkg.sha512",
+        "ASL - Apache Software Foundation License.txt",
+        "BreakingChanges.txt",
+        "Castle.Core.4.0.0-beta001.nupkg.sha512",
+        "Castle.Core.nuspec",
+        "Changes.txt",
+        "License.txt",
+        "lib/net35/Castle.Core.dll",
+        "lib/net35/Castle.Core.xml",
+        "lib/net40-client/Castle.Core.dll",
+        "lib/net40-client/Castle.Core.xml",
+        "lib/net45/Castle.Core.dll",
+        "lib/net45/Castle.Core.xml",
+        "lib/netstandard1.3/Castle.Core.dll",
+        "lib/netstandard1.3/Castle.Core.xml",
+        "readme.txt"
+      ]
+    },
+    "Moq/4.6.36-alpha": {
+      "sha512": "kzWy3IwRi4igVGlUi/tM0x8CKQ1UrFRELIYyyKhLd5N+Afi34p0H3+J01/kavDAlUm6pcYh+b24bV84UJixBZg==",
+      "type": "package",
+      "path": "Moq/4.6.36-alpha",
+      "files": [
+        "Moq.4.6.36-alpha.nupkg.sha512",
         "Moq.nuspec",
-        "lib/net35/Moq.dll",
-        "lib/net35/Moq.xml",
-        "lib/net40/Moq.dll",
-        "lib/net40/Moq.xml",
-        "lib/sl5/Moq.Silverlight.dll",
-        "lib/sl5/Moq.Silverlight.xml"
+        "lib/net45/Moq.dll",
+        "lib/net45/Moq.xml",
+        "lib/netstandard1.3/Moq.dll",
+        "lib/netstandard1.3/Moq.xml"
       ]
     }
   },
   "projectFileDependencyGroups": {
-    "": [],
+    "": [
+      "Moq >= 4.6.36-alpha"
+    ],
     ".NETFramework,Version=v4.6.1": [
-      "Moq >= 4.2.1510.2205",
       "System.ComponentModel >= 4.0.0",
       "System.ComponentModel.Annotations >= 4.0.10",
       "System.ComponentModel.DataAnnotations >= 4.0.0",

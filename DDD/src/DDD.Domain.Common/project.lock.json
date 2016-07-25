@@ -3,6 +3,15 @@
   "version": 2,
   "targets": {
     ".NETFramework,Version=v4.6.1": {
+      "Castle.Core/4.0.0-beta001": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Castle.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Castle.Core.dll": {}
+        }
+      },
       "Microsoft.Extensions.DependencyInjection.Abstractions/1.0.0-rc2-final": {
         "type": "package",
         "dependencies": {
@@ -21,13 +30,16 @@
           "lib/netstandard1.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
         }
       },
-      "Moq/4.2.1510.2205": {
+      "Moq/4.6.36-alpha": {
         "type": "package",
+        "dependencies": {
+          "Castle.Core": "4.0.0-beta001"
+        },
         "compile": {
-          "lib/net40/Moq.dll": {}
+          "lib/net45/Moq.dll": {}
         },
         "runtime": {
-          "lib/net40/Moq.dll": {}
+          "lib/net45/Moq.dll": {}
         }
       },
       "NServiceBus/5.2.14": {
@@ -134,7 +146,7 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.6.1",
         "dependencies": {
-          "Moq": "4.2.1510.2205"
+          "Moq": "4.6.36-alpha"
         },
         "frameworkAssemblies": [
           "System.ComponentModel",
@@ -152,9 +164,32 @@
     }
   },
   "libraries": {
-    "Microsoft.Extensions.DependencyInjection.Abstractions/1.0.0-rc2-final": {
-      "sha512": "KRvRif+xioZSjml/O/Y6W/fksieNZ/hp+Bf/4Nau85gQleG8UJl+etaJXj18SWu8bQ3ApD4ikzq6qKXLlO8AMg==",
+    "Castle.Core/4.0.0-beta001": {
+      "sha512": "AhlzkJEGZddWgUj2Vub2h2p171eETkQzymd4ZSgcxQBZaxgsFSJjQ7I6fLs86nS39+xxsZR3eXaH86DWVrfurA==",
       "type": "package",
+      "path": "Castle.Core/4.0.0-beta001",
+      "files": [
+        "ASL - Apache Software Foundation License.txt",
+        "BreakingChanges.txt",
+        "Castle.Core.4.0.0-beta001.nupkg.sha512",
+        "Castle.Core.nuspec",
+        "Changes.txt",
+        "License.txt",
+        "lib/net35/Castle.Core.dll",
+        "lib/net35/Castle.Core.xml",
+        "lib/net40-client/Castle.Core.dll",
+        "lib/net40-client/Castle.Core.xml",
+        "lib/net45/Castle.Core.dll",
+        "lib/net45/Castle.Core.xml",
+        "lib/netstandard1.3/Castle.Core.dll",
+        "lib/netstandard1.3/Castle.Core.xml",
+        "readme.txt"
+      ]
+    },
+    "Microsoft.Extensions.DependencyInjection.Abstractions/1.0.0-rc2-final": {
+      "sha512": "ibOgu9bHQTq2QhG1cK3jd7GdElLigecv15jIs+EpHf6jLDcdLcpH4pkLNugOLRhYohaf9fMiZIfHCFCc3gDbng==",
+      "type": "package",
+      "path": "Microsoft.Extensions.DependencyInjection.Abstractions/1.0.0-rc2-final",
       "files": [
         "Microsoft.Extensions.DependencyInjection.Abstractions.1.0.0-rc2-final.nupkg.sha512",
         "Microsoft.Extensions.DependencyInjection.Abstractions.nuspec",
@@ -164,18 +199,17 @@
         "lib/netstandard1.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml"
       ]
     },
-    "Moq/4.2.1510.2205": {
-      "sha512": "nqMoHSP5f04/kyKbRUjGgzqtIb5LUUs0H6llHOkQJ5Takx4Ezr2H+59pkIgxkmpbHAcGmc/KsyRZUs1ehnPYag==",
+    "Moq/4.6.36-alpha": {
+      "sha512": "kzWy3IwRi4igVGlUi/tM0x8CKQ1UrFRELIYyyKhLd5N+Afi34p0H3+J01/kavDAlUm6pcYh+b24bV84UJixBZg==",
       "type": "package",
+      "path": "Moq/4.6.36-alpha",
       "files": [
-        "Moq.4.2.1510.2205.nupkg.sha512",
+        "Moq.4.6.36-alpha.nupkg.sha512",
         "Moq.nuspec",
-        "lib/net35/Moq.dll",
-        "lib/net35/Moq.xml",
-        "lib/net40/Moq.dll",
-        "lib/net40/Moq.xml",
-        "lib/sl5/Moq.Silverlight.dll",
-        "lib/sl5/Moq.Silverlight.xml"
+        "lib/net45/Moq.dll",
+        "lib/net45/Moq.xml",
+        "lib/netstandard1.3/Moq.dll",
+        "lib/netstandard1.3/Moq.xml"
       ]
     },
     "NServiceBus/5.2.14": {

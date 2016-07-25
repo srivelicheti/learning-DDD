@@ -1292,21 +1292,16 @@
       ]
     },
     "System.Interactive.Async/3.0.0": {
-      "sha512": "vlKjjdsCulUON1qM7kftjM63ORwZTRzVvvqHHKYOqi3hXHzW+ZTCJywBMZbp8T3tT8r5/d2qEfRCIhW8YSzU1A==",
+      "sha512": "UEM+WmG1Oq0bNbPx/E1jaIQ83QOrPfVDUyuYBtG6D6DpB77ytv9flPterMujumpHuoRjSc0ilSB8w41fQc05dw==",
       "type": "package",
       "path": "System.Interactive.Async/3.0.0",
       "files": [
         "System.Interactive.Async.3.0.0.nupkg.sha512",
         "System.Interactive.Async.nuspec",
         "lib/net45/System.Interactive.Async.dll",
-        "lib/net45/System.Interactive.Async.pdb",
         "lib/net45/System.Interactive.Async.xml",
         "lib/netstandard1.0/System.Interactive.Async.dll",
-        "lib/netstandard1.0/System.Interactive.Async.pdb",
-        "lib/netstandard1.0/System.Interactive.Async.xml",
-        "lib/portable-win8+net45+wp8+wpa81/System.Interactive.Async.dll",
-        "lib/portable-win8+net45+wp8+wpa81/System.Interactive.Async.pdb",
-        "lib/portable-win8+net45+wp8+wpa81/System.Interactive.Async.xml"
+        "lib/netstandard1.0/System.Interactive.Async.xml"
       ]
     },
     "System.IO/4.1.0": {
