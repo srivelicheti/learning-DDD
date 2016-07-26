@@ -1,24 +1,41 @@
-﻿define(["jquery", "knockout", "q", "appConfig", "appMain"],
-    function ($, ko, q ,appConfig) {
+﻿define(["jquery", "knockout", "q", "appConfig", "komapping" ,"appMain"],
+    function ($, ko, q ,appConfig,komapping) {
         "use strict";
         var contService = {};
 
-        contService.isExistingContractor = function (ein) {
+        var  isExistingContractor = function (ein) {
             var contractorExists = q.defer();
             var url = appConfig.apiBaseUrl + "/api/Contractor/" + ein + "/exists";
             $.ajax({
-                url: url,
-                method: "GET"
-            }).done(function (data, txtStatus, jqXhr) {
-                if (jqXhr.status === 200)
-                    contractorExists.resolve(true);
-                else {
-                    contractorExists.resolve(false);
-                }
-            }).fail(contractorExists.reject);
+                    url: url,
+                    method: "GET"
+                })
+                .done(function(data, txtStatus, jqXhr) {
+                    if (jqXhr.status === 200)
+                        contractorExists.resolve(true);
+                    else if (jqXhr.status === 404) {
+                        contractorExists.resolve(false);
+                    } else {
+                        contractorExists.reject();
+                    }
+                }).fail(function (jqXhr, textStatus, errorThrown) {
+                    if (jqXhr.status === 404) {
+                        contractorExists.resolve(false);
+                    } else {
+                        contractorExists.reject();
+                    }
+                });
 
             return contractorExists.promise;
         };
 
-        return contService;
+        var addNewContractor = function (contractor) {
+            console.log("Called Service");
+            console.log(contractor);
+        }
+
+        return {
+            IsExistingContractor: isExistingContractor,
+            AddNewContractor : addNewContractor
+        };
     });

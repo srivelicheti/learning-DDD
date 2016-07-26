@@ -1,5 +1,8 @@
-﻿define(["appConfig", "jquery", "bootstrap", "knockout", "jqueryValidate", "jqueryValUnob", "signalr", "komapping"], function (appConfig, $) {
+﻿define(["appConfig", "jquery", "bootstrap", "knockout", "jqueryValidate", "jqueryValUnob", "signalr", "komapping", "kovalidation"], function (appConfig, $, bootstrap, ko, jqval, jqvalUnob, signalr, komap) {
     $(function () {
+        //TODO: Adding global variables for testing remove them later
+        window.ko = ko;
+        window.komap = komap;
         $.getScript(appConfig.apiBaseUrl + "/signalr/hubs");
         // alert("test scuces");
 
@@ -17,5 +20,15 @@
         connection.logging = true;
 
         connection.start();
+
+        ko.validation.init({
+            registerExtenders: true,
+            messagesOnModified: true,
+            insertMessages: true,
+            parseInputAttributes: true,
+            messageTemplate: null
+        }, true);
+
+
     });
 });

@@ -18,7 +18,8 @@ require.config({
         q: "../lib/q/q",
         appMain: "../js/commonScripts",
         lodash: "../lib/lodash/lodash",
-        komapping: "../lib/bower-knockout-mapping/dist/knockout.mapping"
+        komapping: "../lib/bower-knockout-mapping/dist/knockout.mapping",
+        kovalidation: "../lib/knockout-validation/dist/knockout.validation"
     },
 
     shim: {
@@ -49,6 +50,9 @@ require.config({
         komapping: {
             deps: ["knockout"],
             exports:'mapping'
+        },
+        kovalidation: {
+            deps: ["knockout"]
         }
         
     }
