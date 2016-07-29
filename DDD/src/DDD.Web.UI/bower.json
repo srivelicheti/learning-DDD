@@ -12,7 +12,9 @@
     "q": "1.0.1",
     "requirejs": "~2.2.0",
     "bower-knockout-mapping": "^2.6.0",
-    "knockout-validation": "2.0.3"
+    "knockout-validation": "2.0.3",
+    "postal.js": "1.0.8",
+    "requirejs-plugins": "1.0.3"
   },
   "overrides": {
     "bootstrap": {

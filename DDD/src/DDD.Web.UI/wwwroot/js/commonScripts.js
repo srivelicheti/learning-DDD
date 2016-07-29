@@ -1,4 +1,5 @@
-﻿define(["appConfig", "jquery", "bootstrap", "knockout", "jqueryValidate", "jqueryValUnob", "signalr", "komapping", "kovalidation"], function (appConfig, $, bootstrap, ko, jqval, jqvalUnob, signalr, komap) {
+﻿define(["appConfig", "jquery", "bootstrap", "knockout", "jqueryValidate", "jqueryValUnob", "signalr", "komapping", "kovalidation", "postal"],
+    function (appConfig, $, bootstrap, ko, jqval, jqvalUnob, signalr, komap,koval,postal) {
     $(function () {
         //TODO: Adding global variables for testing remove them later
         window.ko = ko;
@@ -12,9 +13,19 @@
         var connection = $.hubConnection($.connection.hub.url);
         var chat = connection.createHubProxy('notifications');
 
-        chat.on('messageReceived', function (message) {
-            $('#message').append('<li>' + message + '</li>');
-        });
+        chat.on('messageReceived',
+            function(message) {
+                postal.publish({
+                    channel: "alerts",
+                    topic: "notification-alert",
+                    data: {
+                        title: 'Info!',
+                        message: message,
+                        type: 'Info',
+                        dismissAfter: 3000
+                    }
+                });
+            });
 
         // Turn logging on so we can see the calls in the browser console
         connection.logging = true;
@@ -29,6 +40,8 @@
             messageTemplate: null
         }, true);
 
-
+        ko.components.register("alert", { require: "components/ko-alerts/alert" });
+        ko.components.register("alerts", { require: "components/ko-alerts/alerts" });
+        window.postal = postal;
     });
 });

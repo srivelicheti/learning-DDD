@@ -40,12 +40,14 @@
         });
     };
     contractorViewModel.prototype.AddContractor = function() {
-        if (this.errors().length > 0)
-            alert("Fix errors");
-        else {
+        //if (this.errors().length > 0)
+        //    alert("Fix errors");
+        if (this.errors().length === 0) {
+            var self = this;
             var checkContractorPromise = ContractorService.IsExistingContractor(this.EinNumber());
-            checkContractorPromise.then(function() {
-                ContractorService.AddNewContractor(ko.mapping.toJS(this));
+            checkContractorPromise.then(function (isExisting) {
+                if(!isExisting)
+                    ContractorService.AddNewContractor(ko.mapping.toJS(self));
             });
 
         }
@@ -55,8 +57,6 @@
         var self = this;
         var checkContractorPromise = ContractorService.IsExistingContractor(this.EinNumber());
         checkContractorPromise.then(function (isExistingContractor) {
-            console.log("Exisgint: " +isExistingContractor);
-            console.log(self);
             if (isExistingContractor)
                 self.ContractorExistsWithSameEin(true);
             else {

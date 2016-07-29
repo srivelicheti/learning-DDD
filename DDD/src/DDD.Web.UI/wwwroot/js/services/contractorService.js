@@ -1,8 +1,7 @@
-﻿define(["jquery", "knockout", "q", "appConfig", "komapping" ,"appMain"],
-    function ($, ko, q ,appConfig,komapping) {
+﻿define(["jquery", "knockout", "q", "appConfig", "postal" ,"appMain"],
+    function ($, ko, q ,appConfig,postal) {
         "use strict";
-        var contService = {};
-
+       
         var  isExistingContractor = function (ein) {
             var contractorExists = q.defer();
             var url = appConfig.apiBaseUrl + "/api/Contractor/" + ein + "/exists";
@@ -30,6 +29,16 @@
         };
 
         var addNewContractor = function (contractor) {
+            postal.publish({
+                channel: "alerts",
+                topic: "notification-alert",
+                data: {
+                    title: 'Error!',
+                    message: 'Add New Contractor Not implemented Yet!',
+                    type: 'danger',
+                    dismissAfter:3000
+                }
+            });
             console.log("Called Service");
             console.log(contractor);
         }

@@ -19,7 +19,9 @@ require.config({
         appMain: "../js/commonScripts",
         lodash: "../lib/lodash/lodash",
         komapping: "../lib/bower-knockout-mapping/dist/knockout.mapping",
-        kovalidation: "../lib/knockout-validation/dist/knockout.validation"
+        kovalidation: "../lib/knockout-validation/dist/knockout.validation",
+        postal: "../lib/postal.js/lib/postal",
+        text:"../lib/requirejs-plugins/lib/text"
     },
 
     shim: {
