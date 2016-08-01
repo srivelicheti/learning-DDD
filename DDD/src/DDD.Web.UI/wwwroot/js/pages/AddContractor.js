@@ -1,5 +1,5 @@
-﻿require(["jquery", "knockout", "lodash", "models/AddContractorViewModel" ,"appMain"],
-    function ($, ko, _, AddContractorViewModel) {
+﻿require(["jquery", "knockout", "lodash", "models/AddContractorViewModel","postal" ,"appMain"],
+    function ($, ko, _, AddContractorViewModel,postal) {
         $(function() {
             var vm = new AddContractorViewModel();
 
@@ -31,6 +31,17 @@
                 var value = tempCont[propName];
                 vm[propName](value);
             }
+
+            postal.publish({
+                channel: "popupalerts",
+                topic: "popup-alert",
+                data: {
+                    title: 'Alert!',
+                    messages: ['Add New Contractor Not implemented Yet!'],
+                    type: 'danger',
+                    canBeClosed:true
+                }
+            });
 
             // ko.applyBindings(vm);
             window.CVM = vm;

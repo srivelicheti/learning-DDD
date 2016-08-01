@@ -57,10 +57,12 @@ namespace DDD.Web.Api.Controllers
         // POST api/values
         [HttpPost]
         [ValidateModel]
-        public void Post([FromBody]AddNewContractorModel contractorModel)
+        public JsonResult Post([FromBody]AddNewContractorModel contractorModel)
         {
             var cont = Mapper.Map<ContractorDto>(contractorModel);
-            var result = _bus.Send(new AddNewContractorCommand(cont));
+            var addNewContractorCommand = new AddNewContractorCommand(cont);
+            var result = _bus.Send(addNewContractorCommand);
+            return new JsonResult(new {CommmandId = addNewContractorCommand.Id});
         }
 
         [HttpPut("{ein}")]

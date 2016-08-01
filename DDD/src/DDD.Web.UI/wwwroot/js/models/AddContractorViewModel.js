@@ -4,6 +4,33 @@
         this.ContractorName.extend({ required: true });
         this.EinNumber.extend({ minLength: 9, maxLength: 9, required: true });
         this.errors = ko.validation.group(this);
+        this.ContractorExistsWithSameEin.extend({
+            validation: {
+                validator: function(val, someotherVal) {
+                    if (val === true) {
+                        return someotherVal === true;
+                    } else {
+                        return true;
+                    }
+                },
+                params: this.AddDuplicateContractorOverride,
+                Message:"Please check the Add duplicate contractor box if you are adding an existing contractor"
+            }
+        });
+
+        //this.AddDuplicateContractorOverride.extend({
+        //    validation: {
+        //        validator: function (val, someotherVal) {
+        //            if (val === false) {
+        //                return someotherVal === false;
+        //            } else {
+        //                return someotherVal === true;
+        //            }
+        //        },
+        //        params: this.AddDuplicateContractorOverride,
+        //        Message: "Please check the Add duplicate contractor box if you are adding an existing contractor"
+        //    }
+        //});
     };
 
     var contractorViewModel = function () {
@@ -23,7 +50,6 @@
         this.PhoneNumber = null;
         this.AlternatePhoneNumber = null;
         this.Email = null;
-        //this.Address = new AddressViewModel();
         this.ContactFirstName = null;
         this.ContactLastName = null;
         this.ContactPhoneNumber = null;
@@ -34,14 +60,19 @@
 
         BaseViewModel.call(this, arguments);
         addValidations.call(this);
+
+        this.IsInValidState = ko.computed(function () {
+            return this.errors().length === 0;
+        }, this);
+
+       
         
         this.EinNumber.subscribe(function () {
             self.CheckForExistingContractor();
         });
     };
     contractorViewModel.prototype.AddContractor = function() {
-        //if (this.errors().length > 0)
-        //    alert("Fix errors");
+       
         if (this.errors().length === 0) {
             var self = this;
             var checkContractorPromise = ContractorService.IsExistingContractor(this.EinNumber());

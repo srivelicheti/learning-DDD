@@ -42,6 +42,8 @@
 
         ko.components.register("alert", { require: "components/ko-alerts/alert" });
         ko.components.register("alerts", { require: "components/ko-alerts/alerts" });
+        ko.components.register("popupalert", { require: "components/ko-popupalerts/popupalert" });
+        ko.components.register("popupalerts", { require: "components/ko-popupalerts/popupalerts" });
         window.postal = postal;
     });
 });

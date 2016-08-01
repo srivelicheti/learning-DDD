@@ -39,8 +39,22 @@
                     dismissAfter:3000
                 }
             });
-            console.log("Called Service");
-            console.log(contractor);
+
+            var addContractorPromise = q.defer();
+            var url = appConfig.apiBaseUrl + "api/Contractor/";
+            $.ajax({
+                url: url,
+                method: "Post",
+                data: contractor
+            }).done(function(data, txtStatus, jqxhr) {
+                    addContractorPromise.resolve({
+                        commandId:data.commandId
+                    });
+                })
+            .fail(function(jqxhr) {
+                    addContractorPromise.reject();
+                });
+            return addContractorPromise;
         }
 
         return {
