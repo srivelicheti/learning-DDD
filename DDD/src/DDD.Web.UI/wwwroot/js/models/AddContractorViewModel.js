@@ -74,13 +74,42 @@
     contractorViewModel.prototype.AddContractor = function() {
        
         if (this.errors().length === 0) {
+            var addContractorPromise = ContractorService.AddNewContractor(ko.mapping.toJS(this));
+            console.log(addContractorPromise);
             var self = this;
-            var checkContractorPromise = ContractorService.IsExistingContractor(this.EinNumber());
-            checkContractorPromise.then(function (isExisting) {
-                if(!isExisting)
-                    ContractorService.AddNewContractor(ko.mapping.toJS(self));
+            addContractorPromise.then(function (commandId) {
+                postal.publish({
+                    channel: "popupalerts",
+                    topic: "popup-alert",
+                    data: {
+                        title: 'Alert!',
+                        messages: ['Command to add Contractor accepted!' + commandId],
+                        type: 'Info',
+                        canBeClosed: false,
+                        buttons : [
+                        {
+                            text: 'OK',
+                            action: function() {
+                                alert("Contractor with Ein " + this.EinNumber());
+                            },
+                            scope: self,
+                            closeDialog : true
+                        }]
+                    }
+                });
+                
+            }, function() {
+                postal.publish({
+                    channel: "popupalerts",
+                    topic: "popup-alert",
+                    data: {
+                        title: 'Alert!',
+                        messages: ['Command to add Contractor Failed!'],
+                        type: 'danger',
+                        canBeClosed: true
+                    }
+                });
             });
-
         }
     };
 

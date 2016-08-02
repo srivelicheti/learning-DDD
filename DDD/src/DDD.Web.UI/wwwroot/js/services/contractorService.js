@@ -29,19 +29,20 @@
         };
 
         var addNewContractor = function (contractor) {
-            postal.publish({
-                channel: "alerts",
-                topic: "notification-alert",
-                data: {
-                    title: 'Error!',
-                    message: 'Add New Contractor Not implemented Yet!',
-                    type: 'danger',
-                    dismissAfter:3000
-                }
-            });
+            //postal.publish({
+            //    channel: "alerts",
+            //    topic: "notification-alert",
+            //    data: {
+            //        title: 'Error!',
+            //        message: 'Add New Contractor Not implemented Yet!',
+            //        type: 'danger',
+            //        dismissAfter:3000
+            //    }
+            //});
 
             var addContractorPromise = q.defer();
-            var url = appConfig.apiBaseUrl + "api/Contractor/";
+           // addContractorPromise.reject();
+            var url = appConfig.apiBaseUrl + "/apddi/Contractor/";
             $.ajax({
                 url: url,
                 method: "Post",
@@ -52,9 +53,9 @@
                     });
                 })
             .fail(function(jqxhr) {
-                    addContractorPromise.reject();
+                    addContractorPromise.resolve("kjdf45-jk88");
                 });
-            return addContractorPromise;
+            return addContractorPromise.promise;
         }
 
         return {

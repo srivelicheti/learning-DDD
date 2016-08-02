@@ -7,10 +7,21 @@
         this.type = params.alertType;
         this.showCloseButton = params.canBeClosed;
         this.elementId = "popupAlert" + (++popupAlertId);
+        this.buttons = params.buttons;
         var self = this;
-        this.componentLoaded = function () {
-            $("#" + self.elementId).modal('show');
-        }
+        this.componentLoaded = function() {
+            $("#" + self.elementId).on('hidden.bs.modal', function () { $("#" + self.elementId).remove() }).modal('show');
+            //$("#" + self.elementId);
+        };
+        this.btnClick = function (btn) {
+            btn.action.call(btn.scope);
+            if (btn.closeDialog) {
+                var jqELement = $("#" + self.elementId);
+                jqELement.modal('hide');//.data('bs.modal', null);;//.remove();
+                
+            }
+            
+        };
     }
 
     return {

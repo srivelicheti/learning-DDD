@@ -13,8 +13,10 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Ok</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" data-bind="click:$parent.onClose">Close</button>
+                <!--ko foreach:{data:buttons, as:'btn'}-->
+                <button type="button" class="btn btn-primary" data-bind="text:text, click:$parent.btnClick"></button>
+                <!--/ko-->
             </div>
         </div>
     </div>
