@@ -42,7 +42,7 @@
 
             var addContractorPromise = q.defer();
            // addContractorPromise.reject();
-            var url = appConfig.apiBaseUrl + "/apddi/Contractor/";
+            var url = appConfig.apiBaseUrl + "/api/Contractor/";
             $.ajax({
                 url: url,
                 method: "Post",

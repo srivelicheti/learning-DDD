@@ -1,4 +1,4 @@
-﻿define(["appConfig", "jquery", "bootstrap", "knockout", "jqueryValidate", "jqueryValUnob", "signalr", "komapping", "kovalidation", "postal"],
+﻿define(["appConfig", "jquery", "bootstrap", "knockout", "jqueryValidate", "jqueryValUnob", "signalr", "komapping", "kovalidation", "postal","pager"],
     function (appConfig, $, bootstrap, ko, jqval, jqvalUnob, signalr, komap,koval,postal) {
     $(function () {
         //TODO: Adding global variables for testing remove them later

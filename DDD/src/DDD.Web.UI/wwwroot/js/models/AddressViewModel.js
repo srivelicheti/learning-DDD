@@ -5,6 +5,9 @@
         this.AddressLine2 = null;
         this.City = null;
         this.StateCode = null;
+        this.County = null;
+        this.PhoneNumber = null;
+        this.Email = null;
         this.ZipCode = null;
         this.ZipExtension = null;
     };

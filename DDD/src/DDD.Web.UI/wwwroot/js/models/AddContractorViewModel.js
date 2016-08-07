@@ -17,20 +17,6 @@
                 Message:"Please check the Add duplicate contractor box if you are adding an existing contractor"
             }
         });
-
-        //this.AddDuplicateContractorOverride.extend({
-        //    validation: {
-        //        validator: function (val, someotherVal) {
-        //            if (val === false) {
-        //                return someotherVal === false;
-        //            } else {
-        //                return someotherVal === true;
-        //            }
-        //        },
-        //        params: this.AddDuplicateContractorOverride,
-        //        Message: "Please check the Add duplicate contractor box if you are adding an existing contractor"
-        //    }
-        //});
     };
 
     var contractorViewModel = function () {
@@ -85,16 +71,16 @@
                         title: 'Alert!',
                         messages: ['Command to add Contractor accepted!' + commandId],
                         type: 'Info',
-                        canBeClosed: false,
-                        buttons : [
-                        {
-                            text: 'OK',
-                            action: function() {
-                                alert("Contractor with Ein " + this.EinNumber());
-                            },
-                            scope: self,
-                            closeDialog : true
-                        }]
+                        canBeClosed: true
+                        //buttons : [
+                        //{
+                        //    text: 'OK',
+                        //    action: function() {
+                        //        alert("Contractor with Ein " + this.EinNumber());
+                        //    },
+                        //    scope: self,
+                        //    closeDialog : true
+                        //}]
                     }
                 });
                 
