@@ -22,7 +22,7 @@ require.config({
         kovalidation: "../lib/knockout-validation/dist/knockout.validation",
         postal: "../lib/postal.js/lib/postal",
         text: "../lib/requirejs-plugins/lib/text",
-        pager:"../lib/pagerjs/dist/pager.min.js"
+        pager:"../lib/pagerjs/dist/pager.min"
     },
 
     shim: {

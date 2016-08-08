@@ -2,204 +2,262 @@
     ViewData["Title"] = "Add Site";
 
 }
-<h2>@ViewData["Title"].</h2>
-<hr />
 
 <form>
-    <div data-bind="with:SiteDetails" class="form-horizontal">
-        <div class="row">
-            <div class="col-xs-12 col-md-6">
-                <div class="form-group">
-                    <label class="col-xs-3 control-label" for="txtSiteName"> Site Name</label>
-                    <div class="col-xs-9">
-                        <input type="text" class="form-control" id="txtSiteName" data-bind="textInput:SiteName" />
+    <div id="container">
+        <div data-bind="page:{id:'start', with:SiteDetails}" class="form-horizontal">
+            <h2>@ViewData["Title"].</h2>
+            <hr />
+            <br />
+            <br />
+            @*with:SiteDetails,*@
+            <div class="row">
+                <div class="col-xs-12 col-md-6">
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label" for="txtSiteName"> Site Name</label>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" id="txtSiteName" data-bind="textInput:SiteName" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label" for="txtSiteNumber"> Site Number</label>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" id="txtSiteNumber" data-bind="textInput:SiteNumber" />
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-md-6">
-                <div class="form-group">
-                    <label class="col-xs-3 control-label" for="txtSiteNumber"> Site Number</label>
-                    <div class="col-xs-9">
-                        <input type="text" class="form-control" id="txtSiteNumber" data-bind="textInput:SiteNumber" />
+            <div class="row">
+                <div class="col-xs-12 col-md-6">
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label" for="txtContractorEin"> Contractor EIn</label>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" id="txtContractorEin" data-bind="textInput:ContractorEin" />
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-md-6">
-                <div class="form-group">
-                    <label class="col-xs-3 control-label" for="txtContractorEin"> Contractor EIn</label>
-                    <div class="col-xs-9"> 
-                        <input type="text" class="form-control" id="txtContractorEin" data-bind="textInput:ContractorEin" />
-                    </div>
-                </div>
 
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-xs-12 col-md-6">
-                <div class="form-group">
-                    <label class="col-xs-3 control-label" for="txtConractStartDate"> Start Date</label>
-                    <div class="col-xs-9">
-                        <input type="text" class="form-control" id="txtConractStartDate" data-bind="textInput:ContractStartDate" />
+            <div class="row">
+                <div class="col-xs-12 col-md-6">
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label" for="txtConractStartDate"> Start Date</label>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" id="txtConractStartDate" data-bind="textInput:ContractStartDate" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label" for="txtContractEndDate">End Date</label>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" id="txtContractEndDate" data-bind="textInput:ContractEndDate" />
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-md-6">
-                <div class="form-group">
-                    <label class="col-xs-3 control-label" for="txtContractEndDate">End Date</label>
-                    <div class="col-xs-9">
-                        <input type="text" class="form-control" id="txtContractEndDate" data-bind="textInput:ContractEndDate" />
+            <div class="row">
+                <div class="col-xs-12 col-md-6">
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label" for="ddlSiteType">Site Type</label>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" id="ddlSiteType" data-bind="textInput:SiteType" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label" for="ddlSiteFacilityType">Facitlity Type</label>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" id="ddlSiteFacilityType" data-bind="textInput:SiteFacilityType" />
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-md-6">
-                <div class="form-group">
-                    <label class="col-xs-3 control-label" for="ddlSiteType">Site Type</label>
-                    <div class="col-xs-9">
-                        <input type="text" class="form-control" id="ddlSiteType" data-bind="textInput:SiteType" />
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-md-6">
-                <div class="form-group">
-                    <label class="col-xs-3 control-label" for="ddlSiteFacilityType">Facitlity Type</label>
-                    <div class="col-xs-9">
-                        <input type="text" class="form-control" id="ddlSiteFacilityType" data-bind="textInput:SiteFacilityType" />
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <h3>Address</h3>
-        <hr />
-        <div data-bind="with:Address">
-            <div class="row">
-                <div class="col-md-6 col-xs-12">
-                    <div class="form-group">
-                        <label class="col-xs-3 control-label" for="AddressLine1">Address Line1</label>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" id="AddressLine1" data-bind="textInput:AddressLine1" placeholder="Address Line1">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-xs-12">
-                    <div class="form-group">
-                        <label class="col-xs-3 control-label" for="AddressLine2">Address Line2</label>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" id="AddressLine2" data-bind="textInput:AddressLine2" placeholder="Address Line2">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 col-xs-12">
-                    <div class="form-group">
-                        <label class="col-xs-3 control-label" for="City">City</label>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" id="City" data-bind="textInput:City" placeholder="City">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-xs-12">
-                    <div class="form-group">
-                        <label class="col-xs-3 control-label" for="State">State</label>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" id="State" placeholder="State" value="DE" disabled="disabled" aria-disabled="True">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 col-xs-12">
-                    <div class="form-group">
-                        <label class="col-xs-3 control-label" for="PhoneNumber">Phone Number</label>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" id="PhoneNumber" data-bind="textInput:PhoneNumber" placeholder="Phone Number">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-xs-12">
-                    <div class="form-group">
-                        <label class="col-xs-3 control-label" for="Email">Email</label>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" id="Email" data-bind="textInput:Email" placeholder="Email">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                @*<div class="col-md-6 col-xs-12">
+            <h3>Address</h3>
+            <hr />
+            <div data-bind="with:Address">
+                <div class="row">
+                    <div class="col-md-6 col-xs-12">
                         <div class="form-group">
-                            <label class="col-sm-3 control-label" for="txtAltPhone">Alternate Phone</label>
-                            <div class="col-sm-9">
-                                <input type="text"  class="form-control" id="txtAltPhone" data-bind="textInput:AlternatePhoneNumber" placeholder="Alternate Phone">
+                            <label class="col-xs-3 control-label" for="AddressLine1">Address Line1</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="AddressLine1" data-bind="textInput:AddressLine1" placeholder="Address Line1">
                             </div>
                         </div>
-                    </div>*@
-                <div class="col-md-6 col-xs-12">
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label" for="AddressLine2">Address Line2</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="AddressLine2" data-bind="textInput:AddressLine2" placeholder="Address Line2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label" for="City">City</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="City" data-bind="textInput:City" placeholder="City">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label" for="State">State</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="State" placeholder="State" value="DE" disabled="disabled" aria-disabled="True">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label" for="PhoneNumber">Phone Number</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="PhoneNumber" data-bind="textInput:PhoneNumber" placeholder="Phone Number">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label" for="Email">Email</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="Email" data-bind="textInput:Email" placeholder="Email">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    @*<div class="col-md-6 col-xs-12">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" for="txtAltPhone">Alternate Phone</label>
+                                <div class="col-sm-9">
+                                    <input type="text"  class="form-control" id="txtAltPhone" data-bind="textInput:AlternatePhoneNumber" placeholder="Alternate Phone">
+                                </div>
+                            </div>
+                        </div>*@
+                    <div class="col-md-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="txtZipCode">ZipCode</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="txtZipCode" data-bind="textInput:ZipCode" placeholder="Zip Code">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h3>Point of Contact</h3>
+            <hr />
+            <div data-bind="with:ContactDetail">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="txtContactFirstName">First Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="txtContactFirstName" data-bind="textInput:FirstName" placeholder="My label">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="txtContactLastName">Last Namel</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="txtContactLastName" data-bind="textInput:LastName" placeholder="My label">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label" for="txtContactPhoneNumber">Phone Number</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="txtContactPhoneNumber" data-bind="textInput:PhoneNumber" placeholder="Phone Number">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label" for="txtContactEmail">Email</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="txtContactEmail" data-bind="textInput:Email" placeholder="Email">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">&nbsp;</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">&nbsp;</div>
+                </div>
+                <div class="row">
                     <div class="form-group">
-                        <label class="col-sm-3 control-label" for="txtZipCode">ZipCode</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="txtZipCode" data-bind="textInput:ZipCode" placeholder="Zip Code">
+                        <div class="col-md-12">
+                            @*<input type="button" class="btn btn-primary pull-right" id="btnAddContractor" data-bind="click:AddContractor, enable:IsInValidState" value="Add Contractor" />*@
+                            <a class="pull-right" href="#!/holidays">Move Next</a>
+                            @*<a  class="btn btn-primary pull-right" id="btnMoveNext" data-bind="" value="Next" href="#/SiteHolidays" />*@
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <h3>Point of Contact</h3>
-        <hr />
-        <div data-bind="with:ContactDetail">
-            <div class="row">
-                <div class="col-md-6 col-sm-12">
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label" for="txtContactFirstName">First Name</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="txtContactFirstName" data-bind="textInput:FirstName" placeholder="My label">
+
+        <div data-bind="page:{id:'holidays'}">
+            <div>
+                <h2>Site Holidays</h2>
+                <hr />
+                <br />
+                <br />
+            </div>
+            <div data-bind="foreach:SiteHolidays">
+                <div class="row">
+                    <div class="col-md-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label" for="txtContactPhoneNumber">Holiday Name</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" data-bind="textInput:holidayName" placeholder="Holiday Name">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label" for="txtContactLastName">Last Namel</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="txtContactLastName" data-bind="textInput:LastName" placeholder="My label">
+                    <div class="col-md-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label" for="txtContactEmail">Date</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" data-bind="textInput:holidayDate" placeholder="Date">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
             <div class="row">
-                <div class="col-md-6 col-xs-12">
-                    <div class="form-group">
-                        <label class="col-xs-3 control-label" for="txtContactPhoneNumber">Phone Number</label>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" id="txtContactPhoneNumber" data-bind="textInput:PhoneNumber" placeholder="Phone Number">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-xs-12">
-                    <div class="form-group">
-                        <label class="col-xs-3 control-label" for="txtContactEmail">Email</label>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" id="txtContactEmail" data-bind="textInput:Email" placeholder="Email">
-                        </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <input type="button" class="btn btn-primary pull-right" id="btnAddNewHoliday" data-bind="click:AddSiteHoliday" value="Add Holiday" />
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </form>
 
 @section Scripts{
     <script type="text/javascript">
-        require(["knockout","js/models/AddSiteViewModel.js","appMain"],
-            function(ko,addContVm) {
+        require(["knockout", "js/models/AddSiteViewModel.js", "pager", "appMain"],
+            function (ko, addContVm, pager) {
+                pager.Href.hash = '#!/';
+                pager.extendWithPage(addContVm);
                 ko.applyBindings(addContVm);
+                pager.start();
                 window.vm = addContVm;
             });
     </script>

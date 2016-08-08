@@ -10,7 +10,7 @@
     <RootNamespace>DDD.Web.UI</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">.\obj</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">.\bin\</OutputPath>
-	<TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup>
     <SchemaVersion>2.0</SchemaVersion>
@@ -24,15 +24,24 @@
     <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_10716_2016420214043.log" />
     <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_11372_2016420221644.log" />
     <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_11804_201642021276.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_12168_201613175528.log" />
     <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_14276_2016427131028.log" />
     <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_16000_20164211853.log" />
     <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_17384_201642713397.log" />
     <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_22332_2016427151630.log" />
     <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_22364_2016421213518.log" />
     <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_22852_201642118138.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_2812_201613173945.log" />
     <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_29852_2016421213616.log" />
     <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_30772_201642118956.log" />
     <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_33508_2016421181726.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_5228_201613182032.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_7004_20161317488.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_7224_201613182815.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_7580_201613182324.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_9172_20161317380.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_9188_201613181520.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_9620_201613173915.log" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\DNX\Microsoft.DNX.targets" Condition="'$(VSToolsPath)' != ''" />
 </Project>

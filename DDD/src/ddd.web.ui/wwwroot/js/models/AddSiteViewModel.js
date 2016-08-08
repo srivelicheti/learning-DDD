@@ -34,13 +34,13 @@
             new AddressViewModel(),
             '',
             new ContactDetailViewModel()),
-        SiteHolidays: ko.observableArray(),
+        SiteHolidays: ko.observableArray([new SiteHoliday("Thanks Giving","2016-11-25")]),
         SiteRates: ko.observableArray(),
         AddSiteHoliday: function(holidayName, holidayDate) {
-            this.SiteHolidays().push(new SiteHoliday(holidayName, holidayDate));
+            this.SiteHolidays.push(new SiteHoliday("", ""));
         },
         AddSiteRate: function(minAge, maxAge, rate) {
-            this.SiteRates().push(new SiteRate(minAge, maxAge, rate));
+            this.SiteRates.push(new SiteRate(minAge, maxAge, rate));
         }
     };
 
