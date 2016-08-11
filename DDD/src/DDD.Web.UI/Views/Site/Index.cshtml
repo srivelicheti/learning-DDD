@@ -212,37 +212,100 @@
             </div>
         </div>
 
-        <div data-bind="page:{id:'holidays'}">
+    <div data-bind="page:{id:'holidays'}">
+        <div>
+            <h2>Site Holidays</h2>
+            <hr/>
+            <br/>
+            <br/>
+        </div>
+        <div data-bind="foreach:SiteHolidays">
+            <div class="row">
+                <div class="col-md-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label" for="txtContactPhoneNumber">Holiday Name</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" data-bind="textInput:holidayName" placeholder="Holiday Name">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label" for="txtContactEmail">Date</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" data-bind="textInput:holidayDate" placeholder="Date">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input type="button" class="btn btn-primary pull-right" id="btnAddNewHoliday" data-bind="click:AddSiteHoliday" value="Add Holiday"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-12">
+                    <a class="pull-right" href="#!/rates">Move Next</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <div data-bind="page:{id:'rates'}">
             <div>
-                <h2>Site Holidays</h2>
+                <h2>Site Rates</h2>
                 <hr />
                 <br />
                 <br />
             </div>
-            <div data-bind="foreach:SiteHolidays">
+            <div data-bind="foreach:SiteRates">
                 <div class="row">
-                    <div class="col-md-6 col-xs-12">
+                    <div class="col-md-4 col-xs-12">
                         <div class="form-group">
-                            <label class="col-xs-3 control-label" for="txtContactPhoneNumber">Holiday Name</label>
+                            <label class="col-xs-3 control-label">Min Age</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" data-bind="textInput:holidayName" placeholder="Holiday Name">
+                                <input type="text" class="form-control" data-bind="textInput:minAge" placeholder="Min Age">
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-xs-12">
+                    <div class="col-md-4 col-xs-12">
                         <div class="form-group">
-                            <label class="col-xs-3 control-label" for="txtContactEmail">Date</label>
+                            <label class="col-xs-3 control-label">Max Age</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" data-bind="textInput:holidayDate" placeholder="Date">
+                                <input type="text" class="form-control" data-bind="textInput:maxAge" placeholder="Max Age">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label">Rate</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" data-bind="textInput:rate" placeholder="Rate">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="row">
                 <div class="form-group">
                     <div class="col-md-12">
-                        <input type="button" class="btn btn-primary pull-right" id="btnAddNewHoliday" data-bind="click:AddSiteHoliday" value="Add Holiday" />
+                        <input type="button" class="btn btn-primary pull-right" id="btnAddNewRateRange" data-bind="click:AddSiteRate" value="Add Site" />
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <br/>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <input type="button" class="btn btn-primary pull-right" id="btnAddSite" data-bind="click:AddSite" value="Add Site" />
                     </div>
                 </div>
             </div>
@@ -252,8 +315,8 @@
 
 @section Scripts{
     <script type="text/javascript">
-        require(["knockout", "js/models/AddSiteViewModel.js", "pager", "appMain"],
-            function (ko, addContVm, pager) {
+        require(["jquery","knockout", "js/models/AddSiteViewModel.js", "pager", "appMain"],
+            function ($,ko, addContVm, pager) {
                 pager.Href.hash = '#!/';
                 pager.extendWithPage(addContVm);
                 ko.applyBindings(addContVm);
