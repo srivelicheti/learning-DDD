@@ -194,19 +194,21 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">&nbsp;</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">&nbsp;</div>
-                </div>
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            @*<input type="button" class="btn btn-primary pull-right" id="btnAddContractor" data-bind="click:AddContractor, enable:IsInValidState" value="Add Contractor" />*@
-                            <a class="pull-right" href="#!/holidays">Move Next</a>
-                            @*<a  class="btn btn-primary pull-right" id="btnMoveNext" data-bind="" value="Next" href="#/SiteHolidays" />*@
-                        </div>
+                
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">&nbsp;</div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">&nbsp;</div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <input type="button" class="btn btn-primary pull-right" id="btnAddContractor" data-bind="enable:IsInValidState" value="Add Contractor" />
+                        <a class="pull-right" href="#!/holidays" data-bind="enable:IsInValidState">Move Next</a>
+                        @*<a  class="btn btn-primary pull-right" id="btnMoveNext" data-bind="" value="Next" href="#/SiteHolidays" />*@
                     </div>
                 </div>
             </div>

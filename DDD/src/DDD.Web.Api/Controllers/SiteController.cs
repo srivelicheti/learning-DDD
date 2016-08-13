@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using DDD.Web.Api.Models.Provider;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -27,8 +28,10 @@ namespace DDD.Web.Api.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+		//[ValidateModel]
+        public void Post([FromBody]AddNewSiteModel value)
         {
+		string s = "test";
         }
 
         // PUT api/values/5
