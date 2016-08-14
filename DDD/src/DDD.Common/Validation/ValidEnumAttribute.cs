@@ -30,7 +30,7 @@ namespace DDD.Common.Validation
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
 
-            var isValid = ValueType == value.GetType();
+            var isValid = value != null &&  ValueType == value.GetType();
 
             if (isValid)
             {

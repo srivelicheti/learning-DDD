@@ -2,8 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using DDD.Domain.Common.Query;
+using DDD.Provider.Common.DTOs;
+using DDD.Provider.Messages.Commands;
+using DDD.Web.Api.Infrastructure.ActionFilters;
 using Microsoft.AspNetCore.Mvc;
 using DDD.Web.Api.Models.Provider;
+using NServiceBus;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,6 +18,15 @@ namespace DDD.Web.Api.Controllers
     [Route("api/[controller]")]
     public class SiteController : Controller
     {
+        private IBus _bus;
+        private IQueryProcessor _queryProcessor;
+
+        public SiteController(IBus commandBus, IQueryProcessor queryProcessor)
+        {
+            _bus = commandBus;
+            _queryProcessor = queryProcessor;
+        }
+
         // GET: api/values
         [HttpGet]
         public IEnumerable<string> Get()
@@ -28,10 +43,13 @@ namespace DDD.Web.Api.Controllers
 
         // POST api/values
         [HttpPost]
-        //[ValidateModel]
-        public void Post([FromBody]AddNewSiteModel value)
+        [ValidateModel]
+        public JsonResult Post([FromBody]AddNewSiteModel value)
         {
-            string s = "test";
+            var siteDto = Mapper.Map<SiteDto>(value);
+            var command = new AddNewSiteCommand(siteDto);
+            _bus.Send(command);
+            return new JsonResult(new {CommandId = command.Id});
         }
 
         // PUT api/values/5

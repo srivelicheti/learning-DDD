@@ -10,7 +10,8 @@
             SiteName: siteDetails.SiteName,
             SiteNumber: siteDetails.SiteNumber,
             SiteTypeCode: siteDetails.SiteType,
-            FacitlityTypeCode: siteDetails.SiteFacitlityType,
+            SiteFacitlityTypeCode: parseInt(siteDetails.SiteFacilityType),
+            LicensingStatusCode:"X", //TODO: Implement the functionality. 
             ContractStartDate: siteDetails.ContractStartDate,
             ContractEndDate: siteDetails.ContractEndDate,
             LicenceNumber: siteDetails.LicenceNumber,

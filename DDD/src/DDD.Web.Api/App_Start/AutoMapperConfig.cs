@@ -11,6 +11,9 @@ namespace DDD.Web.Api
         {
             Mapper.CreateMap<ContractorState, ContractorDto>();
             Mapper.CreateMap<AddNewContractorModel,ContractorDto>();
+            Mapper.CreateMap<SiteHolidayModel, SiteHolidayDto>();
+            Mapper.CreateMap<SiteRateModel, SiteRateDto>();
+            Mapper.CreateMap<AddNewSiteModel, SiteDto>();
         }
     }
 }

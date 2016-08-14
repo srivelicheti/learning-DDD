@@ -58,15 +58,9 @@ namespace DDD.Common
             _displayName = displayName;
         }
 
-        public TValue Value
-        {
-            get { return _value; }
-        }
+        public TValue Value => _value;
 
-        public string DisplayName
-        {
-            get { return _displayName; }
-        }
+        public string DisplayName => _displayName;
 
         public int CompareTo(TEnumeration other)
         {
@@ -134,7 +128,7 @@ namespace DDD.Common
             return Parse(displayName, "display name", item => item.DisplayName == displayName);
         }
 
-        static bool TryParse(Func<TEnumeration, bool> predicate, out TEnumeration result)
+        private static bool TryParse(Func<TEnumeration, bool> predicate, out TEnumeration result)
         {
             result = GetAll().FirstOrDefault(predicate);
             return result != null;

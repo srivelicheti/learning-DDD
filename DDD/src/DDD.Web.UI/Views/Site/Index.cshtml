@@ -64,7 +64,13 @@
                     <div class="form-group">
                         <label class="col-xs-3 control-label" for="ddlSiteType">Site Type</label>
                         <div class="col-xs-9">
-                            <input type="text" class="form-control" id="ddlSiteType" data-bind="textInput:SiteType" />
+                            <select data-bind="value:SiteType" id="ddlSiteType" class="form-control">
+                                <option value="I" >In Home Relative</option>
+                                <option value="O" >Out of Home Relative</option>
+                                <option value="N" >In Home Non-Relative</option>
+                                <option value="X" selected="selected" >Out of Home Non-Relative</option>
+                            </select>
+                            
                         </div>
                     </div>
                 </div>
@@ -72,7 +78,13 @@
                     <div class="form-group">
                         <label class="col-xs-3 control-label" for="ddlSiteFacilityType">Facitlity Type</label>
                         <div class="col-xs-9">
-                            <input type="text" class="form-control" id="ddlSiteFacilityType" data-bind="textInput:SiteFacilityType" />
+                            <select data-bind="value:SiteFacilityType" id="ddlSiteFacilityType" class="form-control">
+                                <option value="17" selected="selected">Center</option>
+                                <option value="15">Family Home</option>
+                                <option value="16">Large Family Home</option>
+                                <option value="18">Licence Exempt Center</option>
+                                <option value="19">Licence Exempt Relative Care</option>
+                            </select>
                         </div>
                     </div>
                 </div>

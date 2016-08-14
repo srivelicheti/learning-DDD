@@ -32,6 +32,12 @@ namespace DDD.Provider.Domain.Enums
                 return SiteFacilityType.Center;
             else if (code == SiteFacilityType.FamilyHome.Value)
                 return SiteFacilityType.FamilyHome;
+            else if (code == SiteFacilityType.LargeFamilyHome.Value)
+                return SiteFacilityType.LargeFamilyHome;
+            else if (code == SiteFacilityType.LargeFamilyHome.Value)
+                return SiteFacilityType.LicenceExcemptCenter.Value;
+            else if (code == SiteFacilityType.LicenceExcemptRelativeCare.Value)
+                return SiteFacilityType.LicenceExcemptRelativeCare;
             else
                 throw new InvalidCastException($"{code} is not a valid value for SiteFacilityType enumeration");
         }
