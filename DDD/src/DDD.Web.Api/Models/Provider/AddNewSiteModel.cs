@@ -20,11 +20,11 @@ namespace DDD.Web.Api.Models.Provider
         public int SiteNumber { get; set; }
 
         [Required(ErrorMessage = "Site Type Code is required.")]
-        [ValidEnum(typeof(SiteType))]
+        //[ValidEnum(typeof(SiteType))]
         public string SiteTypeCode { get; set; }
 
         [Required( ErrorMessage = "Facility Type is Required")]
-        [ValidEnum(typeof(SiteFacilityType))]
+        //[ValidEnum(typeof(SiteFacilityType))]
         [MaxLength(2)]
         public string FacilityTypeCode { get; set; }
 

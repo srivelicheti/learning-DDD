@@ -28,10 +28,10 @@ namespace DDD.Web.Api.Controllers
 
         // POST api/values
         [HttpPost]
-		//[ValidateModel]
+        //[ValidateModel]
         public void Post([FromBody]AddNewSiteModel value)
         {
-		string s = "test";
+            string s = "test";
         }
 
         // PUT api/values/5

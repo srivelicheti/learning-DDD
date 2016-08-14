@@ -23,7 +23,8 @@ namespace DDD.Web.Api
         {
             switch (logLevel)
             {
-               // case LogLevel.Verbose:
+                // case LogLevel.Verbose:
+                case LogLevel.Trace:
                 case LogLevel.Debug:
                     return _logger.IsDebugEnabled;
                 case LogLevel.Information:
