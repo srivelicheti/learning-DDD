@@ -9,7 +9,7 @@ namespace DDD.Provider.Domain.Entities
 {
     public class SiteRate : Entity
     {
-        public SiteRate(int ageCode, decimal normalDailyRate, decimal specialNeedsDailyRate, DateTime effDate, IBus eventBus) : base(GuidHelper.NewSequentialGuid(), eventBus)
+        public SiteRate(int ageCode, decimal normalDailyRate, decimal specialNeedsDailyRate, DateTime effDate, IBus bus) : base(GuidHelper.NewSequentialGuid(), bus)
         {
             AgeCode = ageCode;
             NormalDailyRate = normalDailyRate;

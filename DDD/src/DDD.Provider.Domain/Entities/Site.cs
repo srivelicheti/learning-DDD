@@ -14,8 +14,8 @@ namespace DDD.Provider.Domain.Entities
 {
     public class Site : Entity, IAggregateRoot
     {
-        private List<SiteHoliday> _holidays = new List<SiteHoliday>();
-        private List<SiteRate> _rates = new List<SiteRate>();  
+        private readonly List<SiteHoliday> _holidays = new List<SiteHoliday>();
+        private List<SiteRate> _rates = new List<SiteRate>();
 
         public SiteStatus Status { get; private set; }
         public string SiteName { get; private set; }
@@ -40,7 +40,7 @@ namespace DDD.Provider.Domain.Entities
         //TODO: See how we can avoid injecting EventBus into the Domain entities
         public Site(Guid id, int siteId, string siteName, SiteStatus status, SiteFacilityType siteFacitlityType, SiteType siteType,
             DateTimeRange contractDuration, PhoneNumber primaryPhoneNumber, Contact contactDetails, VO.Address address, string email,
-            string countyCode, string countyServedCode, LicenceStatus licenceStatus, IEnumerable<SiteHoliday> holidays, IBus eventBus) : base(id, eventBus)
+            string countyCode, string countyServedCode, LicenceStatus licenceStatus, IEnumerable<SiteHoliday> holidays, IEnumerable<SiteRate> rates, IBus bus) : base(id, bus)
         {
             SiteId = siteId;
             SiteName = siteName;
@@ -55,7 +55,9 @@ namespace DDD.Provider.Domain.Entities
             CountyCode = countyCode;
             CountyServedCode = countyServedCode;
             LicencingStatus = licenceStatus;
+
             Holidays = holidays;
+            SiteRates = rates;
             InitializeDbState();
         }
 
@@ -63,45 +65,45 @@ namespace DDD.Provider.Domain.Entities
         {
             DbState = new SiteState
             {
-                 Id =  Id,
-                 AddressLine1 =  Address.AddressLine1,
-                 AddressLine2 = Address.AddressLine2,
-                 AlternatePhoneNumber =  null,
-                 City=Address.City,
-                 ContactAlternatePhoneNumber = ContactDetails.AlternatePhoneNumber,
-                 ContactEmail =  ContactDetails.Email,
-                 ContactFirstName = ContactDetails.Name.FirstName,
-                 ContactLastName = ContactDetails.Name.LastName,
-                 ContactPhoneNumber = ContactDetails.PhoneNumber,
-                 SiteFacilityTypeCode = SiteFacitlityType.Value.ToString(),
-                 LicencingStatusCode =  LicencingStatus.Value,
-                 SiteName = SiteName,
-                 SiteNumber = SiteId,
-                 SiteTypeCode = SiteType.Value,
-                 StateCode = Address.State,
-                 ZipCode = Address.ZipCode,
-                 CountyCode = CountyCode,
-                 CountyServedCode = CountyServedCode,
-                 Email = Email,
-                 ContractStartDate = ContractDuration.Start,
-                 ContractEndDate = ContractDuration.End
+                Id = Id,
+                AddressLine1 = Address.AddressLine1,
+                AddressLine2 = Address.AddressLine2,
+                AlternatePhoneNumber = null,
+                City = Address.City,
+                ContactAlternatePhoneNumber = ContactDetails.AlternatePhoneNumber,
+                ContactEmail = ContactDetails.Email,
+                ContactFirstName = ContactDetails.Name.FirstName,
+                ContactLastName = ContactDetails.Name.LastName,
+                ContactPhoneNumber = ContactDetails.PhoneNumber,
+                SiteFacilityTypeCode = SiteFacitlityType.Value.ToString(),
+                LicencingStatusCode = LicencingStatus.Value,
+                SiteName = SiteName,
+                SiteNumber = SiteId,
+                SiteTypeCode = SiteType.Value,
+                StateCode = Address.StateCode,
+                ZipCode = Address.ZipCode,
+                CountyCode = CountyCode,
+                CountyServedCode = CountyServedCode,
+                Email = Email,
+                ContractStartDate = ContractDuration.Start,
+                ContractEndDate = ContractDuration.End
 
             };
         }
 
         public Site(int siteId, string siteName, SiteStatus status, SiteFacilityType siteFacitlityType, SiteType siteType,
             DateTimeRange contractDuration, PhoneNumber primaryPhoneNumber, Contact contactDetails, VO.Address address, string email,
-            string county, string countyServed, LicenceStatus licenceStatus, IEnumerable<SiteHoliday> holidays , IBus eventBus) : this(GuidHelper.NewSequentialGuid(), siteId, siteName, status, siteFacitlityType, siteType, contractDuration, primaryPhoneNumber, contactDetails, address, email, county, countyServed, licenceStatus, holidays, eventBus)
+            string county, string countyServed, LicenceStatus licenceStatus, IEnumerable<SiteHoliday> holidays, IEnumerable<SiteRate> rates, IBus eventBus) : this(GuidHelper.NewSequentialGuid(), siteId, siteName, status, siteFacitlityType, siteType, contractDuration, primaryPhoneNumber, contactDetails, address, email, county, countyServed, licenceStatus, holidays, rates, eventBus)
         { }
 
-        internal Site(SiteState siteState, IBus eventBus):base(siteState.Id,eventBus)
+        internal Site(SiteState siteState, IBus bus) : base(siteState.Id, bus)
         {
             SiteName = siteState.SiteName;
             SiteId = siteState.SiteNumber;
             Id = siteState.Id;
-            Address = new VO.Address(siteState.AddressLine1,siteState.AddressLine2,siteState.City,siteState.StateCode,siteState.ZipCode);
-            ContactDetails = new Contact(new Name(siteState.ContactFirstName,siteState.ContactLastName),siteState.ContactPhoneNumber,siteState.ContactAlternatePhoneNumber,siteState.ContactEmail );
-            ContractDuration = new DateTimeRange(siteState.ContractStartDate,siteState.ContractEndDate);
+            Address = new VO.Address(siteState.AddressLine1, siteState.AddressLine2, siteState.City, siteState.StateCode, siteState.ZipCode);
+            ContactDetails = new Contact(new Name(siteState.ContactFirstName, siteState.ContactLastName), siteState.ContactPhoneNumber, siteState.ContactAlternatePhoneNumber, siteState.ContactEmail);
+            ContractDuration = new DateTimeRange(siteState.ContractStartDate, siteState.ContractEndDate);
             CountyCode = siteState.CountyCode;
             CountyServedCode = siteState.CountyServedCode;
             Email = siteState.Email;
@@ -115,11 +117,11 @@ namespace DDD.Provider.Domain.Entities
                 siteState.SiteRate.Select(
                     x =>
                         new SiteRate(x.AgeCode, x.RegularCareDailyRate.GetValueOrDefault(),
-                            x.RegularCareWeeklyRate.GetValueOrDefault(),x.EffectiveDate,eventBus));
+                            x.RegularCareWeeklyRate.GetValueOrDefault(), x.EffectiveDate, bus));
 
         }
 
-        void AddNewHoliday(SiteHoliday holiday)
+        public void AddNewHoliday(SiteHoliday holiday)
         {
             if (this.Holidays.Count() >= 10)
             {
@@ -133,7 +135,7 @@ namespace DDD.Provider.Domain.Entities
             DbState.SiteHoliday.Add(holiday.DbState);
         }
 
-        void RemoveSiteHoliday(DateTime holidayDate)
+        public void RemoveSiteHoliday(DateTime holidayDate)
         {
             var holiday = _holidays.FindIndex(x => x.HolidayDate.Date == holidayDate.Date);
             if (holiday == -1)
@@ -143,6 +145,16 @@ namespace DDD.Provider.Domain.Entities
             _holidays.RemoveAt(holiday);
             var dbHol = DbState.SiteHoliday.First(x => x.HolidayDate.Date == holidayDate.Date);
             DbState.SiteHoliday.Remove(dbHol);
+        }
+
+        public void AddNewSiteRate(SiteRate rate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveSiteRate(SiteRate rate)
+        {
+            throw new NotImplementedException();
         }
 
     }

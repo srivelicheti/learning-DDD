@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Provider].[SiteTemp](
+﻿CREATE TABLE [provider].[SiteTemp](
 	[Id] [uniqueidentifier] NOT NULL,
 	[UserId] [nvarchar](50) NOT NULL,
 	[SiteDetail] [nvarchar](max) NOT NULL,

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using DDD.Common;
 using DDD.Domain.Common;
 using DDD.Domain.Common.Event;
@@ -136,6 +137,16 @@ namespace DDD.Provider.Domain.Repositories
             //return domainSite;
 
             //}
+        }
+
+        public Task<int> SaveAsync()
+        {
+            return _dbContext.SaveChangesAsync();
+        }
+
+        public int Save()
+        {
+            return _dbContext.SaveChanges();
         }
     }
 }

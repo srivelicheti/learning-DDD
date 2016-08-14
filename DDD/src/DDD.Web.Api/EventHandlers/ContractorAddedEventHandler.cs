@@ -12,14 +12,14 @@ using System.Threading.Tasks;
 
 namespace DDD.Web.Api.EventHandlers
 {
-    public class ContractorAddedEventHandler : IHandleMessages<NewContractorAdded>
+    public class ContractorAddedEventHandler : IHandleMessages<ContractorAdded>
     {
         private IConnectionManager _connectionManager;
 
         public ContractorAddedEventHandler(IConnectionManager connectionManager) {
             _connectionManager = connectionManager;
         }
-        public void Handle(NewContractorAdded e)
+        public void Handle(ContractorAdded e)
         {
             Task.Factory.StartNew((() => {
                 //Simulate some delay
@@ -31,11 +31,11 @@ namespace DDD.Web.Api.EventHandlers
         }
     }
 
-    public class TestHandler : IHandleMessages<ContractorAddedEvent>
-    {
-        public void Handle(ContractorAddedEvent message)
-        {
-            var s = "testsete";
-        }
-    }
+    //public class TestHandler : IHandleMessages<ContractorAdded>
+    //{
+    //    public void Handle(ContractorAdded message)
+    //    {
+    //        var s = "testsete";
+    //    }
+    //}
 }

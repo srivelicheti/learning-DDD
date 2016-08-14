@@ -9,6 +9,7 @@ using Microsoft.Data.Entity;
 using DDD.Domain.Common.ValueObjects;
 using DDD.Provider.Domain.Entities;
 using DDD.Provider.Domain.Enums;
+using DDD.Provider.Messages.Events;
 using NServiceBus;
 
 namespace DDD.Provider.Domain.Repositories
@@ -31,7 +32,7 @@ namespace DDD.Provider.Domain.Repositories
             contractor.DbState.LastSavedBy = "TODO";
             contractor.DbState.LastSavedDateTime = DateTime.UtcNow;
             _dbContext.Add(contractor.DbState);
-            _eventBus.Publish(new NewContractorAdded(DateTime.UtcNow, contractor.Id, contractor.EinNumber, _eventBus));
+            _eventBus.Publish(new ContractorAdded(DateTime.UtcNow, contractor.Id, contractor.EinNumber));
         }
 
         public Contractor GetContractor(Guid id)

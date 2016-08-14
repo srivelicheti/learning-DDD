@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace DDD.EmailService.EventHandlers
 {
-    public class ContractorAddedEventHandler : IHandleMessages<ContractorAddedEvent>
+    public class ContractorAddedEventHandler : IHandleMessages<ContractorAdded>
     {
-        public void Handle(ContractorAddedEvent message)
+        public void Handle(ContractorAdded message)
         {
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Added new Contractor " + message.ContractorEin);

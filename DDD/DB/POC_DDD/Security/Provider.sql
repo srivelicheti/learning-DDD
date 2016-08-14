@@ -1,3 +1,3 @@
-﻿CREATE SCHEMA [Provider]
+﻿CREATE SCHEMA [provider]
     AUTHORIZATION [dbo];
 

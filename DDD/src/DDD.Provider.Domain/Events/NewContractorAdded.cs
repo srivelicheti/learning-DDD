@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace DDD.Provider.Domain.Events
 {
-    public class NewContractorAdded : BaseEvent,IEvent
-    {
-        public NewContractorAdded( DateTime eventDateTime, Guid contractorId, string contractorEin, IBus eventBus) : base(Guid.NewGuid(), eventDateTime )
-        {
-            ContractorId = contractorId;
-            ContractorEin = contractorEin;
-        }
+    //public class NewContractorAdded : BaseEvent,IEvent
+    //{
+    //    public NewContractorAdded( DateTime eventDateTime, Guid contractorId, string contractorEin, IBus eventBus) : base(Guid.NewGuid(), eventDateTime )
+    //    {
+    //        ContractorId = contractorId;
+    //        ContractorEin = contractorEin;
+    //    }
 
-        public Guid ContractorId { get; set; }
-        public string ContractorEin { get; set; }
-    }
+    //    public Guid ContractorId { get; set; }
+    //    public string ContractorEin { get; set; }
+    //}
 }

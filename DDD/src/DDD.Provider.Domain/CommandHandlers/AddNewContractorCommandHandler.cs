@@ -47,7 +47,7 @@ namespace DDD.Provider.Domain.CommandHandlers
                 _contractorRepository.AddContractor(contractor);
                 _contractorRepository.Save();
                 _eventBus.Publish(new CommandCompletedEvent(command.Id, DateTime.UtcNow));
-                _eventBus.Publish(new ContractorAddedEvent { ContractorEin = contractor.EinNumber });
+                _eventBus.Publish(new ContractorAdded(DateTime.Now,contractor.Id,contractor.EinNumber) { ContractorEin = contractor.EinNumber });
             }
             catch (Exception ex)
             {

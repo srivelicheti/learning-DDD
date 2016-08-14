@@ -5,6 +5,7 @@ using DDD.Domain.Common.ValueObjects;
 using DDD.Provider.DataModel;
 using DDD.Provider.Domain.Enums;
 using DDD.Provider.Domain.Events;
+using DDD.Provider.Messages.Events;
 using NServiceBus;
 using VO = DDD.Domain.Common.ValueObjects;
 
@@ -19,7 +20,7 @@ namespace DDD.Provider.Domain.Entities
         }
 
         public Contractor(Guid id, string einNumber, string contractorName, string doingBusinessAs, ContractorStatus status, ContractorType type, DateTimeRange contractDuration,
-                          PhoneNumber primaryPhoneNumber, Contact contactDetails,VO.Address address, string email, IBus eventBus) : base(id,eventBus)
+                          PhoneNumber primaryPhoneNumber, Contact contactDetails,VO.Address address, string email, IBus bus) : base(id,bus)
         {
             //TODO: Implement guard conditions
             Id = id;
@@ -36,7 +37,7 @@ namespace DDD.Provider.Domain.Entities
             InitializeState();
         }
 
-        internal Contractor(ContractorState contDbState, IBus eventBus) : base(contDbState.Id, eventBus)
+        internal Contractor(ContractorState contDbState, IBus bus) : base(contDbState.Id, bus)
         {
             DbState = contDbState;
 
@@ -76,7 +77,7 @@ namespace DDD.Provider.Domain.Entities
                 AddressLine1 = Address.AddressLine1,
                 AddressLine2 = Address.AddressLine2,
                 City = Address.City,
-                StateCode = Address.State,
+                StateCode = Address.StateCode,
                 ZipCode = Address.ZipCode
                 //ZipExntension = Address.
             };
@@ -104,7 +105,7 @@ namespace DDD.Provider.Domain.Entities
             if(string.Compare(ContractorName,name,StringComparison.OrdinalIgnoreCase) == 0)
                 return;
 
-            _eventBus.Publish(new ContractorNameChanged(EinNumber,ContractorName,name));
+            Bus.Publish(new ContractorNameChanged(EinNumber,ContractorName,name));
             ContractorName = name;
             DbState.ContractorName = name;
         }
@@ -114,7 +115,7 @@ namespace DDD.Provider.Domain.Entities
             if (string.Compare(DoingBusinessAs, dba, StringComparison.OrdinalIgnoreCase) == 0)
                 return;
 
-            _eventBus.Publish(new ContractorBusinessNameChanged(EinNumber, DoingBusinessAs, dba));
+            Bus.Publish(new ContractorBusinessNameChanged(EinNumber, DoingBusinessAs, dba));
             DoingBusinessAs = dba;
             DbState.DoingBusinessAs = dba;
         }
@@ -124,7 +125,7 @@ namespace DDD.Provider.Domain.Entities
             var newAddress = new VO.Address(addressLine1,addressLine2,city,stateCode,zipCode);
             if (Address != newAddress)
             {
-                _eventBus.Publish(new ContractorAddressChanged(EinNumber,Address,newAddress));
+                Bus.Publish(new ContractorAddressChanged(EinNumber,Address,newAddress));
                 Address = newAddress;
                 DbState.AddressLine1 = addressLine1;
                 DbState.AddressLine2 = addressLine2;
@@ -170,7 +171,7 @@ namespace DDD.Provider.Domain.Entities
             var newContractDuration = new DateTimeRange(startDate,endDate);
             if (ContractDuration != newContractDuration)
             {
-                _eventBus.Publish(new ContractorContractRenewed(EinNumber, ContractDuration, newContractDuration));
+                Bus.Publish(new ContractorContractRenewed(EinNumber, ContractDuration, newContractDuration));
                 ContractDuration = newContractDuration;
                 DbState.ContractStartDate = startDate;
                 DbState.ContractEndDate = endDate;

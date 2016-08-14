@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Provider].[Contractor] (
+﻿CREATE TABLE [provider].[Contractor] (
     [ID] [uniqueidentifier] NOT NULL,
 	[ContractorName] [nvarchar](50) NOT NULL,
 	[DoingBusinessAs] [nvarchar](50) NOT NULL,
