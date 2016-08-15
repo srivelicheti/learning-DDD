@@ -14,7 +14,7 @@ namespace DDD.Provider.Common.DTOs
 
         public string SiteTypeCode { get; set; }
 
-        public string FacilityTypeCode { get; set; }
+        public string SiteFacitlityTypeCode { get; set; }
 
         public DateTime ContractStartDate { get; set; }
 

@@ -30,7 +30,11 @@ namespace DDD.Provider.Domain.Entities
                 RegularCareDailyRate = NormalDailyRate,
                 RegularCareWeeklyRate = NormalDailyRate * 5,
                 SpecialCareDailyRate = SpecialNeedsDailyRate,
-                SpecialCareWeeklyRate = SpecialNeedsDailyRate * 5
+                SpecialCareWeeklyRate = SpecialNeedsDailyRate * 5,
+                FirstInsertedById = "TODO",
+                FirstInsertedDateTime = DateTime.UtcNow,
+                LastSavedById = "TODO",
+                LastSavedDateTime = DateTime.UtcNow,
             };
         }
 

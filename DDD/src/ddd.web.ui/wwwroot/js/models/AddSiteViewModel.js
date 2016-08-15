@@ -30,17 +30,18 @@
             }, this);
         }
 
+        var addressViewModel = new AddressViewModel("300 Sterling Pkwy", "", "Mechanicsburg", "PA", "DP", 17051, "");
         var vm = {
             SiteDetails: new SiteDetails(
                 "7892549",
-                'Boys N Girls of Wilming',
-                '123456789',
-                '2016-08-31', "",
-                'ON',
-                '17',
-                new AddressViewModel("300 Sterling Pkwy", "", "Mechanicsburg", "PA", "", 17051, ""),
+                "Boys N Girls of Wilming",
+                "123456789",
+                "2016-08-31", "2019-08-31",
+                "ON",
+                "17",
+                addressViewModel,
                 "CS",
-                '714-4569-1234',
+                "714-459-1234",
                 "siteemail@email.com",
                 new ContactDetailViewModel("LN", "FN", "717-456-7894", "test@gmail.com")),
             SiteHolidays: ko.observableArray([new SiteHoliday("TNG", "11/25/2016"), new SiteHoliday("X-Mas", "12/25/2016")]),

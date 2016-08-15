@@ -32,7 +32,12 @@ namespace DDD.Provider.Domain.ValueObjects
                 Id = GuidHelper.NewSequentialGuid(),
                 HolidayDate = HolidayDate,
                 CalendarYearDate = HolidayDate.Year.ToString(),
-                HolidayName = Name
+                HolidayName = Name,
+                FirstInsertedDateTime = DateTime.UtcNow,
+                FirstInsertedById = "TODO",
+                LastSavedDateTime = DateTime.UtcNow,
+                LastSavedById = "TODO"
+
             };
         }
 

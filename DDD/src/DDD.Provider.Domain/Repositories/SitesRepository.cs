@@ -34,7 +34,7 @@ namespace DDD.Provider.Domain.Repositories
 
         public void Add(Site site)
         {
-            throw new NotImplementedException();
+            _dbContext.Site.Add(site.DbState);
         }
 
         public void UpdateSite(Site site)
@@ -67,12 +67,11 @@ namespace DDD.Provider.Domain.Repositories
             dbSite.SiteFacilityTypeCode = site.SiteFacitlityType.Value.ToString();
             UpdateHolidays(site, dbSite);
             dbSite.SiteName = site.SiteName;
-            dbSite.SiteNumber = site.SiteId;
-             //dbSiteState.SiteTypeCode = site.typ
-
+            dbSite.SiteNumber = site.SiteNumber;
+            dbSite.SiteTypeCode = site.SiteType.Value;
         }
 
-        private void UpdateHolidays(Site site, DataModel.SiteState dbSiteState)
+        private void UpdateHolidays(Site site, SiteState dbSiteState)
         {
             var datesToBeRemoved = new List<SiteHolidayState>();
             foreach (var hol in dbSiteState.SiteHoliday)

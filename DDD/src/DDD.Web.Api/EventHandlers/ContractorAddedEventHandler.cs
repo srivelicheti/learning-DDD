@@ -1,5 +1,5 @@
 ﻿using DDD.Domain.Common.Event;
-using DDD.Provider.Domain.Events;
+//using DDD.Provider.Domain.Events;
 using DDD.Provider.Messages.Events;
 using DDD.Web.Api.Hubs;
 using Microsoft.AspNetCore.SignalR.Infrastructure;

@@ -134,7 +134,7 @@
                         <div class="form-group">
                             <label class="col-xs-3 control-label" for="PhoneNumber">Phone Number</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" id="PhoneNumber" data-bind="textInput:PhoneNumber" placeholder="Phone Number"/>
+                                <input type="text" class="form-control" id="PhoneNumber" data-bind="textInput:$parent.PhoneNumber" placeholder="Phone Number"/>
                             </div>
                         </div>
                     </div>
@@ -142,7 +142,7 @@
                         <div class="form-group">
                             <label class="col-xs-3 control-label" for="Email">Email</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" id="Email" data-bind="textInput:Email" placeholder="Email"/>
+                                <input type="text" class="form-control" id="Email" data-bind="textInput:$parent.SiteEmail" placeholder="Email"/>
                             </div>
                         </div>
                     </div>
@@ -218,7 +218,7 @@
             <div class="row">
                 <div class="form-group">
                     <div class="col-md-12">
-                        <input type="button" class="btn btn-primary pull-right" id="btnAddContractor" data-bind="enable:IsInValidState" value="Add Contractor" />
+                        @*<input type="button" class="btn btn-primary pull-right" id="btnAddContractor" data-bind="enable:IsInValidState" value="Add Contractor" />*@
                         <a class="pull-right" href="#!/holidays" data-bind="enable:IsInValidState">Move Next</a>
                         @*<a  class="btn btn-primary pull-right" id="btnMoveNext" data-bind="" value="Next" href="#/SiteHolidays" />*@
                     </div>
@@ -226,7 +226,7 @@
             </div>
         </div>
 
-    <div data-bind="page:{id:'holidays'}">
+    <div data-bind="page:{id:'holidays'}" class="form-horizontal">
         <div>
             <h2>Site Holidays</h2>
             <hr/>
@@ -271,7 +271,7 @@
     </div>
 
 
-        <div data-bind="page:{id:'rates'}">
+        <div data-bind="page:{id:'rates'}" class="form-horizontal">
             <div>
                 <h2>Site Rates</h2>
                 <hr />
@@ -310,7 +310,7 @@
             <div class="row">
                 <div class="form-group">
                     <div class="col-md-12">
-                        <input type="button" class="btn btn-primary pull-right" id="btnAddNewRateRange" data-bind="click:AddSiteRate" value="Add Site" />
+                        <input type="button" class="btn btn-primary pull-right" id="btnAddNewRateRange" data-bind="click:AddSiteRate" value="Add Site Rate" />
                     </div>
                 </div>
             </div>

@@ -8,7 +8,7 @@
 	[RegularCareDailyRate] [decimal](5, 2) NULL,
 	[SpecialCareDailyRate] [decimal](5, 2) NULL,
 	[FirstInsertedByID] [varchar](128) NOT NULL,
-	[FirstInsertedDateTime] [datetime] NOT NULL,
+	[FirstInsertedDateTime] DATETIME2(3) NOT NULL,
 	[LastSavedByID] [varchar](128) NOT NULL,
-	[LastSavedDateTime] [datetime] NOT NULL,
+	[LastSavedDateTime] DATETIME2(3) NOT NULL,
 	[LogicalDeleteIndicator] bit NOT NULL)

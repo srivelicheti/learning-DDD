@@ -8,6 +8,7 @@ using DDD.Provider.Domain.Enums;
 using DDD.Provider.Domain.Repositories;
 using DDD.Provider.Domain.ValueObjects;
 using DDD.Provider.Messages.Commands;
+using DDD.Provider.Messages.Events;
 using NServiceBus;
 
 namespace DDD.Provider.Domain.CommandHandlers
@@ -25,7 +26,7 @@ namespace DDD.Provider.Domain.CommandHandlers
         public void Handle(AddNewSiteCommand message)
         {
             var siteDto = message.Site;
-            SiteFacilityType facitlType = siteDto.FacilityTypeCode;
+            SiteFacilityType facitlType = siteDto.SiteFacitlityTypeCode;
             SiteType siteType = siteDto.SiteTypeCode;
             var contractDuration = new DateTimeRange(siteDto.ContractStartDate, siteDto.ContractEndDate);
             var contact = new Contact(new Name(siteDto.ContactFirstName, siteDto.ContactLastName),
@@ -43,6 +44,7 @@ namespace DDD.Provider.Domain.CommandHandlers
             
             _siteRepository.Add(siteEntity);
             _siteRepository.Save();
+            _bus.Publish(new NewSiteAdded(siteEntity.Id,siteEntity.SiteNumber));
         }
     }
 }

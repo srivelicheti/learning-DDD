@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using DDD.Common.Extensions;
 using DDD.Domain.Common;
 using DDD.Domain.Common.Event;
 using DDD.Domain.Common.ValueObjects;
@@ -15,11 +16,11 @@ namespace DDD.Provider.Domain.Entities
     public class Site : Entity, IAggregateRoot
     {
         private readonly List<SiteHoliday> _holidays = new List<SiteHoliday>();
-        private List<SiteRate> _rates = new List<SiteRate>();
+        private readonly List<SiteRate> _rates = new List<SiteRate>();
 
         public SiteStatus Status { get; private set; }
         public string SiteName { get; private set; }
-        public int SiteId { get; private set; }
+        public int SiteNumber { get; private set; }
         public SiteFacilityType SiteFacitlityType { get; private set; }
         public DateTimeRange ContractDuration { get; private set; }
         public PhoneNumber PrimaryPhoneNumber { get; private set; }
@@ -29,20 +30,20 @@ namespace DDD.Provider.Domain.Entities
         public string CountyCode { get; private set; }
         public string CountyServedCode { get; private set; }
         public LicenceStatus LicencingStatus { get; private set; }
-        public IEnumerable<SiteHoliday> Holidays { get; private set; }
+        public IReadOnlyCollection<SiteHoliday> Holidays => _holidays.AsReadOnly();
 
-        public IEnumerable<SiteRate> SiteRates { get; private set; }
+        public IReadOnlyCollection<SiteRate> SiteRates => _rates.AsReadOnly();
 
         public SiteType SiteType { get; private set; }
 
         internal SiteState DbState { get; private set; }
 
         //TODO: See how we can avoid injecting EventBus into the Domain entities
-        public Site(Guid id, int siteId, string siteName, SiteStatus status, SiteFacilityType siteFacitlityType, SiteType siteType,
+        public Site(Guid id, int siteNumber, string siteName, SiteStatus status, SiteFacilityType siteFacitlityType, SiteType siteType,
             DateTimeRange contractDuration, PhoneNumber primaryPhoneNumber, Contact contactDetails, VO.Address address, string email,
             string countyCode, string countyServedCode, LicenceStatus licenceStatus, IEnumerable<SiteHoliday> holidays, IEnumerable<SiteRate> rates, IBus bus) : base(id, bus)
         {
-            SiteId = siteId;
+            SiteNumber = siteNumber;
             SiteName = siteName;
             Status = status;
             SiteFacitlityType = siteFacitlityType;
@@ -55,10 +56,10 @@ namespace DDD.Provider.Domain.Entities
             CountyCode = countyCode;
             CountyServedCode = countyServedCode;
             LicencingStatus = licenceStatus;
-
-            Holidays = holidays;
-            SiteRates = rates;
             InitializeDbState();
+            holidays.ForEach(AddNewHoliday);
+            rates.ForEach(AddNewSiteRate);
+            
         }
 
         private void InitializeDbState()
@@ -78,16 +79,21 @@ namespace DDD.Provider.Domain.Entities
                 SiteFacilityTypeCode = SiteFacitlityType.Value.ToString(),
                 LicencingStatusCode = LicencingStatus.Value,
                 SiteName = SiteName,
-                SiteNumber = SiteId,
+                SiteNumber = SiteNumber,
                 SiteTypeCode = SiteType.Value,
                 StateCode = Address.StateCode,
                 ZipCode = Address.ZipCode,
                 CountyCode = CountyCode,
                 CountyServedCode = CountyServedCode,
                 Email = Email,
+                PhoneNumber = PrimaryPhoneNumber,
                 ContractStartDate = ContractDuration.Start,
-                ContractEndDate = ContractDuration.End
-
+                ContractEndDate = ContractDuration.End,
+                FirstInsertedBy = "TODO",
+                FirstInsertedDateTime = DateTime.UtcNow,
+                LastSavedBy = "TODO",
+                LastSavedDateTime = DateTime.UtcNow,
+                StatusCode = Status.Value
             };
         }
 
@@ -99,7 +105,7 @@ namespace DDD.Provider.Domain.Entities
         internal Site(SiteState siteState, IBus bus) : base(siteState.Id, bus)
         {
             SiteName = siteState.SiteName;
-            SiteId = siteState.SiteNumber;
+            SiteNumber = siteState.SiteNumber;
             Id = siteState.Id;
             Address = new VO.Address(siteState.AddressLine1, siteState.AddressLine2, siteState.City, siteState.StateCode, siteState.ZipCode);
             ContactDetails = new Contact(new Name(siteState.ContactFirstName, siteState.ContactLastName), siteState.ContactPhoneNumber, siteState.ContactAlternatePhoneNumber, siteState.ContactEmail);
@@ -112,13 +118,14 @@ namespace DDD.Provider.Domain.Entities
             SiteFacitlityType = siteState.SiteFacilityTypeCode;
             SiteType = siteState.SiteTypeCode;
             Status = siteState.StatusCode;
-            Holidays = siteState.SiteHoliday.Select(x => new SiteHoliday(x.HolidayDate, x.HolidayName)).ToList();
-            SiteRates =
+            _holidays = siteState.SiteHoliday.Select(x => new SiteHoliday(x.HolidayDate, x.HolidayName)).ToList();
+            _rates =
                 siteState.SiteRate.Select(
                     x =>
                         new SiteRate(x.AgeCode, x.RegularCareDailyRate.GetValueOrDefault(),
-                            x.RegularCareWeeklyRate.GetValueOrDefault(), x.EffectiveDate, bus));
+                            x.RegularCareWeeklyRate.GetValueOrDefault(), x.EffectiveDate, bus)).ToList();
 
+            DbState = siteState;
         }
 
         public void AddNewHoliday(SiteHoliday holiday)
@@ -149,12 +156,21 @@ namespace DDD.Provider.Domain.Entities
 
         public void AddNewSiteRate(SiteRate rate)
         {
-            throw new NotImplementedException();
+            //TODO: Implement rules to make sure Aggregate root is always in valid state
+            _rates.Add(rate);
+            DbState.SiteRate.Add(rate.DbState);
         }
 
         public void RemoveSiteRate(SiteRate rate)
         {
-            throw new NotImplementedException();
+            //TODO: Implement rules to make sure Aggregate root is always in valid state
+            var index = _rates.FindIndex(x => x.AgeCode == rate.AgeCode);
+            if(index == -1)
+                throw new InvalidOperationException($"Rate with Age code {rate.AgeCode} not found for Site {this.SiteNumber}");
+
+            _rates.RemoveAt(index);
+            var dbRate = DbState.SiteRate.First(x => x.AgeCode == rate.AgeCode);
+            DbState.SiteRate.Remove(dbRate);
         }
 
     }

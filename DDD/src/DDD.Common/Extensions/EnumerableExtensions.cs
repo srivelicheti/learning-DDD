@@ -1,14 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace DDD.Common.Extensions
 {
     public static class EnumerableExtensions
     {
-        public static IEnumerable<T>  ForEach<T>(this IEnumerable<T> enumerable)
+        public static void ForEach<T>(this IEnumerable<T> enumerable, Action<T> action)
         {
             foreach (var item in enumerable)
             {
-                yield return item;
+                action(item);
             }
         }
     }

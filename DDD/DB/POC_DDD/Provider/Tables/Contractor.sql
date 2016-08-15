@@ -23,9 +23,9 @@
 	[ZipExntension] [nchar](4) NULL,
 	[StateCode] [nchar](2) NOT NULL,
 	[FirstInsertedBy] [nvarchar](50) NOT NULL,
-	[FirstInsertedDateTime] [datetime] NOT NULL,
+	[FirstInsertedDateTime] DATETIME2(3) NOT NULL,
 	[LastSavedBy] [nvarchar](50) NOT NULL,
-	[LastSavedDateTime] [datetime] NOT NULL,
+	[LastSavedDateTime] DATETIME2(3) NOT NULL,
     CONSTRAINT [PK_Provider]].[Contractor] PRIMARY KEY CLUSTERED ([ID] ASC)
 );
 
