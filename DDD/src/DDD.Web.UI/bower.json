@@ -15,7 +15,8 @@
     "knockout-validation": "2.0.3",
     "postal.js": "1.0.8",
     "requirejs-plugins": "1.0.3",
-    "pagerjs": "~1.0.1"
+    "pagerjs": "~1.0.1",
+    "select2": "4.0.2"
   },
   "overrides": {
     "bootstrap": {

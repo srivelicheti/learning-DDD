@@ -22,7 +22,8 @@ require.config({
         kovalidation: "../lib/knockout-validation/dist/knockout.validation",
         postal: "../lib/postal.js/lib/postal",
         text: "../lib/requirejs-plugins/lib/text",
-        pager:"../lib/pagerjs/dist/pager.min"
+        pager: "../lib/pagerjs/dist/pager.min",
+        select2:"../lib/select2/dist/js/select2"
     },
 
     shim: {
@@ -59,8 +60,11 @@ require.config({
         },
         pager: {
             deps: ["knockout", "jquery"]
+        },
+        "select2": {
+            deps: ["jquery"],
+            exports: "$.fn.select2"
         }
-        
     }
 });
 

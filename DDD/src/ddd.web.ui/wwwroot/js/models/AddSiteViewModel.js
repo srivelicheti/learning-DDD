@@ -1,5 +1,17 @@
-﻿define(["knockout", "lodash", "models/AddressViewModel", "models/ContactDetailViewModel", "models/BaseViewModel", "services/siteService", "pager"],
-    function (ko, _, AddressViewModel, ContactDetailViewModel, BaseViewModel, siteService, pager) {
+﻿define(["knockout", "lodash", "models/AddressViewModel", "models/ContactDetailViewModel", "models/BaseViewModel", "services/siteService","services/contractorService" ,"pager"],
+    function (ko, _, AddressViewModel, ContactDetailViewModel, BaseViewModel, siteService, contractorService, pager) {
+
+        var addSiteValidations = function () {
+            this.ExistingContractor.extend({
+                validation: {
+                    validator: function (val) {
+                        return val;
+                    },
+                    Message: "Please add to existing contractor"
+                }
+            });
+        };
+
         function SiteHoliday(holidayName, holidayDate) {
             this.holidayName = ko.observable(holidayName).extend({ required: true });
             this.holidayDate = ko.observable(holidayDate).extend({ required: true });
@@ -24,11 +36,28 @@
             this.PhoneNumber = ko.observable(phoneNumber);
             this.SiteEmail = ko.observable(siteEmail);
             this.ContactDetail = contactDetails;
+            this.ExistingContractor = ko.observable(false);
+            addSiteValidations.call(this);
             this.errors = ko.validation.group(this);
             this.IsInValidState = ko.computed(function () {
                 return this.errors().length === 0;
             }, this);
+            var self = this;
+            this.ContractorEin.subscribe(function () {
+                self.CheckForExistingContractor();
+            });
         }
+        SiteDetails.prototype.CheckForExistingContractor = function () {
+            var self = this;
+            var checkContractorPromise = contractorService.IsExistingContractor(this.EinNumber());
+            checkContractorPromise.then(function (isExistingContractor) {
+                if (isExistingContractor)
+                    self.ExistingContractor(true);
+                else {
+                    self.ExistingContractor(false);
+                }
+            });
+        };
 
         var addressViewModel = new AddressViewModel("300 Sterling Pkwy", "", "Mechanicsburg", "PA", "DP", 17051, "");
         var vm = {
