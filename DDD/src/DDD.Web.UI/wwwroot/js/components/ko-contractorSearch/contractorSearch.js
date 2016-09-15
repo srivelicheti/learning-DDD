@@ -1,7 +1,7 @@
-﻿define(["jquery","knockout", "lodash", "postal"], function ($, ko, _, postal) {
+﻿define(["jquery", "knockout", "lodash", "postal"], function ($, ko, _, postal) {
     var constSearchElement = 0;
-    function ContractorSearchViewModel() {
-        this.selectedEin = ko.observable('');
+    function ContractorSearchViewModel(currentEin) {
+        this.selectedEin = ko.observable(currentEin | null);
         this.elementId = ++constSearchElement;
         $("#" + this.elemntId).select2();
     }
