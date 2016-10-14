@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\DNX\Microsoft.DNX.Props" Condition="'$(VSToolsPath)' != ''" />
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>4c8ffefe-e73f-47f9-8d7e-66f5b9a6f0fc</ProjectGuid>
+    <RootNamespace>DDD.Web.Api</RootNamespace>
+    <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">.\obj</BaseIntermediateOutputPath>
+    <OutputPath Condition="'$(OutputPath)'=='' ">.\bin\</OutputPath>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'" />
+  <ItemGroup>
+    <DnxInvisibleFolder Include="logs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_10116_2016429204021.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_10572_2016421181725.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_11128_2016428142657.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_11440_2016428135936.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_12624_2016420214041.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_13020_201642713395.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_13488_2016427131023.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_15060_201642118347.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_15132_2016428142016.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_15180_2016420221642.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_17748_201642021271.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_19672_201642814145.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_20508_2016428141137.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_21400_2016429202320.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_22924_2016429203641.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_23056_2016429203826.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_23520_2016427222941.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_25276_2016427151628.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_25368_201642922931.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_25728_2016428141833.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_25960_2016421213614.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_26208_201642118954.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_28452_2016428142520.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_29972_20164211852.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_32020_2016421213515.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_32116_201642118136.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_32164_2016429204139.log" />
+    <DnxInvisibleContent Include="wwwroot\httpplatform-stdout_33196_201642922445.log" />
+  </ItemGroup>
+  <Import Project="$(VSToolsPath)\DNX\Microsoft.DNX.targets" Condition="'$(VSToolsPath)' != ''" />
+</Project>

@@ -1,0 +1,30 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "",
+  "authors": [ "" ],
+  "packOptions": {
+    "tags": [ "" ],
+    "projectUrl": "",
+    "licenseUrl": ""
+  },
+  "tooling": {
+    "defaultNamespace": "<%= namespace %>"
+  },
+  
+  "commands": {
+    "test": "xunit.runner.dnx"
+  },
+  "frameworks": {
+    "net461": {
+      "dependencies": {
+        //"Moq": "4.2.1510.2205",
+        //"DDD.Web.Api": "",
+        //"xunit.runner.aspnet": "2.0.0-aspnet-rc1-final",
+        //"xunit": "2.2.0-beta1-build3239"
+      }
+    }
+  },
+  "buildOptions": {
+    "outputName": "DDD.Provider.Api.Tests"
+  }
+}

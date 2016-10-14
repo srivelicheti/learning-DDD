@@ -1,5 +1,0 @@
-﻿{
-  "Data": {
-    "POC_DDDContextConnection":"Data Source=.\\SQL2014;Initial Catalog=POC_DDD;Integrated Security=False;User ID=srvelicheti;Password=Secret@123;MultipleActiveResultSets=true;Trusted_Connection=true;"
-  }
-}

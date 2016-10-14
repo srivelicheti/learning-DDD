@@ -9,6 +9,7 @@ using DDD.Provider.Domain.Entities;
 using DDD.Provider.Domain.Repositories;
 using NServiceBus;
 using DDD.Provider.Messages.Commands;
+using DDD.Provider.Domain.Contracts.Models;
 
 namespace DDD.Provider.Domain.CommandHandlers
 {

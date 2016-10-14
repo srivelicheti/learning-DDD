@@ -1,0 +1,23 @@
+{
+  "title": "DDD.Provider.Domain.Contracts",
+  "version": "1.0.0-*",
+  "description": "Public Contracts exposed by Provider Domain Services",
+  "authors": [ "Sri Velicheti" ],
+  "packOptions": {
+    "tags": [ "" ],
+    "projectUrl": "",
+    "licenseUrl": ""
+  },
+  "frameworks": {
+    "net461": {}
+  },
+  "dependencies": {
+    "DDD.Common": "1.0.0-*",
+    "DDD.Domain.Common": "1.0.0-*",
+    "DDD.Provider.Api.Contracts": "1.0.0-*",
+    "NServiceBus": "5.2.14"
+  },
+  "buildOptions": {
+    "outputName": "DDD.Provider.Domain.Contracts"
+  }
+}

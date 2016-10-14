@@ -11,18 +11,18 @@
   "frameworks": {
     "net461": {
       "dependencies": {
-        "DDD.Provider.Messages": "1.0.0-*"
+        
       }
     }
   },
   "dependencies": {
     "DDD.Common": "1.0.0-*",
     "DDD.Domain.Common": "1.0.0-*",
-    "DDD.Provider.Common": "1.0.0-*",
+    "DDD.Provider.Api.Contracts": "1.0.0-*",
     "DDD.Provider.DataModel": "1.0.0-*",
+    "DDD.Provider.Domain.Contracts": "1.0.0-*",
     "Microsoft.EntityFrameworkCore": "1.0.0",
     "Microsoft.EntityFrameworkCore.SqlServer": "1.0.0",
     "NServiceBus": "5.2.14"
-
   }
 }
