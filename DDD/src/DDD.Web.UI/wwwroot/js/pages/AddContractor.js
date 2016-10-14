@@ -1,5 +1,6 @@
 ﻿require(["jquery", "knockout", "lodash", "models/AddContractorViewModel","postal" ,"appMain"],
-    function ($, ko, _, AddContractorViewModel,postal) {
+    function ($, ko, _, AddContractorViewModel, postal) {
+        "use strict";
         $(function() {
             var vm = new AddContractorViewModel();
 
@@ -13,7 +14,7 @@
                 AddressLine1: "200 Sterling Pkwy",
                 AddressLine2: null,
                 City: "Mechanicsburg",
-                StateCode: null,
+                StateCode: 'DE',
                 ZipCode: 17050,
                 ZipExtension: null,
                 PhoneNumber: "7145698852",

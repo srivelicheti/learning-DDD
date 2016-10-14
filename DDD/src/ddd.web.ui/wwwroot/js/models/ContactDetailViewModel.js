@@ -1,5 +1,5 @@
 ﻿define(["knockout", "lodash", "models/BaseViewModel"], function (ko, _, BaseViewModel) {
-
+    "use strict";
     var vm = function (lastName,firstName,phoneNumber,email) {
         this.LastName = lastName;
         this.FirstName = firstName;

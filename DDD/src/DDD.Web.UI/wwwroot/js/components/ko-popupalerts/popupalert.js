@@ -1,4 +1,5 @@
-﻿define(["knockout","lodash" ,"jquery"], function(ko,_ ,$) {
+﻿define(["knockout", "lodash", "jquery"], function (ko, _, $) {
+    "use strict";
     var popupAlertId = 0;
     function PopupAlertViewModel(options) {
         var params = options.alert || {};

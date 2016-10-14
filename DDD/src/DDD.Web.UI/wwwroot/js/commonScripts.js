@@ -1,5 +1,6 @@
 ﻿define(["appConfig", "jquery", "bootstrap", "knockout", "jqueryValidate", "jqueryValUnob", "signalr", "komapping", "kovalidation", "postal", "pager", "select2"],
     function (appConfig, $, bootstrap, ko, jqval, jqvalUnob, signalr, komap, koval, postal) {
+        "use strict";
         $(function () {
             //TODO: Adding global variables for testing remove them later
             window.ko = ko;
@@ -21,7 +22,7 @@
                         data: {
                             title: 'Info!',
                             message: message,
-                            type: 'Info',
+                            type: 'info',
                             dismissAfter: 3000
                         }
                     });

@@ -49,7 +49,7 @@ namespace DDD.Web.Api.Models.Provider
         [Required]
         [Phone]
         public string ContactPhoneNumber { get; set; }
-        [Required]
+        //[Required]
         [EmailAddress]
         public string ContactEmail { get; set; }
         

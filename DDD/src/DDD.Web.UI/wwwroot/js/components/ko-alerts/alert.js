@@ -1,5 +1,5 @@
 ﻿define(["knockout", "lodash", "postal", "models/BaseViewModel"], function (ko, _) {
-
+    "use strict";
     function AlertViewModel (params) {
         var alert = params.alert;
 
@@ -18,9 +18,9 @@
         this.onClose = params.onClose || this.onClose;
         var self = this;
         if (alert.dismissAfter) {
-            setTimeout(function() {
-                self.onClose(self);
-            }, alert.dismissAfter);
+            //setTimeout(function() {
+            //    self.onClose(self);
+            //}, alert.dismissAfter);
         }
 
     };

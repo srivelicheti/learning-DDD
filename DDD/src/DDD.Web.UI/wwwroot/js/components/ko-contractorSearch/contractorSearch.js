@@ -1,4 +1,5 @@
 ﻿define(["jquery", "knockout", "lodash", "postal"], function ($, ko, _, postal) {
+    "use strict";
     var constSearchElement = 0;
     function ContractorSearchViewModel(currentEin) {
         this.selectedEin = ko.observable(currentEin | null);

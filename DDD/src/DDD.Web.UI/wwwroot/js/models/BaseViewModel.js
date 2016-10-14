@@ -1,5 +1,6 @@
 ﻿define(["lodash", "knockout"],
-    function(_, ko) {
+    function (_, ko) {
+        "use strict";
         var baseViewModel = function(options) {
             this._setup(options);
             this.initialize.call(this, options);

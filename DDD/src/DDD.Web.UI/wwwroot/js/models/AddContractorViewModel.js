@@ -1,5 +1,5 @@
 ﻿define(["knockout", "lodash", "models/BaseViewModel", "services/contractorService"], function (ko, _, BaseViewModel, ContractorService) {
-
+    "use strict";
     var addValidations = function() {
         this.ContractorName.extend({ required: true });
         this.EinNumber.extend({ minLength: 9, maxLength: 9, required: true });
@@ -60,7 +60,7 @@
     contractorViewModel.prototype.AddContractor = function() {
        
         if (this.errors().length === 0) {
-            var addContractorPromise = ContractorService.AddNewContractor(ko.mapping.toJS(this));
+            var addContractorPromise = ContractorService.AddNewContractor(ko.mapping.toJSON(this));
             console.log(addContractorPromise);
             var self = this;
             addContractorPromise.then(function (commandId) {
@@ -69,8 +69,8 @@
                     topic: "popup-alert",
                     data: {
                         title: 'Alert!',
-                        messages: ['Command to add Contractor accepted!' + commandId],
-                        type: 'Info',
+                        messages: ['Command to add Contractor accepted! ' + commandId],
+                        type: 'success',
                         canBeClosed: true
                         //buttons : [
                         //{

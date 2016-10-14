@@ -1,4 +1,5 @@
-﻿define(["jquery", "knockout", "q", "appConfig", "postal", "appMain"], function($,knockout,q,appConfig,postal) {
+﻿define(["jquery", "knockout", "q", "appConfig", "postal", "appMain"], function ($, knockout, q, appConfig, postal) {
+    "use strict";
     var addSite = function addSiteFunc(addSiteModel) {
         console.log("To implelment add site service");
         console.log(addSiteModel);

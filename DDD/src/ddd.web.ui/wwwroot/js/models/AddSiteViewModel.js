@@ -1,6 +1,6 @@
 ﻿define(["knockout", "lodash", "models/AddressViewModel", "models/ContactDetailViewModel", "models/BaseViewModel", "services/siteService","services/contractorService" ,"pager"],
     function (ko, _, AddressViewModel, ContactDetailViewModel, BaseViewModel, siteService, contractorService, pager) {
-
+        "use strict";
         var addSiteValidations = function () {
             this.ExistingContractor.extend({
                 validation: {

@@ -1,5 +1,5 @@
 ﻿define(["knockout", "lodash", "models/BaseViewModel"], function (ko, _, BaseViewModel) {
-
+    "use strict";
     var vm = function(addLine1,addLine2,city,statecode,county,zipCode,zipExtn) {
         this.AddressLine1 = ko.observable(addLine1);
         this.AddressLine2 = ko.observable(addLine2);

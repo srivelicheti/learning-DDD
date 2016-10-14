@@ -1,5 +1,6 @@
 ﻿define(["knockout", "jquery", "components/ko-popupalerts/popupalert", "postal"],
-    function (ko, $,popupalert,postal) {
+    function (ko, $, popupalert, postal) {
+        "use strict";
         if (!ko.components.isRegistered('popupalert')) {
             ko.components.register('popupalert', popupalert);
         }
