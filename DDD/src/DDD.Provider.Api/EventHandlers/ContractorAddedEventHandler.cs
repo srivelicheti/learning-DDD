@@ -19,9 +19,9 @@ namespace DDD.Web.Api.EventHandlers
         public ContractorAddedEventHandler(IConnectionManager connectionManager) {
             _connectionManager = connectionManager;
         }
-        public void Handle(ContractorAdded e)
+        public Task Handle(ContractorAdded e, IMessageHandlerContext msgContext)
         {
-            Task.Factory.StartNew((() => {
+           return Task.Factory.StartNew((() => {
                 //Simulate some delay
                 Thread.Sleep(5000);
                 var hub = _connectionManager.GetHubContext<NotificationsHub>();

@@ -24,10 +24,10 @@ namespace DDD.Web.Api.Controllers
     [Route("api/contractor")]
     public class ContractorController : Controller
     {
-        private IBus _bus;
+        private IEndpointInstance _bus;
         private IQueryProcessor _queryProcessor;
 
-        public ContractorController(IBus commandBus, IQueryProcessor queryProcessor)
+        public ContractorController(IEndpointInstance commandBus, IQueryProcessor queryProcessor)
         {
             _bus = commandBus;
             _queryProcessor = queryProcessor;

@@ -15,16 +15,16 @@ namespace DDD.Provider.Domain.CommandHandlers
 {
     public class UpdateContractorCommandHandler : IHandleMessages<UpdateContractorCommand>
     {
-        private IBus _eventBus;
+        //private IBus _eventBus;
         private ContractorRepository _contractorRepo;
 
-        public UpdateContractorCommandHandler(IBus eventBus, ContractorRepository contractorRepository)
+        public UpdateContractorCommandHandler(/*IBus eventBus,*/ ContractorRepository contractorRepository)
         {
-            _eventBus = eventBus;
+            //_eventBus = eventBus;
             _contractorRepo = contractorRepository;
         }
 
-        public void Handle(UpdateContractorCommand command)
+        public Task Handle(UpdateContractorCommand command, IMessageHandlerContext messageContext)
         {
             try
             {
@@ -32,11 +32,13 @@ namespace DDD.Provider.Domain.CommandHandlers
                 UpdateContractor(contractor,command.Contractor);
                 _contractorRepo.Save();
                 //_eventBus.PublishQueuedPostCommitEvents();
-                _eventBus.Publish(new CommandCompletedEvent(command.Id, DateTime.UtcNow));
+                messageContext.Publish(new CommandCompletedEvent(command.Id, DateTime.UtcNow));
+                return Task.FromResult(0);
             }
             catch (Exception ex)
             {
-                _eventBus.Publish(new CommandFailedEvent(command.Id, ex, DateTime.UtcNow));
+                messageContext.Publish(new CommandFailedEvent(command.Id, ex, DateTime.UtcNow));
+                throw;
                 //TODO: Log exception
             }
         }

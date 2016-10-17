@@ -13,11 +13,12 @@ namespace DDD.Web.Api.EventHandlers
     public class FileLoggerEventHandler : IHandleMessages<BaseEvent>
     {
         private static ILog Logger = LogManager.GetLogger(typeof (FileLoggerEventHandler));
-        public void Handle(BaseEvent e)
+        public Task Handle(BaseEvent e,IMessageHandlerContext messageContext)
         {
             var jsonString = JsonConvert.SerializeObject(e);
             Debug.Write(jsonString);
             Logger.Info(jsonString);
+            return Task.FromResult(0);
             //throw new NotImplementedException();
         }
     }

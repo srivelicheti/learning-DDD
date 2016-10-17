@@ -41,7 +41,7 @@ namespace DDD.Provider.Domain.Entities
         //TODO: See how we can avoid injecting EventBus into the Domain entities
         public Site(Guid id, int siteNumber, string siteName, SiteStatus status, SiteFacilityType siteFacitlityType, SiteType siteType,
             DateTimeRange contractDuration, PhoneNumber primaryPhoneNumber, Contact contactDetails, VO.Address address, string email,
-            string countyCode, string countyServedCode, LicenceStatus licenceStatus, IEnumerable<SiteHoliday> holidays, IEnumerable<SiteRate> rates, IBus bus) : base(id, bus)
+            string countyCode, string countyServedCode, LicenceStatus licenceStatus, IEnumerable<SiteHoliday> holidays, IEnumerable<SiteRate> rates/*, IBus bus*/) : base(id/*, bus*/)
         {
             SiteNumber = siteNumber;
             SiteName = siteName;
@@ -99,10 +99,11 @@ namespace DDD.Provider.Domain.Entities
 
         public Site(int siteId, string siteName, SiteStatus status, SiteFacilityType siteFacitlityType, SiteType siteType,
             DateTimeRange contractDuration, PhoneNumber primaryPhoneNumber, Contact contactDetails, VO.Address address, string email,
-            string county, string countyServed, LicenceStatus licenceStatus, IEnumerable<SiteHoliday> holidays, IEnumerable<SiteRate> rates, IBus eventBus) : this(GuidHelper.NewSequentialGuid(), siteId, siteName, status, siteFacitlityType, siteType, contractDuration, primaryPhoneNumber, contactDetails, address, email, county, countyServed, licenceStatus, holidays, rates, eventBus)
+            string county, string countyServed, LicenceStatus licenceStatus, IEnumerable<SiteHoliday> holidays, IEnumerable<SiteRate> rates/*, IBus eventBus*/)
+            : this(GuidHelper.NewSequentialGuid(), siteId, siteName, status, siteFacitlityType, siteType, contractDuration, primaryPhoneNumber, contactDetails, address, email, county, countyServed, licenceStatus, holidays, rates/*, eventBus*/)
         { }
 
-        internal Site(SiteState siteState, IBus bus) : base(siteState.Id, bus)
+        internal Site(SiteState siteState/*, IBus bus*/) : base(siteState.Id/*, bus*/)
         {
             SiteName = siteState.SiteName;
             SiteNumber = siteState.SiteNumber;
@@ -123,7 +124,7 @@ namespace DDD.Provider.Domain.Entities
                 siteState.SiteRate.Select(
                     x =>
                         new SiteRate(x.AgeCode, x.RegularCareDailyRate.GetValueOrDefault(),
-                            x.RegularCareWeeklyRate.GetValueOrDefault(), x.EffectiveDate, bus)).ToList();
+                            x.RegularCareWeeklyRate.GetValueOrDefault(), x.EffectiveDate/*, bus*/)).ToList();
 
             DbState = siteState;
         }

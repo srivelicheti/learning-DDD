@@ -1,4 +1,4 @@
-﻿{
+{
   "version": "1.0.0-*",
   "description": "DDD.Domain.Common Class Library",
   "authors": [ "Velicheti" ],
@@ -18,7 +18,7 @@
   "dependencies": {
     //"NETStandard.Library": "1.6.0",
     "StructureMap.Microsoft.DependencyInjection": "1.2.0",
-    "NServiceBus": "5.2.14",
+    "NServiceBus": "6.0.0",
     "DDD.Common": "1.0.0-*"
   }
 }

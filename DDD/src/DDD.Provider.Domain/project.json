@@ -23,6 +23,6 @@
     "DDD.Provider.Domain.Contracts": "1.0.0-*",
     "Microsoft.EntityFrameworkCore": "1.0.1",
     "Microsoft.EntityFrameworkCore.SqlServer": "1.0.1",
-    "NServiceBus": "5.2.14"
+    "NServiceBus": "6.0.0"
   }
 }

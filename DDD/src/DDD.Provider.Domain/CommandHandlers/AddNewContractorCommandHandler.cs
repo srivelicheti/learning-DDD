@@ -21,15 +21,15 @@ namespace DDD.Provider.Domain.CommandHandlers
     {
         private readonly ContractorRepository _contractorRepository;
         private readonly IContractorSuffixGenerator _contractorSuffixGenerator;
-        private readonly IBus _eventBus;
+       // private readonly IBus _eventBus;
 
-        public AddNewContractorCommandHandler(ContractorRepository contractorRepository, IContractorSuffixGenerator contractorSuffixGenerator, IBus eventBus)
+        public AddNewContractorCommandHandler(ContractorRepository contractorRepository, IContractorSuffixGenerator contractorSuffixGenerator)
         {
             _contractorRepository = contractorRepository;
             _contractorSuffixGenerator = contractorSuffixGenerator;
-            _eventBus = eventBus;
+            //_eventBus = eventBus;
         }
-        public void Handle(AddNewContractorCommand command)
+        public Task Handle(AddNewContractorCommand command, IMessageHandlerContext messageContext)
         {
             try
             {
@@ -43,16 +43,17 @@ namespace DDD.Provider.Domain.CommandHandlers
                 var contractorSuffix = _contractorSuffixGenerator.GetContractorSuffixForNewContractor(contractorDto.EinNumber, type);
                 //TODO: User should be sending the GUIDs, leaving it for testing to do auto generated guid
                 var contractor = new Contractor(contractorDto.EinNumber + contractorSuffix, contractorDto.ContractorName, contractorDto.DoingBusinessAs, status, type, contractDuration, 
-                    contractorDto.PhoneNumber, contact, contractrorAddress, contractorDto.Email,_eventBus);
+                    contractorDto.PhoneNumber, contact, contractrorAddress, contractorDto.Email);
                 _contractorRepository.AddContractor(contractor);
                 _contractorRepository.Save();
-                _eventBus.Publish(new CommandCompletedEvent(command.Id, DateTime.UtcNow));
-                _eventBus.Publish(new ContractorAdded(DateTime.Now,contractor.Id,contractor.EinNumber) { ContractorEin = contractor.EinNumber });
+                messageContext.Publish(new CommandCompletedEvent(command.Id, DateTime.UtcNow));
+                messageContext.Publish(new ContractorAdded(DateTime.Now,contractor.Id,contractor.EinNumber) { ContractorEin = contractor.EinNumber });
+                return Task.FromResult(0);
             }
             catch (Exception ex)
             {
                 //TODO: Global Exception logging
-                _eventBus.Publish(new CommandFailedEvent(command.Id, ex, DateTime.UtcNow));
+                messageContext.Publish(new CommandFailedEvent(command.Id, ex, DateTime.UtcNow));
                 throw;
                 
             }

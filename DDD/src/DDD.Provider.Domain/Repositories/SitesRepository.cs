@@ -23,10 +23,10 @@ namespace DDD.Provider.Domain.Repositories
 {
     public class SitesRepository
     {
-        private IBus _eventBus;
+        private IEndpointInstance _eventBus;
         private readonly ProviderDbContext _dbContext;
 
-        public SitesRepository(IBus eventBus, ProviderDbContext dbContext)
+        public SitesRepository(IEndpointInstance eventBus, ProviderDbContext dbContext)
         {
             _eventBus = eventBus;
             _dbContext = dbContext;

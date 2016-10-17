@@ -17,19 +17,20 @@ namespace DDD.EmailService
 {
     public static class NServiceBusBootStrapper
     {
-        public static IBus Init() {
-            var cfg = new BusConfiguration();
+        public static IEndpointInstance Init() {
+            var cfg = new EndpointConfiguration("EmailService");
             cfg.CustomConfigurationSource(new NServiceBusConfigurationSource());
             //cfg.UseContainer<StructureMapBuilder>(x => x.ExistingContainer(iocContainer));
-            cfg.AssembliesToScan(GetAssembliesToScan());
+            //TODO: Check this
+            //cfg.AssembliesToScan(GetAssembliesToScan()); 
             cfg.UseTransport<MsmqTransport>();
             cfg.UsePersistence<InMemoryPersistence>();
-            cfg.EndpointName("EmailService");
+            //cfg.EndpointName("EmailService");
             cfg.PurgeOnStartup(true);
             cfg.EnableInstallers();
 
             //cfg.
-            var bus = NServiceBus.Bus.Create(cfg).Start();
+            var bus = Endpoint.Start(cfg).Result;
             return bus;
         }
 
@@ -80,70 +81,71 @@ namespace DDD.EmailService
         }
     }
 
-    public class SubscribeToNotifications :
-     IWantToRunWhenBusStartsAndStops,
-     IDisposable
-    {
-        //static ILog log = log4net.LogManager.GetLogger(typeof(SubscribeToNotifications));
-        BusNotifications busNotifications;
-        List<IDisposable> unsubscribeStreams = new List<IDisposable>();
+    //TODO: NSB Update
+    //public class SubscribeToNotifications :
+    // IWantToRunWhenBusStartsAndStops
+    // IDisposable
+    //{
+    //    //static ILog log = log4net.LogManager.GetLogger(typeof(SubscribeToNotifications));
+    //    BusNotifications busNotifications;
+    //    List<IDisposable> unsubscribeStreams = new List<IDisposable>();
 
-        public SubscribeToNotifications(BusNotifications busNotifications)
-        {
-            this.busNotifications = busNotifications;
-        }
+    //    public SubscribeToNotifications(BusNotifications busNotifications)
+    //    {
+    //        this.busNotifications = busNotifications;
+    //    }
 
-        public void Start()
-        {
-            ErrorsNotifications errors = busNotifications.Errors;
-            unsubscribeStreams.Add(errors.MessageSentToErrorQueue.Subscribe(new FailedMessageObserver()));
-            //DefaultScheduler scheduler = Scheduler.;
-            //unsubscribeStreams.Add(
-            //    errors.MessageSentToErrorQueue
-            //        .ObserveOn(scheduler)
-            //        .Subscribe(LogToConsole)
-            //    );
-            //unsubscribeStreams.Add(
-            //    errors.MessageHasBeenSentToSecondLevelRetries
-            //        .ObserveOn(scheduler)
-            //        .Subscribe(LogToConsole)
-            //    );
-            //unsubscribeStreams.Add(
-            //    errors.MessageHasFailedAFirstLevelRetryAttempt
-            //        .ObserveOn(scheduler)
-            //        .Subscribe(LogToConsole)
-            //    );
-        }
+    //    public void Start()
+    //    {
+    //        ErrorsNotifications errors = busNotifications.Errors;
+    //        unsubscribeStreams.Add(errors.MessageSentToErrorQueue.Subscribe(new FailedMessageObserver()));
+    //        //DefaultScheduler scheduler = Scheduler.;
+    //        //unsubscribeStreams.Add(
+    //        //    errors.MessageSentToErrorQueue
+    //        //        .ObserveOn(scheduler)
+    //        //        .Subscribe(LogToConsole)
+    //        //    );
+    //        //unsubscribeStreams.Add(
+    //        //    errors.MessageHasBeenSentToSecondLevelRetries
+    //        //        .ObserveOn(scheduler)
+    //        //        .Subscribe(LogToConsole)
+    //        //    );
+    //        //unsubscribeStreams.Add(
+    //        //    errors.MessageHasFailedAFirstLevelRetryAttempt
+    //        //        .ObserveOn(scheduler)
+    //        //        .Subscribe(LogToConsole)
+    //        //    );
+    //    }
 
-        void LogToConsole(FailedMessage failedMessage)
-        {
+    //    void LogToConsole(FailedMessage failedMessage)
+    //    {
             
-            Console.WriteLine("Mesage sent to error queue");
-        }
+    //        Console.WriteLine("Mesage sent to error queue");
+    //    }
 
-        void LogToConsole(SecondLevelRetry secondLevelRetry)
-        {
-            //log.Info("Mesage sent to SLR. RetryAttempt:" + secondLevelRetry.RetryAttempt);
-        }
+    //    void LogToConsole(SecondLevelRetry secondLevelRetry)
+    //    {
+    //        //log.Info("Mesage sent to SLR. RetryAttempt:" + secondLevelRetry.RetryAttempt);
+    //    }
 
-        void LogToConsole(FirstLevelRetry firstLevelRetry)
-        {
-            Console.WriteLine("Mesage sent to FLR. RetryAttempt:" + firstLevelRetry.RetryAttempt);
-        }
+    //    void LogToConsole(FirstLevelRetry firstLevelRetry)
+    //    {
+    //        Console.WriteLine("Mesage sent to FLR. RetryAttempt:" + firstLevelRetry.RetryAttempt);
+    //    }
 
-        public void Stop()
-        {
-            foreach (IDisposable unsubscribeStream in unsubscribeStreams)
-            {
-                unsubscribeStream.Dispose();
-            }
-        }
+    //    public void Stop()
+    //    {
+    //        foreach (IDisposable unsubscribeStream in unsubscribeStreams)
+    //        {
+    //            unsubscribeStream.Dispose();
+    //        }
+    //    }
 
-        public void Dispose()
-        {
-            Stop();
-        }
-    }
+    //    public void Dispose()
+    //    {
+    //        Stop();
+    //    }
+    //}
 
     public class FailedMessageObserver : IObserver<FailedMessage>
     {

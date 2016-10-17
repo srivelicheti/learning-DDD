@@ -9,11 +9,12 @@ namespace DDD.EmailService.EventHandlers
 {
     public class ContractorAddedEventHandler : IHandleMessages<ContractorAdded>
     {
-        public void Handle(ContractorAdded message)
+        public Task Handle(ContractorAdded message, IMessageHandlerContext messageContext)
         {
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Added new Contractor " + message.ContractorEin);
             Console.ForegroundColor = ConsoleColor.Gray;
+            return Task.FromResult(0);
         }
     }
 }

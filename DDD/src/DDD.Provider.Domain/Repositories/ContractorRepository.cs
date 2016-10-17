@@ -16,10 +16,10 @@ namespace DDD.Provider.Domain.Repositories
 {
     public class ContractorRepository
     {
-        private readonly IBus _eventBus;
+        private readonly IEndpointInstance _eventBus;
         private readonly ProviderDbContext _dbContext;
 
-        public ContractorRepository(IBus eventBus, ProviderDbContext dbContext)
+        public ContractorRepository(IEndpointInstance eventBus, ProviderDbContext dbContext)
         {
             _eventBus = eventBus;
             _dbContext = dbContext;
@@ -40,7 +40,7 @@ namespace DDD.Provider.Domain.Repositories
             var cont = _dbContext.Contractor.FirstOrDefault(x => x.Id == id);
             if (cont == null)
                 throw new ArgumentException($"Contractor with ${id} not found in database");
-            return new Contractor(cont, _eventBus);
+            return new Contractor(cont/*, _eventBus*/);
         }
 
         public Contractor GetContractorByEin(string einNumber)
@@ -49,7 +49,7 @@ namespace DDD.Provider.Domain.Repositories
             if (cont == null)
                 throw new ArgumentException($"Contractor with ${einNumber} not found in database");
 
-            return new Contractor(cont,_eventBus);
+            return new Contractor(cont/*,_eventBus*/);
         }
 
         public bool IsContractorExistingWithEin(string einNumber)

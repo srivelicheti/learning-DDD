@@ -9,16 +9,16 @@ namespace DDD.Domain.Common
 {
     public abstract class Entity
     {
-        protected readonly IBus Bus;
+       // protected readonly IBus Bus;
         
         public Guid Id { get; protected set; }
 
         public TrackingState State { get; set; }
 
-        protected Entity(Guid entityId, IBus bus)
+        protected Entity(Guid entityId)
         {
             Id = entityId;
-            Bus = bus;
+          //  Bus = bus;
         }
 
         public override bool Equals(object obj)

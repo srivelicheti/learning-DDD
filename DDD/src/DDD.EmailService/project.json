@@ -1,4 +1,4 @@
-﻿{
+{
   "version": "1.0.0-*",
   "description": "DDD.EmailService Console Application",
   "authors": [ "srvelicheti" ],
@@ -16,11 +16,10 @@
   "dependencies": {
     "DDD.Common": "1.0.0-*",
     "DDD.Domain.Common": "1.0.0-*",
-    "NServiceBus": "5.2.14",
-    "NServiceBus.NHibernate": "6.2.7",
+    "NServiceBus": "6.0.0",
+    "NServiceBus.NHibernate": "7.0.0",
     "Newtonsoft.Json": "9.0.1",
     "DDD.Provider.Domain.Contracts": "1.0.0-*"
-    
   },
 
   "commands": {

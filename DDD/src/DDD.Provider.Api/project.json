@@ -11,9 +11,7 @@
         "log4net": "2.0.5",
         "DDD.Provider.DataModel": "1.0.0-*",
         "AutoMapper": "4.2.1",
-        "DDD.Provider.QueryStack": "1.0.0-*",
-        "NServiceBus": "5.2.14",
-        "NServiceBus.NHibernate": "6.2.7"
+        "DDD.Provider.QueryStack": "1.0.0-*"
       },
       "frameworkAssemblies": {
         //"System.Collections": "4.0.10.0",
@@ -62,6 +60,8 @@
     "StructureMap.Microsoft.DependencyInjection": "1.2.0",
     "Microsoft.EntityFrameworkCore": "1.0.1",
     "Microsoft.EntityFrameworkCore.SqlServer": "1.0.1",
-    "Microsoft.EntityFrameworkCore.SqlServer.Design": "1.0.1"
+    "Microsoft.EntityFrameworkCore.SqlServer.Design": "1.0.1",
+    "NServiceBus": "6.0.0",
+    "NServiceBus.NHibernate": "7.0.0"
   }
 }

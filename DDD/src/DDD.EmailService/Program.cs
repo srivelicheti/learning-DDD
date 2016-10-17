@@ -15,8 +15,8 @@ namespace DDD.EmailService
 
             while (key != "A")
             {
-                if(key == "Stop")
-                    bus.Dispose();
+                if (key == "Stop")
+                    bus.Stop().Wait();
                 if (key == "Start")
                     bus = NServiceBusBootStrapper.Init();
                 key = Console.ReadLine();

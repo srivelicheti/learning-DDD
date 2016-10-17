@@ -20,9 +20,9 @@ namespace DDD.Web.Api
 {
     public static class IocBootstrapper
     {
-        public static IContainer ConfigureIocContainer(IContainer container , IBus bus)
+        public static IContainer ConfigureIocContainer(IContainer container , IEndpointInstance bus)
         {
-            container.Configure(x => x.ForSingletonOf<IBus>().Use(() => bus));
+            container.Configure(x => x.ForSingletonOf<IEndpointInstance>().Use(() => bus));
             //container.Configure(x => x.ForSingletonOf<DomainEventBus>());
             container.Configure(x => x.For<IContainer>().Use(container));
             //container.Configure(x => x.For<ICommandBus>().Use<IocContainerCommandBus>());
@@ -38,6 +38,10 @@ namespace DDD.Web.Api
 
         private static void RegisterCommandHandlers(IContainer container)
         {
+            container.Configure(x => x.ForConcreteType<AddNewContractorCommandHandler>());
+            container.Configure(x => x.ForConcreteType<AddNewSiteCommandHandler>());
+            container.Configure(x => x.ForConcreteType<UpdateContractorCommandHandler>());
+
             //container.Configure(x => x.For<ICommandHandler<AddNewContractorCommand>>().Use<AddNewContractorCommandHandler>());
             //container.Configure(x => x.For<ICommandHandler<UpdateContractorCommand>>().Use<UpdateContractorCommandHandler>());
             //return container;

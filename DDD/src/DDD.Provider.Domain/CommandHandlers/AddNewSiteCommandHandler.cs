@@ -16,14 +16,14 @@ namespace DDD.Provider.Domain.CommandHandlers
     public class AddNewSiteCommandHandler : IHandleMessages<AddNewSiteCommand>
     {
         private SitesRepository _siteRepository;
-        private IBus _bus;
+        //private IBus _bus;
 
-        public AddNewSiteCommandHandler(SitesRepository siteRepository, IBus bus)
+        public AddNewSiteCommandHandler(SitesRepository siteRepository/*, IBus bus*/)
         {
             _siteRepository = siteRepository;
-            _bus = bus;
+            //_bus = bus;
         }
-        public void Handle(AddNewSiteCommand message)
+        public Task Handle(AddNewSiteCommand message, IMessageHandlerContext messageContext)
         {
             var siteDto = message.Site;
             SiteFacilityType facitlType = siteDto.SiteFacitlityTypeCode;
@@ -35,16 +35,17 @@ namespace DDD.Provider.Domain.CommandHandlers
                 siteDto.City, "DE", siteDto.ZipCode, siteDto.CountyCode);
 
             var holidays = siteDto.SiteHolidays.Select(x => new SiteHoliday(x.HolidayDate, x.HolidayName)).ToList();
-            var rates = siteDto.SiteRates.Select(x => new SiteRate(x.MinAge, x.Rate, (x.Rate * 1.5m), DateTime.Now, _bus));
+            var rates = siteDto.SiteRates.Select(x => new SiteRate(x.MinAge, x.Rate, (x.Rate * 1.5m), DateTime.Now));
             var siteEntity = new Site(GuidHelper.NewSequentialGuid(), siteDto.SiteNumber, siteDto.SiteName,
                 SiteStatus.Active, facitlType, siteType,
                 contractDuration, siteDto.PhoneNumber, contact, address, siteDto.SiteEmailText, siteDto.CountyCode,
                 siteDto.CountyServed
-                , LicenceStatus.Licenced, holidays,rates , _bus);
+                , LicenceStatus.Licenced, holidays,rates);
             
             _siteRepository.Add(siteEntity);
             _siteRepository.Save();
-            _bus.Publish(new NewSiteAdded(siteEntity.Id,siteEntity.SiteNumber));
+            messageContext.Publish(new NewSiteAdded(siteEntity.Id,siteEntity.SiteNumber));
+            return Task.FromResult(0);
         }
     }
 }

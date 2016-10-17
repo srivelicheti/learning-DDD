@@ -18,10 +18,10 @@ namespace DDD.Web.Api.Controllers
     [Route("api/[controller]")]
     public class SiteController : Controller
     {
-        private IBus _bus;
+        private IEndpointInstance _bus;
         private IQueryProcessor _queryProcessor;
 
-        public SiteController(IBus commandBus, IQueryProcessor queryProcessor)
+        public SiteController(IEndpointInstance commandBus, IQueryProcessor queryProcessor)
         {
             _bus = commandBus;
             _queryProcessor = queryProcessor;

@@ -26,8 +26,8 @@ namespace DDD.Web.Api.App_Start
 
 
         private static readonly object _syncLock = new object();
-        private static IBus _bus = null;
-        public static IBus Bus
+        private static IEndpointInstance _bus = null;
+        public static IEndpointInstance Bus
         {
             get
             {
@@ -36,7 +36,7 @@ namespace DDD.Web.Api.App_Start
             }
             private set { _bus = value; }
         }
-        public static IBus Init(Container iocContainer)
+        public static IEndpointInstance Init(Container iocContainer)
         {
             if (Bus != null)
                 return Bus;
@@ -48,18 +48,20 @@ namespace DDD.Web.Api.App_Start
 
                 //var endPointConfig = new EndpointConfiguration
 
-                var cfg = new BusConfiguration();
+                var cfg = new EndpointConfiguration("ProviderDomain");
                 cfg.CustomConfigurationSource(new NServiceBusConfigurationSource());
                 cfg.UseContainer<StructureMapBuilder>(x => x.ExistingContainer(iocContainer));
-                cfg.AssembliesToScan(GetAssembliesToScan());
+                cfg.ExcludeAssemblies("System", "mscorlib", "AutoMapper", "Castle.Core", "lesi.Collections", "libuv",
+                    "log4net", "Microsoft.*");
+                //cfg.AssembliesToScan(GetAssembliesToScan());
                 cfg.UseTransport<MsmqTransport>();
                 cfg.UsePersistence<InMemoryPersistence>();
-                cfg.EndpointName("ProviderDomain");
+               // cfg.EndpointName("ProviderDomain");
                 cfg.PurgeOnStartup(true);
                 cfg.EnableInstallers();
 
                 //cfg.
-                Bus = NServiceBus.Bus.Create(cfg).Start();
+                Bus = Endpoint.Start(cfg).Result;
                 return Bus;
             }
         }
@@ -122,69 +124,74 @@ namespace DDD.Web.Api.App_Start
         }
     }
 
-    public class SubscribeToNotifications :
-     IWantToRunWhenBusStartsAndStops,
-     IDisposable
-    {
-        static ILog log = log4net.LogManager.GetLogger(typeof(SubscribeToNotifications));
-        BusNotifications busNotifications;
-        List<IDisposable> unsubscribeStreams = new List<IDisposable>();
 
-        public SubscribeToNotifications(BusNotifications busNotifications)
-        {
-            this.busNotifications = busNotifications;
-        }
+    //TODO: NSB Update
+    /// <summary>
+    
+    /// </summary>
+    //public class SubscribeToNotifications :
+    // IWantToRunWhenBusStartsAndStops,
+    // IDisposable
+    //{
+    //    static ILog log = log4net.LogManager.GetLogger(typeof(SubscribeToNotifications));
+    //    BusNotifications busNotifications;
+    //    List<IDisposable> unsubscribeStreams = new List<IDisposable>();
 
-        public void Start()
-        {
-            ErrorsNotifications errors = busNotifications.Errors;
-            unsubscribeStreams.Add(errors.MessageSentToErrorQueue.Subscribe(new FailedMessageObserver()));
-            //DefaultScheduler scheduler = Scheduler.;
-            //unsubscribeStreams.Add(
-            //    errors.MessageSentToErrorQueue
-            //        .ObserveOn(scheduler)
-            //        .Subscribe(LogToConsole)
-            //    );
-            //unsubscribeStreams.Add(
-            //    errors.MessageHasBeenSentToSecondLevelRetries
-            //        .ObserveOn(scheduler)
-            //        .Subscribe(LogToConsole)
-            //    );
-            //unsubscribeStreams.Add(
-            //    errors.MessageHasFailedAFirstLevelRetryAttempt
-            //        .ObserveOn(scheduler)
-            //        .Subscribe(LogToConsole)
-            //    );
-        }
+    //    public SubscribeToNotifications(BusNotifications busNotifications)
+    //    {
+    //        this.busNotifications = busNotifications;
+    //    }
 
-        void LogToConsole(FailedMessage failedMessage)
-        {
-            log.Info("Mesage sent to error queue");
-        }
+    //    public void Start()
+    //    {
+    //        ErrorsNotifications errors = busNotifications.Errors;
+    //        unsubscribeStreams.Add(errors.MessageSentToErrorQueue.Subscribe(new FailedMessageObserver()));
+    //        //DefaultScheduler scheduler = Scheduler.;
+    //        //unsubscribeStreams.Add(
+    //        //    errors.MessageSentToErrorQueue
+    //        //        .ObserveOn(scheduler)
+    //        //        .Subscribe(LogToConsole)
+    //        //    );
+    //        //unsubscribeStreams.Add(
+    //        //    errors.MessageHasBeenSentToSecondLevelRetries
+    //        //        .ObserveOn(scheduler)
+    //        //        .Subscribe(LogToConsole)
+    //        //    );
+    //        //unsubscribeStreams.Add(
+    //        //    errors.MessageHasFailedAFirstLevelRetryAttempt
+    //        //        .ObserveOn(scheduler)
+    //        //        .Subscribe(LogToConsole)
+    //        //    );
+    //    }
 
-        void LogToConsole(SecondLevelRetry secondLevelRetry)
-        {
-            log.Info("Mesage sent to SLR. RetryAttempt:" + secondLevelRetry.RetryAttempt);
-        }
+    //    void LogToConsole(FailedMessage failedMessage)
+    //    {
+    //        log.Info("Mesage sent to error queue");
+    //    }
 
-        void LogToConsole(FirstLevelRetry firstLevelRetry)
-        {
-            log.Info("Mesage sent to FLR. RetryAttempt:" + firstLevelRetry.RetryAttempt);
-        }
+    //    void LogToConsole(SecondLevelRetry secondLevelRetry)
+    //    {
+    //        log.Info("Mesage sent to SLR. RetryAttempt:" + secondLevelRetry.RetryAttempt);
+    //    }
 
-        public void Stop()
-        {
-            foreach (IDisposable unsubscribeStream in unsubscribeStreams)
-            {
-                unsubscribeStream.Dispose();
-            }
-        }
+    //    void LogToConsole(FirstLevelRetry firstLevelRetry)
+    //    {
+    //        log.Info("Mesage sent to FLR. RetryAttempt:" + firstLevelRetry.RetryAttempt);
+    //    }
 
-        public void Dispose()
-        {
-            Stop();
-        }
-    }
+    //    public void Stop()
+    //    {
+    //        foreach (IDisposable unsubscribeStream in unsubscribeStreams)
+    //        {
+    //            unsubscribeStream.Dispose();
+    //        }
+    //    }
+
+    //    public void Dispose()
+    //    {
+    //        Stop();
+    //    }
+    //}
 
     public class FailedMessageObserver : IObserver<FailedMessage>
     {
@@ -207,20 +214,22 @@ namespace DDD.Web.Api.App_Start
         }
     }
 
-    class AuthorizeSubscriptions : IAuthorizeSubscriptions
-    {
 
-        public bool AuthorizeSubscribe(string messageType, string clientEndpoint, IDictionary<string, string> headers)
-        {
-            return true;
-            //string lowerEndpointName = clientEndpoint.ToLowerInvariant();
-            //return lowerEndpointName.StartsWith("samples.pubsub.subscriber1") ||
-            //       lowerEndpointName.StartsWith("samples.pubsub.subscriber2");
-        }
+    //TODO:NSB Update
+    //class AuthorizeSubscriptions : IAuthorizeSubscriptions
+    //{
 
-        public bool AuthorizeUnsubscribe(string messageType, string clientEndpoint, IDictionary<string, string> headers)
-        {
-            return true;
-        }
-    }
+    //    public bool AuthorizeSubscribe(string messageType, string clientEndpoint, IDictionary<string, string> headers)
+    //    {
+    //        return true;
+    //        //string lowerEndpointName = clientEndpoint.ToLowerInvariant();
+    //        //return lowerEndpointName.StartsWith("samples.pubsub.subscriber1") ||
+    //        //       lowerEndpointName.StartsWith("samples.pubsub.subscriber2");
+    //    }
+
+    //    public bool AuthorizeUnsubscribe(string messageType, string clientEndpoint, IDictionary<string, string> headers)
+    //    {
+    //        return true;
+    //    }
+    //}
 }
