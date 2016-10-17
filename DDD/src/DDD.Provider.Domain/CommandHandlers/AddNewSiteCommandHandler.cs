@@ -23,7 +23,7 @@ namespace DDD.Provider.Domain.CommandHandlers
             _siteRepository = siteRepository;
             //_bus = bus;
         }
-        public Task Handle(AddNewSiteCommand message, IMessageHandlerContext messageContext)
+        public async Task Handle(AddNewSiteCommand message, IMessageHandlerContext messageContext)
         {
             var siteDto = message.Site;
             SiteFacilityType facitlType = siteDto.SiteFacitlityTypeCode;
@@ -43,9 +43,8 @@ namespace DDD.Provider.Domain.CommandHandlers
                 , LicenceStatus.Licenced, holidays,rates);
             
             _siteRepository.Add(siteEntity);
-            _siteRepository.Save();
-            messageContext.Publish(new NewSiteAdded(siteEntity.Id,siteEntity.SiteNumber));
-            return Task.FromResult(0);
+            await _siteRepository.SaveAsync();
+            await messageContext.Publish(new NewSiteAdded(siteEntity.Id,siteEntity.SiteNumber));
         }
     }
 }

@@ -29,7 +29,7 @@ namespace DDD.Provider.Domain.CommandHandlers
             _contractorSuffixGenerator = contractorSuffixGenerator;
             //_eventBus = eventBus;
         }
-        public Task Handle(AddNewContractorCommand command, IMessageHandlerContext messageContext)
+        public async Task Handle(AddNewContractorCommand command, IMessageHandlerContext messageContext)
         {
             try
             {
@@ -45,17 +45,15 @@ namespace DDD.Provider.Domain.CommandHandlers
                 var contractor = new Contractor(contractorDto.EinNumber + contractorSuffix, contractorDto.ContractorName, contractorDto.DoingBusinessAs, status, type, contractDuration, 
                     contractorDto.PhoneNumber, contact, contractrorAddress, contractorDto.Email);
                 _contractorRepository.AddContractor(contractor);
-                _contractorRepository.Save();
-                messageContext.Publish(new CommandCompletedEvent(command.Id, DateTime.UtcNow));
-                messageContext.Publish(new ContractorAdded(DateTime.Now,contractor.Id,contractor.EinNumber) { ContractorEin = contractor.EinNumber });
-                return Task.FromResult(0);
+                await _contractorRepository.SaveAsync();
+                await Task.WhenAll(messageContext.Publish(new CommandCompletedEvent(command.Id, DateTime.UtcNow)),
+                   messageContext.Publish(new ContractorAdded(DateTime.Now,contractor.Id,contractor.EinNumber) { ContractorEin = contractor.EinNumber }));
             }
             catch (Exception ex)
             {
                 //TODO: Global Exception logging
-                messageContext.Publish(new CommandFailedEvent(command.Id, ex, DateTime.UtcNow));
+                await messageContext.Publish(new CommandFailedEvent(command.Id, ex, DateTime.UtcNow));
                 throw;
-                
             }
         }
 

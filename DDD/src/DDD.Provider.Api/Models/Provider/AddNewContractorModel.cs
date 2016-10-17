@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using DDD.Common.Validation;
 using DDD.Provider.Domain.Enums;
+//using DDD.Provider.Domain.Enums;
 
 namespace DDD.Web.Api.Models.Provider
 {
@@ -20,6 +21,7 @@ namespace DDD.Web.Api.Models.Provider
         //[Required]
         //public string Status { get; set; }
         //public string SuffixCode { get; set; }
+        
         [Required]
         [ValidEnum(typeof(ContractorType))]
         public string Type { get; set; }

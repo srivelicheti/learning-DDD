@@ -41,7 +41,6 @@
     "DDD.Common": "1.0.0-*",
     "DDD.Domain.Common": "1.0.0-*",
     "DDD.Provider.Api.Contracts": "1.0.0-*",
-    "DDD.Provider.Domain": "1.0.0-*",
     "DDD.Provider.Domain.Contracts": "1.0.0-*",
     "Microsoft.AspNetCore.Diagnostics": "1.0.0",
     "Microsoft.AspNetCore.Mvc": "1.0.1",

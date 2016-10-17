@@ -6,8 +6,8 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using DDD.Domain.Common.Command;
 //using DDD.Provider.Domain.Commands;
-using DDD.Provider.Domain.Repositories;
-using DDD.Provider.Domain.Enums;
+//using DDD.Provider.Domain.Repositories;
+//using DDD.Provider.Domain.Enums;
 using DDD.Domain.Common.Query;
 using DDD.Provider.Common.DTOs;
 using DDD.Provider.Common.Models;
@@ -17,6 +17,7 @@ using DDD.Web.Api.Models.Provider;
 using NServiceBus;
 using DDD.Provider.Messages.Commands;
 using DDD.Provider.Domain.Contracts.Models;
+using DDD.Provider.Domain.Enums;
 
 namespace DDD.Web.Api.Controllers
 {

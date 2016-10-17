@@ -15,31 +15,26 @@ namespace DDD.Provider.Domain.CommandHandlers
 {
     public class UpdateContractorCommandHandler : IHandleMessages<UpdateContractorCommand>
     {
-        //private IBus _eventBus;
         private ContractorRepository _contractorRepo;
 
-        public UpdateContractorCommandHandler(/*IBus eventBus,*/ ContractorRepository contractorRepository)
+        public UpdateContractorCommandHandler(ContractorRepository contractorRepository)
         {
-            //_eventBus = eventBus;
             _contractorRepo = contractorRepository;
         }
 
-        public Task Handle(UpdateContractorCommand command, IMessageHandlerContext messageContext)
+        public async Task Handle(UpdateContractorCommand command, IMessageHandlerContext messageContext)
         {
             try
             {
                 var contractor = _contractorRepo.GetContractorByEin(command.Contractor.EinNumber);
                 UpdateContractor(contractor,command.Contractor);
-                _contractorRepo.Save();
-                //_eventBus.PublishQueuedPostCommitEvents();
-                messageContext.Publish(new CommandCompletedEvent(command.Id, DateTime.UtcNow));
-                return Task.FromResult(0);
+                await _contractorRepo.SaveAsync();
             }
             catch (Exception ex)
             {
-                messageContext.Publish(new CommandFailedEvent(command.Id, ex, DateTime.UtcNow));
-                throw;
                 //TODO: Log exception
+                await messageContext.Publish(new CommandFailedEvent(command.Id, ex, DateTime.UtcNow));
+                throw;
             }
         }
 

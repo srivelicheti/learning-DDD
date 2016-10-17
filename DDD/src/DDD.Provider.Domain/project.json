@@ -3,7 +3,13 @@
   "description": "DDD.Provider.Domain Class Library",
   "authors": [ "Velicheti" ],
   "packOptions": {
-    "tags": [ ]
+    "tags": []
+  },
+
+
+  "buildOptions": {
+    "emitEntryPoint": true,
+    "preserveCompilationContext": true
   },
   //"dependencies": {
   //  "NETStandard.Library": "1.5.0-rc2-24027"
@@ -11,7 +17,9 @@
   "frameworks": {
     "net461": {
       "dependencies": {
-        
+      },
+      "frameworkAssemblies": {
+        "System.Configuration": "4.0.0.0"
       }
     }
   },
@@ -23,6 +31,11 @@
     "DDD.Provider.Domain.Contracts": "1.0.0-*",
     "Microsoft.EntityFrameworkCore": "1.0.1",
     "Microsoft.EntityFrameworkCore.SqlServer": "1.0.1",
-    "NServiceBus": "6.0.0"
+    "Microsoft.Extensions.DependencyInjection": "1.0.0",
+    "Newtonsoft.Json": "9.0.1",
+    "NServiceBus": "6.0.0",
+    "NServiceBus.Host": "7.0.0",
+    "StructureMap.Microsoft.DependencyInjection": "1.2.0",
+    "Microsoft.EntityFrameworkCore.SqlServer.Design": "1.0.1"
   }
 }

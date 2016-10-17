@@ -4,11 +4,11 @@ using DDD.Domain.Common.Query;
 using DDD.Domain.Common.Services;
 using DDD.Provider.Common.DTOs;
 using DDD.Provider.DataModel;
-using DDD.Provider.Domain.CommandHandlers;
+//using DDD.Provider.Domain.CommandHandlers;
 //using DDD.Provider.Domain.Commands;
-using DDD.Provider.Domain.CommandValidators;
-using DDD.Provider.Domain.Repositories;
-using DDD.Provider.Domain.Services;
+//using DDD.Provider.Domain.CommandValidators;
+//using DDD.Provider.Domain.Repositories;
+//using DDD.Provider.Domain.Services;
 using DDD.Provider.Messages.Commands;
 using DDD.Provider.QueryStack.Contractor.Queries;
 using DDD.Provider.QueryStack.Contractor.QueryHandlers;
@@ -27,8 +27,8 @@ namespace DDD.Web.Api
             container.Configure(x => x.For<IContainer>().Use(container));
             //container.Configure(x => x.For<ICommandBus>().Use<IocContainerCommandBus>());
             container.Configure(x => x.For<IQueryProcessor>().Use<QueryProcessor>());
-            RegisterCommandHandlers(container);
-            RegisterRepositories(container);
+            //RegisterCommandHandlers(container);
+            //RegisterRepositories(container);
             RegisterQueryHandlers(container);
             RegisterDbContexts(container);
             RegisterServices(container);
@@ -36,27 +36,27 @@ namespace DDD.Web.Api
         }
 
 
-        private static void RegisterCommandHandlers(IContainer container)
-        {
-            container.Configure(x => x.ForConcreteType<AddNewContractorCommandHandler>());
-            container.Configure(x => x.ForConcreteType<AddNewSiteCommandHandler>());
-            container.Configure(x => x.ForConcreteType<UpdateContractorCommandHandler>());
+        //private static void RegisterCommandHandlers(IContainer container)
+        //{
+        //    container.Configure(x => x.ForConcreteType<AddNewContractorCommandHandler>());
+        //    container.Configure(x => x.ForConcreteType<AddNewSiteCommandHandler>());
+        //    container.Configure(x => x.ForConcreteType<UpdateContractorCommandHandler>());
 
-            //container.Configure(x => x.For<ICommandHandler<AddNewContractorCommand>>().Use<AddNewContractorCommandHandler>());
-            //container.Configure(x => x.For<ICommandHandler<UpdateContractorCommand>>().Use<UpdateContractorCommandHandler>());
-            //return container;
-            // container.ForGenericType(typeof(ICommandHandler<DDD.Provider.Domain.Commands.AddNewContractorCommand>)
-        }
+        //    //container.Configure(x => x.For<ICommandHandler<AddNewContractorCommand>>().Use<AddNewContractorCommandHandler>());
+        //    //container.Configure(x => x.For<ICommandHandler<UpdateContractorCommand>>().Use<UpdateContractorCommandHandler>());
+        //    //return container;
+        //    // container.ForGenericType(typeof(ICommandHandler<DDD.Provider.Domain.Commands.AddNewContractorCommand>)
+        //}
 
-        private static void RegisterRepositories(IContainer container)
-        {
-            container.Configure(x => x.ForConcreteType<ContractorRepository>());
-        }
+        //private static void RegisterRepositories(IContainer container)
+        //{
+        //    container.Configure(x => x.ForConcreteType<ContractorRepository>());
+        //}
 
-        public static void RegisterCommandValidators(IContainer container)
-        {
-            container.Configure(x => x.For<ICommandValidator<AddNewContractorCommand>>().Use<AddNewContractorCommandValidator>());
-        }
+        //public static void RegisterCommandValidators(IContainer container)
+        //{
+        //    container.Configure(x => x.For<ICommandValidator<AddNewContractorCommand>>().Use<AddNewContractorCommandValidator>());
+        //}
 
         private static void RegisterQueryHandlers(IContainer container) {
             container.Configure(x => x.For<IQueryHandler<FindContractorByIdQuery, ContractorDto>>().Use<FindContractorByIdHandler>());
@@ -72,7 +72,7 @@ namespace DDD.Web.Api
         private static void RegisterServices(IContainer container)
         {
             container.Configure(x => x.For<IMciService>().Use<MockMciService>());
-            container.Configure(x => x.For<IContractorSuffixGenerator>().Use<ContractorSuffixGenerator>());
+            //container.Configure(x => x.For<IContractorSuffixGenerator>().Use<ContractorSuffixGenerator>());
         }
     }
 }

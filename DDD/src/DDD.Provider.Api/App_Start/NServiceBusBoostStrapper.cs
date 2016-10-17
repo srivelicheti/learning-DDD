@@ -1,5 +1,5 @@
 ﻿using DDD.Domain.Common.Event;
-using DDD.Provider.Domain.CommandHandlers;
+//using DDD.Provider.Domain.CommandHandlers;
 using DDD.Provider.Messages.Commands;
 using log4net;
 using Newtonsoft.Json;
@@ -48,7 +48,7 @@ namespace DDD.Web.Api.App_Start
 
                 //var endPointConfig = new EndpointConfiguration
 
-                var cfg = new EndpointConfiguration("ProviderDomain");
+                var cfg = new EndpointConfiguration("ProviderApi");
                 cfg.CustomConfigurationSource(new NServiceBusConfigurationSource());
                 cfg.UseContainer<StructureMapBuilder>(x => x.ExistingContainer(iocContainer));
                 cfg.ExcludeAssemblies("System", "mscorlib", "AutoMapper", "Castle.Core", "lesi.Collections", "libuv",
@@ -71,8 +71,8 @@ namespace DDD.Web.Api.App_Start
             var domainCommonAssembly = typeof(CommandCompletedEvent).Assembly;
             var providerMessages = typeof(AddNewContractorCommand).Assembly;
             var apiAssembly = typeof(NServiceBusBootStrapper).Assembly;
-            var providerDomain = typeof(AddNewContractorCommandHandler).Assembly;
-            return new Assembly[] { domainCommonAssembly, providerMessages, providerDomain, apiAssembly };
+            //var providerDomain = typeof(AddNewContractorCommandHandler).Assembly;
+            return new Assembly[] { domainCommonAssembly, providerMessages,  apiAssembly };
         }
     }
 
@@ -92,15 +92,15 @@ namespace DDD.Web.Api.App_Start
                     Messages = "DDD.Provider.Domain.Contracts",
                 });
 
-                coll.Add(new MessageEndpointMapping
-                {
-                    //AssemblyName = "DDD.Provider.Messages",
-                    Endpoint = "ProviderDomain",
-                    //Namespace = "DDD.Provider.Messages.Commands",
-                    Messages = "DDD.Provider.Domain",
+                //coll.Add(new MessageEndpointMapping
+                //{
+                //    //AssemblyName = "DDD.Provider.Messages",
+                //    Endpoint = "ProviderDomain",
+                //    //Namespace = "DDD.Provider.Messages.Commands",
+                //    Messages = "DDD.Provider.Domain",
 
-                    //  TypeFullName= "DDD.Provider.Messages.Commands.AddNewContractorCommand, DDD.Provider.Messages"
-                });
+                //    //  TypeFullName= "DDD.Provider.Messages.Commands.AddNewContractorCommand, DDD.Provider.Messages"
+                //});
                 //coll.Add(new MessageEndpointMapping
                 //{
                 //    AssemblyName = "DDD.Provider.Messages",
