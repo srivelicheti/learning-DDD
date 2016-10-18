@@ -38,6 +38,10 @@ namespace DDD.Provider.DataModel
         public string ZipCode { get; set; }
         public string ZipExntension { get; set; }
 
+        public byte[] RowVersion { get; set; }
+
         public virtual ICollection<ContractorSite> ContractorSite { get; set; }
+
+       
     }
 }

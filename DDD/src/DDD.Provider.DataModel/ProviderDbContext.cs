@@ -131,6 +131,8 @@ namespace DDD.Provider.DataModel
                     .HasColumnType("nchar(5)");
 
                 entity.Property(e => e.ZipExntension).HasColumnType("nchar(4)");
+
+                entity.Property(e => e.RowVersion).ValueGeneratedOnAddOrUpdate().IsConcurrencyToken();
             });
 
             modelBuilder.Entity<ContractorSite>(entity =>

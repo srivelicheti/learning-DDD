@@ -26,6 +26,7 @@
 	[FirstInsertedDateTime] DATETIME2(3) NOT NULL,
 	[LastSavedBy] [nvarchar](50) NOT NULL,
 	[LastSavedDateTime] DATETIME2(3) NOT NULL,
+    [RowVersion] ROWVERSION NOT NULL, 
     CONSTRAINT [PK_Provider]].[Contractor] PRIMARY KEY CLUSTERED ([ID] ASC)
 );
 
