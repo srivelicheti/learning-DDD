@@ -2,7 +2,7 @@
 
 namespace DDD.Provider.Common.Models
 {
-    public class RenewContractorContract
+    public class RenewContractorContractModel
     {
         public string EinSsn { get; set; }
         public DateTime ContractStartDate { get; set; }

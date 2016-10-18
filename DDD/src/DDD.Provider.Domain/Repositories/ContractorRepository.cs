@@ -39,7 +39,7 @@ namespace DDD.Provider.Domain.Repositories
         {
             var cont = _dbContext.Contractor.FirstOrDefault(x => x.Id == id);
             if (cont == null)
-                throw new ArgumentException($"Contractor with ${id} not found in database");
+                throw new ArgumentException($"ContractorCodes with ${id} not found in database");
             return new Contractor(cont/*, _eventBus*/);
         }
 
@@ -47,7 +47,7 @@ namespace DDD.Provider.Domain.Repositories
         {
             var cont = _dbContext.Contractor.FirstOrDefault(x => x.EinNumber == einNumber);
             if (cont == null)
-                throw new ArgumentException($"Contractor with ${einNumber} not found in database");
+                throw new ArgumentException($"ContractorCodes with ${einNumber} not found in database");
 
             return new Contractor(cont/*,_eventBus*/);
         }

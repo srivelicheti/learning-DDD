@@ -7,7 +7,7 @@ namespace DDD.Provider.Domain.CommandValidators
 {
     public class ValidationErrorCodes
     {
-        public static class Contractor
+        public static class ContractorCodes
         {
             public const int SelfArrangedContractorNotFound = 2000;
             public const int SelfArrangedContractorAlreadyRegistered = 2010;

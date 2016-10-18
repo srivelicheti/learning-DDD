@@ -38,7 +38,7 @@ namespace DDD.Provider.Domain.CommandHandlers
             }
         }
 
-        private void UpdateContractor(Contractor contractor, UpdateContractorModel updatedModel)
+        private void UpdateContractor(Entities.Contractor contractor, UpdateContractorModel updatedModel)
         {
             contractor.UpdateName(updatedModel.ContractorName);
             contractor.UpdateDointBusinessAsName(updatedModel.DoingBusinessAs);

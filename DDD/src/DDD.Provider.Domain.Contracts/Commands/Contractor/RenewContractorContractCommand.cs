@@ -11,7 +11,12 @@ namespace DDD.Provider.Domain.Contracts.Commands.Contractor
     {
         public RenewContractorContractCommand(DateTime startDate, DateTime endDate) :base(Guid.NewGuid(),"TODO")
         {
-            
+            StartDate = startDate;
+            EndDate = endDate;
         }
+
+        public DateTime EndDate { get; private set; }
+
+        public DateTime StartDate { get; private set; }
     }
 }
