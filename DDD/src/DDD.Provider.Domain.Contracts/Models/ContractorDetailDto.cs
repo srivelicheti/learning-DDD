@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace DDD.Provider.Domain.Contracts.Models
 {
-    public class ChangeContractorDetailModel
+    public class ContractorDetailDto
     {
         public string EinNumber { get; set; }
         public string ContractorName { get; set; }

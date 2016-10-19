@@ -2,7 +2,7 @@
 using DDD.Domain.Common.Event;
 using DDD.Domain.Common.ValueObjects;
 
-namespace DDD.Provider.Messages.Events
+namespace DDD.Provider.Domain.Contracts.Events
 {
     public class ContractorAddressChanged : BaseEvent
     {

@@ -6,7 +6,7 @@ using DDD.Domain.Common;
 using DDD.Domain.Common.Event;
 using DDD.Domain.Common.ValueObjects;
 using DDD.Provider.DataModel;
-using DDD.Provider.Domain.Enums;
+using DDD.Provider.Domain.Contracts.Enums;
 using DDD.Provider.Domain.ValueObjects;
 using NServiceBus;
 using VO = DDD.Domain.Common.ValueObjects;

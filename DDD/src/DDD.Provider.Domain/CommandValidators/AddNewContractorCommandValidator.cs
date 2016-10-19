@@ -1,13 +1,13 @@
 ﻿using DDD.Domain.Common.Command;
 using DDD.Domain.Common.Services;
-using DDD.Provider.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DDD.Common.Extensions;
+using DDD.Provider.Domain.Contracts.Commands.Contractor;
+using DDD.Provider.Domain.Contracts.Enums;
 using DDD.Provider.Domain.Repositories;
-using DDD.Provider.Messages.Commands;
 
 namespace DDD.Provider.Domain.CommandValidators
 {

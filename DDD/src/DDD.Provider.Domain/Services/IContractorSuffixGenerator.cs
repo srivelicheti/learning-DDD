@@ -1,9 +1,9 @@
-﻿using DDD.Provider.Domain.Enums;
-using DDD.Provider.Domain.Repositories;
+﻿using DDD.Provider.Domain.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DDD.Provider.Domain.Contracts.Enums;
 
 namespace DDD.Provider.Domain.Services
 {

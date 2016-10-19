@@ -11,7 +11,6 @@ using StructureMap;
 using DDD.Domain.Common.Event;
 using Microsoft.Extensions.PlatformAbstractions;
 using DDD.Web.Api.Infrastructure.Logging;
-using DDD.Web.Api.App_Start;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.SignalR;
 using DDD.Provider.DataModel;

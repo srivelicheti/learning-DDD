@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using DDD.Domain.Common.Event;
 using NServiceBus;
 
-namespace DDD.Provider.Messages.Events
+namespace DDD.Provider.Domain.Contracts.Events
 {
     public class NewSiteAdded : BaseEvent, IEvent
     {

@@ -1,11 +1,8 @@
-﻿using NServiceBus;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System;
 using DDD.Domain.Common.Event;
+using NServiceBus;
 
-namespace DDD.Provider.Messages.Events
+namespace DDD.Provider.Domain.Contracts.Events
 {
     public class ContractorAdded : BaseEvent, IEvent
     {

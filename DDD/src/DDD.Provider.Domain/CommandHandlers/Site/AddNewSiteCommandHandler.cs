@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DDD.Domain.Common.ValueObjects;
+using DDD.Provider.Domain.Contracts.Commands.Site;
+using DDD.Provider.Domain.Contracts.Enums;
+using DDD.Provider.Domain.Contracts.Events;
 using DDD.Provider.Domain.Entities;
-using DDD.Provider.Domain.Enums;
 using DDD.Provider.Domain.Repositories;
 using DDD.Provider.Domain.ValueObjects;
-using DDD.Provider.Messages.Commands;
-using DDD.Provider.Messages.Events;
 using NServiceBus;
 
-namespace DDD.Provider.Domain.CommandHandlers
+namespace DDD.Provider.Domain.CommandHandlers.Site
 {
     public class AddNewSiteCommandHandler : IHandleMessages<AddNewSiteCommand>
     {
@@ -36,7 +35,7 @@ namespace DDD.Provider.Domain.CommandHandlers
 
             var holidays = siteDto.SiteHolidays.Select(x => new SiteHoliday(x.HolidayDate, x.HolidayName)).ToList();
             var rates = siteDto.SiteRates.Select(x => new SiteRate(x.MinAge, x.Rate, (x.Rate * 1.5m), DateTime.Now));
-            var siteEntity = new Site(GuidHelper.NewSequentialGuid(), siteDto.SiteNumber, siteDto.SiteName,
+            var siteEntity = new Entities.Site(GuidHelper.NewSequentialGuid(), siteDto.SiteNumber, siteDto.SiteName,
                 SiteStatus.Active, facitlType, siteType,
                 contractDuration, siteDto.PhoneNumber, contact, address, siteDto.SiteEmailText, siteDto.CountyCode,
                 siteDto.CountyServed

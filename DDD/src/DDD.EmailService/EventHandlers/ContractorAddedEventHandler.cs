@@ -1,9 +1,9 @@
-﻿using DDD.Provider.Messages.Events;
-using NServiceBus;
+﻿using NServiceBus;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DDD.Provider.Domain.Contracts.Events;
 
 namespace DDD.EmailService.EventHandlers
 {

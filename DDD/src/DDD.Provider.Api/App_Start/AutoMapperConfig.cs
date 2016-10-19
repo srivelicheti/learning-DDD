@@ -15,6 +15,12 @@ namespace DDD.Web.Api
             Mapper.CreateMap<SiteHolidayModel, SiteHolidayDto>();
             Mapper.CreateMap<SiteRateModel, SiteRateDto>();
             Mapper.CreateMap<AddNewSiteModel, SiteDto>();
+            Mapper.CreateMap<AddNewContractorModel, DDD.Provider.Domain.Contracts.DTOs.ContractorDto>();
+            Mapper.CreateMap<ContractorState, DDD.Provider.Domain.Contracts.DTOs.ContractorDto>();
+
+            Mapper.CreateMap<SiteHolidayModel, DDD.Provider.Domain.Contracts.DTOs.SiteHolidayDto>();
+            Mapper.CreateMap<SiteRateModel, DDD.Provider.Domain.Contracts.DTOs.SiteRateDto>();
+            Mapper.CreateMap<AddNewSiteModel, DDD.Provider.Domain.Contracts.DTOs.SiteDto>();
         }
     }
 }

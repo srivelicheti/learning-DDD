@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DDD.Provider.Common.Models
+namespace DDD.Provider.Domain.Contracts.Models
 {
     public class RenewContractorContractModel
     {

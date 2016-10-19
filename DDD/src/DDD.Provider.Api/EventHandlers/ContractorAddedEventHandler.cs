@@ -1,6 +1,5 @@
 ﻿using DDD.Domain.Common.Event;
 //using DDD.Provider.Domain.Events;
-using DDD.Provider.Messages.Events;
 using DDD.Web.Api.Hubs;
 using Microsoft.AspNetCore.SignalR.Infrastructure;
 using NServiceBus;
@@ -9,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using DDD.Provider.Domain.Contracts.Events;
 
 namespace DDD.Web.Api.EventHandlers
 {

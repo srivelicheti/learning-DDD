@@ -14,7 +14,6 @@
   "dependencies": {
     "DDD.Common": "1.0.0-*",
     "DDD.Domain.Common": "1.0.0-*",
-    "DDD.Provider.Api.Contracts": "1.0.0-*",
     "NServiceBus": "6.0.0"
   },
   "buildOptions": {

@@ -9,8 +9,8 @@ using System.Collections;
 using System.Configuration;
 using NServiceBus.Faults;
 using DDD.Domain.Common.Event;
-using DDD.Provider.Messages.Commands;
 using System.Reflection;
+using DDD.Provider.Domain.Contracts.Commands.Contractor;
 using Newtonsoft.Json;
 
 namespace DDD.EmailService

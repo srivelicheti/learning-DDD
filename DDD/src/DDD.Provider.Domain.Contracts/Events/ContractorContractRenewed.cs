@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using DDD.Domain.Common.Event;
 using DDD.Domain.Common.ValueObjects;
 
-namespace DDD.Provider.Messages.Events
+namespace DDD.Provider.Domain.Contracts.Events
 {
     public class ContractorContractRenewed : BaseEvent
     {

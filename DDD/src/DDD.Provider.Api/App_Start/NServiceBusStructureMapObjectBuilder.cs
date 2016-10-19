@@ -1,17 +1,15 @@
-﻿using NServiceBus;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using NServiceBus;
 using NServiceBus.Container;
-using NServiceBus.ObjectBuilder.Common;
 using NServiceBus.Settings;
 using StructureMap;
 using StructureMap.Pipeline;
 using StructureMap.Query;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
-namespace DDD.Web.Api.App_Start
+namespace DDD.Web.Api
 {
     internal class NServiceBusStructureMapObjectBuilder : NServiceBus.ObjectBuilder.Common.IContainer, IDisposable
     {

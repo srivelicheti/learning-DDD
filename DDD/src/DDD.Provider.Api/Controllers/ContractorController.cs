@@ -11,13 +11,12 @@ using DDD.Domain.Common.Command;
 using DDD.Domain.Common.Query;
 using DDD.Provider.Api.Contracts.DTOs;
 using DDD.Provider.Api.Contracts.Models.Contractor;
-using DDD.Provider.Common.Models;
+using DDD.Provider.Domain.Contracts.Commands.Contractor;
+using DDD.Provider.Domain.Contracts.Enums;
 using DDD.Provider.QueryStack.Contractor.Queries;
 using DDD.Web.Api.Infrastructure.ActionFilters;
 using NServiceBus;
-using DDD.Provider.Messages.Commands;
 using DDD.Provider.Domain.Contracts.Models;
-using DDD.Provider.Domain.Enums;
 
 namespace DDD.Web.Api.Controllers
 {
@@ -61,7 +60,7 @@ namespace DDD.Web.Api.Controllers
         [ValidateModel]
         public JsonResult Post([FromBody]AddNewContractorModel contractorModel)
         {
-            var cont = Mapper.Map<ContractorDto>(contractorModel);
+            var cont = Mapper.Map<Provider.Domain.Contracts.DTOs.ContractorDto>(contractorModel);
             var addNewContractorCommand = new AddNewContractorCommand(cont);
             var result = _bus.Send(addNewContractorCommand);
             return new JsonResult(new {CommmandId = addNewContractorCommand.Id});

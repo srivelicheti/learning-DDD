@@ -4,10 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DDD.Provider.Common.Models;
 using DDD.Provider.Domain.Contracts.Models;
 
-namespace DDD.Provider.Messages.Commands
+namespace DDD.Provider.Domain.Contracts.Commands.Contractor
 {
     public class UpdateContractorCommand : BaseCommand, ICommand
     {

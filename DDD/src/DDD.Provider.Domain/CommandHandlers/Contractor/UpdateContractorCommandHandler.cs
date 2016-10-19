@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using DDD.Domain.Common.Command;
 using DDD.Domain.Common.Event;
-using DDD.Provider.Common.Models;
-using DDD.Provider.Domain.Entities;
+using DDD.Provider.Domain.Contracts.Commands.Contractor;
+using DDD.Provider.Domain.Contracts.Models;
 using DDD.Provider.Domain.Repositories;
 using NServiceBus;
-using DDD.Provider.Messages.Commands;
-using DDD.Provider.Domain.Contracts.Models;
 
-namespace DDD.Provider.Domain.CommandHandlers
+namespace DDD.Provider.Domain.CommandHandlers.Contractor
 {
     public class UpdateContractorCommandHandler : IHandleMessages<UpdateContractorCommand>
     {

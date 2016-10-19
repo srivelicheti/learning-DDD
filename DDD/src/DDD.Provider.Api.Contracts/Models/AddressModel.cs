@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace DDD.Web.Api.Models
+﻿namespace DDD.Provider.Api.Contracts.Models
 {
     public class AddressModel
     {

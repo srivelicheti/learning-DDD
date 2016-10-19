@@ -1,20 +1,16 @@
-﻿using DDD.Domain.Common.Command;
+﻿using System;
+using System.Threading.Tasks;
 using DDD.Domain.Common.Event;
 using DDD.Domain.Common.ValueObjects;
-using DDD.Provider.Domain.Entities;
-using DDD.Provider.Domain.Enums;
+using DDD.Provider.Domain.Contracts.Commands.Contractor;
+using DDD.Provider.Domain.Contracts.Enums;
+using DDD.Provider.Domain.Contracts.Events;
 using DDD.Provider.Domain.Repositories;
 using DDD.Provider.Domain.Services;
-using DDD.Provider.Messages.Commands;
-using DDD.Provider.Messages.Events;
 using NServiceBus;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using VO = DDD.Domain.Common.ValueObjects;
 
-namespace DDD.Provider.Domain.CommandHandlers
+namespace DDD.Provider.Domain.CommandHandlers.Contractor
 {
     public class AddNewContractorCommandHandler :
         IHandleMessages<AddNewContractorCommand>

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DDD.Domain.Common.Command;
-using DDD.Provider.Api.Contracts.DTOs;
+using DDD.Provider.Domain.Contracts.DTOs;
 using NServiceBus;
 
-namespace DDD.Provider.Messages.Commands
+namespace DDD.Provider.Domain.Contracts.Commands.Site   
 {
     public class AddNewSiteCommand : BaseCommand, ICommand
     {

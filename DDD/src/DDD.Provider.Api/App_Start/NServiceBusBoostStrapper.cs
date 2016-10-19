@@ -1,23 +1,18 @@
-﻿using DDD.Domain.Common.Event;
-//using DDD.Provider.Domain.CommandHandlers;
-using DDD.Provider.Messages.Commands;
+﻿using System;
+using System.Configuration;
+using System.Reflection;
+using DDD.Domain.Common.Event;
+using DDD.Provider.Domain.Contracts.Commands.Contractor;
 using log4net;
 using Newtonsoft.Json;
 using NServiceBus;
 using NServiceBus.Config;
 using NServiceBus.Config.ConfigurationSource;
-using NServiceBus.Container;
 using NServiceBus.Faults;
-using NServiceBus.Features;
 using StructureMap;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
+//using DDD.Provider.Domain.CommandHandlers;
 
-namespace DDD.Web.Api.App_Start
+namespace DDD.Web.Api
 {
 
     public static class NServiceBusBootStrapper

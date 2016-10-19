@@ -6,7 +6,7 @@ using AutoMapper;
 using DDD.Domain.Common.Query;
 using DDD.Provider.Api.Contracts.DTOs;
 using DDD.Provider.Api.Contracts.Models.Site;
-using DDD.Provider.Messages.Commands;
+using DDD.Provider.Domain.Contracts.Commands.Site;
 using DDD.Web.Api.Infrastructure.ActionFilters;
 using Microsoft.AspNetCore.Mvc;
 using NServiceBus;
@@ -46,7 +46,7 @@ namespace DDD.Web.Api.Controllers
         [ValidateModel]
         public JsonResult Post([FromBody]AddNewSiteModel value)
         {
-            var siteDto = Mapper.Map<SiteDto>(value);
+            var siteDto = Mapper.Map<Provider.Domain.Contracts.DTOs.SiteDto>(value);
             var command = new AddNewSiteCommand(siteDto);
             _bus.Send(command);
             return new JsonResult(new {CommandId = command.Id});

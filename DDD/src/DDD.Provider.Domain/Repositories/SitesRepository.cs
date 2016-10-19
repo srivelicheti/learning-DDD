@@ -8,7 +8,6 @@ using DDD.Domain.Common.Event;
 using DDD.Domain.Common.ValueObjects;
 using DDD.Provider.DataModel;
 using Microsoft.Data.Entity;
-using Microsoft.Data.Entity.Extensions;
 using Site = DDD.Provider.Domain.Entities.Site;
 using NServiceBus;
 using VO = DDD.Domain.Common.ValueObjects;
@@ -17,6 +16,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.Extensions;
 using Microsoft.EntityFrameworkCore.Query;
 using Microsoft.Data;
+using Microsoft.Data.Entity.Extensions;
 
 
 namespace DDD.Provider.Domain.Repositories

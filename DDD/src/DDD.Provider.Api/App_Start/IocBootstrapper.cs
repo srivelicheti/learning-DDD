@@ -9,7 +9,6 @@ using DDD.Provider.DataModel;
 //using DDD.Provider.Domain.CommandValidators;
 //using DDD.Provider.Domain.Repositories;
 //using DDD.Provider.Domain.Services;
-using DDD.Provider.Messages.Commands;
 using DDD.Provider.QueryStack.Contractor.Queries;
 using DDD.Provider.QueryStack.Contractor.QueryHandlers;
 using Microsoft.AspNetCore.Http;

@@ -1,10 +1,7 @@
-﻿using DDD.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System;
+using DDD.Common;
 
-namespace DDD.Provider.Domain.Enums
+namespace DDD.Provider.Domain.Contracts.Enums
 {
     public class ContractorType : Enumeration<ContractorType,string>
     {

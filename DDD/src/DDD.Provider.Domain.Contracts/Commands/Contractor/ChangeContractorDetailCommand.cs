@@ -10,11 +10,11 @@ namespace DDD.Provider.Domain.Contracts.Commands.Contractor
 {
     public class ChangeContractorDetailCommand : BaseCommand, ICommand
     {
-        public ChangeContractorDetailCommand(ChangeContractorDetailModel contractorDetail) :base(GuidHelper.NewSequentialGuid(),"TODO")
+        public ChangeContractorDetailCommand(ContractorDetailDto contractorDetail) :base(GuidHelper.NewSequentialGuid(),"TODO")
         {
             ContractorDetail = contractorDetail;
         }
 
-        public ChangeContractorDetailModel ContractorDetail { get; private set; }
+        public ContractorDetailDto ContractorDetail { get; private set; }
     }
 }

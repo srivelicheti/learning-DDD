@@ -3,9 +3,8 @@ using DDD.Domain.Common;
 using DDD.Domain.Common.Event;
 using DDD.Domain.Common.ValueObjects;
 using DDD.Provider.DataModel;
-using DDD.Provider.Domain.Enums;
+using DDD.Provider.Domain.Contracts.Enums;
 using DDD.Provider.Domain.Events;
-using DDD.Provider.Messages.Events;
 using NServiceBus;
 using VO = DDD.Domain.Common.ValueObjects;
 

@@ -7,9 +7,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Data.Entity;
 using DDD.Domain.Common.ValueObjects;
+using DDD.Provider.Domain.Contracts.Enums;
+using DDD.Provider.Domain.Contracts.Events;
 using DDD.Provider.Domain.Entities;
-using DDD.Provider.Domain.Enums;
-using DDD.Provider.Messages.Events;
 using NServiceBus;
 
 namespace DDD.Provider.Domain.Repositories
