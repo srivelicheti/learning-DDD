@@ -4,11 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using DDD.Domain.Common.Query;
-using DDD.Provider.Common.DTOs;
+using DDD.Provider.Api.Contracts.DTOs;
+using DDD.Provider.Api.Contracts.Models.Site;
 using DDD.Provider.Messages.Commands;
 using DDD.Web.Api.Infrastructure.ActionFilters;
 using Microsoft.AspNetCore.Mvc;
-using DDD.Web.Api.Models.Provider;
 using NServiceBus;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860

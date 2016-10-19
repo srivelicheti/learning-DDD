@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DDD.Domain.Common.Command;
-using DDD.Provider.Common.DTOs;
+using DDD.Provider.Api.Contracts.DTOs;
 using NServiceBus;
 
 namespace DDD.Provider.Messages.Commands

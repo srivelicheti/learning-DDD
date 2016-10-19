@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using DDD.Common.Validation;
-using DDD.Provider.Domain.Enums;
+using DDD.Provider.Api.Contracts.Enums;
 
-namespace DDD.Web.Api.Models.Provider
+namespace DDD.Provider.Api.Contracts.Models.Site
 {
     public class AddNewSiteModel
     {

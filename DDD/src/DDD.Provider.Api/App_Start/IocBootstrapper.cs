@@ -2,7 +2,7 @@
 using DDD.Domain.Common.Event;
 using DDD.Domain.Common.Query;
 using DDD.Domain.Common.Services;
-using DDD.Provider.Common.DTOs;
+using DDD.Provider.Api.Contracts.DTOs;
 using DDD.Provider.DataModel;
 //using DDD.Provider.Domain.CommandHandlers;
 //using DDD.Provider.Domain.Commands;

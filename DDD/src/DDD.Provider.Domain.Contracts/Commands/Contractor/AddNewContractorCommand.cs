@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DDD.Provider.Common.DTOs;
+using DDD.Provider.Api.Contracts.DTOs;
 
 namespace DDD.Provider.Messages.Commands
 {

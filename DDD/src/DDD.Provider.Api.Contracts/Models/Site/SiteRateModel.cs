@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DDD.Web.Api.Models.Provider
+namespace DDD.Provider.Api.Contracts.Models.Site
 {
     public class SiteRateModel
     {

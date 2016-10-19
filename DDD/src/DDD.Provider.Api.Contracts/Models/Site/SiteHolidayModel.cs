@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace DDD.Web.Api.Models.Provider
+namespace DDD.Provider.Api.Contracts.Models.Site
 {
     public class SiteHolidayModel
     {

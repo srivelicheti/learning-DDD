@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
-using DDD.Provider.Common.DTOs;
+using DDD.Provider.Api.Contracts.DTOs;
+using DDD.Provider.Api.Contracts.Models.Contractor;
+using DDD.Provider.Api.Contracts.Models.Site;
 using DDD.Provider.DataModel;
-using DDD.Web.Api.Models.Provider;
 
 namespace DDD.Web.Api
 {

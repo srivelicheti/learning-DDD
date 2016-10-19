@@ -1,10 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using DDD.Common.Validation;
-using DDD.Provider.Domain.Enums;
-//using DDD.Provider.Domain.Enums;
+using DDD.Provider.Api.Contracts.Enums;
 
-namespace DDD.Web.Api.Models.Provider
+namespace DDD.Provider.Api.Contracts.Models.Contractor
 {
     public class AddNewContractorModel
     {

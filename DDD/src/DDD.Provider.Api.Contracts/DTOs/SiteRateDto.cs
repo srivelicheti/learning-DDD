@@ -1,4 +1,4 @@
-﻿namespace DDD.Provider.Common.DTOs
+﻿namespace DDD.Provider.Api.Contracts.DTOs
 {
     public class SiteRateDto
     {
